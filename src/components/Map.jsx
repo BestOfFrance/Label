@@ -16,6 +16,7 @@ const pin = props.shops.map((center, index) => {
   return (
     <Marker
     key={index}
+    id={center.id}
     text={center.name}
     lat={center.latitude}
     lng={center.longitude}

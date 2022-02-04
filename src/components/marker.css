@@ -1,0 +1,14 @@
+#marker-div {
+  display: flex;
+  flex-direction: column;
+}
+
+#marker-info {
+  transform: translate(-50%, -100%);
+  background-color: white;
+}
+
+#actual-marker{
+  height: 10em;
+  width: 10em;
+}
