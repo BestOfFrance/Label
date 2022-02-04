@@ -22,9 +22,6 @@ export default function Application(props) {
     shopID: 0
   })
 
-const markerOnClick = function(id) => {
-  
-}
 
 
 useEffect( () => {

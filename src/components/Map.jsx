@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import GoogleMapReact from 'google-map-react'
+import InfoWindow from 'google-map-react'
 import axios from 'axios'
 import LocationPin from './LocationPin'
 import Marker from './Marker'
@@ -7,18 +8,25 @@ import Marker from './Marker'
 import './map.css'
 
 export default function Maps(props) {
+// set state for marker selection
+const [selectedCenter, setSelectedCenter] = useState(null);
   
 
-const pin = props.shops.map((shop, index) => {
+const pin = props.shops.map((center, index) => {
   return (
     <Marker
     key={index}
-    text={shop.name}
-    lat={shop.latitude}
-    lng={shop.longitude}
+    text={center.name}
+    lat={center.latitude}
+    lng={center.longitude}
+    onClick={() => {
+      setSelectedCenter(center);
+   }}
+    show={selectedCenter}
     />
   )
 })
+console.log(selectedCenter)
 
   return (
     <div className="map">
@@ -32,6 +40,8 @@ const pin = props.shops.map((shop, index) => {
       >
         {pin}
       </GoogleMapReact>
+      
+     
       
     </div>
   </div>
