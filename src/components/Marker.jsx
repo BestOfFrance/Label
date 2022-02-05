@@ -24,7 +24,7 @@ export default function Marker(props) {
 
   useEffect(() => {
     
-    console.log('props', props)
+    
     if (props.show !== null) {
       if (props.id === props.show.id) {
         setShow(true)
