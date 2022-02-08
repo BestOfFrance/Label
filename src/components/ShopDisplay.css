@@ -1,0 +1,29 @@
+.close-display {
+  text-align: right;
+}
+
+/* .container {
+  display: flex;
+  justify-content: center;
+} */
+
+/* .display-image {
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
+  height: fit-content;
+  
+} */
+
+.thumbnail {
+  height: 10%;
+  width: 10%
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+h2 {
+  text-align: center;
+}

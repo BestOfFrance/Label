@@ -1,3 +1,11 @@
 .list-item.active {
-  background-color: blueviolet;
+  color: blue !important;
+}
+.list-item {
+  height: 10em;
+}
+
+.list-name{
+  background-color: cornsilk;
+  text-align: center;
 }

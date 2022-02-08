@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import './marker.css'
+import CloseButton from 'react-bootstrap/CloseButton'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -37,16 +38,78 @@ export default function Marker(props) {
     
 
   }, [props.show])
+//  console.log('marker props', props.hours)
+
+//  const hoursArray = props.hours.split('},')
+// //  console.log(hoursArray)
+//  const nextHours = [];
+//  for (const day of hoursArray) {
+//    if (day[day.length - 1] !== '}') {
+//     nextHours.push(`${day}}`)
+//    } else {
+//      nextHours.push(day)
+//    }
+   
+//  }
+//  const dayArray = [];
+//  for (const day of nextHours) {
+//    const dayObj = JSON.parse(day)
+//    dayArray.push(dayObj)
+//  }
+//  const realHours = [];
+//  function tConvert (time) {
   
+//   const hour = `${time[0]}${time[1]}`
+//   const numberHour = parseInt(hour)
+//   const newHour = (numberHour % 12) || 12;
+//   console.log(newHour)
+//   const minute = `${time[2]}${time[3]}`
+//   const AmOrPm = hour >= 12 ? 'pm' : 'am';
+//   return `${newHour}:${minute}${AmOrPm}`
+  
+// }
+
+//  for (const day of dayArray) {
+//   realHours.push({open: tConvert(day.open), close: tConvert(day.close)})
+//  }
+
+//  const realHoursObject = []
+//  for (let i = 0; i < realHours.length; i++) {
+//    if (i = 0 && realHours[i].open) {
+//      realHoursObject.push(`Monday: ${realHours[i].open} - ${realHours[i].close}`)
+//    }
+   
+//  }
+//  console.log(realHoursObject)
 
   return (
     <div id="marker-div">
       {showSelected && 
       (
-        <div id="marker-info" style={{width: 100, height: 100}}>
-          <div>
-            Hello Marker
+        <div id="marker-info" >
+          <div className='close'>
+            <CloseButton onClick={props.onClicking}></CloseButton>
           </div>
+          <div className='title'>
+            {props.text}
+          </div>
+          <div>
+            Phone: {props.phone}
+            
+          </div>
+          <div>
+            Address: {props.address}, Vancouver, BC
+            
+          </div>
+          <div>
+            Hours
+            
+            
+          </div>
+          
+            
+            
+          
         </div>
       )}
       <div id="actual-marker">

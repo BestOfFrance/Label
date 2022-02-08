@@ -1,11 +1,23 @@
 #marker-div {
   display: flex;
   flex-direction: column;
+  font-family: nunito !important;
 }
 
 #marker-info {
   transform: translate(-50%, -100%);
   background-color: white;
+  height: 12em;
+  width: 20em;
+  text-align: center;
+}
+
+.title {
+  font-size: medium;
+}
+
+.close {
+  text-align: right;
 }
 
 #actual-marker{
