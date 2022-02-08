@@ -8,9 +8,7 @@ import LocationPin from './LocationPin'
 import './map.css'
 
 export default function Maps(props) {
-  const onChange = function({center, zoom}) {
-    console.log(center, zoom)
-  }
+  
   
  
  
@@ -24,7 +22,7 @@ export default function Maps(props) {
         yesIWantToUseGoogleMapApiInternals
         
        
-        onChange={({center, zoom}) => {onChange({center, zoom})}}
+        onChange={({center, zoom}) => {props.onChange({center, zoom})}}
         center={props.location}
         defaultZoom={props.zoomLevel}
       >

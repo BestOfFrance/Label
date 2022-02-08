@@ -31,14 +31,7 @@ export default function Application(props) {
 const [selectedCenter, setSelectedCenter] = useState(null);
 
 
-const items = state.shops.map((shop, index) => {
-    
-  return(
-    <BusinessList key={index + 1} name={shop.name} id={index+1} selectedCenter={selectedCenter}/>
-  )
 
-
-})
 
 const pin = state.shops.map((center, index) => {
   return (
@@ -55,9 +48,52 @@ const pin = state.shops.map((center, index) => {
     />
   )
 })
+var markersByDistance = [];
+const getDistance = function(markers, myLatlng) {
+  
+  console.log(markers, 'markers')
+  console.log(myLatlng, 'll')
+for ( var i = 0; i < markers.length; i++ ) {
+    var marker = markers[i];
+
+    // using pythagoras does not take into account curvature, 
+    // but will work fine over small distances.
+    // you can use more complicated trigonometry to 
+    // take curvature into consideration
+    var dx = myLatlng.lng - marker.longitude;
+    var dy = myLatlng.lat - marker.latitude;
+    
+    var distance = Math.sqrt( dx * dx + dy * dy );
+
+    markersByDistance[ i ] = marker;
+    markersByDistance[ i ].distance = distance;
+
+}
+
+// function to sort your data...
+function sorter (a,b) { 
+    return a.distance > b.distance ? 1 : -1;
+}
+
+// sort the array... now the first 5 elements should be your closest points.
+markersByDistance.sort( sorter );
+console.log(markersByDistance)
+setState((prev) => ({ ...prev, shops: markersByDistance }))
+}
+
+const onChange = function({center, zoom}) {
+  
+  getDistance(state.shops, center)
+}
+
+const items = state.shops.map((shop, index) => {
+    
+  return(
+    <BusinessList key={index + 1} name={shop.name} id={index+1} selectedCenter={selectedCenter}/>
+  )
 
 
-
+})
 
 useEffect( () => {
   axios.get("http://localhost:3001/")
@@ -78,7 +114,7 @@ useEffect( () => {
       <div>
       <h2 className="map-h2">Label</h2>
       <div class="main-container">
-        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin}/>
+        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange}/>
         <div class="list">
         <ListGroup as="ul">
           {items}
