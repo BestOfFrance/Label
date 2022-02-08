@@ -8,8 +8,12 @@ import LocationPin from './LocationPin'
 import './map.css'
 
 export default function Maps(props) {
-
-
+  const onChange = function({center, zoom}) {
+    console.log(center, zoom)
+  }
+  
+ 
+ 
   return (
     <div className="map">
     
@@ -17,7 +21,11 @@ export default function Maps(props) {
     <div className="google-map">
       <GoogleMapReact
         bootstrapURLKeys={{key: 'AIzaSyCRlsvlSFmfPOb-oAZlmfYSMkcycNNHzm4' }}
-        defaultCenter={props.location}
+        yesIWantToUseGoogleMapApiInternals
+        
+       
+        onChange={({center, zoom}) => {onChange({center, zoom})}}
+        center={props.location}
         defaultZoom={props.zoomLevel}
       >
         {props.marker}

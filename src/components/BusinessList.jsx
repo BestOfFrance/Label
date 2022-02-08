@@ -8,11 +8,14 @@ export default function BusinessList(props) {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    if (props.id === props.selectedCenter.id) {
-      setActive(true);
-    } else {
-      setActive(false);
+    if (props.selectedCenter !== null) {
+      if (props.id === props.selectedCenter.id) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
     }
+   
   }, [props.selectedCenter])
   
 

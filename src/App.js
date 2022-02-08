@@ -17,6 +17,8 @@ const location = {
   lng: -123.1207,
 } // our location object from earlier
 const mode = "MAP"
+
+
 export default function Application(props) {
   const [state, setState] = useState({
     shops: [],
@@ -32,7 +34,7 @@ const [selectedCenter, setSelectedCenter] = useState(null);
 const items = state.shops.map((shop, index) => {
     
   return(
-    <BusinessList name={shop.name} id={index+1} selectedCenter={selectedCenter}/>
+    <BusinessList key={index + 1} name={shop.name} id={index+1} selectedCenter={selectedCenter}/>
   )
 
 
@@ -68,7 +70,7 @@ useEffect( () => {
   console.log(err)
 })
 }, [state.location]);
-console.log(state)
+// console.log(state)
 
   return(
     <div>
