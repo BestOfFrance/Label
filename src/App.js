@@ -149,7 +149,7 @@ useEffect( () => {
   console.log(err)
 })
 }, [state.location]);
- console.log(state.category)
+//  console.log(state.category)
 
   return(
     <div>
