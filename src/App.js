@@ -2,7 +2,8 @@ import React, { Component, useEffect, useState } from 'react';
 import Maps from './components/Map'
 import BusinessList from "./components/BusinessList"
 import ShopDisplay from "./components/ShopDisplay";
-import Marker from './components/Marker'
+import Marker from './components/Marker';
+import Header from './components/Header';
 import axios from 'axios'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -137,9 +138,11 @@ useEffect( () => {
 
   return(
     <div>
+      
+      
+      <Header/>
       {state.mode === mode && 
       <div>
-      <h2 className="map-h2">Label</h2>
       <div class="main-container">
         <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange}/>
         <div class="list">

@@ -34,7 +34,7 @@ export default function BusinessList(props) {
   return(
     <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id} style={styles} onClick={() => {props.onClick(props.shop)}}>
       <div className='list-name'>
-      {props.name}  Distance: {props.distance}KM
+      {props.name} 
 
       </div>
       

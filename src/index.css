@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: nunito !important;
+  color: #818181;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

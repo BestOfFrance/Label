@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  position: sticky;
+  height: 7em;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#logo {
+  height:75%;
+  width: 75%;
+  margin-left: 1em;
+}
+
+#title {
+  text-align: center;
+  width: 100%;
+  font-size: x-large;
+  color: #818181;
+}
