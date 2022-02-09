@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import './marker.css'
 import CloseButton from 'react-bootstrap/CloseButton'
+import hours from '../helpers/convertHours'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -25,7 +26,7 @@ export default function Marker(props) {
 
   useEffect(() => {
     
-    
+   
     if (props.show !== null) {
       if (props.id === props.show.id) {
         setShow(true)
@@ -38,49 +39,31 @@ export default function Marker(props) {
     
 
   }, [props.show])
-//  console.log('marker props', props.hours)
+  useEffect(() => {
+    
+    
+    if (props.show !== null) {
+      if (props.id === props.show.id) {
+        setShow(true)
+      } else {
+        setShow(false)
+      }
+    } else {
+      setShow(false)
+    }
+    
 
-//  const hoursArray = props.hours.split('},')
-// //  console.log(hoursArray)
-//  const nextHours = [];
-//  for (const day of hoursArray) {
-//    if (day[day.length - 1] !== '}') {
-//     nextHours.push(`${day}}`)
-//    } else {
-//      nextHours.push(day)
-//    }
-   
-//  }
-//  const dayArray = [];
-//  for (const day of nextHours) {
-//    const dayObj = JSON.parse(day)
-//    dayArray.push(dayObj)
-//  }
-//  const realHours = [];
-//  function tConvert (time) {
+  }, [props.show2])
   
-//   const hour = `${time[0]}${time[1]}`
-//   const numberHour = parseInt(hour)
-//   const newHour = (numberHour % 12) || 12;
-//   console.log(newHour)
-//   const minute = `${time[2]}${time[3]}`
-//   const AmOrPm = hour >= 12 ? 'pm' : 'am';
-//   return `${newHour}:${minute}${AmOrPm}`
-  
-// }
+  const hourArray = hours(props.hours).map((day) => {
+    return (
+      <div>
+        {day}
+      </div>
+    )
+  })
 
-//  for (const day of dayArray) {
-//   realHours.push({open: tConvert(day.open), close: tConvert(day.close)})
-//  }
-
-//  const realHoursObject = []
-//  for (let i = 0; i < realHours.length; i++) {
-//    if (i = 0 && realHours[i].open) {
-//      realHoursObject.push(`Monday: ${realHours[i].open} - ${realHours[i].close}`)
-//    }
-   
-//  }
-//  console.log(realHoursObject)
+ 
 
   return (
     <div id="marker-div">
@@ -102,7 +85,14 @@ export default function Marker(props) {
             
           </div>
           <div>
+            Rating: {props.rating}
+           
+            
+            
+          </div>
+          <div>
             Hours
+            {hourArray}
             
             
           </div>

@@ -1,13 +1,16 @@
 .list-item.active {
-  color: #0957a5 !important;
+  color: #d82f28 !important;
+  background-color: #d82f28 !important;
 }
 .list-item {
   height: 10em;
-  color: Black !important;
+  color: #818181 !important;
   font-weight: 400;
+  width: 25%
 }
 
+
 .list-name{
-  background-color: #0957a5;
+  background-color: #d82f28;
   text-align: center;
 }

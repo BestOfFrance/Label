@@ -8,7 +8,23 @@ export default function BusinessList(props) {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
+    
     if (props.selectedCenter !== null) {
+      console.log('props.id', props.id)
+    console.log('props.selectedCenter', props.selectedCenter.id)
+      if (props.id === props.selectedCenter.id) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+    }
+   
+  }, [props.state])
+  useEffect(() => {
+    
+    if (props.selectedCenter !== null) {
+      console.log('props.id', props.id)
+    console.log('props.selectedCenter', props.selectedCenter.id)
       if (props.id === props.selectedCenter.id) {
         setActive(true);
       } else {
@@ -17,6 +33,8 @@ export default function BusinessList(props) {
     }
    
   }, [props.selectedCenter])
+
+
   
 
   
@@ -26,16 +44,19 @@ export default function BusinessList(props) {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        width: '30vw',
+        width: 'auto',
         height: '20vh'
     
 };
 
   return(
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id} style={styles} onClick={() => {props.onClick(props.shop)}}>
-      <div className='list-name'>
-      {props.name} 
+    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.shop)}}>
+      <div style={styles}>
+      
 
+      </div>
+      <div>
+      {props.name} 
       </div>
       
     </ListGroup.Item>

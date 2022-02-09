@@ -4,6 +4,7 @@ import BusinessList from "./components/BusinessList"
 import ShopDisplay from "./components/ShopDisplay";
 import Marker from './components/Marker';
 import Header from './components/Header';
+import DropDown from './components/DropDown'
 import axios from 'axios'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,7 +27,8 @@ export default function Application(props) {
     location: location,
     mode: mode,
     shopID: 0,
-    selected: null
+    selected: null, 
+    categories: ["Restaurant", "Pastry Shop", "Bakery", "Grocery"]
   })
 
   // set state for marker selection
@@ -36,26 +38,31 @@ const [selectedCenter, setSelectedCenter] = useState(null);
 
 // create pins for each shop
 const pin = state.shops.map((center, index) => {
-  return (
-    <Marker
-    key={index}
-    id={center.id}
-    text={center.name}
-    lat={center.latitude}
-    lng={center.longitude}
-    onClick={() => {
-      setSelectedCenter(center);
-   }}
-    show={selectedCenter}
-    image={center.image}
-    phone={center.phone}
-    address={center.address}
-    onClicking={() => {
-      setSelectedCenter(false)
-    }}
-    hours={center.hours}
-    />
-  )
+  if (state.categories.includes(center.category)) {
+    return (
+      <Marker
+      key={index}
+      id={center.id}
+      text={center.name}
+      lat={center.latitude}
+      lng={center.longitude}
+      onClick={() => {
+        setSelectedCenter(center);
+     }}
+      show={selectedCenter}
+      show2={state.shops}
+      image={center.image}
+      phone={center.phone}
+      address={center.address}
+      onClicking={() => {
+        setSelectedCenter(false)
+      }}
+      hours={center.hours}
+      rating={center.rating}
+      />
+    )
+  }
+  
 })
 // get distance from center of map to markers and update
 var markersByDistance = [];
@@ -106,10 +113,13 @@ const openShopWindow = function(shop) {
 
 // set up the list of shops on the side
 const items = state.shops.map((shop, index) => {
+  if (state.categories.includes(shop.category)) {
+    return(
+      <BusinessList key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops}/>
+    )
+  }
     
-  return(
-    <BusinessList key={index + 1} name={shop.name} id={index+1} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop}/>
-  )
+  
 
 
 })
@@ -120,21 +130,26 @@ const closeShopWindow = function() {
   setState((prev) => ({ ...prev, mode: mode }))
 }
 
+const onFilter = function(data) {
+  setState((prev) => ({ ...prev, categories: [...data] }))
+}
+
 
 
 // initial call to the api to get shop datas
 useEffect( () => {
   axios.get("http://localhost:3001/")
 .then((res) => {
-  console.log(res)
-  setState((prev) => ({ ...prev, shops: res.data }));
+  // console.log(res)
+  getDistance(res.data, state.location)
+  
   
 })
 .catch((err) => {
   console.log(err)
 })
 }, [state.location]);
-
+ console.log(state.category)
 
   return(
     <div>
@@ -146,6 +161,7 @@ useEffect( () => {
       <div class="main-container">
         <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange}/>
         <div class="list">
+        <DropDown onClick={onFilter}/>
         <ListGroup as="ul">
           {items}
        </ListGroup>
