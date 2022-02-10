@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import './marker.css'
 import CloseButton from 'react-bootstrap/CloseButton'
 import hours from '../helpers/convertHours'
+import {Rating} from 'react-simple-star-rating';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -23,6 +24,7 @@ const Wrapper = styled.div`
 
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
+  
 
   useEffect(() => {
     
@@ -86,7 +88,15 @@ export default function Marker(props) {
           </div>
           <div>
             Rating: {props.rating}
-           
+            <Rating
+              
+              initialValue={props.rating}
+              size={20}
+              label
+              fillColor='orange'
+              emptyColor='gray'
+              className='foo' // Will remove the inline style if applied
+            />
             
             
           </div>
