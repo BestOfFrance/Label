@@ -159,9 +159,11 @@ useEffect( () => {
       {state.mode === mode && 
       <div>
       <div class="main-container">
-        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange}/>
+        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
+        {/* <DropDown onClick={onFilter}/> */}
+        </Maps>
         <div class="list">
-        <DropDown onClick={onFilter}/>
+        
         <ListGroup as="ul">
           {items}
        </ListGroup>
