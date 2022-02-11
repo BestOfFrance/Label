@@ -6,7 +6,7 @@
   height: 10em;
   color: #818181 !important;
   font-weight: 400;
-  width: 25%
+  padding: 0 !important;
 }
 
 .list-item.list-group-item {

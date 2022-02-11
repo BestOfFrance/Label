@@ -4,12 +4,13 @@ import BusinessList from "./components/BusinessList"
 import ShopDisplay from "./components/ShopDisplay";
 import Marker from './components/Marker';
 import Header from './components/Header';
-import DropDown from './components/DropDown'
+import CMSCard from './components/CMSCard'
 import axios from 'axios'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './components/list.css'
+import SearchBar from './components/SearchBar'
 
 
 //will be setting this to geolocation of users API
@@ -28,7 +29,8 @@ export default function Application(props) {
     mode: mode,
     shopID: 0,
     selected: null, 
-    categories: ["Restaurant", "Pastry Shop", "Bakery", "Grocery"]
+    categories: ["Restaurant", "Pastry Shop", "Bakery", "Grocery"],
+    topThree: []
   })
 
   // set state for marker selection
@@ -94,14 +96,14 @@ function sorter (a,b) {
 
 // sort the array... now the first 5 elements should be your closest points.
 markersByDistance.sort( sorter );
-console.log(markersByDistance)
-setState((prev) => ({ ...prev, shops: markersByDistance }))
+const topThreeShops = markersByDistance.slice(0,3)
+setState((prev) => ({ ...prev, topThree: topThreeShops}))
 }
 
 // set function to get the disatnce every time the map scrolls
 const onChange = function({center, zoom}) {
   
-  getDistance(state.shops, center)
+  getDistance(state.topThree, center)
 }
 
 //set show mode to show shop information
@@ -112,10 +114,22 @@ const openShopWindow = function(shop) {
 
 
 // set up the list of shops on the side
-const items = state.shops.map((shop, index) => {
+const items = state.topThree.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
     return(
       <BusinessList key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops}/>
+    )
+  }
+    
+  
+
+
+})
+
+const cms = state.shops.map((shop, index) => {
+  if (state.categories.includes(shop.category)) {
+    return(
+      <CMSCard key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops}/>
     )
   }
     
@@ -142,7 +156,7 @@ useEffect( () => {
 .then((res) => {
   // console.log(res)
   getDistance(res.data, state.location)
-  
+  setState((prev) => ({ ...prev, shops: res.data}))
   
 })
 .catch((err) => {
@@ -158,14 +172,22 @@ useEffect( () => {
       <Header/>
       {state.mode === mode && 
       <div>
-      <div class="main-container">
+      <div className="main-container">
+        <div className="premium-map">
+        <div className="premium-list">
+          <SearchBar/>
+        <ListGroup as="ul" id="premium">
+          {items}
+       </ListGroup>
+          </div>
         <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
         {/* <DropDown onClick={onFilter}/> */}
         </Maps>
-        <div class="list">
+        </div>
+        <div className="list">
         
         <ListGroup as="ul">
-          {items}
+          {cms}
        </ListGroup>
         </div>
       </div>

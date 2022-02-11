@@ -4,6 +4,22 @@ div.main-container {
   flex-direction: column;
   
 }
+.premium-list {
+  width: 25%;
+}
+
+.premium-map {
+  display: flex;
+  flex-direction: row-reverse !important;
+  width: 100%
+}
+
+#premium {
+  display: flex;
+  flex-direction: column !important;
+  width: 100%;
+  
+}
 .list-group {
   display: flex;
   flex-direction: row !important;
@@ -15,7 +31,7 @@ div.list {
 
 div.map {
   
-  width: 100%
+  width: 75%
 }
 
 .list-group {
