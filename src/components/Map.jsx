@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import GoogleMapReact from 'google-map-react'
-import DropDown from './DropDown'
+import SearchBar from './SearchBar'
 import InfoWindow from 'google-map-react'
 import axios from 'axios'
 import LocationPin from './LocationPin'
@@ -18,7 +18,8 @@ export default function Maps(props) {
     
 
     <div className="google-map">
-    <DropDown onClick={props.onFilter}/>
+    <SearchBar/>
+    
       <GoogleMapReact
         bootstrapURLKeys={{key: 'AIzaSyCRlsvlSFmfPOb-oAZlmfYSMkcycNNHzm4' }}
         yesIWantToUseGoogleMapApiInternals

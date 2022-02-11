@@ -14,6 +14,7 @@ div.main-container {
 h3 {
   color: #818181;
   text-align: center;
+  font-size: medium !important;
 }
 .premium-map {
   display: flex;

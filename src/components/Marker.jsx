@@ -76,7 +76,7 @@ export default function Marker(props) {
             <CloseButton onClick={props.onClicking}></CloseButton>
           </div>
           <div className='title'>
-            {props.text}
+            <b>{props.text}</b>
           </div>
           <div>
             Phone: {props.phone}

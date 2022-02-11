@@ -10,7 +10,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './components/list.css'
-import SearchBar from './components/SearchBar'
+import DropDown from './components/DropDown'
 
 
 //will be setting this to geolocation of users API
@@ -175,9 +175,10 @@ useEffect( () => {
       <div className="main-container">
         <div className="premium-map">
         <div className="premium-list">
-          <SearchBar/>
+        <h3>Premium Card</h3>
+        <DropDown onClick={onFilter}/>
           <div className="cms">
-          <h3>Premium</h3>
+          
         <ListGroup as="ul" id="premium">
           {items}
        </ListGroup>
