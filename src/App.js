@@ -176,9 +176,12 @@ useEffect( () => {
         <div className="premium-map">
         <div className="premium-list">
           <SearchBar/>
+          <div className="cms">
+          <h3>Premium</h3>
         <ListGroup as="ul" id="premium">
           {items}
        </ListGroup>
+       </div>
           </div>
         <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
         {/* <DropDown onClick={onFilter}/> */}

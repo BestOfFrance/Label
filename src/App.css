@@ -6,8 +6,15 @@ div.main-container {
 }
 .premium-list {
   width: 25%;
+  height: 100%;
 }
-
+.cms {
+  height: 72vh !important;
+}
+h3 {
+  color: #818181;
+  text-align: center;
+}
 .premium-map {
   display: flex;
   flex-direction: row-reverse !important;

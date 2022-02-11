@@ -45,7 +45,7 @@ export default function BusinessList(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         width: 'auto',
-        height: '20vh'
+        height: '85%'
     
 };
 
