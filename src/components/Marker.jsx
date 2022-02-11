@@ -93,7 +93,7 @@ export default function Marker(props) {
               initialValue={props.rating}
               size={20}
               label
-              fillColor='orange'
+              fillColor='#ef4236'
               emptyColor='gray'
               className='foo' // Will remove the inline style if applied
             />

@@ -20,8 +20,8 @@
 
 .close {
   text-align: right;
-  padding-top: 0.5em;
-  padding-left: 0.5em;
+  padding-top: 1em;
+  padding-right: 1em;
 }
 
 #actual-marker{

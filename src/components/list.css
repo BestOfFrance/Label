@@ -9,7 +9,11 @@
   width: 25%
 }
 
-
+.list-item.list-group-item {
+  background-color: none !important;
+  padding: 0rem, 0rem !important;
+  border: none !important;
+}
 .list-name{
   background-color: #d82f28;
   text-align: center;
