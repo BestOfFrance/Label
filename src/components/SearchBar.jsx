@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 const useStyles = makeStyles((theme) => ({
   root: {
-    borderRadius: "10px 10px 10px 10px",
-    background: "rgb(162, 178, 231)",
-    
+    borderRadius: "none",
+    background: "white",
+     
   },
 }));
 export default function SearchBar(props) {
@@ -16,8 +16,9 @@ export default function SearchBar(props) {
       value={true ? "" : props.searchSelected}
       options={props.searchList}
       onChange={(e, value) => props.updateSearch(e, value)}
-      getOptionLabel={(option) => option}
+      getOptionLabel={(option) => option.name}
       style={{ width: 300 }}
+      
       renderInput={(params) => (
         <TextField
           {...params}

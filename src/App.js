@@ -34,8 +34,10 @@ export default function Application(props) {
     topThree: [],
     searchSelected: "",
     searchList: []
+    
   })
 
+  
   // set state for marker selection
 const [selectedCenter, setSelectedCenter] = useState(null);
 
@@ -122,7 +124,9 @@ const updateSearch = (e, value) => {
     e.preventDefault();
     return;
   }
-  setState((prev) => ({ ...prev, searchSelected: value }));
+  console.log(value, 'value')
+  setState((prev) => ({ ...prev, searchSelected: value, location: {lat: value.latitude, lng: value.longitude} }));
+  setSelectedCenter(value)
 };
 
 // set up the list of shops on the side
@@ -170,7 +174,8 @@ useEffect( () => {
   getDistance(res.data, state.location)
   const searchList = []
   for (const shop of res.data) {
-    searchList.push(shop.name)
+    const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
+    searchList.push(newShop)
   }
   setState((prev) => ({ ...prev, shops: res.data, searchList: searchList}))
   
@@ -202,7 +207,7 @@ useEffect( () => {
           </div>
           
           
-        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
+        <Maps location={location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
         
         </Maps>
         

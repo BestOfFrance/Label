@@ -28,6 +28,7 @@ export default function Maps(props) {
        
         onChange={({center, zoom}) => {props.onChange({center, zoom})}}
         center={props.location}
+        
         defaultZoom={props.zoomLevel}
       >
         {props.marker}
