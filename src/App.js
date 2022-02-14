@@ -5,6 +5,7 @@ import ShopDisplay from "./components/ShopDisplay";
 import Marker from './components/Marker';
 import Header from './components/Header';
 import CMSCard from './components/CMSCard'
+import SearchBar from './components/SearchBar'
 import axios from 'axios'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,7 +31,9 @@ export default function Application(props) {
     shopID: 0,
     selected: null, 
     categories: ["Restaurant", "Pastry Shop", "Bakery", "Grocery"],
-    topThree: []
+    topThree: [],
+    searchSelected: "",
+    searchList: []
   })
 
   // set state for marker selection
@@ -113,6 +116,14 @@ const openShopWindow = function(shop) {
 }
 
 
+const updateSearch = (e, value) => {
+  //set selection to the value selected
+  if (!value) {
+    e.preventDefault();
+    return;
+  }
+  setState((prev) => ({ ...prev, searchSelected: value }));
+};
 
 // set up the list of shops on the side
 const items = state.topThree.map((shop, index) => {
@@ -157,7 +168,11 @@ useEffect( () => {
 .then((res) => {
   // console.log(res)
   getDistance(res.data, state.location)
-  setState((prev) => ({ ...prev, shops: res.data}))
+  const searchList = []
+  for (const shop of res.data) {
+    searchList.push(shop.name)
+  }
+  setState((prev) => ({ ...prev, shops: res.data, searchList: searchList}))
   
 })
 .catch((err) => {
@@ -185,10 +200,19 @@ useEffect( () => {
        </ListGroup>
        </div>
           </div>
+          
+          
         <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
         
         </Maps>
+        
         </div>
+        <SearchBar
+        
+        searchSelected={state.searchSelected}
+        updateSearch={updateSearch}
+        searchList={state.searchList}
+        />
         <div className="list">
         
         <ListGroup as="ul" >

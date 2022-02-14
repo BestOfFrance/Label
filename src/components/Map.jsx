@@ -37,7 +37,7 @@ export default function Maps(props) {
         
       </GoogleMapReact>
       
-      <SearchBar/>
+      
       
     </div>
   </div>

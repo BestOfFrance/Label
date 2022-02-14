@@ -19,8 +19,9 @@ h3 {
 .premium-map {
   display: flex;
   flex-direction: row-reverse !important;
-  width: 100%
+  height: auto;
 }
+
 
 #premium {
   display: flex;
@@ -45,5 +46,11 @@ div.map {
 .list-group {
   width: 100%
 }
+/* .search-map {
+  display: flex;
+  width: 75%;
+  justify-content: column !important;
+}
+ */
 
 
