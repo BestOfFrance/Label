@@ -19,7 +19,7 @@ export default function Maps(props) {
     
 
     <div className="google-map">
-    
+      
     
       <GoogleMapReact
         bootstrapURLKeys={{key: 'AIzaSyCRlsvlSFmfPOb-oAZlmfYSMkcycNNHzm4' }}
@@ -31,7 +31,10 @@ export default function Maps(props) {
         defaultZoom={props.zoomLevel}
       >
         {props.marker}
+        
+        
         <DropDown onClick={props.onFilter}/>
+        
       </GoogleMapReact>
       
       <SearchBar/>
