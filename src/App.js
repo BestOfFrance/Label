@@ -61,6 +61,7 @@ const pin = state.shops.map((center, index) => {
       }}
       hours={center.hours}
       rating={center.rating}
+      category={center.category}
       />
     )
   }
@@ -138,7 +139,7 @@ const cms = state.shops.map((shop, index) => {
 
 })
 
-console.log('shops state', state.shops)
+// console.log('shops state', state.shops)
 
 const closeShopWindow = function() {
   setState((prev) => ({ ...prev, mode: mode }))

@@ -5,26 +5,108 @@ import CloseButton from 'react-bootstrap/CloseButton'
 import hours from '../helpers/convertHours'
 import {Rating} from 'react-simple-star-rating';
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18px;
-  height: 18px;
-  background-color: #000;
-  border: 2px solid #fff;
-  border-radius: 100%;
-  user-select: none;
-  transform: translate(-50%, -50%);
-  cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-  &:hover {
-    z-index: 1;
-  }
-`;
+
 
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
-  
+
+console.log(props.category)
+
+let Wrapper = '';
+  if (props.category === "Bakery") {
+    Wrapper = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border: 2px solid black;
+    border-radius: 50%;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    background-image: url("croissant-2.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
+    &:hover {
+      z-index: 1;
+      background-color: #1d4383;
+      border: 2px solid #1d4383;
+    }
+  `;
+  } else if (props.category === "Pastry Shop"){
+    Wrapper = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border: 2px solid black;
+    border-radius: 50%;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    background-image: url("cupcake.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
+    &:hover {
+      z-index: 1;
+      background-color: #1d4383;
+      border: 2px solid #1d4383;
+    }
+  `;
+  } else if (props.category === "Restaurant") {
+    Wrapper = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border: 2px solid black;
+    border-radius: 50%;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    background-image: url("cutlery.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
+    &:hover {
+      z-index: 1;
+      background-color: #1d4383;
+      border: 2px solid #1d4383;
+    }
+  `;
+  } else if (props.category === "Grocery") {
+    Wrapper = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border: 2px solid black;
+    border-radius: 50%;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    background-image: url("shop.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
+    &:hover {
+      z-index: 1;
+      background-color: #1d4383;
+      border: 2px solid #1d4383;
+    }
+  `;
+  }
+ 
 
   useEffect(() => {
     
