@@ -214,6 +214,9 @@ let Wrapper = '';
             {hourArray}
             
             </div>
+            <div>
+              <p onClick={props.onClickShop(props.shop)}>See more</p>
+              </div>
           </div>
           </div>
           

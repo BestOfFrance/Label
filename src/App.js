@@ -43,36 +43,7 @@ const [selectedCenter, setSelectedCenter] = useState(null);
 
 
 
-// create pins for each shop
-const pin = state.shops.map((center, index) => {
-  if (state.categories.includes(center.category)) {
-    return (
-      <Marker
-      key={index}
-      id={center.id}
-      text={center.name}
-      lat={center.latitude}
-      lng={center.longitude}
-      onClick={() => {
-        setSelectedCenter(center);
-     }}
-      show={selectedCenter}
-      show2={state.shops}
-      image={center.image}
-      phone={center.phone}
-      address={center.address}
-      onClicking={() => {
-        setSelectedCenter(false)
-      }}
-      hours={center.hours}
-      rating={center.rating}
-      category={center.category}
-      image={center.image}
-      />
-    )
-  }
-  
-})
+
 // get distance from center of map to markers and update
 var markersByDistance = [];
 const getDistance = function(markers, myLatlng) {
@@ -186,6 +157,37 @@ useEffect( () => {
 })
 }, [state.location]);
 //  console.log(state.category)
+// create pins for each shop
+const pin = state.shops.map((center, index) => {
+  if (state.categories.includes(center.category)) {
+    return (
+      <Marker
+      key={index}
+      id={center.id}
+      text={center.name}
+      lat={center.latitude}
+      lng={center.longitude}
+      onClick={() => {
+        setSelectedCenter(center);
+     }}
+      show={selectedCenter}
+      show2={state.shops}
+      image={center.image}
+      phone={center.phone}
+      address={center.address}
+      onClicking={() => {
+        setSelectedCenter(false)
+      }}
+      hours={center.hours}
+      rating={center.rating}
+      category={center.category}
+      image={center.image}
+      onClickShop={openShopWindow}
+      />
+    )
+  }
+  
+})
 
   return(
     <div>
