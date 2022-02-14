@@ -129,7 +129,7 @@ const items = state.topThree.map((shop, index) => {
 const cms = state.shops.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
     return(
-      <CMSCard key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops}/>
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude}/>
     )
   }
     
@@ -185,12 +185,12 @@ useEffect( () => {
        </div>
           </div>
         <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
-        {/* <DropDown onClick={onFilter}/> */}
+        
         </Maps>
         </div>
         <div className="list">
         
-        <ListGroup as="ul">
+        <ListGroup as="ul" >
           {cms}
        </ListGroup>
         </div>

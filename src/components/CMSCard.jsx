@@ -44,7 +44,7 @@ export default function CMSCard(props) {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        width: 'auto',
+        width: '400px',
         height: '20vh'
     
 };

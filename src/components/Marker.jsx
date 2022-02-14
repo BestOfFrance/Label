@@ -79,11 +79,11 @@ export default function Marker(props) {
             <b>{props.text}</b>
           </div>
           <div>
-            Phone: {props.phone}
+            Phone: <a href="tel:5554280940">{props.phone}</a>
             
           </div>
           <div>
-            Address: {props.address}, Vancouver, BC
+            Address: <a href={`maps.google.com/?ll=${props.latitude},${props.longitude}`}>{props.address}, Vancouver, BC</a>
             
           </div>
           <div>
