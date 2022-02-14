@@ -8,17 +8,31 @@
   transform: translate(-50%, -100%);
   background-color: white;
   height: 30em;
-  width: 25em;
+  width: 40em;
   text-align: left;
   border-radius: 10%;
   color: #818181;
   
 }
+.infowrapper {
+  display: flex;
+  justify-content: column !important;
+}
+.marker-information {
+  padding-left: 2em;
+}
+.marker-image {
+  height: 150px;
+  width: auto;
+  padding-left: 2em;
+}
 
 .title {
   font-size: medium;
 }
-
+.rating {
+  align-items: center;
+}
 .close {
   text-align: right;
   padding-top: 1em;

@@ -179,6 +179,11 @@ let Wrapper = '';
           <div className='close'>
             <CloseButton onClick={props.onClicking}></CloseButton>
           </div>
+          <div className='infowrapper'>
+            <div className='marker-image-div'>
+              <img className='marker-image' src={props.image}></img>
+              </div>
+              <div className="marker-information">
           <div className='title'>
             <b>{props.text}</b>
           </div>
@@ -190,7 +195,7 @@ let Wrapper = '';
             Address: <a href={`maps.google.com/?ll=${props.latitude},${props.longitude}`}>{props.address}, Vancouver, BC</a>
             
           </div>
-          <div>
+          <div className='rating'>
             Rating: {props.rating}
             <Rating
               
@@ -201,14 +206,15 @@ let Wrapper = '';
               emptyColor='gray'
               className='foo' // Will remove the inline style if applied
             />
+            </div>
             
-            
-          </div>
+          
           <div>
-            Hours
+            Hours:
             {hourArray}
             
-            
+            </div>
+          </div>
           </div>
           
             

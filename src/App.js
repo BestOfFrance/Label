@@ -67,6 +67,7 @@ const pin = state.shops.map((center, index) => {
       hours={center.hours}
       rating={center.rating}
       category={center.category}
+      image={center.image}
       />
     )
   }
