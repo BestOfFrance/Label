@@ -221,7 +221,7 @@ useEffect( () => {
         />
         <div className="list">
         
-        <ListGroup as="ul" >
+        <ListGroup as="ul" className="cms-cards">
           {cms}
        </ListGroup>
         </div>

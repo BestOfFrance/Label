@@ -17,7 +17,7 @@ export default function SearchBar(props) {
       options={props.searchList}
       onChange={(e, value) => props.updateSearch(e, value)}
       getOptionLabel={(option) => option.name}
-      style={{ width: 300 }}
+      style={{ width: 400 }}
       
       renderInput={(params) => (
         <TextField
