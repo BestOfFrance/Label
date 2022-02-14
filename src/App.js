@@ -146,7 +146,7 @@ const items = state.topThree.map((shop, index) => {
 const cms = state.shops.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
     return(
-      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude}/>
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} />
     )
   }
     

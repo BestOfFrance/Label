@@ -23,7 +23,7 @@ h3 {
 }
 .premium-map {
   display: flex;
-  flex-direction: row-reverse !important;
+  flex-direction: row !important;
   height: 73vh !important;
 }
 

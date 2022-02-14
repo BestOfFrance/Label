@@ -6,7 +6,7 @@
   height: 10em;
   color: #818181 !important;
   font-weight: 400;
-  padding: 0 !important;
+  padding-left: 1rem !important;
 }
 
 .list-item.list-group-item {
@@ -18,3 +18,16 @@
   background-color: #d82f28;
   text-align: center;
 }
+
+.marker-image-business {
+  height: 10vh;
+  width: auto;
+}
+
+.infowrapper-business {
+  display: flex;
+  justify-content: column;
+  font-size: small;
+}
+
+

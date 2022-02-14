@@ -30,7 +30,7 @@ import {Rating} from 'react-simple-star-rating';
 
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
-  const [url, setUrl] = useState('crossaint-2.svg')
+  
 
 
 
