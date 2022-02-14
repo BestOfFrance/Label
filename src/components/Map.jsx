@@ -4,6 +4,7 @@ import SearchBar from './SearchBar'
 import InfoWindow from 'google-map-react'
 import axios from 'axios'
 import LocationPin from './LocationPin'
+import DropDown from './DropDown'
 
 
 import './map.css'
@@ -18,7 +19,7 @@ export default function Maps(props) {
     
 
     <div className="google-map">
-    <SearchBar/>
+    
     
       <GoogleMapReact
         bootstrapURLKeys={{key: 'AIzaSyCRlsvlSFmfPOb-oAZlmfYSMkcycNNHzm4' }}
@@ -30,10 +31,10 @@ export default function Maps(props) {
         defaultZoom={props.zoomLevel}
       >
         {props.marker}
-        
+        <DropDown onClick={props.onFilter}/>
       </GoogleMapReact>
       
-     
+      <SearchBar/>
       
     </div>
   </div>

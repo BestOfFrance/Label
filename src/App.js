@@ -177,7 +177,7 @@ useEffect( () => {
         <div className="premium-map">
         <div className="premium-list">
         <h3>Premium Card</h3>
-        <DropDown onClick={onFilter}/>
+        
           <div className="cms">
           
         <ListGroup as="ul" id="premium">
