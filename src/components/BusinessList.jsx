@@ -48,7 +48,7 @@ export default function BusinessList(props) {
               </div>
               <div className="marker-information">
           <div className='title'>
-            <b>{props.shop.text}</b>
+            <b>{props.shop.name}</b>
           </div>
           <div>
             Phone: <a href="tel:5554280940">{props.shop.phone}</a>
