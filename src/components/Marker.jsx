@@ -4,6 +4,7 @@ import './marker.css'
 import CloseButton from 'react-bootstrap/CloseButton'
 import hours from '../helpers/convertHours'
 import {Rating} from 'react-simple-star-rating';
+import SeeButton from './SeeButton'
 
 // const Wrapper = styled.div`
 // position: absolute;
@@ -214,9 +215,7 @@ let Wrapper = '';
             {hourArray}
             
             </div>
-            <div>
-              <p onClick={props.onClickShop(props.shop)}>See more</p>
-              </div>
+            
           </div>
           </div>
           
