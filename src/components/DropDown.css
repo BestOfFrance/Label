@@ -1,7 +1,9 @@
 #dropdown-basic {
   background-color: #1d4383;
   position: absolute;
-  top: -260px;
-  left: -37%;
+  /* top: -260px;
+  left: -37%; */
+  /* align-self: flex-start !important; */
+  z-index: 9999999999999999999;
  
 }

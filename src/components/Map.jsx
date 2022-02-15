@@ -18,6 +18,7 @@ const locationDefault = {
 
 
 
+
 export default function Maps(props) {
   const [location, setLocation] = useState(props.location);
 
@@ -40,10 +41,11 @@ export default function Maps(props) {
   return (
     <div className="map">
     
-
+    
     <div className="google-map">
-      
+    <DropDown onClick={props.onFilter} />
     {props.location &&
+    
       <GoogleMapReact
         bootstrapURLKeys={{key: 'AIzaSyCRlsvlSFmfPOb-oAZlmfYSMkcycNNHzm4' }}
         yesIWantToUseGoogleMapApiInternals
@@ -57,7 +59,7 @@ export default function Maps(props) {
         {props.marker}
         
         
-        <DropDown onClick={props.onFilter}/>
+        
         
       </GoogleMapReact>
       }

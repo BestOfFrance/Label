@@ -235,7 +235,7 @@ const pin = state.shops.map((center, index) => {
        </div>
           </div>
           
-        
+          
         <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
         
         </Maps>

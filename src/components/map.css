@@ -8,11 +8,15 @@
 
 .google-map {
   width: 100%;
+  position: absolute !important;
   
   height: 100% !important;
+  
 }
 .map {
+  position: relative !important;
   height: 72vh !important;
+  
 }
 
 .pin {
