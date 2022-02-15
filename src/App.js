@@ -14,19 +14,20 @@ import './components/list.css'
 import DropDown from './components/DropDown'
 
 
-//will be setting this to geolocation of users API
-const location = {
+const locationDefault = {
   
   lat: 49.2827,
-  lng: -123.1207,
-} // our location object from earlier
+  lng: -123.1207
+} 
 const mode = "MAP"
+
+
 
 
 export default function Application(props) {
   const [state, setState] = useState({
     shops: [],
-    location: location,
+    location: locationDefault,
     mode: mode,
     shopID: 0,
     selected: null, 
@@ -170,6 +171,7 @@ useEffect( () => {
 }, [state.location]);
 //  console.log(state.category)
 // create pins for each shop
+console.log('state location', state.location)
 const pin = state.shops.map((center, index) => {
   if (state.categories.includes(center.category)) {
     return (
@@ -200,6 +202,7 @@ const pin = state.shops.map((center, index) => {
     )
   }
   
+  
 })
 
   return(
@@ -222,8 +225,8 @@ const pin = state.shops.map((center, index) => {
        </div>
           </div>
           
-          
-        <Maps location={location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
+        
+        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter}>
         
         </Maps>
         
