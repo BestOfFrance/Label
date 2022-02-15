@@ -223,6 +223,10 @@ let Wrapper = '';
             {hourArray}
             
             </div>
+            <div>
+           <SeeButton shop={props.shop} onClickShop={props.onClickShop}/>
+            
+            </div>
             
           </div>
           </div>

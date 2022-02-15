@@ -183,6 +183,7 @@ const pin = state.shops.map((center, index) => {
       category={center.category}
       image={center.image}
       onClickShop={openShopWindow}
+      shop={center}
       />
     )
   }
