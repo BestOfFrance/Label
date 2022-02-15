@@ -8,7 +8,7 @@ import './list.css'
 
 export default function BusinessList(props) {
   const [active, setActive] = useState(false);
-  console.log('business props', props)
+  // console.log('business props', props)
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ export default function BusinessList(props) {
     }
     
     if (props.selectedCenter !== null) {
-      console.log('props.id', props.id)
-    console.log('props.selectedCenter', props.selectedCenter.id)
+    //   console.log('props.id', props.id)
+    // console.log('props.selectedCenter', props.selectedCenter.id)
       if (props.id === props.selectedCenter.id) {
         setActive(true);
       } else {
@@ -30,8 +30,8 @@ export default function BusinessList(props) {
   useEffect(() => {
     
     if (props.selectedCenter !== null) {
-      console.log('props.id', props.id)
-    console.log('props.selectedCenter', props.selectedCenter.id)
+    //   console.log('props.id', props.id)
+    // console.log('props.selectedCenter', props.selectedCenter.id)
       if (props.id === props.selectedCenter.id) {
         setActive(true);
       } else {

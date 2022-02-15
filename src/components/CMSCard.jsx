@@ -10,8 +10,8 @@ export default function CMSCard(props) {
   useEffect(() => {
     
     if (props.selectedCenter !== null) {
-      console.log('props.id', props.id)
-    console.log('props.selectedCenter', props.selectedCenter.id)
+    //   console.log('props.id', props.id)
+    // console.log('props.selectedCenter', props.selectedCenter.id)
       if (props.id === props.selectedCenter.id) {
         setActive(true);
       } else {
@@ -23,8 +23,8 @@ export default function CMSCard(props) {
   useEffect(() => {
     
     if (props.selectedCenter !== null) {
-      console.log('props.id', props.id)
-    console.log('props.selectedCenter', props.selectedCenter.id)
+    //   console.log('props.id', props.id)
+    // console.log('props.selectedCenter', props.selectedCenter.id)
       if (props.id === props.selectedCenter.id) {
         setActive(true);
       } else {

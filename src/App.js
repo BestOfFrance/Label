@@ -181,7 +181,7 @@ useEffect( () => {
 }, [state.location]);
 //  console.log(state.category)
 // create pins for each shop
-console.log('state location', state.location)
+// console.log('state location', state.location)
 const pin = state.shops.map((center, index) => {
   if (state.categories.includes(center.category)) {
     return (

@@ -36,7 +36,7 @@ export default function Maps(props) {
    
   }, [props.location])
   
-  console.log('maps location', location)
+  // console.log('maps location', location)
  
   return (
     <div className="map">
