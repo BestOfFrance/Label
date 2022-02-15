@@ -6,33 +6,35 @@ import openNow from '../helpers/openNow'
 import {Rating} from 'react-simple-star-rating';
 import SeeButton from './SeeButton'
 
-// const Wrapper = styled.div`
-// position: absolute;
-// top: 50%;
-// left: 50%;
-// width: 40px;
-// height: 40px;
-// background-color: #000;
-// border: 2px solid black;
-// border-radius: 50%;
-// user-select: none;
-// transform: translate(-50%, -50%);
-// background-image: url("croissant-2.svg");
-// background-repeat: no-repeat;
-// background-size: 30px;
-// background-position: center;
-// cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-// &:hover {
-//   z-index: 1;
-//   background-color: #1d4383;
-//   border: 2px solid #1d4383;
-// }
-// `;
+const Wrapper = styled.div`
+position: absolute;
+top: 50%;
+left: 50%;
+width: 40px;
+height: 40px;
+background-color: #000;
+border: 2px solid black;
+border-radius: 50%;
+user-select: none;
+transform: translate(-50%, -50%);
+
+background-repeat: no-repeat;
+background-size: 30px;
+background-position: center;
+
+cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
+&:hover {
+  
+  background-color: #1d4383;
+  border: 2px solid #1d4383;
+}
+`;
 
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
   const [style, setStyle] = useState(0)
   const [open, setOpen] = useState(false);
+  const [background, setBackground] = useState('none')
   useEffect(() => {
     
    
@@ -76,104 +78,21 @@ export default function Marker(props) {
 
   
 
-let Wrapper = '';
+ useEffect(() => {
   if (props.category === "Bakery") {
-    Wrapper = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: #000;
-    border: 2px solid black;
-    border-radius: 50%;
-    user-select: none;
-    transform: translate(-50%, -50%);
-    background-image: url("croissant-2.svg");
-    background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center;
-    z-index: ${style};
-    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-    &:hover {
-      z-index: ${style};
-      background-color: #1d4383;
-      border: 2px solid #1d4383;
-    }
-  `;
-  } else if (props.category === "Pastry Shop"){
-    Wrapper = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: #000;
-    border: 2px solid black;
-    border-radius: 50%;
-    user-select: none;
-    transform: translate(-50%, -50%);
-    background-image: url("cupcake.svg");
-    background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center;
-    z-index: ${style};
-    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-    &:hover {
-      z-index: ${style};
-      background-color: #1d4383;
-      border: 2px solid #1d4383;
-    }
-  `;
-  } else if (props.category === "Restaurant") {
-    Wrapper = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: #000;
-    border: 2px solid black;
-    border-radius: 50%;
-    user-select: none;
-    transform: translate(-50%, -50%);
-    background-image: url("cutlery.svg");
-    background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center;
-    z-index: ${style};
-    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-    &:hover {
-      z-index: ${style};
-      background-color: #1d4383;
-      border: 2px solid #1d4383;
-    }
-  `;
-  } else if (props.category === "Grocery") {
-    Wrapper = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: #000;
-    border: 2px solid black;
-    border-radius: 50%;
-    user-select: none;
-    transform: translate(-50%, -50%);
-    background-image: url("shop.svg");
-    background-repeat: no-repeat;
-    background-size: 30px;
-    background-position: center;
-    z-index: ${style};
-    cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
-    &:hover {
-      z-index: ${style};
-      background-color: #1d4383;
-      border: 2px solid #1d4383;
-    }
-  `;
-  }
+    setBackground('url("croissant-2.svg")');
+   } else if (props.category === "Pastry Shop"){
+      
+      setBackground('url("cupcake.svg")');
+    
+   } else if (props.category === "Restaurant") {
+    setBackground('url("cutlery.svg")');
+    
+   } else if (props.category === "Grocery") {
+    setBackground('url("shop.svg")');
+   }
+ }, [])
+  
  
 
  
@@ -248,7 +167,7 @@ let Wrapper = '';
         <Wrapper
           onClick={props.onClick}
           alt={props.text}
-          
+          style={{backgroundImage: background, zIndex: style}}
         />
       </div>
     </div>
