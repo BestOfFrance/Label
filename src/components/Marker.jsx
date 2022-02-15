@@ -31,17 +31,17 @@ import SeeButton from './SeeButton'
 
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
-  const [style, setStyle] = useState('1')
+  const [style, setStyle] = useState(0)
   useEffect(() => {
     
    
     if (props.show !== null) {
       if (props.id === props.show.id) {
         setShow(true)
-        setStyle('5')
+        setStyle(5)
       } else {
         setShow(false)
-        setStyle('1')
+        setStyle(0)
       }
     } else {
       setShow(false)
@@ -55,10 +55,10 @@ export default function Marker(props) {
     if (props.show !== null) {
       if (props.id === props.show.id) {
         setShow(true)
-        setStyle('5')
+        setStyle(5)
       } else {
         setShow(false)
-        setStyle('1')
+        setStyle(0)
       }
     } else {
       setShow(false)
