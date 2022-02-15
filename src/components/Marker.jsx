@@ -31,8 +31,41 @@ import SeeButton from './SeeButton'
 
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
-  
+  const [style, setStyle] = useState('1')
+  useEffect(() => {
+    
+   
+    if (props.show !== null) {
+      if (props.id === props.show.id) {
+        setShow(true)
+        setStyle('5')
+      } else {
+        setShow(false)
+        setStyle('1')
+      }
+    } else {
+      setShow(false)
+    }
+    
 
+  }, [props.show])
+  useEffect(() => {
+    
+    
+    if (props.show !== null) {
+      if (props.id === props.show.id) {
+        setShow(true)
+        setStyle('5')
+      } else {
+        setShow(false)
+        setStyle('1')
+      }
+    } else {
+      setShow(false)
+    }
+    
+
+  }, [props.show2])
 
 
 let Wrapper = '';
@@ -52,9 +85,10 @@ let Wrapper = '';
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: center;
+    z-index: ${style};
     cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
     &:hover {
-      z-index: 1;
+      z-index: ${style};
       background-color: #1d4383;
       border: 2px solid #1d4383;
     }
@@ -75,9 +109,10 @@ let Wrapper = '';
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: center;
+    z-index: ${style};
     cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
     &:hover {
-      z-index: 1;
+      z-index: ${style};
       background-color: #1d4383;
       border: 2px solid #1d4383;
     }
@@ -98,9 +133,10 @@ let Wrapper = '';
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: center;
+    z-index: ${style};
     cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
     &:hover {
-      z-index: 1;
+      z-index: ${style};
       background-color: #1d4383;
       border: 2px solid #1d4383;
     }
@@ -121,9 +157,10 @@ let Wrapper = '';
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: center;
+    z-index: ${style};
     cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
     &:hover {
-      z-index: 1;
+      z-index: ${style};
       background-color: #1d4383;
       border: 2px solid #1d4383;
     }
@@ -131,36 +168,7 @@ let Wrapper = '';
   }
  
 
-  useEffect(() => {
-    
-   
-    if (props.show !== null) {
-      if (props.id === props.show.id) {
-        setShow(true)
-      } else {
-        setShow(false)
-      }
-    } else {
-      setShow(false)
-    }
-    
-
-  }, [props.show])
-  useEffect(() => {
-    
-    
-    if (props.show !== null) {
-      if (props.id === props.show.id) {
-        setShow(true)
-      } else {
-        setShow(false)
-      }
-    } else {
-      setShow(false)
-    }
-    
-
-  }, [props.show2])
+ 
   
   const hourArray = hours(props.hours).map((day) => {
     return (
