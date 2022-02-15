@@ -102,6 +102,10 @@ const updateSearch = (e, value) => {
   setSelectedCenter(value)
 };
 
+const goToMap = function (latitude, longitude, selectedCenter) {
+  setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
+  setSelectedCenter(selectedCenter)
+}
 // set up the list of shops on the side
 const items = state.topThree.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
@@ -113,12 +117,14 @@ const items = state.topThree.map((shop, index) => {
       selectedCenter={selectedCenter} 
       image={shop.image} 
       distance={shop.distance} 
-      onClick={openShopWindow} 
+      onClick={goToMap} 
       shop={shop} 
       hours={shop.hours}
       state={state.shops}
       rating={shop.rating}
-      price={shop.price}/>
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
     )
   }
     
@@ -127,10 +133,12 @@ const items = state.topThree.map((shop, index) => {
 
 })
 
+
+
 const cms = state.shops.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
     return(
-      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} />
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} />
     )
   }
     
@@ -144,6 +152,8 @@ const cms = state.shops.map((shop, index) => {
 const closeShopWindow = function() {
   setState((prev) => ({ ...prev, mode: mode }))
 }
+
+
 
 const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))

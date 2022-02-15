@@ -44,7 +44,7 @@ export default function BusinessList(props) {
   
 
   return(
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.shop)}}>
+    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>
       
           
           <div className='infowrapper-business'>
