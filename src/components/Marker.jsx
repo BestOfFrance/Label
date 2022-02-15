@@ -170,13 +170,13 @@ let Wrapper = '';
 
  
   
-  const hourArray = hours(props.hours).map((day) => {
-    return (
-      <div>
-        {day}
-      </div>
-    )
-  })
+  // const hourArray = hours(props.hours).map((day) => {
+  //   return (
+  //     <div>
+  //       {day}
+  //     </div>
+  //   )
+  // })
 
  
 
@@ -220,7 +220,7 @@ let Wrapper = '';
           
           <div>
             Hours:
-            {hourArray}
+            
             
             </div>
             <div>

@@ -105,7 +105,16 @@ const updateSearch = (e, value) => {
 const items = state.topThree.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
     return(
-      <BusinessList key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={openShopWindow} shop={shop} state={state.shops}/>
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={openShopWindow} 
+      shop={shop} 
+      state={state.shops}/>
     )
   }
     

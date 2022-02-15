@@ -1,5 +1,6 @@
 import React from 'react'
 import CloseButton from 'react-bootstrap/CloseButton'
+import hours from '../helpers/convertHours'
 import './ShopDisplay.css'
 import { Carousel } from 'react-carousel-minimal';
 
@@ -15,7 +16,18 @@ console.log('display props', props.shops.images)
         }
         console.log('data images', data)
   }
+
+  if (props.shops !== null) {
+    const hourArray = hours(props.shops.hours).map((day) => {
+      return (
+        <div>
+          {day}
+        </div>
+      )
+    })
+  }
   
+
   
   
   return(
