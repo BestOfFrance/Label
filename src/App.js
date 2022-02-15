@@ -114,6 +114,7 @@ const items = state.topThree.map((shop, index) => {
       distance={shop.distance} 
       onClick={openShopWindow} 
       shop={shop} 
+      hours={shop.hours}
       state={state.shops}/>
     )
   }

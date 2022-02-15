@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {Rating} from 'react-simple-star-rating';
+import openNow from '../helpers/openNow'
 import './list.css'
 
 
@@ -8,8 +9,12 @@ import './list.css'
 export default function BusinessList(props) {
   const [active, setActive] = useState(false);
   console.log('business props', props)
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    if(openNow(props.hours)) {
+      setOpen(true);
+    }
     
     if (props.selectedCenter !== null) {
       console.log('props.id', props.id)
@@ -73,7 +78,7 @@ export default function BusinessList(props) {
             
           
           <div>
-            Hours:
+          {open ? 'Open Now' : 'Closed'}
             
             
             </div>

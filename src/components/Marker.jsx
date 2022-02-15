@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import './marker.css'
 import CloseButton from 'react-bootstrap/CloseButton'
-import hours from '../helpers/convertHours'
+import openNow from '../helpers/openNow'
 import {Rating} from 'react-simple-star-rating';
 import SeeButton from './SeeButton'
 
@@ -32,6 +32,7 @@ import SeeButton from './SeeButton'
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
   const [style, setStyle] = useState(0)
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     
    
@@ -50,8 +51,12 @@ export default function Marker(props) {
 
   }, [props.show])
   useEffect(() => {
+    if (openNow(props.hours)) {
+      setOpen(true);
+    }
     
-    
+    // console.log('day, hours', day, hour)
+    // console.log(dayArray)
     if (props.show !== null) {
       if (props.id === props.show.id) {
         setShow(true)
@@ -67,6 +72,9 @@ export default function Marker(props) {
 
   }, [props.show2])
 
+  
+
+  
 
 let Wrapper = '';
   if (props.category === "Bakery") {
@@ -219,7 +227,7 @@ let Wrapper = '';
             
           
           <div>
-            Hours:
+            {open ? 'Open Now' : 'Closed'}
             
             
             </div>
