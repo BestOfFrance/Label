@@ -2,6 +2,7 @@ import React from 'react'
 import CloseButton from 'react-bootstrap/CloseButton'
 import hours from '../helpers/convertHours'
 import './ShopDisplay.css'
+import {Rating} from 'react-simple-star-rating';
 import { Carousel } from 'react-carousel-minimal';
 
 export default function ShopDisplay(props) {
@@ -17,7 +18,7 @@ console.log('display props', props.shops.images)
         console.log('data images', data)
   }
 
-  if (props.shops !== null) {
+  
     const hourArray = hours(props.shops.hours).map((day) => {
       return (
         <div>
@@ -25,7 +26,7 @@ console.log('display props', props.shops.images)
         </div>
       )
     })
-  }
+  
   
 
   
@@ -65,6 +66,31 @@ console.log('display props', props.shops.images)
               margin: "40px auto",
             }}
           />
+        </div>
+        <div className="shop-display-information">
+        <div >
+          <div className='shop-rating-price'>
+            <div className='shop-rating'>
+            Rating: {props.rating}
+            <Rating
+              
+              initialValue={props.rating}
+              size={18}
+              label
+              fillColor='#ef4236'
+              emptyColor='gray'
+              className='foo' // Will remove the inline style if applied
+            />
+            </div>
+            <div>
+            Price: {props.price}
+            </div>
+          </div>
+        </div>
+        <div>
+        Hours:
+          {hourArray}
+        </div>
         </div>
       </div>
     </div>

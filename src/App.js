@@ -115,7 +115,9 @@ const items = state.topThree.map((shop, index) => {
       onClick={openShopWindow} 
       shop={shop} 
       hours={shop.hours}
-      state={state.shops}/>
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}/>
     )
   }
     
@@ -243,7 +245,8 @@ const pin = state.shops.map((center, index) => {
       }
       <div>
       {state.mode === "DISPLAY" &&
-        <ShopDisplay shops={state.selected} onClick={closeShopWindow}/>
+        <ShopDisplay shops={state.selected} onClick={closeShopWindow} rating={state.selected.rating}
+        price={state.selected.price}/>
       }
       </div>
     </div>

@@ -27,3 +27,9 @@ img {
 h2 {
   text-align: center;
 }
+
+.shop-display-information {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
