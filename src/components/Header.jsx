@@ -18,12 +18,10 @@ export default function Header(props) {
       <div>
       
         </div>
-      <div class="dropdown">
+      <div className="user" onClick={props.getAccount}>
         <img src="icons8-user-64.png" className="user-icon"></img>
-        <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+        <div className="myaccount">
+          My Account
         </div>
       </div>
     </div>

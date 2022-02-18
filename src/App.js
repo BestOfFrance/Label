@@ -7,7 +7,8 @@ import Header from './components/Header';
 import CMSCard from './components/CMSCard'
 import SearchBar from './components/SearchBar'
 import axios from 'axios'
-import DataButton from './components/DataButton'
+import LoginOrSign from './components/LoginOrSign'
+import CreateAccount from './components/CreateAccount'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -111,8 +112,14 @@ export default function Application(props) {
   // set state for marker selection
 const [selectedCenter, setSelectedCenter] = useState(null);
 
+const getAccount = function() {
+  setState((prev) => ({ ...prev, mode: "loginorsign" }))
 
+}
 
+const getRegister = function () {
+  setState((prev) => ({ ...prev, mode: "register" }))
+}
 
 // get distance from center of map to markers and update
 var markersByDistance = [];
@@ -224,6 +231,7 @@ const closeShopWindow = function() {
 
 
 
+
 const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
 }
@@ -304,7 +312,10 @@ const pin = state.shops.map((center, index) => {
     <div>
       
       
-      <Header/>
+      <Header
+        getAccount={getAccount}
+        
+      />
       
       {state.mode === mode && 
       <div>
@@ -346,6 +357,14 @@ const pin = state.shops.map((center, index) => {
       {state.mode === "DISPLAY" &&
         <ShopDisplay shops={state.selected} onClick={closeShopWindow} rating={state.selected.rating}
         price={state.selected.price}/>
+      }
+      {state.mode === "loginorsign" &&
+        <LoginOrSign
+          getRegister={getRegister}
+        />
+      }
+      {state.mode === "register" &&
+        <CreateAccount/>
       }
       </div>
     </div>

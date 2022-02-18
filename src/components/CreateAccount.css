@@ -1,0 +1,19 @@
+.create-account {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding-top: 5em;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+}
+label {
+  font-size: small;
+  padding: 0.5em;
+}
+p {
+  text-align: center;
+  font-size: x-large;
+}
