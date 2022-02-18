@@ -1,5 +1,5 @@
 const hours = function(hoursProp){
-  const hoursArray = hoursProp.split('},')
+  const hoursArray = hoursProp
 //  console.log(hoursArray)
  const nextHours = [];
  for (const day of hoursArray) {

@@ -21,18 +21,27 @@ const id = function() {
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-
+// const cors = require('cors')
 // declare a new express app
 const app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "*")
   next()
 });
+
+// app.use(cors(corsOptions))
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*")
+//   res.header("Access-Control-Allow-Headers", "*")
+  
+//   next()
+// });
 
 
 /**********************
@@ -41,7 +50,7 @@ app.use(function(req, res, next) {
 
 app.get('/shops', function(req, res) {
   var params = {
-    TableName: process.env.STORAGE_SHOPS_NAME
+    TableName: 'shops-dev'
   }
   docClient.scan(params, function(err, data) {
     if (err) res.json({err})
@@ -60,9 +69,11 @@ app.get('/shops/*', function(req, res) {
 ****************************/
 
 app.post('/shops', function(req, res) {
+  console.log('req', req)
+  console.log('process', process.env)
   var params = {
-    TableName: process.env.STORAGE_SHOPS_NAME,
-    Items: {
+    TableName: "shops-dev",
+    Item: {
       id: id(),
       name: req.body.name,
       latitude: req.body.latitude,
@@ -77,8 +88,11 @@ app.post('/shops', function(req, res) {
       category: req.body.category
     }
   }
-  if (err) res.json({err})
+  docClient.put(params, function(err, data) {
+    if (err) res.json({err})
     else res.json({success: 'Table seeded successfully1'})
+  })
+  
 });
 
 app.post('/shops/*', function(req, res) {

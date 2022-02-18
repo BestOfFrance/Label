@@ -5,7 +5,7 @@ import Api from '@aws-amplify/api-rest'
 
  Amplify.configure(awsconfig);
 
-import details from '../api/src/details.js';
+import details from './details.js';
 
 // const details = array.details
 

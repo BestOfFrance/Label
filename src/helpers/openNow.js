@@ -14,22 +14,23 @@ const openNow = function(hours) {
     const currentTime = Number(`${hour}${minute}`)
     // console.log('current time', currentTime)
 
-    const hoursArray = hours.split('},')
-    //  console.log(hoursArray)
-     const nextHours = [];
-     for (const day of hoursArray) {
-       if (day[day.length - 1] !== '}') {
-        nextHours.push(`${day}}`)
-       } else {
-         nextHours.push(day)
-       }
+    // const hoursArray = hours.split('},')
+    // //  console.log(hoursArray)
+    //  const nextHours = [];
+    //  for (const day of hoursArray) {
+    //    if (day[day.length - 1] !== '}') {
+    //     nextHours.push(`${day}}`)
+    //    } else {
+    //      nextHours.push(day)
+    //    }
        
-     }
-     const dayArray = [];
-     for (const day of nextHours) {
-       const dayObj = JSON.parse(day)
-       dayArray.push(dayObj)
-     }
+    //  }
+    //  const dayArray = [];
+    //  for (const day of nextHours) {
+    //    const dayObj = JSON.parse(day)
+    //    dayArray.push(dayObj)
+    //  }
+    const dayArray = hours;
      const dayOfArray = []
      for (const object of dayArray) {
        

@@ -43,7 +43,7 @@ app.use(function(req, res, next) {
 
 app.get('/users', function(req, res) {
   var params = {
-    TableName: process.env.STORAGE_USERS_NAME
+    TableName: 'shops-dev'
   }
   docClient.scan(params, function(err, data) {
     if (err) res.json({err})

@@ -13,11 +13,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './components/list.css'
 import DropDown from './components/DropDown'
-import Amplify, { API } from 'aws-amplify';
+import Amplify from '@aws-amplify/core'
+import Api from '@aws-amplify/api-rest'
 import awsconfig from './aws-exports';
-import details from '../api/src/details.js';
+import details from './details.js';
 
 Amplify.configure(awsconfig);
+Api.configure(awsconfig);
 
 
 const locationDefault = {
@@ -82,32 +84,27 @@ export default function Application(props) {
   //aws data
   
 
-const getData = function() {
-  for (const detail of detailsArray) {
-    const saveShop = async () => {
-      const data = {
-        body: {
-          name: detail.name,
-          latitude: detail.latitude,
-          longitude: detail.longitude,
-          address: detail.address,
-          phone: detail.phone,
-          image: detail.image,
-          rating: detail.rating,
-          price: detail.price,
-          hours: detail.hours,
-          images: detail.images,
-          category: detail.category
+
+    // const saveShop = async () => {
+    //   const data = {
+    //     body: {
+    //       name: detailsArray[3].name,
+    //       latitude: detailsArray[3].latitude,
+    //       longitude: detailsArray[3].longitude,
+    //       address: detailsArray[3].address,
+    //       phone: detailsArray[3].phone,
+    //       image: detailsArray[3].image,
+    //       rating: detailsArray[3].rating,
+    //       price: detailsArray[3].price,
+    //       hours: detailsArray[3].hours,
+    //       images: detailsArray[3].images,
+    //       category: detailsArray[3].category
   
-        }
-      }
-      const apiData = await API.post('shopsapi', '/shops', data);
-      console.log({apiData})
-    }
-    saveShop()
-  
-  }
-}
+    //     }
+    //   }
+    //   const apiData = await Api.post('shopsapi', '/shops', data);
+    //   console.log({apiData})
+    // }
 
 
   
@@ -231,26 +228,42 @@ const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
 }
 
-
-
-// initial call to the api to get shop datas
-useEffect( () => {
-  axios.get("http://localhost:3001/")
-.then((res) => {
-  // console.log(res)
-  getDistance(res.data, state.location)
-  const searchList = []
-  for (const shop of res.data) {
-    const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
-    searchList.push(newShop)
+useEffect(() => {
+  async function fetchShops() {
+    const shopData = await Api.get('shopsapi', '/shops')
+    return shopData
   }
-  setState((prev) => ({ ...prev, shops: res.data, searchList: searchList}))
+
+  fetchShops().then((out)=> {
+    console.log(out)
+    getDistance(out.data.Items, state.location)
+    const searchList = []
+    for (const shop of out.data.Items) {
+      const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
+      searchList.push(newShop)
+    }
+    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList}))
+  })
+}, [state.location])
+
+// // initial call to the api to get shop datas
+// useEffect( () => {
+//   axios.get("http://localhost:3001/")
+// .then((res) => {
+//   // console.log(res)
+//   getDistance(res.data, state.location)
+  // const searchList = []
+  // for (const shop of res.data) {
+  //   const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
+  //   searchList.push(newShop)
+  // }
+  // setState((prev) => ({ ...prev, shops: res.data, searchList: searchList}))
   
-})
-.catch((err) => {
-  console.log(err)
-})
-}, [state.location]);
+// })
+// .catch((err) => {
+//   console.log(err)
+// })
+// }, [state.location]);
 //  console.log(state.category)
 // create pins for each shop
 // console.log('state location', state.location)
@@ -292,7 +305,7 @@ const pin = state.shops.map((center, index) => {
       
       
       <Header/>
-      <DataButton onClick={getData}></DataButton>
+      
       {state.mode === mode && 
       <div>
       <div className="main-container">

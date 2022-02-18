@@ -47,7 +47,7 @@ export default function Maps(props) {
     {props.location &&
     
       <GoogleMapReact
-        bootstrapURLKeys={{key: 'AIzaSyCRlsvlSFmfPOb-oAZlmfYSMkcycNNHzm4' }}
+        bootstrapURLKeys={{key:  process.env.API_KEY }}
         yesIWantToUseGoogleMapApiInternals
         
        

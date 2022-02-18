@@ -1,6 +1,6 @@
 const Pool = require('pg').Pool
 const fs = require('fs')
-const array = require('./details');
+const array = require('../../src/details');
 
 const details = array.details
 

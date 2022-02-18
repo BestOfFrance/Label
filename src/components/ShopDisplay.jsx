@@ -9,7 +9,7 @@ export default function ShopDisplay(props) {
 console.log('display props', props.shops.images)
   const data = [];
   if (props.shops.images !== null) {
-    const imageArray = props.shops.images.split(',')
+    const imageArray = props.shops.images
     for (const image of imageArray) {
           
           const dataImage = {image: image}
