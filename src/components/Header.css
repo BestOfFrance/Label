@@ -24,6 +24,11 @@
   width: 2em;
   
 }
+
+.search-icon {
+  height: 2em;
+  width: 2em;
+}
 .user {
   min-width: 100px;
   display: flex;
