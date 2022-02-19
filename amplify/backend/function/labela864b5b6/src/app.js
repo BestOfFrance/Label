@@ -14,6 +14,7 @@ Amplify Params - DO NOT EDIT */
 
 //initialize dynamodb client
 const AWS = require('aws-sdk')
+const docClient = new AWS.DynamoDB.DocumentClient()
 
 //function to autogenerate a random id for the user
 const id = function() {
@@ -43,7 +44,7 @@ app.use(function(req, res, next) {
 
 app.get('/users', function(req, res) {
   var params = {
-    TableName: 'shops-dev'
+    TableName: 'users-dev'
   }
   docClient.scan(params, function(err, data) {
     if (err) res.json({err})
@@ -63,14 +64,14 @@ app.get('/users/*', function(req, res) {
 
 app.post('/users', function(req, res) {
   var params = {
-    TableName: process.env.STORAGE_USERS_NAME,
-    ITEM: {
+    TableName: 'users-dev',
+    Item: {
       id: id(),
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       username: req.body.username,
       password: req.body.password,
-      status: req.body.status
+      email: req.body.email
     }
   }
   docClient.put(params, function(err, data) {

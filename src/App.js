@@ -111,7 +111,9 @@ export default function Application(props) {
   
   // set state for marker selection
 const [selectedCenter, setSelectedCenter] = useState(null);
-
+const onHome = function() {
+  setState((prev) => ({ ...prev, mode: "MAP" }))
+}
 const getAccount = function() {
   setState((prev) => ({ ...prev, mode: "loginorsign" }))
 
@@ -314,7 +316,10 @@ const pin = state.shops.map((center, index) => {
       
       <Header
         getAccount={getAccount}
-        
+        onHome={onHome}
+        searchSelected={state.searchSelected}
+        updateSearch={updateSearch}
+        searchList={state.searchList}
       />
       
       {state.mode === mode && 
@@ -338,12 +343,7 @@ const pin = state.shops.map((center, index) => {
         </Maps>
         
         </div>
-        <SearchBar
         
-        searchSelected={state.searchSelected}
-        updateSearch={updateSearch}
-        searchList={state.searchList}
-        />
         <div className="list">
         
         <ListGroup as="ul" className="cms-cards">

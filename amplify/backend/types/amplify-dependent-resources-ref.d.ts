@@ -48,5 +48,16 @@ export type AmplifyDependentResourcesAttributes = {
             "ApiName": "string",
             "ApiId": "string"
         }
+    },
+    "auth": {
+        "labela3f459cc": {
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
+            "UserPoolId": "string",
+            "UserPoolArn": "string",
+            "UserPoolName": "string",
+            "AppClientIDWeb": "string",
+            "AppClientID": "string"
+        }
     }
 }
