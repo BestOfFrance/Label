@@ -5,7 +5,7 @@ import ShopDisplay from "./components/ShopDisplay";
 import Marker from './components/Marker';
 import Header from './components/Header';
 import CMSCard from './components/CMSCard'
-import SearchBar from './components/SearchBar'
+import Footer from './components/footer'
 import axios from 'axios'
 import LoginOrSign from './components/LoginOrSign'
 import CreateAccount from './components/CreateAccount'
@@ -367,6 +367,7 @@ const pin = state.shops.map((center, index) => {
         <CreateAccount/>
       }
       </div>
+      <Footer/>
     </div>
   )
 }
