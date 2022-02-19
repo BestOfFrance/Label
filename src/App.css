@@ -59,5 +59,6 @@ div.map {
  */
 
 .main-body {
-  padding-bottom: 8em;
+  padding-bottom: 1em;
+  padding-top: 5em;
 }
