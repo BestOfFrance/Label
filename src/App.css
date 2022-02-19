@@ -1,8 +1,8 @@
-div.main-container {
+.main-container {
   display: flex;
   width: 100%;
   flex-direction: column;
-  
+  height: 100%;
 }
 
 .cms-cards {
@@ -58,7 +58,15 @@ div.map {
 }
  */
 
+.main-container {
+  margin-top: 5em;
+  height: 100%;
+}
 .main-body {
-  padding-bottom: 1em;
-  padding-top: 5em;
+  margin-top: 5em;
+  height: 100%;
+}
+.main-container-all {
+  height: 100%;
+  
 }

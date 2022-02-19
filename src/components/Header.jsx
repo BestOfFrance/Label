@@ -51,8 +51,8 @@ export default function Header(props) {
         <div className="go-premium">
          <button>Go Premium</button>
       </div>
-      <div className="user" onClick={props.getAccount}>
-        <button>
+      <div className="user" >
+        <button onClick={props.getAccount}>
         <img src="icons8-user-64.png" className="user-icon"></img>
         <div className="myaccount">
           My Account

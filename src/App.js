@@ -118,7 +118,7 @@ const getAccount = function() {
   setState((prev) => ({ ...prev, mode: "loginorsign" }))
 
 }
-
+console.log(state.mode)
 const getRegister = function () {
   setState((prev) => ({ ...prev, mode: "register" }))
 }
@@ -311,7 +311,7 @@ const pin = state.shops.map((center, index) => {
 })
 
   return(
-    <div>
+    <div className="main-container-all">
       
       
       <Header
@@ -353,22 +353,35 @@ const pin = state.shops.map((center, index) => {
       </div>
       </div>
       }
-      <div>
+      
+        
       {state.mode === "DISPLAY" &&
+      <div className="main-body">
         <ShopDisplay shops={state.selected} onClick={closeShopWindow} rating={state.selected.rating}
         price={state.selected.price}/>
+        </div>
       }
+      
+      
       {state.mode === "loginorsign" &&
+      <div className="main-body">
         <LoginOrSign
           getRegister={getRegister}
         />
+        </div>
       }
+      
+      
       {state.mode === "register" &&
+      <div className="main-body">
         <CreateAccount/>
+        </div>
       }
-      </div>
+     
+      
       <Footer/>
     </div>
+    
   )
 }
   
