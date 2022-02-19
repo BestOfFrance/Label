@@ -7,16 +7,17 @@
 }
 
 #logo {
-  height:75%;
-  width: 75%;
+  height: 100%;
+  width: 100%;
   margin-left: 1em;
+  margin-right: 1em;
 }
 
 #title {
   text-align: center;
   width: 100%;
   font-size: x-large;
-  color: #818181;
+  color: black;
 }
 
 .user-icon {
@@ -40,6 +41,14 @@
 .myaccount {
   font-size: x-small;
 }
+
+button {
+  background-color: white;
+  border: none;
+  font-size: small !important;
+}
+
+
 /* 
 /* Dropdown Button */
 /* .dropbtn {

@@ -18,6 +18,7 @@ export default function Header(props) {
       <div onClick={props.onHome}>
         <img id='logo' src='BOFLogo.svg'></img>
       </div>
+      
       <div id="title">
         <div>
         Label
@@ -38,15 +39,25 @@ export default function Header(props) {
         
         
         <div>
-          <img className="search-icon" src="icons8-search-50.png" onClick={showSearch}/>
+         <button><img className="search-icon" src="icons8-search-50.png" onClick={showSearch}/></button> 
         
         </div>
-        
+        <div>
+          <button>
+            News and Deals
+          </button>
+          
+        </div>
+        <div className="go-premium">
+         <button>Go Premium</button>
+      </div>
       <div className="user" onClick={props.getAccount}>
+        <button>
         <img src="icons8-user-64.png" className="user-icon"></img>
         <div className="myaccount">
           My Account
         </div>
+        </button>
       </div>
     </div>
   )

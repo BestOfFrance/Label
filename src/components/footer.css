@@ -6,7 +6,9 @@
 .footer {
   width: 100%;
   padding-top: 0.5em;
-  position: sticky;
+  position: fixed;
+  
+  bottom: 0;
   background-color: #2e2e2e;
   height: 8em;
   display: flex;

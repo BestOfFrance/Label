@@ -323,7 +323,7 @@ const pin = state.shops.map((center, index) => {
       />
       
       {state.mode === mode && 
-      <div>
+      <div className="main-body">
       <div className="main-container">
         <div className="premium-map">
         <div className="premium-list">
