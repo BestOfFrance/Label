@@ -9,6 +9,7 @@ import Footer from './components/footer'
 import axios from 'axios'
 import LoginOrSign from './components/LoginOrSign'
 import CreateAccount from './components/CreateAccount'
+import NewsDeals from './components/NewsDeals'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -116,6 +117,10 @@ const onHome = function() {
 }
 const getAccount = function() {
   setState((prev) => ({ ...prev, mode: "loginorsign" }))
+
+}
+const getNews = function() {
+  setState((prev) => ({ ...prev, mode: "news" }))
 
 }
 console.log(state.mode)
@@ -320,6 +325,7 @@ const pin = state.shops.map((center, index) => {
         searchSelected={state.searchSelected}
         updateSearch={updateSearch}
         searchList={state.searchList}
+        getNews={getNews}
       />
       
       {state.mode === mode && 
@@ -377,7 +383,11 @@ const pin = state.shops.map((center, index) => {
         <CreateAccount/>
         </div>
       }
-     
+     {state.mode === "news" &&
+      <div className="main-body">
+        <NewsDeals/>
+        </div>
+      }
       
       <Footer/>
     </div>

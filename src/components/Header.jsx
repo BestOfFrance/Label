@@ -43,7 +43,7 @@ export default function Header(props) {
         
         </div>
         <div>
-          <button>
+          <button onClick={props.getNews}>
             News and Deals
           </button>
           
