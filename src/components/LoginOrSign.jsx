@@ -1,17 +1,22 @@
+import './LoginOrSign.css'
+
 export default function LoginOrSign(props) {
+
   return (
     <div className="register-container">
-    <div>
       <div>
-       <button>Login</button> 
+      You're not signed in. Please select an option below. 
       </div>
       <div>
-        or
+      
+        <div>
+          <button>Foodie</button> 
+        </div>
+      
+        <div>
+          <button onClick={props.getRegister}>Business Owner</button>
+        </div>
       </div>
-      <div >
-        <button onClick={props.getRegister}>Sign Up</button>
-      </div>
-    </div>
     </div>
   )
 }
