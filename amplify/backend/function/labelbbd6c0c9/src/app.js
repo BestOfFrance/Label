@@ -14,6 +14,7 @@ Amplify Params - DO NOT EDIT */
 const AWS = require('aws-sdk')
 const docClient = new AWS.DynamoDB.DocumentClient()
 
+
 const id = function() {
   return Math.random().toString(36).substring(2) + Date.now.toString(36);
 }

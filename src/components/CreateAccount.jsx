@@ -54,8 +54,8 @@ export default function CreateAccount(props) {
         lastname: lastname,
         username: username,
         password: password,
-        email: email
-       
+        email: email,
+        accountType : account
       }
     };
     const apiData = await Api.post('userapi', '/users', data);
@@ -65,7 +65,7 @@ export default function CreateAccount(props) {
     setusername("")
     setpassword("")
     setemail("")
-    
+    setAccount(null)
    
   }
 

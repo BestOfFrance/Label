@@ -16,6 +16,7 @@ Amplify Params - DO NOT EDIT */
 const AWS = require('aws-sdk')
 const docClient = new AWS.DynamoDB.DocumentClient()
 
+
 //function to autogenerate a random id for the user
 const id = function() {
   return Math.random().toString(36).substring(2) + Date.now.toString(36);
@@ -53,9 +54,19 @@ app.get('/users', function(req, res) {
   
 });
 
-app.get('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get('/users/:email', function(req, res) {
+  var params = {
+    TableName: 'users-dev',
+    Key: {
+      email: req.params.email
+    }
+   
+    
+  }
+  docClient.get(params, function(err, data) {
+    if (err) res.json({err})
+    else res.json({data})
+  })
 });
 
 /****************************
@@ -81,7 +92,7 @@ app.post('/users', function(req, res) {
 });
 
 app.post('/users/*', function(req, res) {
-  // Add your code here
+  
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 

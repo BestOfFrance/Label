@@ -9,6 +9,7 @@ import Footer from './components/footer'
 import axios from 'axios'
 import LoginOrSign from './components/LoginOrSign'
 import CreateAccount from './components/CreateAccount'
+import CreateAccountFoodie from './components/CreateAccountFoodie'
 import NewsDeals from './components/NewsDeals'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +21,19 @@ import Api from '@aws-amplify/api-rest'
 import awsconfig from './aws-exports';
 import details from './details.js';
 import getDistance from '../src/helpers/getDistance'
+import { Auth } from 'aws-amplify'
+
+function checkUser() {
+  Auth.currentAuthenticatedUser()
+    .then(user => console.log({ user }))
+    .catch(err => console.log(err))
+}
+
+function signOut() {
+  Auth.signOut()
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+}
 
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
@@ -85,6 +99,9 @@ export default function Application(props) {
     
   })
 
+  
+  
+
 
   //aws data
   //seed the AWS databse
@@ -122,7 +139,12 @@ const onHome = function() {
   setState((prev) => ({ ...prev, mode: "MAP" }))
 }
 const getAccount = function() {
-  setState((prev) => ({ ...prev, mode: "loginorsign" }))
+  
+    setState((prev) => ({ ...prev, mode: "loginorsign" }))
+ 
+    
+  
+  
 
 }
 const getNews = function() {
@@ -132,6 +154,9 @@ const getNews = function() {
 
 const getRegister = function () {
   setState((prev) => ({ ...prev, mode: "register" }))
+}
+const getRegisterFoodie = function () {
+  setState((prev) => ({ ...prev, mode: "registerFoodie" }))
 }
 const closeShopWindow = function() {
   setState((prev) => ({ ...prev, mode: mode }))
@@ -221,7 +246,7 @@ useEffect(() => {
     const shopData = await Api.get('shopsapi', '/shops')
     return shopData
   }
-
+  checkUser()
   fetchShops().then((out)=> {
     console.log(out)
     
@@ -350,6 +375,7 @@ const pin = state.shops.map((center, index) => {
       <div className="main-body">
         <LoginOrSign
           getRegister={getRegister}
+          getRegisterFoodie={getRegisterFoodie}
         />
         </div>
       }
@@ -358,6 +384,11 @@ const pin = state.shops.map((center, index) => {
       {state.mode === "register" &&
       <div className="main-body">
         <CreateAccount/>
+        </div>
+      }
+      {state.mode === "registerFoodie" &&
+      <div className="main-body">
+        <CreateAccountFoodie/>
         </div>
       }
      {state.mode === "news" &&

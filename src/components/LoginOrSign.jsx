@@ -10,7 +10,7 @@ export default function LoginOrSign(props) {
       <div className="choose-account-type">
       
         <div className="foodie-panel">
-          <button>Foodie</button> 
+          <button onClick={props.getRegisterFoodie}>Foodie</button> 
           <div>More information here.</div>
         </div>
       
