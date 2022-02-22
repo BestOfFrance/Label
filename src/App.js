@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './components/list.css'
 import DropDown from './components/DropDown'
-import Amplify from '@aws-amplify/core'
+import Amplify, { urlSafeDecode } from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from './aws-exports';
 import details from './details.js';
@@ -26,7 +26,10 @@ import { Auth } from 'aws-amplify'
 
 function checkUser() {
   Auth.currentAuthenticatedUser()
-    .then(user => console.log({ user }))
+    .then(
+      (user) => {return user}
+      
+    )
     .catch(err => console.log(err))
 }
 
