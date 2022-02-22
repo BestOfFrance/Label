@@ -7,14 +7,16 @@ export default function LoginOrSign(props) {
       <div>
       You're not signed in. Please select an option below. 
       </div>
-      <div>
+      <div className="choose-account-type">
       
-        <div>
+        <div className="foodie-panel">
           <button>Foodie</button> 
+          <div>More information here.</div>
         </div>
       
-        <div>
+        <div className="business-panel">
           <button onClick={props.getRegister}>Business Owner</button>
+          <div>More information here.</div>
         </div>
       </div>
     </div>

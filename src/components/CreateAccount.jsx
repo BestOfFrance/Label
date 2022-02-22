@@ -76,17 +76,7 @@ export default function CreateAccount(props) {
 
     
     <p>Create an Account</p>
-    <FormControl>
-    <FormLabel>What type of account would you like?</FormLabel>
-      <div className="choose-account">
-       Foodie:
-        <Checkbox onChange={()=> {selectAccount('Foodie')}}></Checkbox>
-        Business Owner:
-        <Checkbox onChange={()=> {selectAccount('Business')}}></Checkbox>
-        Premium Business Owner:
-        <Checkbox onChange={()=> {selectAccount('Premium')}}></Checkbox>
-      </div>
-      </FormControl>
+    
     <FormControl>
       
               <FormLabel>First name</FormLabel>
@@ -111,6 +101,21 @@ export default function CreateAccount(props) {
               <FormLabel>Password</FormLabel>
               <Input type='password' placeholder="Password" value={password} onChange={changepassword} />
             </FormControl>
+            <FormControl>
+    <FormLabel></FormLabel>
+      <div className="choose-account">
+        Add Premium Monthly
+        <Checkbox onChange={()=> {selectAccount('Premium')}}></Checkbox>
+      </div>
+      </FormControl>
+      <FormControl>
+    <FormLabel></FormLabel>
+      <div className="choose-account">
+        Add Premium Yearly
+        <Checkbox onChange={()=> {selectAccount('Premium')}}></Checkbox>
+      </div>
+      </FormControl>
+      
          
     <div class="text-center">
       <button onClick={saveUser}>Register</button>
