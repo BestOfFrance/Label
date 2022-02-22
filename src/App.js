@@ -23,14 +23,21 @@ import awsconfig from './aws-exports';
 import details from './details.js';
 import getDistance from '../src/helpers/getDistance'
 import { Auth } from 'aws-amplify'
+import Dashboard from './components/Dashboard'
 
 function checkUser() {
   Auth.currentAuthenticatedUser()
     .then(
-      (user) => {return user}
+      (user) => {
+        console.log(user)
+        return true}
       
     )
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+    return false;
+    }
+      )
 }
 
 function signOut() {
@@ -143,8 +150,13 @@ const onHome = function() {
   setState((prev) => ({ ...prev, mode: "MAP" }))
 }
 const getAccount = function() {
-  
+  if (checkUser()) {
+
     setState((prev) => ({ ...prev, mode: "loginorsign" }))
+  } else {
+    setState((prev) => ({ ...prev, mode: "dashboard" }))
+  }
+    
  
     
   
@@ -406,7 +418,12 @@ const pin = state.shops.map((center, index) => {
         <NewsDeals/>
         </div>
       }
-      
+      {state.mode === "dashboard" &&
+      <div className="main-body">
+        <Dashboard/>
+        </div>
+      }
+     
       
       <Footer/>
     </div>
