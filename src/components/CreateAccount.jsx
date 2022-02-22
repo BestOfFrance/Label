@@ -1,15 +1,25 @@
 import './CreateAccount.css'
 import {useState} from 'react';
-import { FormControl, Input, FormLabel } from '@mui/material';
+import { FormControl, Input, FormLabel, Checkbox } from '@mui/material';
 import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
+
 
 
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
 export default function CreateAccount(props) {
+  const [account, setAccount] = useState(null)
+
+  const selectAccount = function (name) {
+    if (account !== null) {
+      setAccount(name)
+    } else {
+      setAccount(null)
+    }
+  }
 
   const [firstname,setfirstname]=useState("")
   function changefirstname(event){
@@ -67,6 +77,18 @@ export default function CreateAccount(props) {
     
     <p>Create an Account</p>
     <FormControl>
+    <FormLabel>What type of account would you like?</FormLabel>
+      <div className="choose-account">
+       Foodie:
+        <Checkbox onChange={()=> {selectAccount('Foodie')}}></Checkbox>
+        Business Owner:
+        <Checkbox onChange={()=> {selectAccount('Business')}}></Checkbox>
+        Premium Business Owner:
+        <Checkbox onChange={()=> {selectAccount('Premium')}}></Checkbox>
+      </div>
+      </FormControl>
+    <FormControl>
+      
               <FormLabel>First name</FormLabel>
               <Input placeholder="First name" value={firstname} onChange={changefirstname} />
             </FormControl>
