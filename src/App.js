@@ -8,6 +8,7 @@ import CMSCard from './components/CMSCard'
 import Footer from './components/footer'
 import axios from 'axios'
 import LoginOrSign from './components/LoginOrSign'
+import ConfirmAccount from './components/confirmAccount'
 import CreateAccount from './components/CreateAccount'
 import CreateAccountFoodie from './components/CreateAccountFoodie'
 import NewsDeals from './components/NewsDeals'
@@ -146,6 +147,12 @@ const getAccount = function() {
   
   
 
+}
+const setMap = function() {
+  setState((prev) => ({ ...prev, mode: "MAP" }))
+}
+const setConfirm = function() {
+  setState((prev) => ({ ...prev, mode: "confirmAccount" }))
 }
 const getNews = function() {
   setState((prev) => ({ ...prev, mode: "news" }))
@@ -388,7 +395,7 @@ const pin = state.shops.map((center, index) => {
       }
       {state.mode === "registerFoodie" &&
       <div className="main-body">
-        <CreateAccountFoodie/>
+        <CreateAccountFoodie setConfirm={setConfirm} setMap={setMap} mode={state.mode}/>
         </div>
       }
      {state.mode === "news" &&
@@ -396,6 +403,7 @@ const pin = state.shops.map((center, index) => {
         <NewsDeals/>
         </div>
       }
+      
       
       <Footer/>
     </div>

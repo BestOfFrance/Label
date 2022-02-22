@@ -5,6 +5,7 @@ import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
+import ConfirmAccount from './confirmAccount'
 
 Amplify.configure(awsconfig);
 
@@ -23,7 +24,7 @@ export default function CreateAccount(props) {
     placeholderConfirm: "Confirm Password",
     placeholderUser: "Username"
   })
-
+  const [show, setShow] = useState("hide")
   const [firstname,setfirstname]=useState("")
   function changefirstname(event){
     const val=event.target.value
@@ -53,6 +54,11 @@ export default function CreateAccount(props) {
   function changeemail(event){
     const val=event.target.value
     setemail(val)
+  }
+  const [confirm,setConfirm]=useState("")
+  function changeconfirm(event){
+    const val=event.target.value
+    setConfirm(val)
   }
   console.log(email)
   async function signUp() {
@@ -98,6 +104,9 @@ export default function CreateAccount(props) {
           setemail("This email has already been used")
         } else {
           signUp()
+          .then(() => {
+            setShow("show")
+          })
           
         
         }
@@ -131,48 +140,62 @@ export default function CreateAccount(props) {
   return (
     
   <div className="register-container">
-  <div className="create-account">
+  
 
+    {show === "hide" &&
+    <div className="create-account">
+     <p>Create an Account</p>
     
-    <p>Create an Account</p>
-    
-    <FormControl>
-      
-              <FormLabel>First name</FormLabel>
-              <Input placeholder={state.placeholderFN} value={firstname} onChange={changefirstname} required={true}/>
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>Last name</FormLabel>
-              <Input placeholder={state.placeholderLN} value={lastname} onChange={changelastname} required={true}/>
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>Username</FormLabel>
-              <Input placeholder={state.placeholderUser} value={username} onChange={changeusername} required={true}/>
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Email</FormLabel>
-              <Input type="email" placeholder={state.placeholderEmail} value={email} onChange={changeemail} required={true}/>
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>Password</FormLabel>
-              <Input type='password' placeholder={state.placeholderPassword} value={password} onChange={changepassword} required={true}/>
-            </FormControl>
-            <FormControl mt={4}>
-              <FormLabel>Confirm Password</FormLabel>
-              <Input type='password' placeholder={state.placeholderConfirm} value={confirmPassword} onChange={changepasswordconfirm} required={true}/>
-            </FormControl>
-            
-    
-      
-         
-    <div class="text-center">
-      <button onClick={onSubmit}>Register</button>
-      
+     <FormControl>
+       
+               <FormLabel>First name</FormLabel>
+               <Input placeholder={state.placeholderFN} value={firstname} onChange={changefirstname} required={true}/>
+             </FormControl>
+ 
+             <FormControl mt={4}>
+               <FormLabel>Last name</FormLabel>
+               <Input placeholder={state.placeholderLN} value={lastname} onChange={changelastname} required={true}/>
+             </FormControl>
+ 
+             <FormControl mt={4}>
+               <FormLabel>Username</FormLabel>
+               <Input placeholder={state.placeholderUser} value={username} onChange={changeusername} required={true}/>
+             </FormControl>
+             <FormControl mt={4}>
+               <FormLabel>Email</FormLabel>
+               <Input type="email" placeholder={state.placeholderEmail} value={email} onChange={changeemail} required={true}/>
+             </FormControl>
+ 
+             <FormControl mt={4}>
+               <FormLabel>Password</FormLabel>
+               <Input type='password' placeholder={state.placeholderPassword} value={password} onChange={changepassword} required={true}/>
+             </FormControl>
+             <FormControl mt={4}>
+               <FormLabel>Confirm Password</FormLabel>
+               <Input type='password' placeholder={state.placeholderConfirm} value={confirmPassword} onChange={changepasswordconfirm} required={true}/>
+             </FormControl>
+             
+     
+       
+          
+     <div class="text-center">
+       <button onClick={onSubmit}>Register</button>
+       
+     </div>
+       
+ 
     </div>
-   </div>
+    }
+    
+      
+    {show === "show" &&
+      <div className="main-body">
+        <ConfirmAccount
+        setMap={props.setMap}
+        password={password}
+        />
+        </div>
+      }
 </div>
   )
 }
