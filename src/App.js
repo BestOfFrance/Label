@@ -339,7 +339,7 @@ const pin = state.shops.map((center, index) => {
       
         
       {state.mode === "DISPLAY" &&
-      <div className="main-body">
+      <div className="main-body-show">
         <ShopDisplay shops={state.selected} onClick={closeShopWindow} rating={state.selected.rating}
         price={state.selected.price}/>
         </div>

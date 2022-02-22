@@ -10,7 +10,7 @@
   height: 20em;
   width: 40em;
   text-align: left;
-  border-radius: 10%;
+  border-radius: 10% !important;
   color: #818181;
   z-index: 1;
   
@@ -22,12 +22,13 @@
   justify-content: column !important;
 }
 .marker-information {
-  padding-left: 2em;
+  margin-left: 2em;
 }
 .marker-image {
   height: 150px;
   width: auto;
-  padding-left: 2em;
+  margin-left: 2em;
+  border-radius: 10% !important;
 }
 
 .title {
@@ -38,8 +39,8 @@
 }
 .close {
   text-align: right;
-  padding-top: 1em;
-  padding-right: 1em;
+  margin-top: 1em;
+  margin-right: 1em;
 }
 
 #actual-marker{
