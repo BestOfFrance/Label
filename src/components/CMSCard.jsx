@@ -52,7 +52,7 @@ export default function CMSCard(props) {
   return(
     
     <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>
-      <div style={styles}>
+      <div style={styles} className="list-images">
       
 
       </div>

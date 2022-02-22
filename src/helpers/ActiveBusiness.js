@@ -1,0 +1,3 @@
+const setBusinessActive = function(props) {
+  
+}

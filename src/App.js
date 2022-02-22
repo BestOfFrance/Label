@@ -19,11 +19,12 @@ import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from './aws-exports';
 import details from './details.js';
+import getDistance from '../src/helpers/getDistance'
 
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
-
+//initial location set to Vancouver, will be set to geographic location of user
 const locationDefault = {
   
   lat: 49.2827,
@@ -31,38 +32,40 @@ const locationDefault = {
 } 
 const mode = "MAP"
 
+//function to manually set the dynamo database, only to be used upon seeding
+
 // const details = array.details
 
-const detailsArray = [];
-for (const detail of details) {
-  const detailsObject = {};
-  detailsObject.name = detail.name;
-  detailsObject.latitude = detail.coordinates.latitude;
-  detailsObject.longitude = detail.coordinates.longitude;
-  detailsObject.address = detail.location.address1
-  detailsObject.phone = detail.display_phone
-  detailsObject.image = detail.image_url
-  detailsObject.rating = detail.rating
-  detailsObject.price = detail.price
-  detailsObject.category = detail.category
-  detailsObject.hours = [];
-  detailsObject.images = [];
+// const detailsArray = [];
+// for (const detail of details) {
+//   const detailsObject = {};
+//   detailsObject.name = detail.name;
+//   detailsObject.latitude = detail.coordinates.latitude;
+//   detailsObject.longitude = detail.coordinates.longitude;
+//   detailsObject.address = detail.location.address1
+//   detailsObject.phone = detail.display_phone
+//   detailsObject.image = detail.image_url
+//   detailsObject.rating = detail.rating
+//   detailsObject.price = detail.price
+//   detailsObject.category = detail.category
+//   detailsObject.hours = [];
+//   detailsObject.images = [];
 
-  for (const image of detail.photos) {
-    detailsObject.images.push(image)
-  }
+//   for (const image of detail.photos) {
+//     detailsObject.images.push(image)
+//   }
   
-  for (const day of detail.hours[0].open) {
+//   for (const day of detail.hours[0].open) {
     
-    const hours = {open: day.start, close: day.end, day: day.day}
+//     const hours = {open: day.start, close: day.end, day: day.day}
     
-    const stringHours = JSON.stringify(hours)
+//     const stringHours = JSON.stringify(hours)
     
-    detailsObject.hours.push(stringHours)
+//     detailsObject.hours.push(stringHours)
     
-  }
-  detailsArray.push(detailsObject)
-}
+//   }
+//   detailsArray.push(detailsObject)
+// }
 
 
 
@@ -84,7 +87,7 @@ export default function Application(props) {
 
 
   //aws data
-  
+  //seed the AWS databse
 
 
     // const saveShop = async () => {
@@ -110,8 +113,11 @@ export default function Application(props) {
 
 
   
-  // set state for marker selection
+ 
+//set the selected marker
 const [selectedCenter, setSelectedCenter] = useState(null);
+
+//section of functions for onClick to change mode
 const onHome = function() {
   setState((prev) => ({ ...prev, mode: "MAP" }))
 }
@@ -123,57 +129,28 @@ const getNews = function() {
   setState((prev) => ({ ...prev, mode: "news" }))
 
 }
-console.log(state.mode)
+
 const getRegister = function () {
   setState((prev) => ({ ...prev, mode: "register" }))
 }
-
-// get distance from center of map to markers and update
-var markersByDistance = [];
-const getDistance = function(markers, myLatlng) {
-  
-  // console.log(markers, 'markers')
-  // console.log(myLatlng, 'll')
-for ( var i = 0; i < markers.length; i++ ) {
-    var marker = markers[i];
-
-    // using pythagoras does not take into account curvature, 
-    // but will work fine over small distances.
-    // you can use more complicated trigonometry to 
-    // take curvature into consideration
-    var dx = myLatlng.lng - marker.longitude;
-    var dy = myLatlng.lat - marker.latitude;
-    
-    var distance = Math.sqrt( dx * dx + dy * dy );
-
-    markersByDistance[ i ] = marker;
-    markersByDistance[ i ].distance = distance;
-
+const closeShopWindow = function() {
+  setState((prev) => ({ ...prev, mode: mode }))
 }
-
-// function to sort your data...
-function sorter (a,b) { 
-    return a.distance > b.distance ? 1 : -1;
-}
-
-// sort the array... now the first 5 elements should be your closest points.
-markersByDistance.sort( sorter );
-const topThreeShops = markersByDistance.slice(0,3)
-setState((prev) => ({ ...prev, topThree: topThreeShops}))
-}
-
-// set function to get the disatnce every time the map scrolls
-const onChange = function({center, zoom}) {
-  
-  getDistance(state.topThree, center)
-}
-
 //set show mode to show shop information
 const openShopWindow = function(shop) {
   setState((prev) => ({ ...prev, mode: "DISPLAY", selected: shop }))
 }
 
 
+// set function to get the disatnce every time the map scrolls
+const onChange = function({center, zoom}) {
+  
+  setState((prev) => ({ ...prev, topThree: getDistance(state.topThree, center)}))
+}
+
+
+
+//function for searching shops
 const updateSearch = (e, value) => {
   //set selection to the value selected
   if (!value) {
@@ -185,10 +162,13 @@ const updateSearch = (e, value) => {
   setSelectedCenter(value)
 };
 
+
+//function for setting center of map
 const goToMap = function (latitude, longitude, selectedCenter) {
   setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
   setSelectedCenter(selectedCenter)
 }
+
 // set up the list of shops on the side
 const items = state.topThree.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
@@ -211,38 +191,31 @@ const items = state.topThree.map((shop, index) => {
     )
   }
     
-  
-
 
 })
 
 
-
+//cms cards
 const cms = state.shops.map((shop, index) => {
   if (state.categories.includes(shop.category)) {
     return(
       <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} />
     )
   }
-    
-  
-
 
 })
 
 // console.log('shops state', state.shops)
 
-const closeShopWindow = function() {
-  setState((prev) => ({ ...prev, mode: mode }))
-}
 
 
-
-
+//function for filter button
 const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
 }
 
+
+//inital call to get database information for amazon database
 useEffect(() => {
   async function fetchShops() {
     const shopData = await Api.get('shopsapi', '/shops')
@@ -251,28 +224,28 @@ useEffect(() => {
 
   fetchShops().then((out)=> {
     console.log(out)
-    getDistance(out.data.Items, state.location)
+    
     const searchList = []
     for (const shop of out.data.Items) {
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
       searchList.push(newShop)
     }
-    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList}))
+    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, topThree: getDistance(out.data.Items, state.location)}))
   })
 }, [state.location])
 
-// // initial call to the api to get shop datas
+// // initial call to the api to get shop datas for local data
 // useEffect( () => {
 //   axios.get("http://localhost:3001/")
 // .then((res) => {
-//   // console.log(res)
-//   getDistance(res.data, state.location)
-  // const searchList = []
-  // for (const shop of res.data) {
-  //   const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
-  //   searchList.push(newShop)
-  // }
-  // setState((prev) => ({ ...prev, shops: res.data, searchList: searchList}))
+//   console.log(res)
+  
+//   const searchList = []
+//   for (const shop of res.data) {
+//     const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
+//     searchList.push(newShop)
+//   }
+//   setState((prev) => ({ ...prev, shops: res.data, searchList: searchList, topThree: getDistance(res.data, state.location)}))
   
 // })
 // .catch((err) => {
@@ -282,6 +255,8 @@ useEffect(() => {
 //  console.log(state.category)
 // create pins for each shop
 // console.log('state location', state.location)
+
+//set the markers ---- will need to change likely with thousands of markers
 const pin = state.shops.map((center, index) => {
   if (state.categories.includes(center.category)) {
     return (
@@ -315,6 +290,8 @@ const pin = state.shops.map((center, index) => {
   
 })
 
+
+//render all
   return(
     <div className="main-container-all">
       
