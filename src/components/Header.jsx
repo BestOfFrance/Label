@@ -15,8 +15,10 @@ export default function Header(props) {
   }
   return (
     <div className="header">
-      <div onClick={props.onHome}>
+      <div >
+        <button onClick={props.onHome}>
         <img id='logo' src='BOFLogo.svg'></img>
+        </button>
       </div>
       
       <div id="title">
@@ -39,20 +41,20 @@ export default function Header(props) {
         
         
         <div>
-         <button><img className="search-icon" src="icons8-search-50.png" onClick={showSearch}/></button> 
+         <button className="small-button"><img className="search-icon" src="icons8-search-50.png" onClick={showSearch}/></button> 
         
         </div>
         <div>
-          <button onClick={props.getNews}>
+          <button className="small-button" onClick={props.getNews}>
             News and Deals
           </button>
           
         </div>
         <div className="go-premium">
-         <button>Go Premium</button>
+         <button className="small-button">Go Premium</button>
       </div>
       <div className="user" >
-        <button onClick={props.getAccount}>
+        <button className="small-button" onClick={props.getAccount}>
         <img src="icons8-user-64.png" className="user-icon"></img>
         <div className="myaccount">
           My Account

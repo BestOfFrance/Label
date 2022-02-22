@@ -3,13 +3,13 @@ export default function LoginOrSign(props) {
     <div className="register-container">
     <div>
       <div>
-        Login
+       <button>Login</button> 
       </div>
       <div>
         or
       </div>
-      <div onClick={props.getRegister}>
-        Sign Up
+      <div >
+        <button onClick={props.getRegister}>Sign Up</button>
       </div>
     </div>
     </div>
