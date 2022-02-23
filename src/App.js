@@ -124,7 +124,8 @@ export default function Application(props) {
     topThree: [],
     searchSelected: "",
     searchList: [],
-    signedIn: false
+    signedIn: false,
+    accountType: "free"
     
   })
 
@@ -223,6 +224,9 @@ const getAccount = function() {
   
 
 }
+const setBusiness = function() {
+  setState((prev) => ({ ...prev, accountType: "business" }))
+}
 const setLoggedIn = function() {
   setState((prev) => ({ ...prev, signedIn: true }))
 }
@@ -320,7 +324,7 @@ const cms = state.shops.map((shop, index) => {
 
 // console.log('shops state', state.shops)
 
-
+console.log(state.accountType)
 
 //function for filter button
 const onFilter = function(data) {
@@ -476,7 +480,7 @@ const pin = state.shops.map((center, index) => {
       
       {state.mode === "register" &&
       <div className="main-body">
-        <CreateAccount/>
+        <CreateAccount  setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>
         </div>
       }
       {state.mode === "registerFoodie" &&
@@ -502,6 +506,7 @@ const pin = state.shops.map((center, index) => {
         logout={signOut}
         setMap={setMap}
         setLoggedIn={setLoggedIn}
+        setBusiness={setBusiness}
         />
         </div>
       }

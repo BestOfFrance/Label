@@ -52,6 +52,9 @@ export default function CreateAccount(props) {
     fetchUser()
     .then((out) => {
       console.log(out)
+      if (out.Items.accountType === "business") {
+        props.setBusiness()
+      }
     })
 
     Auth.signIn(email, password)
@@ -59,6 +62,7 @@ export default function CreateAccount(props) {
       console.log(user)
       props.setLoggedIn()
       props.setMap()
+      
     })
     .catch((err) => {
       setError("There was an error logging in")
