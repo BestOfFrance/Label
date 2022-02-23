@@ -20,10 +20,13 @@ import DropDown from './components/DropDown'
 import Amplify, { urlSafeDecode } from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from './aws-exports';
-import details from './details.js';
+// import details from './details.js';
 import getDistance from '../src/helpers/getDistance'
 import { Auth } from 'aws-amplify'
 import Dashboard from './components/Dashboard'
+const data = require('./shop-data')
+
+
 
 function checkUser() {
   Auth.currentAuthenticatedUser()
@@ -271,7 +274,7 @@ useEffect(() => {
   checkUser()
   fetchShops().then((out)=> {
     console.log(out)
-    
+    console.log(data[0], 'data')
     const searchList = []
     for (const shop of out.data.Items) {
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
