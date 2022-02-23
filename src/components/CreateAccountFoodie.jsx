@@ -187,7 +187,7 @@ export default function CreateAccount(props) {
     {show === "show" &&
       <div className="main-body">
         <ConfirmAccount
-        setMap={props.setMap}
+        login={props.login}
         password={password}
         checkUser={props.checkUser}
         />
