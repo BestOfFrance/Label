@@ -189,6 +189,7 @@ export default function CreateAccount(props) {
         <ConfirmAccount
         setMap={props.setMap}
         password={password}
+        checkUser={props.checkUser}
         />
         </div>
       }

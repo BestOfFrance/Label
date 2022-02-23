@@ -481,7 +481,7 @@ const pin = state.shops.map((center, index) => {
       }
       {state.mode === "registerFoodie" &&
       <div className="main-body">
-        <CreateAccountFoodie setConfirm={setConfirm} setMap={setMap} mode={state.mode}/>
+        <CreateAccountFoodie setConfirm={setConfirm} setMap={setMap} mode={state.mode} checkUser={checkUser}/>
         </div>
       }
      {state.mode === "news" &&

@@ -39,13 +39,14 @@ export default function ConfirmAccount(props) {
     
     Auth.confirmSignUp(email, password)
     .then(() => {
-      Auth.signIn(email, props.password)
+      
       props.setMap()
+      props.checkUser()
     })
     .catch((err) => [
       console.log(err)
     ])
-    
+    Auth.signIn(email, props.password)
 
     
      
