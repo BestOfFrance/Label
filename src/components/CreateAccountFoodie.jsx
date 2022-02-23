@@ -35,11 +35,11 @@ export default function CreateAccount(props) {
     const val=event.target.value
     setlastname(val)
   }
-  const [username,setusername]=useState("")
-  function changeusername(event){
-    const val=event.target.value
-    setusername(val)
-  }
+  // const [username,setusername]=useState("")
+  // function changeusername(event){
+  //   const val=event.target.value
+  //   setusername(val)
+  // }
   const [password,setpassword]=useState("")
   function changepassword(event){
     const val=event.target.value
@@ -92,8 +92,6 @@ export default function CreateAccount(props) {
       setState((prev) => ({ ...prev, placeholderFN: "please enter your name" }))
     } else if (lastname === "") {
       setState((prev) => ({ ...prev, placeholderLN: "please enter your name" }))
-    } else if (username === "") {
-      setState((prev) => ({ ...prev, placeholderUser: "please enter your name" }))
     } else if (email === "") {
       setState((prev) => ({ ...prev, placeholderEmail: "please enter your email" }))
     } else if (password.length < 6) {
@@ -103,6 +101,7 @@ export default function CreateAccount(props) {
         if (out.data.Item) {
           setemail("This email has already been used")
         } else {
+          saveUser();
           signUp()
           .then(() => {
             setShow("show")
@@ -120,7 +119,7 @@ export default function CreateAccount(props) {
       body: {
         firstname: firstname,
         lastname: lastname,
-        username: username,
+        
         password: password,
         email: email,
         accountType : account
@@ -130,7 +129,7 @@ export default function CreateAccount(props) {
     console.log({ apiData });
     setfirstname("")
     setlastname("")
-    setusername("")
+    
     setpassword("")
     setemail("")
     setpasswordconfirm("")
@@ -157,10 +156,7 @@ export default function CreateAccount(props) {
                <Input placeholder={state.placeholderLN} value={lastname} onChange={changelastname} required={true}/>
              </FormControl>
  
-             <FormControl mt={4}>
-               <FormLabel>Username</FormLabel>
-               <Input placeholder={state.placeholderUser} value={username} onChange={changeusername} required={true}/>
-             </FormControl>
+            
              <FormControl mt={4}>
                <FormLabel>Email</FormLabel>
                <Input type="email" placeholder={state.placeholderEmail} value={email} onChange={changeemail} required={true}/>

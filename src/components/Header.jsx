@@ -57,7 +57,7 @@ export default function Header(props) {
         <button className="small-button" onClick={props.getAccount}>
         <img src="icons8-user-64.png" className="user-icon"></img>
         <div className="myaccount">
-          My Account
+          {props.signedIn ? "My Account" : "Sign In"}
         </div>
         </button>
       </div>

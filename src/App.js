@@ -25,32 +25,34 @@ import getDistance from '../src/helpers/getDistance'
 import { Auth } from 'aws-amplify'
 import Dashboard from './components/Dashboard'
 import DataButton from './components/DataButton'
+import Login from './components/Login'
 // const data = require('./shop-data')
 
 const dataObj = require('./details.js')
 
 const details = dataObj.details
 
-function checkUser() {
-  Auth.currentAuthenticatedUser()
-    .then(
-      (user) => {
-        console.log(user)
-        return true}
+// function checkUser() {
+//   Auth.currentAuthenticatedUser()
+//     .then(
+//       (user) => {
+//         console.log(user)
+//         if (user = "The user is not authenticated") {
+//           return false;
+//         } else {
+//           return true
+//         }
+//         }
       
-    )
-    .catch(err => {
-      console.log(err)
-    return false;
-    }
-      )
-}
+//     )
+//     .catch(err => {
+//       console.log(err)
+//     return false;
+//     }
+//       )
+// }
 
-function signOut() {
-  Auth.signOut()
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
-}
+
 
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
@@ -67,45 +69,45 @@ const mode = "MAP"
 
 
 
-const detailsArray = [];
-for (const detail of details) {
-  if (detail !== undefined) {
-  const detailsObject = {};
-  detailsObject.name = detail.yelpData.name;
-  detailsObject.latitude = detail.yelpData.coordinates.latitude;
-  detailsObject.longitude = detail.yelpData.coordinates.longitude;
-  detailsObject.address = detail.yelpData.location.address1
-  detailsObject.phone = detail.yelpData.display_phone
-  detailsObject.callPhone = detail.yelpData.phone
-  detailsObject.image = detail.yelpData.image_url
-  detailsObject.rating = detail.yelpData.rating
-  detailsObject.price = detail.yelpData.price
-  detailsObject.category = detail.category
-  detailsObject.description = detail.description
-  detailsObject.mapUrl = detail.place_url
-  detailsObject.numberReviews = detail.number_reviews
-  detailsObject.servicesAvailable = detail.services_available
-  detailsObject.hours = [];
-  detailsObject.images = [];
+// const detailsArray = [];
+// for (const detail of details) {
+//   if (detail !== undefined) {
+//   const detailsObject = {};
+//   detailsObject.name = detail.yelpData.name;
+//   detailsObject.latitude = detail.yelpData.coordinates.latitude;
+//   detailsObject.longitude = detail.yelpData.coordinates.longitude;
+//   detailsObject.address = detail.yelpData.location.address1
+//   detailsObject.phone = detail.yelpData.display_phone
+//   detailsObject.callPhone = detail.yelpData.phone
+//   detailsObject.image = detail.yelpData.image_url
+//   detailsObject.rating = detail.yelpData.rating
+//   detailsObject.price = detail.yelpData.price
+//   detailsObject.category = detail.category
+//   detailsObject.description = detail.description
+//   detailsObject.mapUrl = detail.place_url
+//   detailsObject.numberReviews = detail.number_reviews
+//   detailsObject.servicesAvailable = detail.services_available
+//   detailsObject.hours = [];
+//   detailsObject.images = [];
 
-  for (const image of detail.yelpData.photos) {
-    detailsObject.images.push(image)
-  }
+//   for (const image of detail.yelpData.photos) {
+//     detailsObject.images.push(image)
+//   }
   
-  if (detail.yelpData.hours) {
-  for (const day of detail.yelpData.hours[0].open) {
+//   if (detail.yelpData.hours) {
+//   for (const day of detail.yelpData.hours[0].open) {
     
-    const hours = {open: day.start, close: day.end, day: day.day}
+//     const hours = {open: day.start, close: day.end, day: day.day}
     
-    const stringHours = JSON.stringify(hours)
+//     const stringHours = JSON.stringify(hours)
     
-    detailsObject.hours.push(stringHours)
+//     detailsObject.hours.push(stringHours)
     
-  }
-}
-  detailsArray.push(detailsObject)
-}
-}
+//   }
+// }
+//   detailsArray.push(detailsObject)
+// }
+// }
 
 
 
@@ -121,13 +123,44 @@ export default function Application(props) {
     categories: ["Restaurant", "Pastry Shop", "Bakery", "Grocery"],
     topThree: [],
     searchSelected: "",
-    searchList: []
+    searchList: [],
+    signedIn: false
     
   })
 
   
-  
+  function checkUser() {
+    let authenticated = false;
+    Auth.currentAuthenticatedUser()
+      .then(
+        (user) => {
+          
+          console.log(user)
+            setState((prev) => ({ ...prev, signedIn: true }))
+          
+          }
+        
+      )
+      .catch(err => {
+        console.log(err)
+        authenticated = false;
+      }
+        )
+        return authenticated
+  }
 
+  function signOut() {
+    Auth.signOut()
+      .then((data) => {
+        console.log(data)
+        setState((prev) => ({ ...prev, mode: "MAP" }))
+        setState((prev) => ({ ...prev, signedIn: false }))
+      }
+        
+        )
+      .catch(err => console.log(err))
+      
+  }
 
   //aws data
   //seed the AWS databse
@@ -137,33 +170,33 @@ export default function Application(props) {
   // detailsObject.servicesAvailable = detail.services_available
 
 
-    const saveShop = async () => {
-      for (let i = 0; i <= detailsArray.length; i++) {
-      const data = {
-        body: {
-          name: detailsArray[i].name,
-          latitude: detailsArray[i].latitude,
-          longitude: detailsArray[i].longitude,
-          address: detailsArray[i].address,
-          phone: detailsArray[i].phone,
-          image: detailsArray[i].image,
-          rating: detailsArray[i].rating,
-          price: detailsArray[i].price,
-          hours: detailsArray[i].hours,
-          images: detailsArray[i].images,
-          category: detailsArray[i].category,
-          callPhone: detailsArray[i].callPhone,
-          description: detailsArray[i].description,
-          mapUrl: detailsArray[i].mapUrl,
-          numberReviews: detailsArray[i].numberReviews,
-          servicesAvailable: detailsArray[i].servicesAvailable
+    // const saveShop = async () => {
+    //   for (let i = 0; i <= detailsArray.length; i++) {
+    //   const data = {
+    //     body: {
+    //       name: detailsArray[i].name,
+    //       latitude: detailsArray[i].latitude,
+    //       longitude: detailsArray[i].longitude,
+    //       address: detailsArray[i].address,
+    //       phone: detailsArray[i].phone,
+    //       image: detailsArray[i].image,
+    //       rating: detailsArray[i].rating,
+    //       price: detailsArray[i].price,
+    //       hours: detailsArray[i].hours,
+    //       images: detailsArray[i].images,
+    //       category: detailsArray[i].category,
+    //       callPhone: detailsArray[i].callPhone,
+    //       description: detailsArray[i].description,
+    //       mapUrl: detailsArray[i].mapUrl,
+    //       numberReviews: detailsArray[i].numberReviews,
+    //       servicesAvailable: detailsArray[i].servicesAvailable
   
-        }
-      }
-      const apiData = await Api.post('shopsapi', '/shops', data);
-      console.log({apiData})
-    }
-    }
+    //     }
+    //   }
+    //   const apiData = await Api.post('shopsapi', '/shops', data);
+    //   console.log({apiData})
+    // }
+    // }
 
 
   
@@ -176,11 +209,12 @@ const onHome = function() {
   setState((prev) => ({ ...prev, mode: "MAP" }))
 }
 const getAccount = function() {
-  if (checkUser()) {
-
-    setState((prev) => ({ ...prev, mode: "loginorsign" }))
-  } else {
+  
+  if (state.signedIn) {
     setState((prev) => ({ ...prev, mode: "dashboard" }))
+    
+  } else {
+    setState((prev) => ({ ...prev, mode: "loginorsign" }))
   }
     
  
@@ -189,8 +223,14 @@ const getAccount = function() {
   
 
 }
+const setLoggedIn = function() {
+  setState((prev) => ({ ...prev, signedIn: true }))
+}
 const setMap = function() {
   setState((prev) => ({ ...prev, mode: "MAP" }))
+}
+const login = function() {
+  setState((prev) => ({ ...prev, mode: "login", signedIn: true }))
 }
 const setConfirm = function() {
   setState((prev) => ({ ...prev, mode: "confirmAccount" }))
@@ -294,11 +334,11 @@ useEffect(() => {
     const shopData = await Api.get('shopsapi', '/shops')
     return shopData
   }
-  checkUser()
+  checkUser();
   fetchShops().then((out)=> {
     console.log(out)
     // console.log(JSON.stringify(data[0]), 'data')
-    console.log(detailsArray.length)
+    // console.log(detailsArray.length)
     const searchList = []
     for (const shop of out.data.Items) {
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
@@ -377,6 +417,7 @@ const pin = state.shops.map((center, index) => {
         updateSearch={updateSearch}
         searchList={state.searchList}
         getNews={getNews}
+        signedIn={state.signedIn}
         
       />
       
@@ -427,6 +468,7 @@ const pin = state.shops.map((center, index) => {
         <LoginOrSign
           getRegister={getRegister}
           getRegisterFoodie={getRegisterFoodie}
+          login={login}
         />
         </div>
       }
@@ -449,7 +491,18 @@ const pin = state.shops.map((center, index) => {
       }
       {state.mode === "dashboard" &&
       <div className="main-body">
-        <Dashboard/>
+        <Dashboard
+        logout={signOut}
+        />
+        </div>
+      }
+      {state.mode === "login" &&
+      <div className="main-body">
+        <Login
+        logout={signOut}
+        setMap={setMap}
+        setLoggedIn={setLoggedIn}
+        />
         </div>
       }
      
