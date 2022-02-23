@@ -81,7 +81,7 @@ app.post('/users', function(req, res) {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       username: req.body.username,
-      password: req.body.password,
+      accountType: req.body.accountType,
       email: req.body.email
     }
   }

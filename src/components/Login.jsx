@@ -43,9 +43,17 @@ export default function CreateAccount(props) {
   }
  
   
-  
+  async function fetchUser() {
+    const userData = await Api.get('userapi', `/users/${email}`)
+    return userData
+  }
   const onSubmit = function() {
     let signedin = false;
+    fetchUser()
+    .then((out) => {
+      console.log(out)
+    })
+
     Auth.signIn(email, password)
     .then((user) => {
       console.log(user)

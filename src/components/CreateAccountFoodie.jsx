@@ -15,7 +15,7 @@ Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
 export default function CreateAccount(props) {
-  const account = "Foodie";
+  
   const [state, setState] = useState({
     placeholderFN: "First Name",
     placeholderLN: "Last Name",
@@ -120,9 +120,9 @@ export default function CreateAccount(props) {
         firstname: firstname,
         lastname: lastname,
         
-        password: password,
+        
         email: email,
-        accountType : account
+        accountType : "Foodie"
       }
     };
     const apiData = await Api.post('userapi', '/users', data);
