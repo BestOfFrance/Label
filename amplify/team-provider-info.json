@@ -25,11 +25,11 @@
         },
         "labela864b5b6": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
-          "s3Key": "amplify-builds/labela864b5b6-494e6f52635763623851-build.zip"
+          "s3Key": "amplify-builds/labela864b5b6-714f7530635548736d42-build.zip"
         },
         "labelbbd6c0c9": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
-          "s3Key": "amplify-builds/labelbbd6c0c9-496934526e4777713152-build.zip"
+          "s3Key": "amplify-builds/labelbbd6c0c9-474a5454325056333852-build.zip"
         }
       },
       "auth": {

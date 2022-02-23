@@ -151,7 +151,8 @@ export default function Marker(props) {
             
             </div>
             <div>
-           <SeeButton shop={props.shop} onClickShop={props.onClickShop}/>
+              {props.signedIn === true ? <SeeButton shop={props.shop} onClickShop={props.onClickShop} text={"see more"}/> : <SeeButton   text={"Sign in or create an account to see more information"}/>}
+           
             
             </div>
             
