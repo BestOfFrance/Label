@@ -431,6 +431,7 @@ const pin = state.shops.map((center, index) => {
         <div className="premium-map">
         
         <div className="premium-list">
+        
         <h3>Premium Card</h3>
         
           <div className="cms">

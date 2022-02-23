@@ -16,7 +16,7 @@ const fs = require('fs');
   
 // }const idArray = 0
 const dataArray = []
-for (let i = 1001; i <=2000; i++) {
+for (let i = 2001; i <=3000; i++) {
   const dataObject = data[i]
   dataObject.terms = {name: data[i].title, address: data[i].address, city: data[i].City, state: data[i].Column4}
   dataArray.push(dataObject)
