@@ -497,6 +497,7 @@ const pin = state.shops.map((center, index) => {
       <div className="main-body">
         <Dashboard
         logout={signOut}
+        business={state.accountType}
         />
         </div>
       }
