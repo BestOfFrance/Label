@@ -39,13 +39,15 @@ const openNow = function(hours) {
         dayOfArray.push(newDayObject)
       } 
      }
-     console.log('newDya', dayOfArray)
+    // 
      
      for (const day of dayOfArray) {
        if (day.open < currentTime && day.close > currentTime) {
          
          return true;
        } else {
+       
+
          return false;
        }
      }

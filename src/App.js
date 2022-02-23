@@ -24,9 +24,12 @@ import awsconfig from './aws-exports';
 import getDistance from '../src/helpers/getDistance'
 import { Auth } from 'aws-amplify'
 import Dashboard from './components/Dashboard'
-const data = require('./shop-data')
+import DataButton from './components/DataButton'
+// const data = require('./shop-data')
 
+const dataObj = require('./details.js')
 
+const details = dataObj.details
 
 function checkUser() {
   Auth.currentAuthenticatedUser()
@@ -62,38 +65,47 @@ const mode = "MAP"
 
 //function to manually set the dynamo database, only to be used upon seeding
 
-// const details = array.details
 
-// const detailsArray = [];
-// for (const detail of details) {
-//   const detailsObject = {};
-//   detailsObject.name = detail.name;
-//   detailsObject.latitude = detail.coordinates.latitude;
-//   detailsObject.longitude = detail.coordinates.longitude;
-//   detailsObject.address = detail.location.address1
-//   detailsObject.phone = detail.display_phone
-//   detailsObject.image = detail.image_url
-//   detailsObject.rating = detail.rating
-//   detailsObject.price = detail.price
-//   detailsObject.category = detail.category
-//   detailsObject.hours = [];
-//   detailsObject.images = [];
 
-//   for (const image of detail.photos) {
-//     detailsObject.images.push(image)
-//   }
+const detailsArray = [];
+for (const detail of details) {
+  if (detail !== undefined) {
+  const detailsObject = {};
+  detailsObject.name = detail.yelpData.name;
+  detailsObject.latitude = detail.yelpData.coordinates.latitude;
+  detailsObject.longitude = detail.yelpData.coordinates.longitude;
+  detailsObject.address = detail.yelpData.location.address1
+  detailsObject.phone = detail.yelpData.display_phone
+  detailsObject.callPhone = detail.yelpData.phone
+  detailsObject.image = detail.yelpData.image_url
+  detailsObject.rating = detail.yelpData.rating
+  detailsObject.price = detail.yelpData.price
+  detailsObject.category = detail.category
+  detailsObject.description = detail.description
+  detailsObject.mapUrl = detail.place_url
+  detailsObject.numberReviews = detail.number_reviews
+  detailsObject.servicesAvailable = detail.services_available
+  detailsObject.hours = [];
+  detailsObject.images = [];
+
+  for (const image of detail.yelpData.photos) {
+    detailsObject.images.push(image)
+  }
   
-//   for (const day of detail.hours[0].open) {
+  if (detail.yelpData.hours) {
+  for (const day of detail.yelpData.hours[0].open) {
     
-//     const hours = {open: day.start, close: day.end, day: day.day}
+    const hours = {open: day.start, close: day.end, day: day.day}
     
-//     const stringHours = JSON.stringify(hours)
+    const stringHours = JSON.stringify(hours)
     
-//     detailsObject.hours.push(stringHours)
+    detailsObject.hours.push(stringHours)
     
-//   }
-//   detailsArray.push(detailsObject)
-// }
+  }
+}
+  detailsArray.push(detailsObject)
+}
+}
 
 
 
@@ -119,28 +131,39 @@ export default function Application(props) {
 
   //aws data
   //seed the AWS databse
+  // detailsObject.description = detail.description
+  // detailsObject.mapUrl = detail.place_url
+  // detailsObject.numberReviews = detail.number_reviews
+  // detailsObject.servicesAvailable = detail.services_available
 
 
-    // const saveShop = async () => {
-    //   const data = {
-    //     body: {
-    //       name: detailsArray[3].name,
-    //       latitude: detailsArray[3].latitude,
-    //       longitude: detailsArray[3].longitude,
-    //       address: detailsArray[3].address,
-    //       phone: detailsArray[3].phone,
-    //       image: detailsArray[3].image,
-    //       rating: detailsArray[3].rating,
-    //       price: detailsArray[3].price,
-    //       hours: detailsArray[3].hours,
-    //       images: detailsArray[3].images,
-    //       category: detailsArray[3].category
+    const saveShop = async () => {
+      for (let i = 0; i <= detailsArray.length; i++) {
+      const data = {
+        body: {
+          name: detailsArray[i].name,
+          latitude: detailsArray[i].latitude,
+          longitude: detailsArray[i].longitude,
+          address: detailsArray[i].address,
+          phone: detailsArray[i].phone,
+          image: detailsArray[i].image,
+          rating: detailsArray[i].rating,
+          price: detailsArray[i].price,
+          hours: detailsArray[i].hours,
+          images: detailsArray[i].images,
+          category: detailsArray[i].category,
+          callPhone: detailsArray[i].callPhone,
+          description: detailsArray[i].description,
+          mapUrl: detailsArray[i].mapUrl,
+          numberReviews: detailsArray[i].numberReviews,
+          servicesAvailable: detailsArray[i].servicesAvailable
   
-    //     }
-    //   }
-    //   const apiData = await Api.post('shopsapi', '/shops', data);
-    //   console.log({apiData})
-    // }
+        }
+      }
+      const apiData = await Api.post('shopsapi', '/shops', data);
+      console.log({apiData})
+    }
+    }
 
 
   
@@ -274,7 +297,8 @@ useEffect(() => {
   checkUser()
   fetchShops().then((out)=> {
     console.log(out)
-    console.log(data[0], 'data')
+    // console.log(JSON.stringify(data[0]), 'data')
+    console.log(detailsArray.length)
     const searchList = []
     for (const shop of out.data.Items) {
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
@@ -353,12 +377,14 @@ const pin = state.shops.map((center, index) => {
         updateSearch={updateSearch}
         searchList={state.searchList}
         getNews={getNews}
+        
       />
       
       {state.mode === mode && 
       <div className="main-body">
       <div className="main-container">
         <div className="premium-map">
+        
         <div className="premium-list">
         <h3>Premium Card</h3>
         
