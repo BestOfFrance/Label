@@ -21,7 +21,7 @@ import Amplify, { urlSafeDecode } from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from './aws-exports';
 // import details from './details.js';
-import getDistance from '../src/helpers/getDistance'
+// import getDistance from '../src/helpers/getDistance'
 import { Auth } from 'aws-amplify'
 import Dashboard from './components/Dashboard'
 import DataButton from './components/DataButton'
@@ -120,7 +120,7 @@ export default function Application(props) {
     mode: mode,
     shopID: 0,
     selected: null, 
-    categories: ["Restaurant", "Pastry Shop", "Bakery", "Grocery"],
+    categories: ["Restaurant", "Bistro", "Breakfast Restaurant", "Pastry Shop", "Bakery", "Cafe", "Grocery", "Cake shop", "Charcuterie", "Cheese shop", "Chocolate shop", "Convenience Store", "Dessert shop", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant", "Grocery store"],
     topThree: [],
     searchSelected: "",
     searchList: [],
@@ -199,7 +199,37 @@ export default function Application(props) {
     // }
     // }
 
-
+    const getDistance = function(markers, myLatlng) {
+      var markersByDistance = [];
+      // console.log(markers, 'markers')
+      // console.log(myLatlng, 'll')
+    for ( var i = 0; i < markers.length; i++ ) {
+        var marker = markers[i];
+    
+        // using pythagoras does not take into account curvature, 
+        // but will work fine over small distances.
+        // you can use more complicated trigonometry to 
+        // take curvature into consideration
+        var dx = myLatlng.lng - marker.longitude;
+        var dy = myLatlng.lat - marker.latitude;
+        
+        var distance = Math.sqrt( dx * dx + dy * dy );
+    
+        markersByDistance[ i ] = marker;
+        markersByDistance[ i ].distance = distance;
+    
+    }
+    
+    // function to sort your data...
+    function sorter (a,b) { 
+        return a.distance > b.distance ? 1 : -1;
+    }
+    
+    // sort the array... now the first 5 elements should be your closest points.
+    markersByDistance.sort( sorter );
+    const topThreeShops = markersByDistance.slice(0,3)
+    setState((prev) => ({ ...prev, topThree: topThreeShops}))
+    }
   
  
 //set the selected marker
@@ -234,7 +264,7 @@ const setMap = function() {
   setState((prev) => ({ ...prev, mode: "MAP" }))
 }
 const login = function() {
-  setState((prev) => ({ ...prev, mode: "login", signedIn: true }))
+  setState((prev) => ({ ...prev, mode: "login"}))
 }
 const setConfirm = function() {
   setState((prev) => ({ ...prev, mode: "confirmAccount" }))
@@ -262,7 +292,7 @@ const openShopWindow = function(shop) {
 // set function to get the disatnce every time the map scrolls
 const onChange = function({center, zoom}) {
   
-  setState((prev) => ({ ...prev, topThree: getDistance(state.topThree, center)}))
+  getDistance(state.shops, center)
 }
 
 
@@ -343,12 +373,13 @@ useEffect(() => {
     console.log(out)
     // console.log(JSON.stringify(data[0]), 'data')
     // console.log(detailsArray.length)
+    getDistance(out.data.Items, state.location)
     const searchList = []
     for (const shop of out.data.Items) {
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
       searchList.push(newShop)
     }
-    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, topThree: getDistance(out.data.Items, state.location)}))
+    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList}))
   })
 }, [state.location])
 

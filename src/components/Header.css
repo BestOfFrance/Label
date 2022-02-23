@@ -11,7 +11,7 @@
 }
 
 #logo {
-  height: 100%;
+  height: 80px;
   width: 100%;
   margin-left: 1em;
   margin-right: 1em;
@@ -56,7 +56,9 @@ button {
   background-color: white;
   border: none;
 }
-
+.news-deals-container {
+  width: 12em;
+}
 /* 
 /* Dropdown Button */
 /* .dropbtn {

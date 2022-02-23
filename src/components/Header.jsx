@@ -44,7 +44,7 @@ export default function Header(props) {
          <button className="small-button"><img className="search-icon" src="icons8-search-50.png" onClick={showSearch}/></button> 
         
         </div>
-        <div>
+        <div className="news-deals-container">
           <button className="small-button" onClick={props.getNews}>
             News and Deals
           </button>

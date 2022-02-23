@@ -10,11 +10,11 @@ export default function DropDown(props) {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item onClick={() => {props.onClick(["Grocery"])}}>Grocery</Dropdown.Item>
-    <Dropdown.Item onClick={() => {props.onClick(["Bakery"])}}>Bakery</Dropdown.Item>
-    <Dropdown.Item onClick={() => {props.onClick(["Pastry Shop"])}}>Pastry Shop</Dropdown.Item>
-    <Dropdown.Item onClick={() => {props.onClick(["Restaurant"])}}>Restaurant</Dropdown.Item>
-    <Dropdown.Item onClick={() => {props.onClick(["Restaurant", "Pastry Shop", "Bakery", "Grocery"])}}>All Categories</Dropdown.Item>
+    <Dropdown.Item onClick={() => {props.onClick(["Grocery", "Cheese shop", "Chocolate shop", "Convenience Store", "Grocery store"])}}>Grocery</Dropdown.Item>
+    <Dropdown.Item onClick={() => {props.onClick(["Bakery", "Cafe"])}}>Bakery</Dropdown.Item>
+    <Dropdown.Item onClick={() => {props.onClick(["Pastry Shop", "Cake shop", "Dessert shop"])}}>Pastry Shop</Dropdown.Item>
+    <Dropdown.Item onClick={() => {props.onClick(["Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"])}}>Restaurant</Dropdown.Item>
+    <Dropdown.Item onClick={() => {props.onClick(["Restaurant", "Bistro", "Breakfast Restaurant", "Pastry Shop", "Bakery", "Cafe", "Grocery", "Cake shop", "Charcuterie", "Cheese shop", "Chocolate shop", "Convenience Store", "Dessert shop", "Diner", "Family restaurant", "Fine dining restaurant" ])}}>All Categories</Dropdown.Item>
   </Dropdown.Menu>
 </Dropdown>
   )
