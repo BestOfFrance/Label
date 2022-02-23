@@ -51,8 +51,8 @@ export default function CreateAccount(props) {
     let signedin = false;
     fetchUser()
     .then((out) => {
-      console.log(out)
-      if (out.Items.accountType === "business") {
+      console.log(out.data.Item.accountType)
+      if (out.data.Item.accountType === "Business") {
         props.setBusiness()
       }
     })
