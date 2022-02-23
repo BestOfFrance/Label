@@ -162,7 +162,7 @@ export default function Application(props) {
       .catch(err => console.log(err))
       
   }
-
+  const categoriesArray = []
   //aws data
   //seed the AWS databse
   // detailsObject.description = detail.description
@@ -200,10 +200,12 @@ export default function Application(props) {
     // }
 
     const getDistance = function(markers, myLatlng) {
+     
       var markersByDistance = [];
       // console.log(markers, 'markers')
       // console.log(myLatlng, 'll')
     for ( var i = 0; i < markers.length; i++ ) {
+      if (state.categories.includes(markers[i].category)) {
         var marker = markers[i];
     
         // using pythagoras does not take into account curvature, 
@@ -217,7 +219,7 @@ export default function Application(props) {
     
         markersByDistance[ i ] = marker;
         markersByDistance[ i ].distance = distance;
-    
+      }
     }
     
     // function to sort your data...
@@ -359,6 +361,7 @@ console.log(state.accountType)
 //function for filter button
 const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
+  getDistance(state.shops, state.location)
 }
 
 
@@ -373,13 +376,17 @@ useEffect(() => {
     console.log(out)
     // console.log(JSON.stringify(data[0]), 'data')
     // console.log(detailsArray.length)
-    getDistance(out.data.Items, state.location)
+   
     const searchList = []
+    
     for (const shop of out.data.Items) {
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
       searchList.push(newShop)
+      categoriesArray.push(shop.category)
     }
-    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList}))
+    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, categories: categoriesArray}))
+    console.log(state.location)
+    getDistance(out.data.Items, state.location)
   })
 }, [state.location])
 
@@ -474,7 +481,7 @@ const pin = state.shops.map((center, index) => {
           </div>
           
           
-        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn}>
+        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray}>
         
         </Maps>
         

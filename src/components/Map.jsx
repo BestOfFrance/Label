@@ -43,7 +43,7 @@ export default function Maps(props) {
     
     
     <div className="google-map">
-    <DropDown onClick={props.onFilter} />
+    <DropDown onClick={props.onFilter} categories={props.categories} />
     {props.location &&
     
       <GoogleMapReact
