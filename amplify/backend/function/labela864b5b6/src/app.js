@@ -82,7 +82,9 @@ app.post('/users', function(req, res) {
       lastname: req.body.lastname,
       username: req.body.username,
       accountType: req.body.accountType,
-      email: req.body.email
+      email: req.body.email,
+      shopId: req.body.shopId
+      
     }
   }
   docClient.put(params, function(err, data) {

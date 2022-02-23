@@ -86,8 +86,8 @@ app.post('/shops', function(req, res) {
       price: req.body.price,
       hours: req.body.hours,
       images: req.body.images,
-      category: req.body.category,
-      ownerId: req.body.ownerId
+      category: req.body.category
+      
     }
   }
   docClient.put(params, function(err, data) {
