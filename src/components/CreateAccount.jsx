@@ -1,6 +1,6 @@
 import './CreateAccount.css'
 import {useState} from 'react';
-import { FormControl, Input, FormLabel, Checkbox } from '@mui/material';
+import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
@@ -24,6 +24,8 @@ export default function CreateAccount(props) {
     placeholderConfirm: "Confirm Password",
     placeholderUser: "Username"
   })
+
+  const [business, setBusiness] = useState("Business")
   const [show, setShow] = useState("hide")
   const [firstname,setfirstname]=useState("")
   function changefirstname(event){
@@ -122,7 +124,7 @@ export default function CreateAccount(props) {
         
         
         email: email,
-        accountType : "Business"
+        accountType : business
       }
     };
     const apiData = await Api.post('userapi', '/users', data);
@@ -170,6 +172,16 @@ export default function CreateAccount(props) {
                <FormLabel>Confirm Password</FormLabel>
                <Input type='password' placeholder={state.placeholderConfirm} value={confirmPassword} onChange={changepasswordconfirm} required={true}/>
              </FormControl>
+             <FormGroup>
+  <FormControlLabel control={<Checkbox defaultChecked />} label="Freemium" />
+  
+
+  <FormControlLabel control={<Checkbox  />} label="Monthly Premium ($30USD/Month)" />
+  
+
+  <FormControlLabel control={<Checkbox  />} label="Yearly Premium ($300USD/Year)" />
+  
+</FormGroup>
              
      
        
