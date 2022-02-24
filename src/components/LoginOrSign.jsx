@@ -7,20 +7,25 @@ export default function LoginOrSign(props) {
       <div>
       You're not signed in. Please select an option below. 
       </div>
+
+      
       <div className="choose-account-type">
       
         <div className="foodie-panel">
-          <button>Foodie</button> 
-          <div><button onClick={props.getRegisterFoodie}>Register</button><button onClick={props.login}>Login</button></div>
+          <button className="foodie-button"><b>Foodie</b></button> 
+          <div className="foodie-button"><button className="foodie-button" onClick={props.getRegisterFoodie}><u>Register</u></button></div>
           <div>More information here.</div>
         </div>
-      
+        <div className="login-button">
+        <button onClick={props.login}><u>Login</u></button>
+      </div>
         <div className="business-panel">
-          <button >Business Owner</button>
-          <div><button onClick={props.getRegister}>Register</button><button onClick={props.login}>Login</button></div>
+          <button className="business-button" ><b>Business Owner</b></button>
+          <div className="business-button"><button className="business-button" onClick={props.getRegister}><u>Register</u></button></div>
           <div>More information here.</div>
         </div>
       </div>
+      
     </div>
   )
 }
