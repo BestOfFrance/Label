@@ -13,42 +13,46 @@ const openNow = function(hours) {
     }
     const currentTime = Number(`${hour}${minute}`)
     // console.log('current time', currentTime)
-
-    // const hoursArray = hours.split('},')
-    // //  console.log(hoursArray)
-    //  const nextHours = [];
-    //  for (const day of hoursArray) {
-    //    if (day[day.length - 1] !== '}') {
-    //     nextHours.push(`${day}}`)
-    //    } else {
-    //      nextHours.push(day)
-    //    }
+// console.log(hours)
+//     const hoursArray = hours.split('},')
+//     //  console.log(hoursArray)
+//      const nextHours = [];
+//      for (const day of hoursArray) {
+//        if (day[day.length - 1] !== '}') {
+//         nextHours.push(`${day}}`)
+//        } else {
+//          nextHours.push(day)
+//        }
        
-    //  }
-    //  const dayArray = [];
-    //  for (const day of nextHours) {
-    //    const dayObj = JSON.parse(day)
-    //    dayArray.push(dayObj)
-    //  }
-    const dayArray = hours;
+//      }
+     const dayArray = [];
+     for (const day of hours) {
+       const dayObj = JSON.parse(day)
+       dayArray.push(dayObj)
+     }
+    
+    // console.log(dayArray)
      const dayOfArray = []
+    //  console.log(dayArray)
      for (const object of dayArray) {
        
       if (object.day === dayNow) {
-        let newDayObject = {open: Number(object.open), close: Number(object.close)}
+        const index = dayArray.indexOf(object) + 1
+        let newDayObject = {open: Number(object.open), close: Number(object.close), tomorrow: dayArray[index]}
         dayOfArray.push(newDayObject)
       } 
      }
     // 
-     
+    
      for (const day of dayOfArray) {
        if (day.open < currentTime && day.close > currentTime) {
-         
-         return true;
+         const openObject = {isOpen: true}
+         return openObject;
        } else {
        
-
-         return false;
+        const openObject = {isOpen: false, tomorrow: day.tomorrow}
+        return openObject;
+         
        }
      }
 }

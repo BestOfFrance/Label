@@ -10,10 +10,18 @@ export default function BusinessList(props) {
   const [active, setActive] = useState(false);
   // console.log('business props', props)
   const [open, setOpen] = useState(false);
+  const [openTime, setOpenTime] = useState("");
 
   useEffect(() => {
-    if(openNow(props.hours)) {
+   const checkOpen = openNow(props.hours)
+   
+    if(checkOpen.isOpen === true) {
       setOpen(true);
+      // setOpenTime(checkOpen.tomorrow.open)
+    } else {
+      const checkOpenDay = checkOpen.tomorrow
+     
+      setOpenTime(checkOpenDay.open)
     }
     
     if (props.selectedCenter !== null) {
@@ -78,7 +86,7 @@ export default function BusinessList(props) {
             
           
           <div>
-          {open ? 'Open Now' : 'Closed'}
+          {open ? 'Open Now' : `Closed, opens tomorrow at ${openTime}`}
             
             
             </div>
