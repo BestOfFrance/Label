@@ -22,7 +22,10 @@ export default function CreateAccount(props) {
     placeholderEmail: "Email",
     placeholderPassword: "Password",
     placeholderConfirm: "Confirm Password",
-    placeholderUser: "Username"
+    placeholderUser: "Username",
+    freemium: true,
+    monthly: false,
+    yearly: false
   })
 
   const [business, setBusiness] = useState("Business")
@@ -62,7 +65,7 @@ export default function CreateAccount(props) {
     const val=event.target.value
     setConfirm(val)
   }
-  console.log(email)
+  // console.log(email)
   async function signUp() {
     try {
         const { user } = await Auth.signUp({
@@ -73,7 +76,7 @@ export default function CreateAccount(props) {
           }
             
         });
-        console.log(user);
+        // console.log(user);
     } catch (error) {
         console.log('error signing up:', error);
     }
@@ -103,6 +106,7 @@ export default function CreateAccount(props) {
         if (out.data.Item) {
           setemail("This email has already been used")
         } else {
+
           saveUser();
           signUp()
           .then(() => {
@@ -115,7 +119,30 @@ export default function CreateAccount(props) {
       // saveUser();
     }
   }
-
+ const onChangeFreemium = function() {
+   if (state.freemium === true) {
+    setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: false }))
+   } else {
+    setState((prev) => ({ ...prev, freemium: true, monthly: false, yearly: false }))
+    setBusiness("Business")
+   }
+ }
+ const onChangeMonthly = function() {
+  if (state.monthly === true) {
+   setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: false }))
+  } else {
+   setState((prev) => ({ ...prev, freemium: false, monthly: true, yearly: false }))
+   setBusiness("monthly")
+  }
+}
+const onChangeYearly = function() {
+  if (state.yearly === true) {
+   setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: false }))
+  } else {
+   setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: true }))
+   setBusiness("yearly")
+  }
+}
   const saveUser=async ()=>{
     const data = {
       body: {
@@ -173,13 +200,13 @@ export default function CreateAccount(props) {
                <Input type='password' placeholder={state.placeholderConfirm} value={confirmPassword} onChange={changepasswordconfirm} required={true}/>
              </FormControl>
              <FormGroup>
-  <FormControlLabel control={<Checkbox defaultChecked />} label="Freemium" />
+  <FormControlLabel control={<Checkbox checked={state.freemium} onChange={onChangeFreemium} />} label="Freemium" />
   
 
-  <FormControlLabel control={<Checkbox  />} label="Monthly Premium ($30USD/Month)" />
+  <FormControlLabel control={<Checkbox checked={state.monthly} onChange={onChangeMonthly}/>} label="Monthly Premium ($30USD/Month)" />
   
 
-  <FormControlLabel control={<Checkbox  />} label="Yearly Premium ($300USD/Year)" />
+  <FormControlLabel control={<Checkbox checked={state.yearly} onChange={onChangeYearly}/>} label="Yearly Premium ($300USD/Year)" />
   
 </FormGroup>
              
