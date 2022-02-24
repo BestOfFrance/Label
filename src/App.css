@@ -7,7 +7,7 @@
 
 .cms-cards {
   overflow:hidden; 
-  overflow-x:scroll;
+  overflow-x:auto;
 }
 .premium-list {
   width: 25%;
@@ -37,6 +37,8 @@ h3 {
 .list-group {
   display: flex;
   flex-direction: row !important;
+  justify-content: center;
+ 
 }
 div.list {
   display: flex;
@@ -76,4 +78,10 @@ a {
 
 .main-body-show {
   height: fit-content;
+}
+
+.cmsArrow {
+  height: 25px;
+  width: auto;
+  align-self: center;
 }

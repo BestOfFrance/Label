@@ -152,7 +152,7 @@ export default function Application(props) {
     
   })
 
-  
+  const [index, setIndex] = useState(0)
   function checkUser() {
     let authenticated = false;
     Auth.currentAuthenticatedUser()
@@ -366,13 +366,14 @@ const items = state.topThree.map((shop, index) => {
 
 //cms cards
 const cms = state.shops.map((shop, index) => {
-  if (state.categories.includes(shop.category)) {
+  
     return(
-      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} />
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories}/>
     )
-  }
+  
 
 })
+
 
 
 
@@ -467,7 +468,15 @@ const pin = state.shops.map((center, index) => {
   
   
 })
+const goRight = function() {
+  setIndex(index + 1)
+}
 
+const goLeft = function() {
+  if (index > 0) {
+  setIndex(index - 1)
+  }
+}
 
 //render all
   return(
@@ -512,7 +521,9 @@ const pin = state.shops.map((center, index) => {
         <div >
         
         <ListGroup as="ul" className="cms-cards">
-          {cms}
+        <img className="cmsArrow" src="angle-left-solid.svg" onClick={goLeft} ></img>
+          {cms[index]} {cms[index + 1]} {cms[index + 2]}
+          <img className="cmsArrow" src="angle-right-solid.svg" onClick={goRight}></img>
        </ListGroup>
         </div>
       </div>

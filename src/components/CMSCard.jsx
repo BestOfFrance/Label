@@ -6,6 +6,7 @@ import './list.css'
 
 export default function CMSCard(props) {
   const [active, setActive] = useState(false);
+  
 
   useEffect(() => {
     
@@ -20,6 +21,8 @@ export default function CMSCard(props) {
     }
    
   }, [props.state])
+  
+
   useEffect(() => {
     
     if (props.selectedCenter !== null) {
@@ -51,7 +54,7 @@ export default function CMSCard(props) {
 
   return(
     
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>
+    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}} >
       <div style={styles} className="list-images">
       
 
