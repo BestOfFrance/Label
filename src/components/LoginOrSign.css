@@ -14,18 +14,18 @@
 }
 
 .foodie-panel {
-  width: 200px;
+  width: 225px;
   height: 300px;
   background: #1d4383;
-  margin-right: 1em;
+ 
   color: white;
   
 }
 .business-panel {
-  width: 200px;
+  width: 225px;
   height: 300px;
   background: #d82f28;
-  margin-left: 1em;
+  
   color: white;
 }
 
@@ -45,8 +45,12 @@
 
 .login-button {
   padding-top: 1em;
-  width: 200px;
+  width: 225px;
   height: 300px;
   font-size: large;
   
+}
+
+.login-information {
+  text-align: left;
 }
