@@ -24,6 +24,7 @@
     "express-basic-auth": "^1.2.1",
     "google-map-react": "^2.1.10",
     "google-maps-react": "^2.0.6",
+    "node-sass": "^7.0.1",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-alice-carousel": "^2.5.1",
