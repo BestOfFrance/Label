@@ -149,7 +149,7 @@ const onChangeYearly = function() {
         firstname: firstname,
         lastname: lastname,
         
-        
+        isVerified: false,
         email: email,
         accountType : business
       }

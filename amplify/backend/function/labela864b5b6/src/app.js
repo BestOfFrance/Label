@@ -83,7 +83,8 @@ app.post('/users', function(req, res) {
       username: req.body.username,
       accountType: req.body.accountType,
       email: req.body.email,
-      shopId: req.body.shopId
+      shopId: req.body.shopId,
+      isVerified: req.body.isVerified
       
     }
   }

@@ -148,8 +148,8 @@ export default function Application(props) {
     searchSelected: "",
     searchList: [],
     signedIn: false,
-    accountType: "free"
-    
+    accountType: "free",
+    isVerified: false
   })
 
   const [index, setIndex] = useState(0)
