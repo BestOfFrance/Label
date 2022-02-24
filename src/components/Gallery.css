@@ -1,0 +1,7 @@
+.alice-carousel {
+  height: fit-content;
+}
+
+.alice-carousel__stage-item {
+  max-height: 185px;
+}

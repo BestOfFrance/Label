@@ -28,9 +28,11 @@ import DataButton from './components/DataButton'
 import Login from './components/Login'
 // const data = require('./shop-data')
 
-const dataObj = require('./details.js')
 
-const details = dataObj.details
+const dataObj = require('./details3001.js')
+const dataObj1 = require('./details.js')
+const details1 = dataObj1.details
+const details = dataObj.details3001
 
 // function checkUser() {
 //   Auth.currentAuthenticatedUser()
@@ -67,7 +69,20 @@ const mode = "MAP"
 
 //function to manually set the dynamo database, only to be used upon seeding
 
+const categoriesArray = []
 
+for (const detail of details) {
+  
+  if (detail !== undefined) {
+  categoriesArray.push(detail.category)
+  }
+}
+
+for (const detail of details1) {
+  if (detail !== undefined) {
+  categoriesArray.push(detail.category)
+  }
+}
 
 // const detailsArray = [];
 // for (const detail of details) {
@@ -120,7 +135,7 @@ export default function Application(props) {
     mode: mode,
     shopID: 0,
     selected: null, 
-    categories: ["Restaurant", "Bistro", "Breakfast Restaurant", "Pastry Shop", "Bakery", "Cafe", "Grocery", "Cake shop", "Charcuterie", "Cheese shop", "Chocolate shop", "Convenience Store", "Dessert shop", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant", "Grocery store"],
+    categories: categoriesArray,
     topThree: [],
     searchSelected: "",
     searchList: [],
@@ -162,13 +177,10 @@ export default function Application(props) {
       .catch(err => console.log(err))
       
   }
-  const categoriesArray = []
+  
   //aws data
   //seed the AWS databse
-  // detailsObject.description = detail.description
-  // detailsObject.mapUrl = detail.place_url
-  // detailsObject.numberReviews = detail.number_reviews
-  // detailsObject.servicesAvailable = detail.services_available
+  
 
 
     // const saveShop = async () => {
@@ -354,6 +366,8 @@ const cms = state.shops.map((shop, index) => {
 
 })
 
+
+
 // console.log('shops state', state.shops)
 
 console.log(state.accountType)
@@ -473,7 +487,7 @@ const pin = state.shops.map((center, index) => {
         <h3>Premium Card</h3>
         
           <div className="cms">
-          
+          {/* <DataButton onClick={saveShop}/> */}
         <ListGroup as="ul" id="premium">
           {items}
        </ListGroup>
@@ -487,7 +501,7 @@ const pin = state.shops.map((center, index) => {
         
         </div>
         
-        <div className="list">
+        <div >
         
         <ListGroup as="ul" className="cms-cards">
           {cms}
