@@ -6,21 +6,21 @@ export default function Footer(props) {
    
 
  
-<footer class="footer-container" >
-  <div class="footer-center">
-    <div class=" container"> 
-      <div class="row">
+<footer className="footer-container" >
+  <div className="footer-center">
+    <div className=" container"> 
+      <div className="row">
         
-         <div class="col-md-4 col-12 ">
+         <div className="col-md-4 col-12 ">
             
 
            
-        <div class="footer-customhtml">
-          <h3 class="module-title">contact us </h3>
+        <div className="footer-customhtml">
+          <h3 className="module-title">contact us </h3>
 <h5>It is time for You to Experience True France.</h5>
-<p><i class="cs-font clever-icon-map-5"></i> Vancouver, BC |
+<p><i className="cs-font clever-icon-map-5"></i> Vancouver, BC |
 Canada</p>
-<p><i class="cs-font clever-icon-mail-4"></i> experience@bestoffrance.ca</p>
+<p><i className="cs-font clever-icon-mail-4"></i> experience@bestoffrance.ca</p>
         </div>
         
 
@@ -29,16 +29,16 @@ Canada</p>
 
 
         </div>
-        <div class="col-md-4 col-12 row">
+        <div className="col-md-4 col-12 row">
           
 
 
-          <div class="col-md-6">
-            <div class="footer-link">
+          <div className="col-md-6">
+            <div className="footer-link">
               
-              <h3 class="module-title">Shortcuts</h3>
+              <h3 className="module-title">Shortcuts</h3>
               
-              <ul class="content">
+              <ul className="content">
                 <li><a href="/search">Search</a></li>
                 
                 <li><a href="/pages/faq">FAQ</a></li>
@@ -54,20 +54,20 @@ Canada</p>
 
 
         </div>
-        <div class="col-md-4 col-12 ">
+        <div className="col-md-4 col-12 ">
           
 
 
 
           
-        <div class="footer-newsletter">
-          <div class="newsletter">
+        <div className="footer-newsletter">
+          <div className="newsletter">
             
-            <h3 class="module-title">
+            <h3 className="module-title">
               Newsletter
             </h3>
             
-            <p class="sub-title">Visit our main website to subscribe to our newsletter</p>
+            <p className="sub-title">Visit our main website to subscribe to our newsletter</p>
             
           </div>
         </div>
@@ -76,36 +76,36 @@ Canada</p>
 
 
         </div>
-        <div class="clearfix"></div>
+        <div className="clearfix"></div>
        
 
       </div>
     </div>
   </div>
-  <div class="footer-bottom  text-center">
+  <div className="footer-bottom  text-center">
     
 
 
 
 
-          <div class="footer-isocal">
+          <div className="footer-isocal">
           
-          <div class="footer-icon-share">
+          <div className="footer-icon-share">
             
             <a href="https://www.facebook.com/bestoffranceCanada/">
-              <i class="cs-font clever-icon-facebook"></i>
+              <img src="facebook.png" className="footer-icon"></img>
             </a>
             
             
             <a href="https://www.instagram.com/bestoffrance.ca">
-              <i class="cs-font clever-icon-instagram"></i>
+              <img src="instagram.png" className="footer-icon"></img>
             </a>
             
             
             
             
             <a href="https://www.youtube.com/channel/UCitywNqeMADNW6lQ_zE4gXg">
-              <i class="cs-font clever-icon-youtube-2"></i>
+              <img src="youtube.png" className="footer-icon"></img>
             </a>
             
 
@@ -116,7 +116,7 @@ Canada</p>
         </div>
           
 
-          <div class="footer-copyright">
+          <div className="footer-copyright">
           <address>
             Copyright © 2021 Best of France LLP. All rights reserved
           </address>
