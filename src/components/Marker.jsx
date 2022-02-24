@@ -5,7 +5,7 @@ import CloseButton from 'react-bootstrap/CloseButton'
 import openNow from '../helpers/openNow'
 import {Rating} from 'react-simple-star-rating';
 import SeeButton from './SeeButton'
-
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const Wrapper = styled.div`
 position: absolute;
 top: 50%;
@@ -33,7 +33,10 @@ cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
   const [style, setStyle] = useState(0)
+  
   const [open, setOpen] = useState(false);
+  const [openTime, setOpenTime] = useState("");
+  const [openDay, setOpenDay] = useState("")
   const [background, setBackground] = useState('none')
   useEffect(() => {
     
@@ -53,10 +56,17 @@ export default function Marker(props) {
 
   }, [props.show])
   useEffect(() => {
-    if (openNow(props.hours)) {
+    const checkOpen = openNow(props.hours)
+   if(checkOpen !== undefined) {
+    if(checkOpen.isOpen === true) {
       setOpen(true);
+      // setOpenTime(checkOpen.tomorrow.open)
+    } else {
+      const checkOpenDay = checkOpen.tomorrow
+      setOpenDay(days[checkOpenDay.day])
+      setOpenTime(checkOpenDay.open)
     }
-    
+  }
     // console.log('day, hours', day, hour)
     // console.log(dayArray)
     if (props.show !== null) {
@@ -72,7 +82,7 @@ export default function Marker(props) {
     }
     
 
-  }, [props.show2])
+  }, [props.show])
 
   
 
@@ -146,8 +156,7 @@ export default function Marker(props) {
             
           
           <div>
-            {open ? 'Open Now' : 'Closed'}
-            
+          {open ? 'Open Now' : `Closed, opens ${openDay} at ${openTime}`}
             
             </div>
             <div>

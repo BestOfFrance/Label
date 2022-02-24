@@ -35,10 +35,10 @@ const openNow = function(hours) {
      const dayOfArray = []
     //  console.log(dayArray)
      for (const object of dayArray) {
-       
+      //  console.log(object, "day")
       if (object.day === dayNow) {
         const index = dayArray.indexOf(object) + 1
-        let newDayObject = {open: Number(object.open), close: Number(object.close), tomorrow: dayArray[index]}
+        let newDayObject = {open: Number(object.open), close: Number(object.close), tomorrow: dayArray[index], day: Number(object.day)}
         dayOfArray.push(newDayObject)
       } 
      }
@@ -50,7 +50,7 @@ const openNow = function(hours) {
          return openObject;
        } else {
        
-        const openObject = {isOpen: false, tomorrow: day.tomorrow}
+        const openObject = {isOpen: false, tomorrow: day.tomorrow, day: day.day}
         return openObject;
          
        }

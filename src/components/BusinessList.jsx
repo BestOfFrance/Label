@@ -4,14 +4,14 @@ import {Rating} from 'react-simple-star-rating';
 import openNow from '../helpers/openNow'
 import './list.css'
 
-
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 export default function BusinessList(props) {
   const [active, setActive] = useState(false);
   // console.log('business props', props)
   const [open, setOpen] = useState(false);
   const [openTime, setOpenTime] = useState("");
-
+  const [openDay, setOpenDay] = useState("")
   useEffect(() => {
    const checkOpen = openNow(props.hours)
    
@@ -20,7 +20,7 @@ export default function BusinessList(props) {
       // setOpenTime(checkOpen.tomorrow.open)
     } else {
       const checkOpenDay = checkOpen.tomorrow
-     
+      setOpenDay(days[checkOpenDay.day])
       setOpenTime(checkOpenDay.open)
     }
     
@@ -86,7 +86,7 @@ export default function BusinessList(props) {
             
           
           <div>
-          {open ? 'Open Now' : `Closed, opens tomorrow at ${openTime}`}
+          {open ? 'Open Now' : `Closed, opens ${openDay} at ${openTime}`}
             
             
             </div>
