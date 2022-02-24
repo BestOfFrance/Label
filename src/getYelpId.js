@@ -16,7 +16,7 @@ const fs = require('fs');
   
 // }const idArray = 0
 const dataArray = []
-for (let i = 3001; i <=4000; i++) {
+for (let i = 4001; i <=5000; i++) {
   const dataObject = data[i]
   dataObject.terms = {name: data[i].title, address: data[i].address, city: data[i].City, state: data[i].Column4}
   dataArray.push(dataObject)
@@ -57,7 +57,7 @@ return l
 return l.name;
 })))
   .then(axios.spread(function (...res) {
-    var file = fs.createWriteStream('arrayData3001.js');
+    var file = fs.createWriteStream('arrayData4001.js');
   file.on('error', function(err) { /* error handling */ });
   res.forEach(function(v) { file.write(`${JSON.stringify(v)}, `); });
   file.end();

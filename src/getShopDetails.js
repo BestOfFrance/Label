@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const array = require('./arrayData3001');
+const array = require('./arrayData4001');
 
 
 const ids = array.ids
@@ -44,7 +44,7 @@ return l
 return l.name;
 })))
   .then(axios.spread(function (...res) {
-  var file = fs.createWriteStream('details3001.js');
+  var file = fs.createWriteStream('details4001.js');
   file.on('error', function(err) { /* error handling */ });
   res.forEach(function(v) { file.write(`${JSON.stringify(v)}, `); });
   

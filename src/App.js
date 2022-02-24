@@ -29,10 +29,12 @@ import Login from './components/Login'
 // const data = require('./shop-data')
 
 
-const dataObj = require('./details3001.js')
+const dataObj = require('./details4001.js')
 const dataObj1 = require('./details.js')
+const dataObj2 = require('./details3001.js')
 const details1 = dataObj1.details
-const details = dataObj.details3001
+const details = dataObj.details
+const details2 = dataObj2.details3001
 
 // function checkUser() {
 //   Auth.currentAuthenticatedUser()
@@ -79,6 +81,12 @@ for (const detail of details) {
 }
 
 for (const detail of details1) {
+  if (detail !== undefined) {
+  categoriesArray.push(detail.category)
+  }
+}
+
+for (const detail of details2) {
   if (detail !== undefined) {
   categoriesArray.push(detail.category)
   }
