@@ -8,22 +8,26 @@ export default function LoginOrSign(props) {
       You're not signed in. Please select an option below. 
       </div>
 
-      
+      <div className="login-button">
+        <button onClick={props.login}><u>Login</u></button>
+      </div>
       <div className="choose-account-type">
       
         <div className="foodie-panel">
-          <button className="foodie-button"><b>Foodie</b></button> 
+          
+          <img className="foodie-business-image" src="person-shopping-online.png"/>
+          <b>Foodie</b>
           <div className="foodie-button"><button className="foodie-button" onClick={props.getRegisterFoodie}><u>Register</u></button></div>
           <div className="login-information"><ul>
             <li>Access more information about shops</li>
             <li>More features to come</li>
             </ul></div>
         </div>
-        <div className="login-button">
-        <button onClick={props.login}><u>Login</u></button>
-      </div>
+        
         <div className="business-panel">
-          <button className="business-button" ><b>Business Owner</b></button>
+         
+         <img className="foodie-business-image" src="person-studying-online-2.png"/>
+         <b>Business Owner</b>
           <div className="business-button"><button className="business-button" onClick={props.getRegister}><u>Register</u></button></div>
           <div className="login-information"><ul>
             <li>Choose between Freemium and Premium</li>

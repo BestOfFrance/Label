@@ -9,48 +9,38 @@
   display: flex;
   justify-content: center;
   margin-top: 2em;
-  border: black;
-  border-style: solid;
+ 
+ 
 }
 
 .foodie-panel {
-  width: 225px;
-  height: 300px;
-  background: #1d4383;
- 
-  color: white;
+  width: 30%;
+  height: auto;
+  text-align: left;
   
 }
 .business-panel {
-  width: 225px;
-  height: 300px;
-  background: #d82f28;
+  width: 30%;
+  height: auto;
+  text-align: left;
   
-  color: white;
-}
-
-.foodie-button {
-  background: #1d4383;
-  color: white;
-  font-size: large;
   
 }
 
-.business-button {
-  background: #d82f28;
-  font-size: large;
-  color: white;
-  
-}
+
+
+
 
 .login-button {
   padding-top: 1em;
-  width: 225px;
-  height: 300px;
+  
   font-size: large;
   
 }
 
-.login-information {
-  text-align: left;
+
+
+.foodie-business-image {
+  width: 100%;
+  height: auto;
 }
