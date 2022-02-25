@@ -38,7 +38,15 @@
   
 }
 
+.foodie-button {
+  width: 100%;
+  text-align: center;
+}
 
+.business-button {
+  width: 100%;
+  text-align: center;
+}
 
 .foodie-business-image {
   width: 100%;
