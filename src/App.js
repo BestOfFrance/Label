@@ -519,7 +519,7 @@ const goLeft = function() {
         
         </div>
         
-        <div >
+        <div className="list-bottom">
         
         <ListGroup as="ul" className="cms-cards">
         <img className="cmsArrow" src="angle-left-solid.svg" onClick={goLeft} ></img>
