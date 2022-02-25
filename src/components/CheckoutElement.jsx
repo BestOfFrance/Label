@@ -1,7 +1,7 @@
 import {Elements, PaymentElement} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re');
+const stripePromise = loadStripe();
 
 export default function CheckoutElement(props){
   return (
