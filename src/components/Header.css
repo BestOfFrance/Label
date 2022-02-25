@@ -4,31 +4,41 @@
   top: 0;
   height: 5em;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between !important;
   background-color: white;
   z-index: 9999999999999999999999999999999999999999999999;
   width: 100%;
 }
-
+.logo-container {
+  width: 30%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
 #logo {
-  height: 80px;
+  height: 50px;
   width: 100%;
   margin-left: 1em;
   margin-right: 1em;
+  margin-top: 1em;
 }
 
-#title {
-  text-align: center;
-  width: 100%;
-  font-size: x-large;
-  color: black;
+.header-links {
+  display: flex;
+  justify-content: right !important;
+  width: 30%
+  
 }
-
+.search-container  {
+  width: 20%;
+}
 .user-icon {
   height: 2em;
   width: 2em;
   
 }
+
+
 
 .search-icon {
   height: 2em;
@@ -57,7 +67,7 @@ button {
   border: none;
 }
 .news-deals-container {
-  width: 12em;
+  width: 7em;
 }
 /* 
 /* Dropdown Button */

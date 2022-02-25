@@ -15,35 +15,28 @@ export default function Header(props) {
   }
   return (
     <div className="header">
-      <div >
+      <div className="logo-container">
         <button onClick={props.onHome}>
-        <img id='logo' src='BOFLogo.svg'></img>
+          <img id='logo' src='BOFLogo.svg'></img>
         </button>
       </div>
       
-      <div id="title">
+      <div id="search-container">
         <div>
-        
-        </div>
-      </div>
-      <div>
-      
-        </div>
-        {hidden === 'show' && 
         <SearchBar
         
         searchSelected={props.searchSelected}
         updateSearch={props.updateSearch}
         searchList={props.searchList}
-      />
-        
-        }
-        
-        
-        <div>
-         <button className="small-button"><img className="search-icon" src="icons8-search-50.png" onClick={showSearch}/></button> 
-        
+        />
         </div>
+      </div>
+      <div className="header-links">
+      
+        
+        
+        
+        
         <div className="news-deals-container">
           <button className="small-button" onClick={props.getNews}>
             News and Deals
@@ -61,6 +54,7 @@ export default function Header(props) {
         </div>
         </button>
       </div>
+    </div>
     </div>
   )
 }
