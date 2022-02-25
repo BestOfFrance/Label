@@ -1,7 +1,9 @@
+import './Dashboard.css'
+
 export default function Dashboard(props) {
   return(
-    <div>
-      My Account
+    <div className="dashboard-container">
+     <h4>My Account</h4> 
 
       <button onClick={props.logout}>Logout</button>
       <div>

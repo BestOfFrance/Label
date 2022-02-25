@@ -58,13 +58,17 @@ export default function Marker(props) {
   useEffect(() => {
     const checkOpen = openNow(props.hours)
    if(checkOpen !== undefined) {
+      console.log(checkOpen)
     if(checkOpen.isOpen === true) {
       setOpen(true);
       // setOpenTime(checkOpen.tomorrow.open)
-    } else {
+    } else if (checkOpen.isOpen === false) {
+      
       const checkOpenDay = checkOpen.tomorrow
+      if (checkOpenDay !== undefined) {
       setOpenDay(days[checkOpenDay.day])
       setOpenTime(checkOpenDay.open)
+      }
     }
   }
     // console.log('day, hours', day, hour)

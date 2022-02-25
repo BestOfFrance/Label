@@ -403,6 +403,7 @@ useEffect(() => {
     const searchList = []
     
     for (const shop of out.data.Items) {
+     
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
       searchList.push(newShop)
       categoriesArray.push(shop.category)

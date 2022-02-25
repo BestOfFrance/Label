@@ -6,6 +6,14 @@ import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
 import ConfirmAccount from './confirmAccount'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import {PaymentElement} from '@stripe/react-stripe-js';
+import CheckoutElement from './CheckoutElement'
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re');
 
 Amplify.configure(awsconfig);
 
@@ -15,6 +23,10 @@ Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
 export default function CreateAccount(props) {
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: process.env.STRIPE_KEY,
+  };
   
   const [state, setState] = useState({
     placeholderFN: "First Name",
@@ -209,6 +221,8 @@ const onChangeYearly = function() {
   <FormControlLabel control={<Checkbox checked={state.yearly} onChange={onChangeYearly}/>} label="Yearly Premium ($300USD/Year)" />
   
 </FormGroup>
+<CheckoutElement/>
+
              
      
        

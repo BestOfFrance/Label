@@ -15,14 +15,20 @@ export default function BusinessList(props) {
   useEffect(() => {
    const checkOpen = openNow(props.hours)
    
-    if(checkOpen.isOpen === true) {
-      setOpen(true);
-      // setOpenTime(checkOpen.tomorrow.open)
-    } else {
-      const checkOpenDay = checkOpen.tomorrow
-      setOpenDay(days[checkOpenDay.day])
-      setOpenTime(checkOpenDay.open)
+   if(checkOpen !== undefined) {
+    console.log(checkOpen)
+  if(checkOpen.isOpen === true) {
+    setOpen(true);
+    // setOpenTime(checkOpen.tomorrow.open)
+  } else if (checkOpen.isOpen === false) {
+    
+    const checkOpenDay = checkOpen.tomorrow
+    if (checkOpenDay !== undefined) {
+    setOpenDay(days[checkOpenDay.day])
+    setOpenTime(checkOpenDay.open)
     }
+  }
+}
     
     if (props.selectedCenter !== null) {
     //   console.log('props.id', props.id)

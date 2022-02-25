@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-label-dev-115048-unauthRole",
       "StackName": "amplify-label-dev-115048",
       "StackId": "arn:aws:cloudformation:us-east-1:337143364289:stack/amplify-label-dev-115048/87ece5a0-9022-11ec-8ade-0a8f4ffe5133",
-      "AmplifyAppId": "d1zaxommhzr3fj"
+      "AmplifyAppId": "d1zaxommhzr3fj",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-label-dev-115048-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "hosting": {
@@ -25,11 +26,23 @@
         },
         "labela864b5b6": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
-          "s3Key": "amplify-builds/labela864b5b6-714f7530635548736d42-build.zip"
+          "s3Key": "amplify-builds/labela864b5b6-2b4a4b4c534a63594133-build.zip"
         },
         "labelbbd6c0c9": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
           "s3Key": "amplify-builds/labelbbd6c0c9-474a5454325056333852-build.zip"
+        },
+        "ProcessPayment": {
+          "deploymentBucketName": "amplify-label-dev-115048-deployment",
+          "s3Key": "amplify-builds/ProcessPayment-675279306959587a3830-build.zip"
+        },
+        "CreateOrder": {
+          "deploymentBucketName": "amplify-label-dev-115048-deployment",
+          "s3Key": "amplify-builds/CreateOrder-694d35774b667962556e-build.zip"
+        },
+        "sendOrder": {
+          "deploymentBucketName": "amplify-label-dev-115048-deployment",
+          "s3Key": "amplify-builds/sendOrder-494c6e7233324852772f-build.zip"
         }
       },
       "auth": {
