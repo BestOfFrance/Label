@@ -23,7 +23,7 @@ export default function Header(props) {
       
       <div id="title">
         <div>
-        Label
+        
         </div>
       </div>
       <div>
