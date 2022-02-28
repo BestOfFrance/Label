@@ -2,3 +2,6 @@
   height: 2.4em;
 }
 
+.MuiAutocomplete-root .MuiAutocomplete-hasClearIcon .MuiAutocomplete-hasPopupIcon {
+  width: 500px;
+}

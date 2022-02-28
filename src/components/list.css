@@ -49,5 +49,9 @@
 /* .list-images {
   border-radius: 10%;
 } */
+.list-images {
+ width: 400px;
+ height: 20vh;
+}
 
 
