@@ -254,10 +254,13 @@ export default function Application(props) {
     markersByDistance.sort( sorter );
     console.log(markersByDistance[0])
     const placeClosestToYou = markersByDistance[0]
-    const topThreeShops = markersByDistance.slice(0,3)
+    const allShops = [];
     const closestBakery = [];
     const closestRestaurant = [];
     for (const marker of markersByDistance) {
+      if (state.categories.includes(marker.category)) {
+        allShops.push(marker)
+      }
       if (marker.category === "Bakery" || marker.category === "Cafe") {
         closestBakery.push(marker)
       }
@@ -266,6 +269,8 @@ export default function Application(props) {
         closestRestaurant.push(marker)
       }
     }
+    const topThreeShops = allShops.slice(0,3)
+
     setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [placeClosestToYou, closestBakery[0], closestRestaurant[0]]}))
     }
   
@@ -400,8 +405,11 @@ console.log(state.accountType)
 //function for filter button
 const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
-  getDistance(state.shops, state.location)
+  
 }
+useEffect(() => {
+  getDistance(state.shops, state.location)
+}, [state.categories])
 console.log('places', state.placesNearYou)
 
 //inital call to get database information for amazon database
