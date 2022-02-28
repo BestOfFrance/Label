@@ -35,7 +35,17 @@
 .marker-image-div-business {
   padding-left: 0em;
 }
+.cms-cards.list-group {
+  height: fit-content !important;
+}
 
+.list-item.list-group-item {
+  height: fit-content;
+}
+
+.list-item.list-group-item.premium {
+  height: 30%;
+}
 /* .list-images {
   border-radius: 10%;
 } */

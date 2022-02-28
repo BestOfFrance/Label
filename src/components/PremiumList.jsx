@@ -4,7 +4,7 @@ import './list.css'
 
 
 
-export default function CMSCard(props) {
+export default function PremiumList(props) {
   const [active, setActive] = useState(false);
   
 
@@ -54,7 +54,7 @@ export default function CMSCard(props) {
 
   return(
     
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}} >
+    <ListGroup.Item as="li" className={`list-item-premium ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}} >
       <div style={styles} className="list-images">
       
 

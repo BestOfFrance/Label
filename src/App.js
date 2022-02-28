@@ -26,6 +26,7 @@ import { Auth } from 'aws-amplify'
 import Dashboard from './components/Dashboard'
 import DataButton from './components/DataButton'
 import Login from './components/Login'
+
 // const data = require('./shop-data')
 
 
@@ -149,7 +150,8 @@ export default function Application(props) {
     searchList: [],
     signedIn: false,
     accountType: "free",
-    isVerified: false
+    isVerified: false,
+    placesNearYou: []
   })
 
   const [index, setIndex] = useState(0)
@@ -225,7 +227,7 @@ export default function Application(props) {
       // console.log(markers, 'markers')
       // console.log(myLatlng, 'll')
     for ( var i = 0; i < markers.length; i++ ) {
-      if (state.categories.includes(markers[i].category)) {
+      
         var marker = markers[i];
     
         // using pythagoras does not take into account curvature, 
@@ -239,7 +241,7 @@ export default function Application(props) {
     
         markersByDistance[ i ] = marker;
         markersByDistance[ i ].distance = distance;
-      }
+      
     }
     
     // function to sort your data...
@@ -249,11 +251,12 @@ export default function Application(props) {
     
     // sort the array... now the first 5 elements should be your closest points.
     markersByDistance.sort( sorter );
+    console.log(markersByDistance)
     const topThreeShops = markersByDistance.slice(0,3)
-    setState((prev) => ({ ...prev, topThree: topThreeShops}))
+    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: markersByDistance}))
     }
   
- 
+ console.log(state.placesNearYou)
 //set the selected marker
 const [selectedCenter, setSelectedCenter] = useState(null);
 
@@ -365,12 +368,12 @@ const items = state.topThree.map((shop, index) => {
 
 
 //cms cards
-const cms = state.shops.map((shop, index) => {
-  
+const cmsBakery = state.placesNearYou.map((shop, index) => {
+    
     return(
-      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories}/>
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={["Cafe", "Bakery"]}/>
     )
-  
+   
 
 })
 
@@ -409,7 +412,7 @@ useEffect(() => {
       categoriesArray.push(shop.category)
     }
     setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, categories: categoriesArray}))
-    console.log(state.location)
+    console.log(out.data.Items)
     getDistance(out.data.Items, state.location)
   })
 }, [state.location])
@@ -512,12 +515,14 @@ const pin = state.shops.map((center, index) => {
         </div>
         
         <div className="list-bottom">
-        
+        <h3 className="cms-title">French Food Near You</h3>
         <ListGroup as="ul" className="cms-cards">
         
-          {cms}
-          
-       </ListGroup>
+          {/* {cmsBakery.slice(0,2)} */}
+          {state.placesNearYou[0] !== undefined && 
+          <CMSCard className="cms" key={1} name={state.placesNearYou[0].name} id={state.placesNearYou[0].id} selectedCenter={selectedCenter} image={state.placesNearYou[0].image} distance={state.placesNearYou[0].distance} onClick={goToMap} shop={state.placesNearYou[0]} state={state.shops} latitude={state.placesNearYou[0].latitude} longitude={state.placesNearYou[0].longitude} categories={state.categories} title={"Closest"}/>
+          }
+          </ListGroup>
         </div>
       </div>
       </div>
