@@ -152,6 +152,7 @@ export default function Application(props) {
     accountType: "free",
     isVerified: false,
     placesNearYou: []
+   
   })
 
   const [index, setIndex] = useState(0)
@@ -251,12 +252,24 @@ export default function Application(props) {
     
     // sort the array... now the first 5 elements should be your closest points.
     markersByDistance.sort( sorter );
-    console.log(markersByDistance)
+    console.log(markersByDistance[0])
+    const placeClosestToYou = markersByDistance[0]
     const topThreeShops = markersByDistance.slice(0,3)
-    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: markersByDistance}))
+    const closestBakery = [];
+    const closestRestaurant = [];
+    for (const marker of markersByDistance) {
+      if (marker.category === "Bakery" || marker.category === "Cafe") {
+        closestBakery.push(marker)
+      }
+      //"Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"
+      if (marker.category === "Restaurant" || marker.category === "Bistro" || marker.category === "Charcuterie" || marker.category === "Diner") {
+        closestRestaurant.push(marker)
+      }
+    }
+    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [placeClosestToYou, closestBakery[0], closestRestaurant[0]]}))
     }
   
- console.log(state.placesNearYou)
+ console.log(state.placesNearYou[0])
 //set the selected marker
 const [selectedCenter, setSelectedCenter] = useState(null);
 
@@ -368,14 +381,14 @@ const items = state.topThree.map((shop, index) => {
 
 
 //cms cards
-const cmsBakery = state.placesNearYou.map((shop, index) => {
+// const cmsBakery = state.placesNearYou.map((shop, index) => {
     
-    return(
-      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={["Cafe", "Bakery"]}/>
-    )
+//     return(
+//       <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={["Cafe", "Bakery"]}/>
+//     )
    
 
-})
+// })
 
 
 
@@ -389,7 +402,7 @@ const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
   getDistance(state.shops, state.location)
 }
-
+console.log('places', state.placesNearYou)
 
 //inital call to get database information for amazon database
 useEffect(() => {
@@ -521,6 +534,12 @@ const pin = state.shops.map((center, index) => {
           {/* {cmsBakery.slice(0,2)} */}
           {state.placesNearYou[0] !== undefined && 
           <CMSCard className="cms" key={1} name={state.placesNearYou[0].name} id={state.placesNearYou[0].id} selectedCenter={selectedCenter} image={state.placesNearYou[0].image} distance={state.placesNearYou[0].distance} onClick={goToMap} shop={state.placesNearYou[0]} state={state.shops} latitude={state.placesNearYou[0].latitude} longitude={state.placesNearYou[0].longitude} categories={state.categories} title={"Closest"}/>
+          }
+          {state.placesNearYou[1] !== undefined && 
+          <CMSCard className="cms" key={2} name={state.placesNearYou[1].name} id={state.placesNearYou[1].id} selectedCenter={selectedCenter} image={state.placesNearYou[1].image} distance={state.placesNearYou[1].distance} onClick={goToMap} shop={state.placesNearYou[1]} state={state.shops} latitude={state.placesNearYou[1].latitude} longitude={state.placesNearYou[1].longitude} categories={state.categories} title={"Bakery"}/>
+          }
+          {state.placesNearYou[2] !== undefined && 
+          <CMSCard className="cms" key={3} name={state.placesNearYou[2].name} id={state.placesNearYou[2].id} selectedCenter={selectedCenter} image={state.placesNearYou[2].image} distance={state.placesNearYou[2].distance} onClick={goToMap} shop={state.placesNearYou[2]} state={state.shops} latitude={state.placesNearYou[2].latitude} longitude={state.placesNearYou[2].longitude} categories={state.categories} title={"Restaurant"}/>
           }
           </ListGroup>
         </div>
