@@ -1,0 +1,195 @@
+.footer-container {
+  height: fit-content;
+  padding-top: 4em;
+  
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #222;
+}
+
+.grid_footer--top {
+  margin-right: 3%;
+  margin-bottom: 20px;
+  margin-left: 3%;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+}
+
+@media screen and (max-width: 991px) {
+.dblock.flex-v {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+}
+
+.dblock.flex-v {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.e-title_footer {
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.e-text_footer--sm {
+  margin-bottom: 0;
+  color: #fff;
+  font-weight: 400;
+  text-transform: none;
+}
+.e-link_footer--label {
+    display: inline-block;
+    margin-bottom: 5px;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.dblock.flex-v {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+@media screen and (max-width: 991px) {
+.dblock.flex-v {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+}
+.lblock.flex-h {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.dblock.flex-v.center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.grid-3columns.footer-arg {
+  margin-right: 3%;
+  margin-left: 3%;
+  grid-column-gap: 40px;
+  -ms-grid-columns: 0.75fr 1fr 1fr ;
+  grid-template-columns: 0.75fr 1fr 1fr ;
+}
+
+@media screen and (max-width: 991px) {
+.grid-3columns.footer-arg {
+    justify-items: stretch;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+}
+
+.lblock.flex-h.margin-b-10 {
+  margin-bottom: 10px;
+}
+
+.e-image--sm {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+img {
+  border: 0;
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+#w-node-_062b3c0e-bf6e-77b9-90b1-260dd8cec56f-b921f3b1, #w-node-_24216adb-5ab7-061d-a147-da924dded442-4dded428, #w-node-_62644ab4-19ac-6e63-74c8-fdb8e9a8d614-e9a8d5e0, #w-node-_83a7cfc3-50ff-ab38-69d5-dd234075a0e9-5821f438 {
+  -ms-grid-column-align: auto;
+  justify-self: auto;
+}
+
+.e-text_footer--didascalie {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.legal {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #777;
+}
+
+.footer-legal-txt {
+  color: #fff;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+}
+.w-layout-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+}
+.grid-3columns {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+}
+/* .footer-top-container {
+  display: flex;
+  
+} */
+
+.footer-logo {
+  height: 125px;
+  width: auto;
+}
