@@ -469,15 +469,7 @@ const pin = state.shops.map((center, index) => {
   
   
 })
-const goRight = function() {
-  setIndex(index + 1)
-}
 
-const goLeft = function() {
-  if (index > 0) {
-  setIndex(index - 1)
-  }
-}
 
 //render all
   return(
@@ -522,9 +514,9 @@ const goLeft = function() {
         <div className="list-bottom">
         
         <ListGroup as="ul" className="cms-cards">
-        <img className="cmsArrow" src="angle-left-solid.svg" onClick={goLeft} ></img>
-          {cms[index]} {cms[index + 1]} {cms[index + 2]}
-          <img className="cmsArrow" src="angle-right-solid.svg" onClick={goRight}></img>
+        
+          {cms}
+          
        </ListGroup>
         </div>
       </div>
