@@ -29,6 +29,8 @@ import Login from './components/Login'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import FilterCms from './components/FilterCms'
+
 
 // const data = require('./shop-data')
 
@@ -156,7 +158,8 @@ export default function Application(props) {
     isVerified: false,
     placesNearYou: [],
     premiumShops: [],
-    sortedShops: []
+    sortedShops: [],
+    cmsCategories: categoriesArray
   })
 
   const [index, setIndex] = useState(0)
@@ -259,12 +262,16 @@ export default function Application(props) {
     console.log(markersByDistance[0])
     const placeClosestToYou = markersByDistance[0]
     const allShops = [];
+    const allCMSShops = [];
     const closestBakery = [];
     const closestRestaurant = [];
     const closestPastryShop = [];
     for (const marker of markersByDistance) {
       if (state.categories.includes(marker.category)) {
         allShops.push(marker)
+      }
+      if (state.cmsCategories.includes(marker.category)) {
+        allCMSShops.push(marker)
       }
       //"Pastry Shop", "Cake shop", "Dessert shop"
       
@@ -281,7 +288,7 @@ export default function Application(props) {
     }
     const topThreeShops = allShops.slice(0,2)
 
-    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0]], sortedShops: allShops}))
+    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0]], sortedShops: allCMSShops}))
     }
   
  console.log(state.placesNearYou[0])
@@ -430,57 +437,6 @@ const cmsBakery = state.sortedShops.map((shop, index) => {
 })
 
 
-function FormRow() {
-  return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        {cmsBakery[0]}
-      </Grid>
-      <Grid item xs={4}>
-        {cmsBakery[1]}
-      </Grid>
-      <Grid item xs={4}>
-        {cmsBakery[2]}
-      </Grid>
-    </React.Fragment>
-  );
-}
-
-function FormRowTwo() {
-  return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        {cmsBakery[3]}
-      </Grid>
-      <Grid item xs={4}>
-        {cmsBakery[4]}
-      </Grid>
-      <Grid item xs={4}>
-        {cmsBakery[5]}
-      </Grid>
-    </React.Fragment>
-  );
-}
-
-function FormRowThree() {
-  return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        {cmsBakery[6]}
-      </Grid>
-      <Grid item xs={4}>
-        {cmsBakery[7]}
-      </Grid>
-      <Grid item xs={4}>
-        {cmsBakery[8]}
-      </Grid>
-    </React.Fragment>
-  );
-}
-
-
-
-
 // console.log('shops state', state.shops)
 
 console.log(state.accountType)
@@ -490,9 +446,18 @@ const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
   
 }
+
+const onFilterCMS = function(data, active) {
+  setState((prev) => ({ ...prev, cmsCategories: [...data] }))
+  
+}
+
 useEffect(() => {
   getDistance(state.shops, state.location)
 }, [state.categories])
+useEffect(() => {
+  getDistance(state.shops, state.location)
+}, [state.cmsCategories])
 console.log('places', state.placesNearYou)
 
 //inital call to get database information for amazon database
@@ -622,7 +587,12 @@ const pin = state.shops.map((center, index) => {
         </div>
         
         <div className="list-bottom">
+          <div className="cms-title-buttons">
         <h3 className="cms-title">French Food Near You</h3>
+        <FilterCms
+        onFilterCms={onFilterCMS}
+        categories={categoriesArray}/>
+        </div>
         {state.sortedShops !== undefined &&
         <div  className="cms-cards">
           

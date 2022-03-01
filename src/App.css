@@ -104,8 +104,15 @@ a {
 
 .cms-title {
   padding-left: 1em;
+  padding-right: 10em;
   font-size: large !important;
   color: black;
+}
+.cms-title-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  
 }
 
 /* Extra small devices (phones, 600px and down) */
