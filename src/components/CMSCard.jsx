@@ -69,7 +69,7 @@ export default function CMSCard(props) {
       </div>
       <div>
         
-      {props.shop.description} 
+      {props.shop.category} 
       </div>
       
     </ListGroup.Item>

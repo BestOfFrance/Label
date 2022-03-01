@@ -80,6 +80,10 @@ div.map {
   margin-top: 5em;
   height: 100%;
 }
+.main-body-main-page {
+  margin-top: 5em;
+  height: fit-content;
+}
 .main-container-all {
   height: 100%;
   

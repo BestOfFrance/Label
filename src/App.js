@@ -26,6 +26,9 @@ import { Auth } from 'aws-amplify'
 import Dashboard from './components/Dashboard'
 import DataButton from './components/DataButton'
 import Login from './components/Login'
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 // const data = require('./shop-data')
 
@@ -152,8 +155,8 @@ export default function Application(props) {
     accountType: "free",
     isVerified: false,
     placesNearYou: [],
-    premiumShops: []
-   
+    premiumShops: [],
+    sortedShops: []
   })
 
   const [index, setIndex] = useState(0)
@@ -278,7 +281,7 @@ export default function Application(props) {
     }
     const topThreeShops = allShops.slice(0,2)
 
-    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0]]}))
+    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0]], sortedShops: allShops}))
     }
   
  console.log(state.placesNearYou[0])
@@ -415,15 +418,65 @@ const premium = state.premiumShops.map((shop, index) => {
 
 })
 
-//cms cards
-// const cmsBakery = state.placesNearYou.map((shop, index) => {
+// cms cards
+
+const cmsBakery = state.sortedShops.map((shop, index) => {
     
-//     return(
-//       <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={["Cafe", "Bakery"]}/>
-//     )
+    return(
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={["Cafe", "Bakery"]}/>
+    )
    
 
-// })
+})
+
+
+function FormRow() {
+  return (
+    <React.Fragment>
+      <Grid item xs={4}>
+        {cmsBakery[0]}
+      </Grid>
+      <Grid item xs={4}>
+        {cmsBakery[1]}
+      </Grid>
+      <Grid item xs={4}>
+        {cmsBakery[2]}
+      </Grid>
+    </React.Fragment>
+  );
+}
+
+function FormRowTwo() {
+  return (
+    <React.Fragment>
+      <Grid item xs={4}>
+        {cmsBakery[3]}
+      </Grid>
+      <Grid item xs={4}>
+        {cmsBakery[4]}
+      </Grid>
+      <Grid item xs={4}>
+        {cmsBakery[5]}
+      </Grid>
+    </React.Fragment>
+  );
+}
+
+function FormRowThree() {
+  return (
+    <React.Fragment>
+      <Grid item xs={4}>
+        {cmsBakery[6]}
+      </Grid>
+      <Grid item xs={4}>
+        {cmsBakery[7]}
+      </Grid>
+      <Grid item xs={4}>
+        {cmsBakery[8]}
+      </Grid>
+    </React.Fragment>
+  );
+}
 
 
 
@@ -544,7 +597,7 @@ const pin = state.shops.map((center, index) => {
       />
       
       {state.mode === mode && 
-      <div className="main-body">
+      <div className="main-body-main-page">
       <div className="main-container">
         <div className="premium-map">
         
@@ -570,32 +623,53 @@ const pin = state.shops.map((center, index) => {
         
         <div className="list-bottom">
         <h3 className="cms-title">French Food Near You</h3>
-        <ListGroup as="ul" className="cms-cards">
-        
-          {/* {cmsBakery.slice(0,2)} */}
-          {state.placesNearYou[0] !== undefined && 
-          <CMSCard className="cms" key={1} name={state.placesNearYou[0].name} id={state.placesNearYou[0].id} selectedCenter={selectedCenter} image={state.placesNearYou[0].image} distance={state.placesNearYou[0].distance} onClick={goToMap} shop={state.placesNearYou[0]} state={state.shops} latitude={state.placesNearYou[0].latitude} longitude={state.placesNearYou[0].longitude} categories={state.categories} title={"Pastry Shop"}/>
+        {state.sortedShops !== undefined &&
+        <div  className="cms-cards">
+          
+          <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={3}>
+        <Grid item xs="auto">
+          {cmsBakery[0]}
+        </Grid>
+        <Grid item xs="auto">
+          {cmsBakery[1]}
+        </Grid>
+        <Grid item xs="auto">
+        {cmsBakery[2]}
+        </Grid>
+      </Grid>
+    </Box>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={3}>
+        <Grid item xs="auto">
+          {cmsBakery[3]}
+        </Grid>
+        <Grid item xs="auto">
+          {cmsBakery[4]}
+        </Grid>
+        <Grid item xs="auto">
+        {cmsBakery[5]}
+        </Grid>
+      </Grid>
+    </Box>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={3}>
+        <Grid item xs="auto">
+          {cmsBakery[6]}
+        </Grid>
+        <Grid item xs="auto">
+          {cmsBakery[7]}
+        </Grid>
+        <Grid item xs="auto">
+        {cmsBakery[8]}
+        </Grid>
+      </Grid>
+    </Box>
+
+         
+          </div>
           }
-          {state.placesNearYou[1] !== undefined && 
-          <CMSCard className="cms" key={2} name={state.placesNearYou[1].name} id={state.placesNearYou[1].id} selectedCenter={selectedCenter} image={state.placesNearYou[1].image} distance={state.placesNearYou[1].distance} onClick={goToMap} shop={state.placesNearYou[1]} state={state.shops} latitude={state.placesNearYou[1].latitude} longitude={state.placesNearYou[1].longitude} categories={state.categories} title={"Bakery"}/>
-          }
-          {state.placesNearYou[2] !== undefined && 
-          <CMSCard className="cms" key={3} name={state.placesNearYou[2].name} id={state.placesNearYou[2].id} selectedCenter={selectedCenter} image={state.placesNearYou[2].image} distance={state.placesNearYou[2].distance} onClick={goToMap} shop={state.placesNearYou[2]} state={state.shops} latitude={state.placesNearYou[2].latitude} longitude={state.placesNearYou[2].longitude} categories={state.categories} title={"Restaurant"}/>
-          }
-          </ListGroup>
-          <ListGroup as="ul" className="cms-cards">
-        
-          {/* {cmsBakery.slice(0,2)} */}
-          {state.placesNearYou[0] !== undefined && 
-          <CMSCard className="cms" key={1} name={state.placesNearYou[0].name} id={state.placesNearYou[0].id} selectedCenter={selectedCenter} image={state.placesNearYou[0].image} distance={state.placesNearYou[0].distance} onClick={goToMap} shop={state.placesNearYou[0]} state={state.shops} latitude={state.placesNearYou[0].latitude} longitude={state.placesNearYou[0].longitude} categories={state.categories} title={"Pastry Shop"}/>
-          }
-          {state.placesNearYou[1] !== undefined && 
-          <CMSCard className="cms" key={2} name={state.placesNearYou[1].name} id={state.placesNearYou[1].id} selectedCenter={selectedCenter} image={state.placesNearYou[1].image} distance={state.placesNearYou[1].distance} onClick={goToMap} shop={state.placesNearYou[1]} state={state.shops} latitude={state.placesNearYou[1].latitude} longitude={state.placesNearYou[1].longitude} categories={state.categories} title={"Bakery"}/>
-          }
-          {state.placesNearYou[2] !== undefined && 
-          <CMSCard className="cms" key={3} name={state.placesNearYou[2].name} id={state.placesNearYou[2].id} selectedCenter={selectedCenter} image={state.placesNearYou[2].image} distance={state.placesNearYou[2].distance} onClick={goToMap} shop={state.placesNearYou[2]} state={state.shops} latitude={state.placesNearYou[2].latitude} longitude={state.placesNearYou[2].longitude} categories={state.categories} title={"Restaurant"}/>
-          }
-          </ListGroup>
+          
         </div>
       </div>
       </div>
