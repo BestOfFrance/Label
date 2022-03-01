@@ -446,7 +446,8 @@ const onFilter = function(data) {
   setState((prev) => ({ ...prev, categories: [...data] }))
   
 }
-
+// const [pastry, setPastry] = useState(true)
+// const []
 const onFilterCMS = function(data, active) {
   setState((prev) => ({ ...prev, cmsCategories: [...data] }))
   
