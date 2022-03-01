@@ -262,11 +262,11 @@ export default function Application(props) {
       if (state.categories.includes(marker.category)) {
         allShops.push(marker)
       }
-      if (marker.category === "Bakery" || marker.category === "Cafe") {
+      if ((marker.category === "Bakery" || marker.category === "Cafe") && allShops[0] !== marker) {
         closestBakery.push(marker)
       }
       //"Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"
-      if (marker.category === "Restaurant" || marker.category === "Bistro" || marker.category === "Charcuterie" || marker.category === "Diner") {
+      if ((marker.category === "Restaurant" || marker.category === "Bistro" || marker.category === "Charcuterie" || marker.category === "Diner") && allShops[0] !== marker && closestBakery[0] !== marker) {
         closestRestaurant.push(marker)
       }
     }
