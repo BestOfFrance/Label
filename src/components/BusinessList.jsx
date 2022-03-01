@@ -5,6 +5,39 @@ import openNow from '../helpers/openNow'
 import './list.css'
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const nine = parseInt('0900', 8)
+const nineThirty = parseInt('0930', 8)
+const eight = parseInt('0800', 8)
+const eightThirty = parseInt('0830', 8)
+const seven = parseInt('0700', 8)
+const sevenThirty = parseInt('0730', 8)
+const hoursObject = {
+  nine : '9:00AM',
+  1000: '10:00AM',
+  1030: '10:30AM',
+  1100: '11:00AM',
+  1130: '11:30AM',
+  1200: '12:00PM',
+  1230: '12:30PM',
+  1300: '1:00PM',
+  1330: '1:30PM',
+  1400: '2:00PM',
+  1430: '2:30PM',
+  1500: '3:00PM',
+  1530: '3:30PM',
+  1600: '4:00PM',
+  1630: '4:30PM',
+  1700: '5:00PM',
+  1730: '5:30PM',
+  1800: '6:00PM',
+  1830: '6:30PM',
+  eight: '8:00AM',
+  seven: '7:00AM',
+  nineThirty: '9:30AM',
+  sevenThirty: '7:30AM',
+  eightThirty: '8:30AM'
+
+}
 
 export default function BusinessList(props) {
   const [active, setActive] = useState(false);
@@ -92,7 +125,7 @@ export default function BusinessList(props) {
             
           
           <div>
-          {open ? 'Open Now' : `Closed, opens ${openDay} at ${openTime}`}
+          {open ? 'Open Now' : `Closed, opens ${openDay} at ${hoursObject[openTime]}`}
             
             
             </div>
