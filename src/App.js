@@ -392,7 +392,7 @@ const items = state.topThree.map((shop, index) => {
 })
 
 const premium = state.premiumShops.map((shop, index) => {
-  if (state.categories.includes(shop.category)) {
+  
     return(
       <BusinessList 
       key={index} 
@@ -410,7 +410,7 @@ const premium = state.premiumShops.map((shop, index) => {
       latitude={shop.latitude} 
       longitude={shop.longitude}/>
     )
-  }
+  
     
 
 })

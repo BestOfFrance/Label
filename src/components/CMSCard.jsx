@@ -67,6 +67,10 @@ export default function CMSCard(props) {
         
       {props.name} 
       </div>
+      <div>
+        
+      {props.shop.description} 
+      </div>
       
     </ListGroup.Item>
     
