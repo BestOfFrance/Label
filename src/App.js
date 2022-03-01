@@ -258,10 +258,13 @@ export default function Application(props) {
     const allShops = [];
     const closestBakery = [];
     const closestRestaurant = [];
+    const closestPastryShop = [];
     for (const marker of markersByDistance) {
       if (state.categories.includes(marker.category)) {
         allShops.push(marker)
       }
+      //"Pastry Shop", "Cake shop", "Dessert shop"
+      
       if ((marker.category === "Bakery" || marker.category === "Cafe") && allShops[0] !== marker) {
         closestBakery.push(marker)
       }
@@ -269,10 +272,13 @@ export default function Application(props) {
       if ((marker.category === "Restaurant" || marker.category === "Bistro" || marker.category === "Charcuterie" || marker.category === "Diner") && allShops[0] !== marker && closestBakery[0] !== marker) {
         closestRestaurant.push(marker)
       }
+      if ((marker.category === "Pastry Shop" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker && closestBakery[0] !== marker && closestRestaurant[0] !== marker) {
+        closestPastryShop.push(marker)
+      }
     }
     const topThreeShops = allShops.slice(0,2)
 
-    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [placeClosestToYou, closestBakery[0], closestRestaurant[0]]}))
+    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0]]}))
     }
   
  console.log(state.placesNearYou[0])
@@ -568,7 +574,20 @@ const pin = state.shops.map((center, index) => {
         
           {/* {cmsBakery.slice(0,2)} */}
           {state.placesNearYou[0] !== undefined && 
-          <CMSCard className="cms" key={1} name={state.placesNearYou[0].name} id={state.placesNearYou[0].id} selectedCenter={selectedCenter} image={state.placesNearYou[0].image} distance={state.placesNearYou[0].distance} onClick={goToMap} shop={state.placesNearYou[0]} state={state.shops} latitude={state.placesNearYou[0].latitude} longitude={state.placesNearYou[0].longitude} categories={state.categories} title={"Closest"}/>
+          <CMSCard className="cms" key={1} name={state.placesNearYou[0].name} id={state.placesNearYou[0].id} selectedCenter={selectedCenter} image={state.placesNearYou[0].image} distance={state.placesNearYou[0].distance} onClick={goToMap} shop={state.placesNearYou[0]} state={state.shops} latitude={state.placesNearYou[0].latitude} longitude={state.placesNearYou[0].longitude} categories={state.categories} title={"Pastry Shop"}/>
+          }
+          {state.placesNearYou[1] !== undefined && 
+          <CMSCard className="cms" key={2} name={state.placesNearYou[1].name} id={state.placesNearYou[1].id} selectedCenter={selectedCenter} image={state.placesNearYou[1].image} distance={state.placesNearYou[1].distance} onClick={goToMap} shop={state.placesNearYou[1]} state={state.shops} latitude={state.placesNearYou[1].latitude} longitude={state.placesNearYou[1].longitude} categories={state.categories} title={"Bakery"}/>
+          }
+          {state.placesNearYou[2] !== undefined && 
+          <CMSCard className="cms" key={3} name={state.placesNearYou[2].name} id={state.placesNearYou[2].id} selectedCenter={selectedCenter} image={state.placesNearYou[2].image} distance={state.placesNearYou[2].distance} onClick={goToMap} shop={state.placesNearYou[2]} state={state.shops} latitude={state.placesNearYou[2].latitude} longitude={state.placesNearYou[2].longitude} categories={state.categories} title={"Restaurant"}/>
+          }
+          </ListGroup>
+          <ListGroup as="ul" className="cms-cards">
+        
+          {/* {cmsBakery.slice(0,2)} */}
+          {state.placesNearYou[0] !== undefined && 
+          <CMSCard className="cms" key={1} name={state.placesNearYou[0].name} id={state.placesNearYou[0].id} selectedCenter={selectedCenter} image={state.placesNearYou[0].image} distance={state.placesNearYou[0].distance} onClick={goToMap} shop={state.placesNearYou[0]} state={state.shops} latitude={state.placesNearYou[0].latitude} longitude={state.placesNearYou[0].longitude} categories={state.categories} title={"Pastry Shop"}/>
           }
           {state.placesNearYou[1] !== undefined && 
           <CMSCard className="cms" key={2} name={state.placesNearYou[1].name} id={state.placesNearYou[1].id} selectedCenter={selectedCenter} image={state.placesNearYou[1].image} distance={state.placesNearYou[1].distance} onClick={goToMap} shop={state.placesNearYou[1]} state={state.shops} latitude={state.placesNearYou[1].latitude} longitude={state.placesNearYou[1].longitude} categories={state.categories} title={"Bakery"}/>
