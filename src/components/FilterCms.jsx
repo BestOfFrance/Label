@@ -102,10 +102,10 @@ export default function FilterCms(props) {
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group">
       {/* <Button onClick={() => {props.onFilterCms(["Pastry Shop", "Cake shop", "Dessert shop"])}}>Pastry Shop</Button> */}
-      <Button style={{backgroundColor: state.activePastry ? '#0957a5' : '#818181'}} onClick={onClickPastry}>Pastry Shop</Button>
-      <Button style={{backgroundColor: state.activeRestaurant ? '#0957a5' : '#818181'}}onClick={onClickRestaurant}>Restaurant</Button>
-      <Button style={{backgroundColor: state.activeGrocery ? '#0957a5' : '#818181'}} onClick={onClickGrocery}>Grocery</Button>
-      <Button style={{backgroundColor: state.activeBakery ? '#0957a5' : '#818181'}} onClick={onClickBakery}>Bakery</Button>
+      <Button className="cms-filter-button" style={{backgroundColor: state.activePastry ? '#0957a5' : '#818181'}} onClick={onClickPastry}>Pastry Shop</Button>
+      <Button className="cms-filter-button" style={{backgroundColor: state.activeRestaurant ? '#0957a5' : '#818181'}}onClick={onClickRestaurant}>Restaurant</Button>
+      <Button className="cms-filter-button" style={{backgroundColor: state.activeGrocery ? '#0957a5' : '#818181'}} onClick={onClickGrocery}>Grocery</Button>
+      <Button className="cms-filter-button" style={{backgroundColor: state.activeBakery ? '#0957a5' : '#818181'}} onClick={onClickBakery}>Bakery</Button>
       
     </ButtonGroup>
   )
