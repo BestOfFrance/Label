@@ -151,7 +151,8 @@ export default function Application(props) {
     signedIn: false,
     accountType: "free",
     isVerified: false,
-    placesNearYou: []
+    placesNearYou: [],
+    premiumShops: []
    
   })
 
@@ -269,7 +270,7 @@ export default function Application(props) {
         closestRestaurant.push(marker)
       }
     }
-    const topThreeShops = allShops.slice(0,3)
+    const topThreeShops = allShops.slice(0,2)
 
     setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [placeClosestToYou, closestBakery[0], closestRestaurant[0]]}))
     }
@@ -384,6 +385,29 @@ const items = state.topThree.map((shop, index) => {
 
 })
 
+const premium = state.premiumShops.map((shop, index) => {
+  if (state.categories.includes(shop.category)) {
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  }
+    
+
+})
 
 //cms cards
 // const cmsBakery = state.placesNearYou.map((shop, index) => {
@@ -425,14 +449,16 @@ useEffect(() => {
     // console.log(detailsArray.length)
    
     const searchList = []
-    
+    const premiumShops = []
     for (const shop of out.data.Items) {
-     
+     if (shop.isPremium) {
+       premiumShops.push(shop)
+     }
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
       searchList.push(newShop)
       categoriesArray.push(shop.category)
     }
-    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, categories: categoriesArray}))
+    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, categories: categoriesArray, premiumShops: premiumShops}))
     console.log(out.data.Items)
     getDistance(out.data.Items, state.location)
   })
@@ -523,6 +549,7 @@ const pin = state.shops.map((center, index) => {
           <div className="cms">
           {/* <DataButton onClick={saveShop}/> */}
         <ListGroup as="ul" id="premium">
+          {premium[0]}
           {items}
        </ListGroup>
        </div>
