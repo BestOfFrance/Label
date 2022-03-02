@@ -46,7 +46,7 @@
         },
         "stripeCheckout": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
-          "s3Key": "amplify-builds/stripeCheckout-6571594a5a5731796846-build.zip"
+          "s3Key": "amplify-builds/stripeCheckout-502b57346763522f7171-build.zip"
         }
       },
       "auth": {

@@ -11,6 +11,11 @@ import {loadStripe} from '@stripe/stripe-js';
 import {PaymentElement} from '@stripe/react-stripe-js';
 import CheckoutElement from './CheckoutElement'
 import CheckoutButton from './CheckoutButton'
+import { API } from "aws-amplify"
+
+import '@stripe/stripe-js'
+
+const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -89,6 +94,63 @@ export default function CreateAccount(props) {
         console.log('error signing up:', error);
     }
 }
+
+  const onCart = function() {
+    const redirectToCheckout = async () => {
+      const fetchSession = async () => {
+        const apiName = "stripeAPI"
+        const apiEndpoint = "/checkout"
+        const data = {
+          body: {
+          quantity: 1,
+          client_reference_id: "UniqueString",
+          priceId: "price_1KYx2lHYehZq7RpTFEXxebG2"
+          }
+        }
+        const session = await API.post(apiName, apiEndpoint, data)
+        console.log(session)
+        return session
+      }
+      const session = await fetchSession()
+            console.log(fetchSession())
+            const sessionId = session.id
+            const stripe = await stripePromise
+            stripe.redirectToCheckout({ sessionId })
+    }
+    if (password !== confirmPassword) {
+      setpasswordconfirm("")
+      setState((prev) => ({ ...prev, placeholderConfirm: "your password didn't match, try again" }))
+    } else if (firstname === "") {
+      setState((prev) => ({ ...prev, placeholderFN: "please enter your name" }))
+    } else if (lastname === "") {
+      setState((prev) => ({ ...prev, placeholderLN: "please enter your name" }))
+    } else if (email === "") {
+      setState((prev) => ({ ...prev, placeholderEmail: "please enter your email" }))
+    } else if (password.length < 6) {
+      setState((prev) => ({ ...prev, placeholderPassword: "password must be at least 6 characters" }))
+    } else {
+      async function fetchUser() {
+        const userData = await Api.get('userapi', `/users/${email}`)
+        return userData
+      }
+      fetchUser().then((out)=> {
+        if (out.data.Item) {
+          setemail("This email has already been used")
+        } else {
+          console.log('im happening')
+          redirectToCheckout()
+        
+            
+          
+          
+          
+        
+        }
+      })
+      // saveUser();
+    }
+    
+  }
   const onSubmit = function() {
     
     async function fetchUser() {
@@ -224,7 +286,7 @@ const onChangeYearly = function() {
        
           
      <div class="text-center">
-     <CheckoutButton/>
+     <button onClick={onCart}>Continue to payment</button>
        <button onClick={onSubmit}>Register</button>
        
      </div>
