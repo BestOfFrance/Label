@@ -21,9 +21,12 @@
 }
 
 .marker-image-business {
-  height: 9vh;
-  width: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+    /* min-width: 100%;
+    min-height: 100%; */
   border-radius: 10%;
+  overflow: hidden;
 }
 
 .infowrapper-business {
@@ -33,7 +36,17 @@
 }
 
 .marker-image-div-business {
-  padding-left: 0em;
+  /* display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; */
+    
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 65px;
+  height: 65px;
 }
 .cms-cards.list-group {
   height: fit-content !important;

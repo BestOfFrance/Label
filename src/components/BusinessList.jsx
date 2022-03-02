@@ -1,3 +1,4 @@
+import { urlSafeDecode } from '@aws-amplify/core';
 import {React, useState, useEffect} from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {Rating} from 'react-simple-star-rating';
@@ -45,6 +46,8 @@ export default function BusinessList(props) {
   const [open, setOpen] = useState(false);
   const [openTime, setOpenTime] = useState("");
   const [openDay, setOpenDay] = useState("")
+
+  const style = props.image;
   useEffect(() => {
    const checkOpen = openNow(props.hours)
    
@@ -101,8 +104,8 @@ export default function BusinessList(props) {
       
           
           <div className='infowrapper-business'>
-            <div className='marker-image-div-business'>
-              <img className='marker-image-business' src={props.shop.image}></img>
+            <div className='marker-image-div-business' style={{backgroundImage: `url(${style})`}}>
+              {/* <img className='marker-image-business' src={props.shop.image}></img> */}
               </div>
               <div className="marker-information">
           <div className='title'>
