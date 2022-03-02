@@ -8,8 +8,8 @@ export default function LoginOrSign(props) {
       You're not signed in. Please select an option below. 
       </div>
 
-      <div className="login-button">
-        <button onClick={props.login}><u>Login</u></button>
+      <div >
+        <button className="login-button-button" onClick={props.login}>Login</button>
       </div>
       <div className="choose-account-type">
       
@@ -22,7 +22,7 @@ export default function LoginOrSign(props) {
             <li>Access more information about shops</li>
             <li>More features to come</li>
             </ul></div>
-            <div className="foodie-button"><button className="foodie-button" onClick={props.getRegisterFoodie}><u>Register</u></button></div>
+            <div ><button className="foodie-button" onClick={props.getRegisterFoodie}>Register</button></div>
         </div>
         
         <div className="business-panel">
@@ -36,7 +36,7 @@ export default function LoginOrSign(props) {
             <li>Access more information about shops</li>
             <li>More features to come</li>
             </ul></div>
-            <div className="business-button"><button className="business-button" onClick={props.getRegister}><u>Register</u></button></div>
+            <div ><button className="business-button" onClick={props.getRegister}>Register</button></div>
         </div>
       </div>
       
