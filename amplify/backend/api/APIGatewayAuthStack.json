@@ -19,6 +19,9 @@
     },
     "userpool": {
       "Type": "String"
+    },
+    "stripeAPI": {
+      "Type": "String"
     }
   },
   "Conditions": {

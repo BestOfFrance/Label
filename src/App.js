@@ -30,14 +30,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
-import { API, graphqlOperation } from 'aws-amplify';
-// The default AMAZON_COGNITO_USER_POOLS authorization mode
-API.graphql(graphqlOperation(createBook, { input: bookDetails }));
-// API_KEY Authorization Mode is for guest users to view the books
-const { data } = await API.graphql({
-  query: listBooks,
-  authMode: "API_KEY"
-});
+import '@stripe/stripe-js'
+
+
+
 
 // const data = require('./shop-data')
 
@@ -168,7 +164,8 @@ export default function Application(props) {
     sortedShops: [],
     cmsCategories: categoriesArray
   })
-
+//   console.log(process.env)
+// console.log(process.env.REACT_APP_STRIPE_SECRET_KEY_DEVELOPMENT)
   const [index, setIndex] = useState(0)
   function checkUser() {
     let authenticated = false;

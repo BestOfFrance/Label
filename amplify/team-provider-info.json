@@ -43,6 +43,10 @@
         "sendOrder": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
           "s3Key": "amplify-builds/sendOrder-494c6e7233324852772f-build.zip"
+        },
+        "stripeCheckout": {
+          "deploymentBucketName": "amplify-label-dev-115048-deployment",
+          "s3Key": "amplify-builds/stripeCheckout-6571594a5a5731796846-build.zip"
         }
       },
       "auth": {

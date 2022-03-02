@@ -35,6 +35,12 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "stripeCheckout": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "storage": {
@@ -67,6 +73,11 @@ export type AmplifyDependentResourcesAttributes = {
             "ApiId": "string"
         },
         "userpool": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "stripeAPI": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

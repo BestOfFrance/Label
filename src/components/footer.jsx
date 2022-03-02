@@ -1,6 +1,7 @@
 import './footer.css'
 
 import './NewFooter.css'
+import CheckoutButton from './CheckoutButton'
 
 export default function Footer(props) {
   return (
@@ -69,6 +70,7 @@ export default function Footer(props) {
   </div>
   </div>
   <div class="legal">
+  <CheckoutButton/>
     <div class="footer-legal-txt">Copyright © 2021 Best of France LLP. All rights reserved.</div>
   </div>
 
