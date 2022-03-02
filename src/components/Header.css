@@ -3,6 +3,7 @@
   position: fixed;
   top: 0;
   height: 5em;
+  padding: 10px 20px;
   align-items: center;
   justify-content: space-between !important;
   background-color: white;
@@ -16,11 +17,9 @@
   justify-content: center;
 }
 #logo {
-  height: 50px;
-  width: 100%;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-top: 1em;
+  width: auto;
+  height: 100%;
+  
 }
 
 .header-links {
@@ -45,29 +44,41 @@
   width: 2em;
 }
 .user {
-  min-width: 100px;
+  
   display: flex;
   flex-direction: column;
-  padding-right: 2em;
+  width: fit-content;
   justify-content: center;
   align-items: center;
 }
 .myaccount {
   font-size: x-small;
 }
-
+.logo-button {
+  height: 100%;
+  align-self: flex-start;
+}
 .small-button {
   background-color: white;
   border: none;
   font-size: small !important;
+  align-self: center;
 }
 
 button {
   background-color: white;
   border: none;
 }
+.go-premium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .news-deals-container {
+  display: flex;
   width: 7em;
+  align-items: center;
+  justify-content: center;
 }
 /* 
 /* Dropdown Button */

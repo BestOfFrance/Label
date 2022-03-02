@@ -32,6 +32,7 @@
 
 
 .login-button-button {
+  margin-top: 10px;
   border-width: 1px;
   border: solid;
   border-radius: 5px;
@@ -44,6 +45,7 @@
 }
 
 .foodie-button {
+  
   border-width: 1px;
   width: fit-content;
   text-align: center;

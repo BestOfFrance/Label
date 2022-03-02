@@ -16,7 +16,7 @@ export default function Header(props) {
   return (
     <div className="header">
       <div className="logo-container">
-        <button onClick={props.onHome}>
+        <button className="logo-button" onClick={props.onHome}>
           <img id='logo' src='BOFLogo.svg'></img>
         </button>
       </div>
