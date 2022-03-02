@@ -96,14 +96,19 @@ export default function CreateAccount(props) {
 }
 
   const onCart = function() {
-    const redirectToCheckout = async () => {
+    if (state.monthly) {
+      const priceId = 'price_1KYx2lHYehZq7RpTMCyoyOpk' ;
+    } else if (state.yearly) {
+      const priceId = 'price_1KYx2lHYehZq7RpTFEXxebG2'
+    }
+    const redirectToCheckout = async (userId) => {
       const fetchSession = async () => {
         const apiName = "stripeAPI"
         const apiEndpoint = "/checkout"
         const data = {
           body: {
           quantity: 1,
-          client_reference_id: "UniqueString",
+          client_reference_id: userId,
           priceId: "price_1KYx2lHYehZq7RpTFEXxebG2"
           }
         }
@@ -137,8 +142,12 @@ export default function CreateAccount(props) {
         if (out.data.Item) {
           setemail("This email has already been used")
         } else {
-          console.log('im happening')
-          redirectToCheckout()
+          
+          saveUser()
+          .then((data) => {
+            redirectToCheckout(data.id)
+          })
+          
         
             
           
@@ -214,6 +223,7 @@ const onChangeYearly = function() {
   }
 }
   const saveUser=async ()=>{
+   
     const data = {
       body: {
         firstname: firstname,
@@ -225,7 +235,7 @@ const onChangeYearly = function() {
       }
     };
     const apiData = await Api.post('userapi', '/users', data);
-    console.log({ apiData });
+    console.log(apiData);
     setfirstname("")
     setlastname("")
     
@@ -286,8 +296,16 @@ const onChangeYearly = function() {
        
           
      <div class="text-center">
-     <button onClick={onCart}>Continue to payment</button>
+       {state.monthly && 
+       <button onClick={onCart}>Continue to payment</button>
+       }
+       {state.yearly &&
+       <button onClick={onCart}>Continue to payment</button>
+       }
+       {state.freemium &&
        <button onClick={onSubmit}>Register</button>
+       }
+       
        
      </div>
        

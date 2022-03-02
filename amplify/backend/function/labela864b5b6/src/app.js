@@ -74,10 +74,11 @@ app.get('/users/:email', function(req, res) {
 ****************************/
 
 app.post('/users', function(req, res) {
+  const idComplete = id()
   var params = {
     TableName: 'users-dev',
     Item: {
-      id: id(),
+      id: idComplete,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       username: req.body.username,
@@ -90,7 +91,7 @@ app.post('/users', function(req, res) {
   }
   docClient.put(params, function(err, data) {
     if (err) res.json({err})
-    else res.json({success: 'user created successfully!'})
+    else res.json({success: 'user created successfully!', id: idComplete})
   })
 });
 
