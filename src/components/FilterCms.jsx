@@ -7,10 +7,10 @@ export default function FilterCms(props) {
     
     categories: props.categories,
     activeAll: true,
-    activePastry: true,
-    activeRestaurant: true,
-    activeGrocery: true,
-    activeBakery: true
+    activePastry: false,
+    activeRestaurant: false,
+    activeGrocery: false,
+    activeBakery: false
 
   }
   )
@@ -22,81 +22,61 @@ export default function FilterCms(props) {
   const onClickPastry = function() {
     const categories = []
     if (state.activePastry) {
-    for (const category of state.categories) {
-      if (!pastry.includes(category)) {
-        categories.push(category)
-      }
-    }
-    setState((prev) => ({ ...prev, activePastry: false, categories: categories }))
+    
+    setState((prev) => ({ ...prev, activePastry: false, activeAll: true }))
     props.onFilterCms(categories)
     } else {
-      const stateCat = state.categories;
-      for (const category of pastry) {
-        stateCat.push(category)
-      }
-      setState((prev) => ({ ...prev, activePastry: true, categories: stateCat }))
-    props.onFilterCms(stateCat)
+      
+      setState((prev) => ({ ...prev, activeBakery: false, activeAll: false, activeGrocery: false, activePastry: true, activeRestaurant: false}))
+      props.onFilterCms(pastry)
     }
   }
 
   const onClickRestaurant = function() {
     const categories = []
     if (state.activeRestaurant) {
-    for (const category of state.categories) {
-      if (!restaurant.includes(category)) {
-        categories.push(category)
-      }
-    }
-    setState((prev) => ({ ...prev, activeRestaurant: false, categories: categories }))
-    props.onFilterCms(categories)
+    
+    setState((prev) => ({ ...prev, activeRestaurant: false, activeAll: true }))
+    props.onFilterCms(props.categories)
     } else {
-      const stateCat = state.categories;
-      for (const category of restaurant) {
-        stateCat.push(category)
-      }
-      setState((prev) => ({ ...prev, activeRestaurant: true, categories: stateCat }))
-    props.onFilterCms(stateCat)
+      
+      setState((prev) => ({ ...prev, activeBakery: false, activeAll: false, activeGrocery: false, activePastry: false, activeRestaurant: true }))
+    props.onFilterCms(restaurant)
     }
   }
 
   const onClickGrocery = function() {
     const categories = []
     if (state.activeGrocery) {
-    for (const category of state.categories) {
-      if (!grocery.includes(category)) {
-        categories.push(category)
-      }
-    }
-    setState((prev) => ({ ...prev, activeGrocery: false, categories: categories }))
-    props.onFilterCms(categories)
+    
+    setState((prev) => ({ ...prev, activeGrocery: false, activeAll: true }))
+    props.onFilterCms(props.categories)
     } else {
-      const stateCat = state.categories;
-      for (const category of grocery) {
-        stateCat.push(category)
-      }
-      setState((prev) => ({ ...prev, activeGrocery: true, categories: stateCat }))
-    props.onFilterCms(stateCat)
+      
+      setState((prev) => ({ ...prev, activeBakery: false, activeAll: false, activeGrocery: true, activePastry: false, activeRestaurant: false }))
+    props.onFilterCms(grocery)
     }
   }
 
   const onClickBakery = function() {
     const categories = []
     if (state.activeBakery) {
-    for (const category of state.categories) {
-      if (!bakery.includes(category)) {
-        categories.push(category)
-      }
-    }
-    setState((prev) => ({ ...prev, activeBakery: false, categories: categories }))
-    props.onFilterCms(categories)
+    
+    setState((prev) => ({ ...prev, activeBakery: false, activeAll: true }))
+    props.onFilterCms(props.categories)
     } else {
-      const stateCat = state.categories;
-      for (const category of bakery) {
-        stateCat.push(category)
-      }
-      setState((prev) => ({ ...prev, activeBakery: true, categories: stateCat }))
-    props.onFilterCms(stateCat)
+      
+      setState((prev) => ({ ...prev, activeBakery: true, activeAll: false, activeGrocery: false, activePastry: false, activeRestaurant: false }))
+      props.onFilterCms(bakery)
     }
+  }
+  const onClickAll = function() {
+    const categories = []
+    if (!state.activeAll) {
+    
+    
+    props.onFilterCms(props.categories)
+    } 
   }
 
   return (
@@ -106,6 +86,7 @@ export default function FilterCms(props) {
       <Button className="cms-filter-button" style={{backgroundColor: state.activeRestaurant ? '#0957a5' : '#818181'}}onClick={onClickRestaurant}>Restaurant</Button>
       <Button className="cms-filter-button" style={{backgroundColor: state.activeGrocery ? '#0957a5' : '#818181'}} onClick={onClickGrocery}>Grocery</Button>
       <Button className="cms-filter-button" style={{backgroundColor: state.activeBakery ? '#0957a5' : '#818181'}} onClick={onClickBakery}>Bakery</Button>
+      <Button className="cms-filter-button" style={{backgroundColor: state.activeAll ? '#0957a5' : '#818181'}} onClick={onClickAll}>All Categories</Button>
       
     </ButtonGroup>
   )

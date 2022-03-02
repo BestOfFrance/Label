@@ -588,12 +588,12 @@ const pin = state.shops.map((center, index) => {
         </div>
         
         <div className="list-bottom">
-          <div className="cms-title-buttons">
+         
         <h3 className="cms-title">French Food Near You</h3>
         <FilterCms
         onFilterCms={onFilterCMS}
         categories={categoriesArray}/>
-        </div>
+        
         {state.sortedShops !== undefined &&
         <div  className="cms-cards">
           
