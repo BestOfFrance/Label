@@ -30,7 +30,14 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
-
+import { API, graphqlOperation } from 'aws-amplify';
+// The default AMAZON_COGNITO_USER_POOLS authorization mode
+API.graphql(graphqlOperation(createBook, { input: bookDetails }));
+// API_KEY Authorization Mode is for guest users to view the books
+const { data } = await API.graphql({
+  query: listBooks,
+  authMode: "API_KEY"
+});
 
 // const data = require('./shop-data')
 
