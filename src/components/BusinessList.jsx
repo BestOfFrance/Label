@@ -49,9 +49,15 @@ export default function BusinessList(props) {
    const checkOpen = openNow(props.hours)
    
    if(checkOpen !== undefined) {
+    
     console.log(checkOpen)
   if(checkOpen.isOpen === true) {
+    const checkCloseDay = checkOpen.tomorrow
+    
     setOpen(true);
+    if (checkCloseDay !== undefined) {
+      setOpenTime(checkCloseDay.close)
+    }
     // setOpenTime(checkOpen.tomorrow.open)
   } else if (checkOpen.isOpen === false) {
     
@@ -125,7 +131,7 @@ export default function BusinessList(props) {
             
           
           <div>
-          {open ? 'Open Now' : `Closed, opens ${openDay} at ${hoursObject[openTime]}`}
+          {open ? `Open Now until ${hoursObject[openTime]}` : `Closed, opens ${openDay} at ${hoursObject[openTime]}`}
             
             
             </div>

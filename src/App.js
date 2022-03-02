@@ -375,6 +375,10 @@ const goToMap = function (latitude, longitude, selectedCenter) {
   setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
   setSelectedCenter(selectedCenter)
 }
+const goToMapCms = function (latitude, longitude, selectedCenter) {
+  setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
+  
+}
 
 // set up the list of shops on the side
 const items = state.topThree.map((shop, index) => {
