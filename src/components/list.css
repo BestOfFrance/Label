@@ -1,7 +1,7 @@
 .list-item.active {
   color: #d82f28 !important;
   background-color: white !important;
-  font-size: small !important;
+  
 }
 .list-item {
   height: 11em;
@@ -54,4 +54,10 @@
  height: 20vh;
 }
 
+.cms-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
 

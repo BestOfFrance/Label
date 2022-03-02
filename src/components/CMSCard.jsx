@@ -53,7 +53,7 @@ export default function CMSCard(props) {
 
   return(
     
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}} >
+    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""}`} id={props.id}   >
       <div style={styles} className="list-images">
       
 
@@ -63,9 +63,15 @@ export default function CMSCard(props) {
      <b> {props.title} </b>
      
       </div>
-      <div>
+      <div className="cms-button-container">
+      <div >
         
       {props.name} 
+      </div>
+      <div>
+        <button onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>View</button>
+        
+      </div>
       </div>
       <div>
         
