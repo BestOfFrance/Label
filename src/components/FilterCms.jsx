@@ -74,7 +74,7 @@ export default function FilterCms(props) {
     const categories = []
     if (!state.activeAll) {
     
-    
+      setState((prev) => ({ ...prev, activeAll: true, activeBakery: false, activeGrocery: false, activePastry: false, activeRestaurant: false  }))
     props.onFilterCms(props.categories)
     } 
   }
