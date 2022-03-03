@@ -1,6 +1,6 @@
 import './CreateAccount.css'
 import {useState} from 'react';
-import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
 import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
@@ -40,7 +40,8 @@ export default function CreateAccount(props) {
     monthly: false,
     yearly: false
   })
-
+  const [error, setError] = useState("")
+  const [showError, setShowError] = useState(false)
   const [business, setBusiness] = useState("Business")
   const [show, setShow] = useState("hide")
   const [firstname,setfirstname]=useState("")
@@ -94,6 +95,10 @@ export default function CreateAccount(props) {
         setShow("show")
     } catch (error) {
         console.log('error signing up:', error);
+        
+      setError("There was an error signing up. Please try again. (hint: did you use a valid email format?)")
+      setShowError(true)
+        
     }
 }
 
@@ -254,7 +259,10 @@ const onChangeYearly = function() {
     {show === "hide" &&
     <div className="create-account">
      <p>Create a Business Account</p>
-    
+     
+     {showError && 
+    <Alert severity="error">{error}</Alert>
+  }
      <FormControl>
        
                <FormLabel>First name</FormLabel>
@@ -283,11 +291,11 @@ const onChangeYearly = function() {
              <FormGroup>
   <FormControlLabel control={<Checkbox checked={state.freemium} onChange={onChangeFreemium} />} label="Freemium" />
   
-
-  <FormControlLabel control={<Checkbox checked={state.monthly} onChange={onChangeMonthly}/>} label="Monthly Premium ($30USD/Month)" />
+ <p>**Premium Access Coming Soon</p>
+  {/* <FormControlLabel control={<Checkbox checked={state.monthly} onChange={onChangeMonthly}/>} label="Monthly Premium ($30USD/Month)" />
   
 
-  <FormControlLabel control={<Checkbox checked={state.yearly} onChange={onChangeYearly}/>} label="Yearly Premium ($300USD/Year)" />
+  <FormControlLabel control={<Checkbox checked={state.yearly} onChange={onChangeYearly}/>} label="Yearly Premium ($300USD/Year)" /> */}
   
 </FormGroup>
 

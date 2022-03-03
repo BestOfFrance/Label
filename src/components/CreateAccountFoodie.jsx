@@ -1,6 +1,6 @@
 import './CreateAccount.css'
 import {useState} from 'react';
-import { FormControl, Input, FormLabel, Checkbox } from '@mui/material';
+import { FormControl, Input, FormLabel, Checkbox, Alert } from '@mui/material';
 import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
@@ -25,6 +25,8 @@ export default function CreateAccount(props) {
     placeholderUser: "Username"
   })
   const [show, setShow] = useState("hide")
+  const [error, setError] = useState("")
+  const [showError, setShowError] = useState(false)
   const [firstname,setfirstname]=useState("")
   function changefirstname(event){
     const val=event.target.value
@@ -81,7 +83,10 @@ export default function CreateAccount(props) {
     setShow("show")
         console.log(user);
     } catch (error) {
-        console.log('error signing up:', error);
+      console.log('error signing up:', error);
+      setError("There was an error signing up. Please try again. (hint: did you use a valid email format?)")
+      setShowError(true)
+        
     }
 }
   const onSubmit = function() {
@@ -145,7 +150,9 @@ export default function CreateAccount(props) {
     {show === "hide" &&
     <div className="create-account">
      <p>Create an Account</p>
-    
+     {showError && 
+    <Alert severity="error">{error}</Alert>
+  }
      <FormControl>
        
                <FormLabel>First name</FormLabel>
