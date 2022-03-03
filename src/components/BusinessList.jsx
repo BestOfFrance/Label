@@ -36,7 +36,17 @@ const hoursObject = {
   seven: '7:00AM',
   nineThirty: '9:30AM',
   sevenThirty: '7:30AM',
-  eightThirty: '8:30AM'
+  eightThirty: '8:30AM',
+  1900: '7:00PM',
+  1930: '7:30PM',
+  2000: '8:00PM',
+  2030: '8:30PM',
+  2100: '9:00PM',
+  2130: '9:30PM',
+  2200: '10:00PM',
+  2230: '10:30PM',
+  2300: '11:00PM',
+  2330: '11:30PM'
 
 }
 
@@ -55,11 +65,12 @@ export default function BusinessList(props) {
     
     console.log(checkOpen)
   if(checkOpen.isOpen === true) {
-    const checkCloseDay = checkOpen.tomorrow
+    
     
     setOpen(true);
-    if (checkCloseDay !== undefined) {
-      setOpenTime(checkCloseDay.close)
+    if (checkOpen.close !== undefined) {
+      setOpenTime(checkOpen.close)
+      // console.log(checkCloseDay.close)
     }
     // setOpenTime(checkOpen.tomorrow.open)
   } else if (checkOpen.isOpen === false) {

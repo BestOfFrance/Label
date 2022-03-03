@@ -58,10 +58,10 @@ export default function Marker(props) {
   useEffect(() => {
     const checkOpen = openNow(props.hours)
    if(checkOpen !== undefined) {
-      console.log(checkOpen)
+      // console.log(checkOpen)
     if(checkOpen.isOpen === true) {
       setOpen(true);
-      // setOpenTime(checkOpen.tomorrow.open)
+      setOpenTime(checkOpen.close)
     } else if (checkOpen.isOpen === false) {
       
       const checkOpenDay = checkOpen.tomorrow
@@ -119,7 +119,7 @@ export default function Marker(props) {
   //   )
   // })
 
- 
+ console.log(props.signedIn)
 
   return (
     <div id="marker-div">

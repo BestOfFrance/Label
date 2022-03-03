@@ -46,7 +46,8 @@ const openNow = function(hours) {
     
      for (const day of dayOfArray) {
        if (day.open < currentTime && day.close > currentTime) {
-         const openObject = {isOpen: true, day: day.day}
+        //  console.log('day', day)
+         const openObject = {isOpen: true, close: day.close}
          return openObject;
        } else {
        

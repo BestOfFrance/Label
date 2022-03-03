@@ -65,8 +65,10 @@ const details2 = dataObj2.details3001
 //       )
 // }
 
-
-
+//an aws issue, do not need these variables
+const createBook = ''
+const bookDetails = ''
+const listBooks = ''
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
@@ -540,6 +542,7 @@ const pin = state.shops.map((center, index) => {
       onClicking={() => {
         setSelectedCenter(false)
       }}
+      signedIn={state.signedIn}
       hours={center.hours}
       rating={center.rating}
       category={center.category}
