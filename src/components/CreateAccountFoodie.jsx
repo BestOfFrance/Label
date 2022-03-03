@@ -71,6 +71,14 @@ export default function CreateAccount(props) {
           }
             
         });
+        saveUser();
+        setfirstname("")
+    setlastname("")
+    
+    setpassword("")
+    setemail("")
+    setpasswordconfirm("")
+    setShow("show")
         console.log(user);
     } catch (error) {
         console.log('error signing up:', error);
@@ -101,11 +109,9 @@ export default function CreateAccount(props) {
         if (out.data.Item) {
           setemail("This email has already been used")
         } else {
-          saveUser();
+          
           signUp()
-          .then(() => {
-            setShow("show")
-          })
+          
           
         
         }
@@ -127,12 +133,7 @@ export default function CreateAccount(props) {
     };
     const apiData = await Api.post('userapi', '/users', data);
     console.log({ apiData });
-    setfirstname("")
-    setlastname("")
     
-    setpassword("")
-    setemail("")
-    setpasswordconfirm("")
    
   }
 

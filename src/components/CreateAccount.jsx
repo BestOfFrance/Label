@@ -89,7 +89,9 @@ export default function CreateAccount(props) {
           }
             
         });
-        // console.log(user);
+        console.log(user)
+        saveUser();
+        setShow("show")
     } catch (error) {
         console.log('error signing up:', error);
     }
@@ -145,6 +147,7 @@ export default function CreateAccount(props) {
           
           saveUser()
           .then((data) => {
+            console.log(data.id)
             redirectToCheckout(data.id)
           })
           
@@ -186,11 +189,9 @@ export default function CreateAccount(props) {
           setemail("This email has already been used")
         } else {
 
-          saveUser();
+          
           signUp()
-          .then(() => {
-            setShow("show")
-          })
+          
           
         
         }
@@ -211,7 +212,7 @@ export default function CreateAccount(props) {
    setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: false }))
   } else {
    setState((prev) => ({ ...prev, freemium: false, monthly: true, yearly: false }))
-   setBusiness("monthly")
+   setBusiness("monthly-unverified")
   }
 }
 const onChangeYearly = function() {
@@ -219,7 +220,7 @@ const onChangeYearly = function() {
    setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: false }))
   } else {
    setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: true }))
-   setBusiness("yearly")
+   setBusiness("yearly-unverified")
   }
 }
   const saveUser=async ()=>{
@@ -242,7 +243,7 @@ const onChangeYearly = function() {
     setpassword("")
     setemail("")
     setpasswordconfirm("")
-   
+   return apiData
   }
 
   return (
