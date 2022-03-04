@@ -12,6 +12,7 @@ import ConfirmAccount from './components/confirmAccount'
 import CreateAccount from './components/CreateAccount'
 import CreateAccountFoodie from './components/CreateAccountFoodie'
 import NewsDeals from './components/NewsDeals'
+import ReportButton from './components/ReportButton'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -579,7 +580,7 @@ const pin = state.shops.map((center, index) => {
         <div className="premium-map">
         
         <div className="premium-list">
-        
+        <ReportButton/>
         <h3>Premium Card</h3>
         
           <div className="cms">

@@ -15,7 +15,7 @@ import { API } from "aws-amplify"
 
 import '@stripe/stripe-js'
 
-const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
+const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -116,7 +116,7 @@ export default function CreateAccount(props) {
           body: {
           quantity: 1,
           client_reference_id: userId,
-          priceId: "price_1KYx2lHYehZq7RpTFEXxebG2"
+          priceId: "price_1KZLQSHYehZq7RpTPbt6aMad"
           }
         }
         const session = await API.post(apiName, apiEndpoint, data)
@@ -291,11 +291,11 @@ const onChangeYearly = function() {
              <FormGroup>
   <FormControlLabel control={<Checkbox checked={state.freemium} onChange={onChangeFreemium} />} label="Freemium" />
   
- <p>**Premium Access Coming Soon</p>
-  {/* <FormControlLabel control={<Checkbox checked={state.monthly} onChange={onChangeMonthly}/>} label="Monthly Premium ($30USD/Month)" />
+ 
+  <FormControlLabel control={<Checkbox checked={state.monthly} onChange={onChangeMonthly}/>} label="Monthly Premium ($30USD/Month)" />
   
 
-  <FormControlLabel control={<Checkbox checked={state.yearly} onChange={onChangeYearly}/>} label="Yearly Premium ($300USD/Year)" /> */}
+  <FormControlLabel control={<Checkbox checked={state.yearly} onChange={onChangeYearly}/>} label="Yearly Premium ($300USD/Year)" />
   
 </FormGroup>
 

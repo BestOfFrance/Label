@@ -6,23 +6,18 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST);
+// require ("dotenv").config();
+// const Stripe = require('stripe');
+// const stripe = Stripe(process.env.STRIPE_SECRET_KEY_DEVELOPMENT);
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY_TEST)
-const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
 // declare a new express app
 const app = express()
-// app.use(bodyParser.json())
-app.use(
-  bodyParser.json({
-    verify: function(req, res, buf) {
-      req.rawBody = buf.toString()
-    },
-  })
-)
+app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
@@ -37,12 +32,12 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
-app.get('/webhook', function(req, res) {
+app.get('/checkout', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
 
-app.get('/webhook/*', function(req, res) {
+app.get('/checkout/*', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
@@ -51,32 +46,29 @@ app.get('/webhook/*', function(req, res) {
 * Example post method *
 ****************************/
 
-app.post("/webhook", async function (req, res) {
-  // Check Stripe signature
-  const sig = req.headers['stripe-signature']
-  let event
+app.post('/checkout', async function(req, res) {
   try {
-    event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret)
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: req.body.priceId, // The priceId of the product being purchased, retrievable from the Stripe dashboard
+          quantity: req.body.quantity,
+        },
+      ],
+      mode: 'subscription',
+      client_reference_id: req.body.client_reference_id,
+      success_url:
+        'https://localhost:3000', // The URL the customer will be directed to after the payment or subscription creation is successful.
+      cancel_url: 'https://localhost:3000', // The URL the customer will be directed to if they decide to cancel payment and return to your website.
+    })
+    res.json(session)
   } catch (err) {
-    return res.status(400).send(`Webhook Error: ${err.message}`)
+    res.json(err)
   }
-
-  switch (event.type) {
-    case 'checkout.session.completed':
-      console.log(`Payment checkout session for ${req.body.data.object.client_reference_id} was successful!`)
-
-      break
-    default:
-      // Unexpected event type
-      return res.status(400).end()
-  }
-
-  // Return a response to acknowledge receipt of the event
-  res.json({ received: true })
 })
 
-
-app.post('/webhook/*', function(req, res) {
+app.post('/checkout/*', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -85,12 +77,12 @@ app.post('/webhook/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/webhook', function(req, res) {
+app.put('/checkout', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/webhook/*', function(req, res) {
+app.put('/checkout/*', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
@@ -99,12 +91,12 @@ app.put('/webhook/*', function(req, res) {
 * Example delete method *
 ****************************/
 
-app.delete('/webhook', function(req, res) {
+app.delete('/checkout', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/webhook/*', function(req, res) {
+app.delete('/checkout/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });

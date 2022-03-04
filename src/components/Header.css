@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between !important;
   background-color: white;
-  z-index: 9999999999999999999999999999999999999999999999;
+  z-index: 99999999 !important;
   width: 100%;
 }
 .logo-container {
@@ -24,7 +24,7 @@
 
 .header-links {
   display: flex;
-  justify-content: right !important;
+  justify-content: flex-end !important;
   width: 30%
   
 }
