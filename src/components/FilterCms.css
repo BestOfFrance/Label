@@ -1,0 +1,9 @@
+.css-dmmspl-MuiFormGroup-root {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+}
+
+.filter-cms-titles {
+  padding: 9px
+}

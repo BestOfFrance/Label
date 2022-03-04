@@ -1,6 +1,9 @@
 import react, {useState} from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+import './FilterCms.css'
 
 export default function FilterCms(props) {
   const [state, setState] = useState({
@@ -80,14 +83,20 @@ export default function FilterCms(props) {
   }
 
   return (
-    <ButtonGroup variant="contained" aria-label="outlined primary button group">
+    <RadioGroup variant="contained" aria-label="outlined primary button group" className="radio-group-buttons">
       {/* <Button onClick={() => {props.onFilterCms(["Pastry Shop", "Cake shop", "Dessert shop"])}}>Pastry Shop</Button> */}
-      <Button className="cms-filter-button" style={{backgroundColor: state.activePastry ? '#0957a5' : '#818181'}} onClick={onClickPastry}>Pastry Shop</Button>
-      <Button className="cms-filter-button" style={{backgroundColor: state.activeRestaurant ? '#0957a5' : '#818181'}}onClick={onClickRestaurant}>Restaurant</Button>
-      <Button className="cms-filter-button" style={{backgroundColor: state.activeGrocery ? '#0957a5' : '#818181'}} onClick={onClickGrocery}>Grocery</Button>
-      <Button className="cms-filter-button" style={{backgroundColor: state.activeBakery ? '#0957a5' : '#818181'}} onClick={onClickBakery}>Bakery</Button>
-      <Button className="cms-filter-button" style={{backgroundColor: state.activeAll ? '#0957a5' : '#818181'}} onClick={onClickAll}>All Categories</Button>
+      Pastry Shop
+      <Radio className="cms-filter-button" onClick={onClickPastry} checked={state.activePastry}></Radio>
+      Restaurant
+
+      <Radio className="cms-filter-button" onClick={onClickRestaurant} checked={state.activeRestaurant}></Radio>
+      Grocery
+      <Radio className="cms-filter-button"  onClick={onClickGrocery} checked={state.activeGrocery}></Radio>
+      Bakery
+      <Radio className="cms-filter-button"  onClick={onClickBakery} checked={state.activeBakery}></Radio>
+      All Categories
+      <Radio className="cms-filter-button"  onClick={onClickAll} checked={state.activeAll}></Radio>
       
-    </ButtonGroup>
+    </RadioGroup>
   )
 }

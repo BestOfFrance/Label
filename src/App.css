@@ -136,16 +136,7 @@ a {
   font-size: large !important;
   color: black;
 }
-.cms-title-buttons {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  
-}
 
-.cms-filter-button {
-  font-family: nunito !important;
-}
 
 .css-zow5z4-MuiGrid-root {
   width: 100% !important;
