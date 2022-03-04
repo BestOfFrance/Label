@@ -293,7 +293,7 @@ export default function Application(props) {
         closestPastryShop.push(marker)
       }
     }
-    const topThreeShops = allShops.slice(0,2)
+    const topThreeShops = allShops.slice(0,3)
 
     setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0]], sortedShops: allCMSShops}))
     }

@@ -16,7 +16,7 @@
   
 }
 .premium-list {
-  width: 25%;
+  width: 32%;
   height: 100%;
 }
 .css-zow5z4-MuiGrid-root {
@@ -34,7 +34,7 @@ h3 {
 .premium-map {
   display: flex;
   flex-direction: row !important;
-  height: 73vh !important;
+  height: 76vh !important;
 }
 
 .cms-title {
@@ -79,7 +79,7 @@ div.list {
 
 div.map {
   
-  width: 75%
+  width: 68%
 }
 
 .list-group {
