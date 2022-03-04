@@ -157,8 +157,12 @@ a {
   padding: none !important;
 }
 .css-1h77wgb > .MuiGrid-item  {
-  padding-right: 8px !important;
-  padding-left: 8px !important;
+  padding-right: 2px !important;
+  padding-left: 2px !important;
+}
+.css-zow5z4-MuiGrid-root>.MuiGrid-item {
+  padding-right: 2px !important;
+  padding-left: 2px !important;
 }
 /* Extra small devices (phones, 600px and down) */
 /* @media only screen and (max-width: 600px) {...} */
