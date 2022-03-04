@@ -72,7 +72,7 @@ const bookDetails = ''
 const listBooks = ''
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
-
+const AWS = require('aws-sdk');
 //initial location set to Vancouver, will be set to geographic location of user
 const locationDefault = {
   

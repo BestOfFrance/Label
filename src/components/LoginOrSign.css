@@ -33,7 +33,7 @@
 
 .login-button-button {
   margin-top: 10px;
-  border-width: 1px;
+  border-width: 1px !important;
   border: solid;
   border-radius: 5px;
   font-size: large;
@@ -46,7 +46,7 @@
 
 .foodie-button {
   
-  border-width: 1px;
+  border-width: 1px !important;
   width: fit-content;
   text-align: center;
   border: solid;
@@ -58,7 +58,7 @@
 }
 
 .business-button {
-  border-width: 1px;
+  border-width: 1px !important;
   width: fit-content;
   text-align: center;
   border: solid;

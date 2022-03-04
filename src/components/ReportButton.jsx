@@ -2,18 +2,18 @@ import awsconfig from '../aws-exports';
 const AWS = require('aws-sdk');
 
 
+const SESConfig = {
+  apiVersion: "2010-12-01",
+  accessKeyId: 'AKIAU472PPLA2EQJBSVC',
+  accessSecretKey: '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',
+  region: "us-east-1"
+}
+AWS.config.update(SESConfig);
 
 
 
 
 export default function ReportButton(props) {
-  const SESConfig = {
-    apiVersion: "2010-12-01",
-    accessKeyId: 'AKIAU472PPLARYDHRD2M',
-    accessSecretKey: 'BKXVOw4MFnl42XI4n4+bDt8h0uUVIUD0n/ivN1A872NG',
-    region: "us-east-1"
-}
-AWS.config.update(SESConfig);
 
 
 // Create sendEmail params 
