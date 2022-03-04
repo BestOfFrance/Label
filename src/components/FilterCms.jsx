@@ -85,16 +85,20 @@ export default function FilterCms(props) {
   return (
     <RadioGroup variant="contained" aria-label="outlined primary button group" className="radio-group-buttons">
       {/* <Button onClick={() => {props.onFilterCms(["Pastry Shop", "Cake shop", "Dessert shop"])}}>Pastry Shop</Button> */}
-      Pastry Shop
+      <img className="cms-filter-images" src="cupcake.svg"/>
+      Pastry Shop:
       <Radio className="cms-filter-button" onClick={onClickPastry} checked={state.activePastry}></Radio>
-      Restaurant
+      <img className="cms-filter-images" src="cutlery.svg"/>
+      Restaurant:
 
       <Radio className="cms-filter-button" onClick={onClickRestaurant} checked={state.activeRestaurant}></Radio>
-      Grocery
+      <img src="shop.svg" className="cms-filter-images" />
+      Grocery:
       <Radio className="cms-filter-button"  onClick={onClickGrocery} checked={state.activeGrocery}></Radio>
-      Bakery
+      <img src="croissant-2.svg" className="cms-filter-images"/>
+      Bakery:
       <Radio className="cms-filter-button"  onClick={onClickBakery} checked={state.activeBakery}></Radio>
-      All Categories
+      All Categories:
       <Radio className="cms-filter-button"  onClick={onClickAll} checked={state.activeAll}></Radio>
       
     </RadioGroup>
