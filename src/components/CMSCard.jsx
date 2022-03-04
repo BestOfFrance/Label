@@ -69,7 +69,7 @@ export default function CMSCard(props) {
       {props.name} 
       </div>
       <div>
-        <button onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>View</button>
+        <button onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>Locate</button>
         
       </div>
       </div>
