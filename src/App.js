@@ -31,6 +31,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
+import { Routes, Route, Link } from "react-router-dom";
+import LoginOrSignPage from './components/LoginOrSignPage'
 import '@stripe/stripe-js'
 
 
@@ -573,6 +575,13 @@ const pin = state.shops.map((center, index) => {
         signedIn={state.signedIn}
         
       />
+      <Routes>
+        
+        <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
+          getRegisterFoodie={getRegisterFoodie}
+          login={login}
+          />} />
+      </Routes>
       
       {state.mode === mode && 
       <div className="main-body-main-page">
@@ -582,7 +591,9 @@ const pin = state.shops.map((center, index) => {
         <div className="premium-list">
         {/* <ReportButton/> */}
         <h3>Premium Card</h3>
-        
+        <nav>
+        <Link to="/loginorsign">HELLO</Link>
+      </nav>
           <div className="cms">
           {/* <DataButton onClick={saveShop}/> */}
         <ListGroup as="ul" id="premium">
@@ -667,7 +678,7 @@ const pin = state.shops.map((center, index) => {
       }
       
       
-      {state.mode === "loginorsign" &&
+      {/* {state.mode === "loginorsign" &&
       <div className="main-body">
         <LoginOrSign
           getRegister={getRegister}
@@ -675,7 +686,7 @@ const pin = state.shops.map((center, index) => {
           login={login}
         />
         </div>
-      }
+      } */}
       
       
       {state.mode === "register" &&
@@ -720,5 +731,17 @@ const pin = state.shops.map((center, index) => {
 }
   
  
-  
+function Home() {
+  return (
+    <>
+      <main>
+        <h2>Welcome to the homepage!</h2>
+        <p>You can do this, I believe in you.</p>
+      </main>
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
+  );
+}
   
