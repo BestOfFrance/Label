@@ -591,6 +591,8 @@ console.log(state.signedIn, "state")
         <Route path="dashboard" element = {<Dashboard logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn}/>} />
+        <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
+        <Route path="registerfoodie" element={<CreateAccountFoodie setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>}/>
       </Routes>
       
    
@@ -614,16 +616,16 @@ console.log(state.signedIn, "state")
       } */}
       
       
-      {state.mode === "register" &&
+      {/* {state.mode === "register" &&
       <div className="main-body">
         <CreateAccount  setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>
         </div>
-      }
-      {state.mode === "registerFoodie" &&
+      } */}
+      {/* {state.mode === "registerFoodie" &&
       <div className="main-body">
         <CreateAccountFoodie setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>
         </div>
-      }
+      } */}
      {state.mode === "news" &&
       <div className="main-body">
         <NewsDeals/>
@@ -637,13 +639,7 @@ console.log(state.signedIn, "state")
         />
         </div>
       } */}
-      {state.mode === "login" &&
-      <div className="main-body">
-        <Login
-        
-        />
-        </div>
-      }
+     
      
       
       <Footer/>

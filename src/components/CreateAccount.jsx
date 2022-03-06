@@ -252,6 +252,7 @@ const onChangeYearly = function() {
   }
 
   return (
+    <div className="main-body">
     
   <div className="register-container">
   
@@ -332,6 +333,7 @@ const onChangeYearly = function() {
         />
         </div>
       }
+      </div>
 </div>
   )
 }

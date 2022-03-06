@@ -144,6 +144,7 @@ export default function CreateAccount(props) {
 
   return (
     
+  <div className="main-body">
   <div className="register-container">
   
 
@@ -201,6 +202,7 @@ export default function CreateAccount(props) {
         />
         </div>
       }
+</div>
 </div>
   )
 }

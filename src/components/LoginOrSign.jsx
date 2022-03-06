@@ -28,7 +28,13 @@ export default function LoginOrSign(props) {
             <li>Access more information about shops</li>
             <li>More features to come</li>
             </ul></div>
-            <div ><button className="foodie-button" onClick={props.getRegisterFoodie}>Register</button></div>
+            <div >
+            <nav>
+                <Link to="/registerfoodie">
+                <button className="foodie-button" >Register</button>
+              </Link>
+              </nav>
+              </div>
         </div>
         
         <div className="business-panel">
@@ -42,7 +48,14 @@ export default function LoginOrSign(props) {
             <li>Access more information about shops</li>
             <li>More features to come</li>
             </ul></div>
-            <div ><button className="business-button" onClick={props.getRegister}>Register</button></div>
+            <div >
+              <nav>
+                <Link to="/registerbusiness">
+              <button className="business-button" >Register</button>
+              </Link>
+              </nav>
+              </div>
+             
         </div>
       </div>
       
