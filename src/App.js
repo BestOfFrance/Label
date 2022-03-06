@@ -34,6 +34,7 @@ import FilterCms from './components/FilterCms'
 import { Routes, Route, Link } from "react-router-dom";
 import LoginOrSignPage from './components/LoginOrSignPage'
 import HomePage from './HomePage'
+import LoginPage from './LoginPage'
 import '@stripe/stripe-js'
 
 
@@ -560,7 +561,7 @@ const pin = state.shops.map((center, index) => {
   
 })
 
-
+console.log(state.signedIn, "state")
 //render all
   return(
     <div className="main-container-all">
@@ -583,6 +584,13 @@ const pin = state.shops.map((center, index) => {
           getRegisterFoodie={getRegisterFoodie}
           login={login}
           />} />
+        <Route path="login" element={<LoginPage  logout={signOut}
+        setMap={setMap}
+        setLoggedIn={setLoggedIn}
+        setBusiness={setBusiness}/>}/>
+        <Route path="dashboard" element = {<Dashboard logout={signOut}
+        business={state.accountType}
+        signedIn={state.signedIn}/>} />
       </Routes>
       
    
@@ -621,21 +629,18 @@ const pin = state.shops.map((center, index) => {
         <NewsDeals/>
         </div>
       }
-      {state.mode === "dashboard" &&
+      {/* {state.mode === "dashboard" &&
       <div className="main-body">
         <Dashboard
         logout={signOut}
         business={state.accountType}
         />
         </div>
-      }
+      } */}
       {state.mode === "login" &&
       <div className="main-body">
         <Login
-        logout={signOut}
-        setMap={setMap}
-        setLoggedIn={setLoggedIn}
-        setBusiness={setBusiness}
+        
         />
         </div>
       }

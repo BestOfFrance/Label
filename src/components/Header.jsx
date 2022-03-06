@@ -14,6 +14,8 @@ export default function Header(props) {
       setHidden('hidden')
     }
   }
+
+  console.log(props.signedIn, 'signed in header')
   return (
     <div className="header">
       <div className="logo-container">
@@ -55,16 +57,31 @@ export default function Header(props) {
          <button className="small-button">Go Premium</button>
       </div>
       <div className="user" >
+        {props.signedIn === false && 
         <nav>
           <Link to='/loginorsign' >
-        <button className="small-button" onClick={props.getAccount}>
+        <button className="small-button" >
         <img src="icons8-user-64.png" className="user-icon"></img>
-        <div className="myaccount">
-          {props.signedIn ? "My Account" : "Sign In"}
-        </div>
+        
         </button>
         </Link>
         </nav>
+
+        }
+        {props.signedIn === true &&
+          <nav>
+          <Link to='/dashboard' >
+        <button className="small-button" >
+        <img src="icons8-user-64.png" className="user-icon"></img>
+        
+        </button>
+        </Link>
+        </nav>
+          }
+        <div className="myaccount">
+          {props.signedIn ? "My Account" : "Sign In"}
+        </div>
+        
       </div>
     </div>
     </div>

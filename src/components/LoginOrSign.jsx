@@ -1,4 +1,5 @@
 import './LoginOrSign.css'
+import { Routes, Route, Link } from "react-router-dom";
 
 export default function LoginOrSign(props) {
 
@@ -9,7 +10,12 @@ export default function LoginOrSign(props) {
       </div>
 
       <div >
-        <button className="login-button-button" onClick={props.login}>Login</button>
+        <nav>
+          <Link to='/login'>
+        <button className="login-button-button" >Login</button>
+        </Link>
+        </nav>
+        
       </div>
       <div className="choose-account-type">
       

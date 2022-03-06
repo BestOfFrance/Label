@@ -6,6 +6,7 @@ import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
 import ConfirmAccount from './confirmAccount'
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 Amplify.configure(awsconfig);
 
@@ -41,6 +42,7 @@ export default function CreateAccount(props) {
     const val=event.target.value
     setemail(val)
   }
+  const [redirect, setRedirect] = useState(false)
  
   
   async function fetchUser() {
@@ -49,24 +51,33 @@ export default function CreateAccount(props) {
   }
   const onSubmit = function() {
     let signedin = false;
-    fetchUser()
-    .then((out) => {
-      console.log(out.data.Item.accountType)
-      if (out.data.Item.accountType === "Business") {
-        props.setBusiness()
-      }
-    })
+    
 
     Auth.signIn(email, password)
     .then((user) => {
       console.log(user)
       props.setLoggedIn()
       props.setMap()
+      fetchUser()
+      setRedirect(true)
+
+    .then((out) => {
+      console.log(out.data.Item.accountType)
+      if (out.data.Item.accountType === "Business") {
+        props.setBusiness()
+      }
+    })
       
     })
     .catch((err) => {
-      setError("There was an error logging in")
+      
       setShow("show")
+      if(err.code === 'UserNotFoundException') {
+        setError("Email not found, please register or try another email address")
+      }
+      if(err.code === 'NotAuthorizedException') {
+        setError("Incorrect email or password")
+      }
       console.log(err)
     })
     
@@ -103,9 +114,13 @@ export default function CreateAccount(props) {
        
           
      <div class="text-center">
+       
        <button onClick={onSubmit}>Log In</button>
        
      </div>
+     {redirect === true &&
+     <Navigate to='/'/>
+     }
        
  
     </div>
