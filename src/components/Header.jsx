@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import './Header.css'
 import SearchBar from './SearchBar'
+import { Routes, Route, Link } from "react-router-dom";
 
 
 export default function Header(props) {
@@ -16,9 +17,16 @@ export default function Header(props) {
   return (
     <div className="header">
       <div className="logo-container">
-        <button className="logo-button" onClick={props.onHome}>
-          <img id='logo' src='BOFLogo.svg'></img>
+        
+       <nav>
+         <Link to='/'>
+         <button className="logo-button" >
+        <img id='logo' src='BOFLogo.svg'></img>
         </button>
+       
+        </Link>
+       </nav>
+        
       </div>
       
       <div id="search-container">
@@ -47,12 +55,16 @@ export default function Header(props) {
          <button className="small-button">Go Premium</button>
       </div>
       <div className="user" >
+        <nav>
+          <Link to='/loginorsign' >
         <button className="small-button" onClick={props.getAccount}>
         <img src="icons8-user-64.png" className="user-icon"></img>
         <div className="myaccount">
           {props.signedIn ? "My Account" : "Sign In"}
         </div>
         </button>
+        </Link>
+        </nav>
       </div>
     </div>
     </div>

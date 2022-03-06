@@ -17,9 +17,8 @@
   justify-content: center;
 }
 #logo {
-  width: auto;
-  height: 100%;
-  
+  width: 230px;
+  height: auto;
 }
 
 .header-links {

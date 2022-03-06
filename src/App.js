@@ -33,6 +33,7 @@ import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
 import { Routes, Route, Link } from "react-router-dom";
 import LoginOrSignPage from './components/LoginOrSignPage'
+import HomePage from './HomePage'
 import '@stripe/stripe-js'
 
 
@@ -452,7 +453,7 @@ const cmsBakery = state.sortedShops.map((shop, index) => {
 
 // console.log('shops state', state.shops)
 
-console.log(state.accountType)
+// console.log(state.accountType)
 
 //function for filter button
 const onFilter = function(data) {
@@ -461,7 +462,7 @@ const onFilter = function(data) {
 }
 // const [pastry, setPastry] = useState(true)
 // const []
-const onFilterCMS = function(data, active) {
+const onFilterCMS = function(data) {
   setState((prev) => ({ ...prev, cmsCategories: [...data] }))
   
 }
@@ -576,99 +577,15 @@ const pin = state.shops.map((center, index) => {
         
       />
       <Routes>
-        
+        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray} onFilterCms={onFilterCMS}
+        categories={categoriesArray} sortedShops={state.sortedShops} cmsBakery={cmsBakery}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
           getRegisterFoodie={getRegisterFoodie}
           login={login}
           />} />
       </Routes>
       
-      {state.mode === mode && 
-      <div className="main-body-main-page">
-      <div className="main-container">
-        <div className="premium-map">
-        
-        <div className="premium-list">
-        {/* <ReportButton/> */}
-        <h3>Premium Card</h3>
-        <nav>
-        <Link to="/loginorsign">HELLO</Link>
-      </nav>
-          <div className="cms">
-          {/* <DataButton onClick={saveShop}/> */}
-        <ListGroup as="ul" id="premium">
-          {premium[0]}
-          {items}
-       </ListGroup>
-       </div>
-          </div>
-          
-          
-        <Maps location={state.location} zoomLevel={17} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray}>
-        
-        </Maps>
-        
-        </div>
-        
-        <div className="list-bottom">
-         
-        <h3 className="cms-title">French Food Near You</h3>
-        <FilterCms
-        onFilterCms={onFilterCMS}
-        categories={categoriesArray}/>
-        
-        {state.sortedShops !== undefined &&
-        <div  className="cms-cards">
-          
-          <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        <Grid item xs="auto">
-          {cmsBakery[0]}
-        </Grid>
-        <Grid item xs="auto">
-          {cmsBakery[1]}
-        </Grid>
-        <Grid item xs="auto">
-        {cmsBakery[2]}
-        </Grid>
-      </Grid>
-    </Box>
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        <Grid item xs="auto">
-          {cmsBakery[3]}
-        </Grid>
-        <Grid item xs="auto">
-          {cmsBakery[4]}
-        </Grid>
-        <Grid item xs="auto">
-        {cmsBakery[5]}
-        </Grid>
-      </Grid>
-    </Box>
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        <Grid item xs="auto">
-          {cmsBakery[6]}
-        </Grid>
-        <Grid item xs="auto">
-          {cmsBakery[7]}
-        </Grid>
-        <Grid item xs="auto">
-        {cmsBakery[8]}
-        </Grid>
-      </Grid>
-    </Box>
-
-         
-          </div>
-          }
-          
-        </div>
-      </div>
-      </div>
-      }
-      
+   
         
       {state.mode === "DISPLAY" &&
       <div className="main-body-show">
