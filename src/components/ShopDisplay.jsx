@@ -6,10 +6,10 @@ import {Rating} from 'react-simple-star-rating';
 import { Carousel } from 'react-carousel-minimal';
 
 export default function ShopDisplay(props) {
-console.log('display props', props.shops.images)
+console.log('display props', props)
   const data = [];
-  if (props.shops.images !== null) {
-    const imageArray = props.shops.images
+  if (props.selected.images !== null) {
+    const imageArray = props.selected.images
     for (const image of imageArray) {
           
           const dataImage = {image: image}
@@ -19,7 +19,7 @@ console.log('display props', props.shops.images)
   }
 
   
-    const hourArray = hours(props.shops.hours).map((day) => {
+    const hourArray = hours(props.selected.hours).map((day) => {
       return (
         <div>
           {day}

@@ -34,8 +34,11 @@ import FilterCms from './components/FilterCms'
 import { Routes, Route, Link } from "react-router-dom";
 
 export default function HomePage(props) {
+
+
   return(
     <div className="main-body-main-page">
+      {props.mode === 'MAP' &&
       <div className="main-container">
         <div className="premium-map">
         
@@ -111,9 +114,19 @@ export default function HomePage(props) {
          
           </div>
           }
+      
+
+
           
         </div>
       </div>
+}
+      {props.mode === "DISPLAY" &&
+      <div className="main-body-show">
+        <ShopDisplay shops={props.shops} onClick={props.onClick} rating={props.rating}
+        price={props.price} selected={props.selected}/>
+        </div>
+      }
       </div>
 
          

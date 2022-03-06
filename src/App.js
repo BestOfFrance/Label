@@ -580,7 +580,8 @@ console.log(state.signedIn, "state")
       />
       <Routes>
         <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray} onFilterCms={onFilterCMS}
-        categories={categoriesArray} sortedShops={state.sortedShops} cmsBakery={cmsBakery}/>} />
+        categories={categoriesArray} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
+         selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
           getRegisterFoodie={getRegisterFoodie}
           login={login}
@@ -601,12 +602,12 @@ console.log(state.signedIn, "state")
       
    
         
-      {state.mode === "DISPLAY" &&
+      {/* {state.mode === "DISPLAY" &&
       <div className="main-body-show">
         <ShopDisplay shops={state.selected} onClick={closeShopWindow} rating={state.selected.rating}
         price={state.selected.price}/>
         </div>
-      }
+      } */}
       
       
       {/* {state.mode === "loginorsign" &&
