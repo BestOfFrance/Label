@@ -8,7 +8,7 @@ import CMSCard from './components/CMSCard'
 import Footer from './components/footer'
 import axios from 'axios'
 import LoginOrSign from './components/LoginOrSign'
-import ConfirmAccount from './components/confirmAccount'
+
 import CreateAccount from './components/CreateAccount'
 import CreateAccountFoodie from './components/CreateAccountFoodie'
 import NewsDeals from './components/NewsDeals'
@@ -33,6 +33,7 @@ import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
 import { Routes, Route, Link } from "react-router-dom";
 import LoginOrSignPage from './components/LoginOrSignPage'
+import ConfirmAccount from './components/confirmAccount'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import '@stripe/stripe-js'
@@ -593,6 +594,9 @@ console.log(state.signedIn, "state")
         signedIn={state.signedIn}/>} />
         <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
         <Route path="registerfoodie" element={<CreateAccountFoodie setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>}/>
+        <Route path="confirmaccount" element={<ConfirmAccount login={login}
+        
+        checkUser={checkUser}/>}/>
       </Routes>
       
    

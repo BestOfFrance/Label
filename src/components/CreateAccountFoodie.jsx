@@ -6,6 +6,7 @@ import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
 import ConfirmAccount from './confirmAccount'
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 Amplify.configure(awsconfig);
 
@@ -15,7 +16,7 @@ Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
 export default function CreateAccount(props) {
-  
+  const [redirect, setRedirect] = useState(false)
   const [state, setState] = useState({
     placeholderFN: "First Name",
     placeholderLN: "Last Name",
@@ -80,7 +81,7 @@ export default function CreateAccount(props) {
     setpassword("")
     setemail("")
     setpasswordconfirm("")
-    setShow("show")
+    setRedirect(true)
         console.log(user);
     } catch (error) {
       console.log('error signing up:', error);
@@ -193,7 +194,7 @@ export default function CreateAccount(props) {
     }
     
       
-    {show === "show" &&
+    {/* {show === "show" &&
       <div className="main-body">
         <ConfirmAccount
         login={props.login}
@@ -201,6 +202,9 @@ export default function CreateAccount(props) {
         checkUser={props.checkUser}
         />
         </div>
+      } */}
+      {redirect === true &&
+      <Navigate to="/confirmaccount"/>
       }
 </div>
 </div>

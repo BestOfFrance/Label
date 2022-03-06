@@ -5,6 +5,7 @@ import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 Amplify.configure(awsconfig);
 
@@ -32,7 +33,7 @@ export default function ConfirmAccount(props) {
     const val=event.target.value
     setemail(val)
   }
-  
+  const [redirect, setRedirect] = useState(false)
   
   const onSubmit = function() {
     
@@ -42,11 +43,12 @@ export default function ConfirmAccount(props) {
       
       props.login()
       props.checkUser()
+      setRedirect(true)
     })
     .catch((err) => [
       console.log(err)
     ])
-    Auth.signIn(email, props.password)
+    
 
     
      
@@ -56,6 +58,7 @@ export default function ConfirmAccount(props) {
   
 
   return (
+    <div className="main-container">
     
   <div className="register-container">
   <div className="create-account">
@@ -79,10 +82,16 @@ export default function ConfirmAccount(props) {
       
          
     <div class="text-center">
-      <button onClick={onSubmit}>Confirm</button>
+     
+        
+      <button onClick={onSubmit} >Confirm</button>
+     {redirect === true && 
+       <Navigate to="/login"/>
+     }
       
     </div>
    </div>
+</div>
 </div>
   )
 }
