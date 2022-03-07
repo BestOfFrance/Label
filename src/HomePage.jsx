@@ -43,7 +43,7 @@ export default function HomePage(props) {
         <div className="premium-map">
         
         <div className="premium-list">
-        {/* <ReportButton/> */}
+        <ReportButton/>
         
           <div className="cms">
           {/* <DataButton onClick={saveShop}/> */}

@@ -51,6 +51,10 @@
         "stripeHook": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
           "s3Key": "amplify-builds/stripeHook-4e334145775577364a36-build.zip"
+        },
+        "sesEmail": {
+          "deploymentBucketName": "amplify-label-dev-115048-deployment",
+          "s3Key": "amplify-builds/sesEmail-68714942653242304a66-build.zip"
         }
       },
       "auth": {
