@@ -342,6 +342,7 @@ const setConfirm = function() {
   setState((prev) => ({ ...prev, mode: "confirmAccount" }))
 }
 const getNews = function() {
+  
   setState((prev) => ({ ...prev, mode: "news" }))
 
 }
