@@ -10,7 +10,11 @@
 
 # production
 /build
+
+
 src/components/ReportButton.jsx
+
+
 # misc
 .DS_Store
 .env.local
