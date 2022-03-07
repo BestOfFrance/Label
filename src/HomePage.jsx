@@ -44,7 +44,7 @@ export default function HomePage(props) {
         
         <div className="premium-list">
         {/* <ReportButton/> */}
-        <h3>Premium Card</h3>
+        
           <div className="cms">
           {/* <DataButton onClick={saveShop}/> */}
         <ListGroup as="ul" id="premium">
@@ -63,7 +63,7 @@ export default function HomePage(props) {
         
         <div className="list-bottom">
          
-        <h3 className="cms-title">French Food Near You</h3>
+        <h2 className="cms-title">French Food Near You</h2>
         <FilterCms
         onFilterCms={props.onFilterCms}
         categories={props.categories}/>

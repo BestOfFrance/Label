@@ -58,24 +58,26 @@ export default function CMSCard(props) {
       
 
       </div>
-      <div>
-        
-     <b> {props.title} </b>
-     
-      </div>
+      
       <div className="cms-button-container">
       <div >
         
-      {props.name} 
+      <h3 className="cms-card-title-each">{props.name} </h3>
       </div>
-      <div>
-        <button onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>Locate</button>
+      <div className="locate-container">
+        <button onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
         
       </div>
       </div>
+      <div className="cms-button-container"> 
       <div>
         
       {props.shop.category} 
+      </div>
+      <button>
+      <img className="cms-button-image" src="report.svg"/>
+      </button>
+
       </div>
       
     </ListGroup.Item>
