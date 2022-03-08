@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 import { Routes, Route, Link } from "react-router-dom";
 
 
-export default function Header(props) {
+export default function HeaderMobile(props) {
   const [hidden, setHidden] = useState('hidden')
   
   // const showSearch = function() {
@@ -36,12 +36,12 @@ export default function Header(props) {
       
       <div id="search-container">
         <div>
-        <SearchBar
+        {/* <SearchBar
         
         searchSelected={props.searchSelected}
         updateSearch={props.updateSearch}
         searchList={props.searchList}
-        />
+        /> */}
         </div>
       </div>
       <div className="header-links">

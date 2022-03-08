@@ -8,7 +8,7 @@ import CMSCard from './components/CMSCard'
 import Footer from './components/footer'
 import axios from 'axios'
 import LoginOrSign from './components/LoginOrSign'
-
+import HeaderMobile from './components/headerMobile'
 import CreateAccount from './components/CreateAccount'
 import CreateAccountFoodie from './components/CreateAccountFoodie'
 import NewsDeals from './components/NewsDeals'
@@ -207,7 +207,16 @@ export default function Application(props) {
       .catch(err => console.log(err))
       
   }
-  
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 768;
+
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener("resize", handleWindowResize);
+
+    // Return a function from the effect that removes the event listener
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
   //aws data
   //seed the AWS databse
   
@@ -568,7 +577,7 @@ console.log(state.signedIn, "state")
 //render all
   return(
     <div className="main-container-all">
-      
+      {width > breakpoint ?
       
       <Header
         getAccount={getAccount}
@@ -579,7 +588,13 @@ console.log(state.signedIn, "state")
         getNews={getNews}
         signedIn={state.signedIn}
         
-      />
+      /> : <HeaderMobile  getAccount={getAccount}
+      onHome={onHome}
+      searchSelected={state.searchSelected}
+      updateSearch={updateSearch}
+      searchList={state.searchList}
+      getNews={getNews}
+      signedIn={state.signedIn}/>}
       <Routes>
         <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray} onFilterCms={onFilterCMS}
         categories={categoriesArray} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
