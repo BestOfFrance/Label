@@ -63,6 +63,7 @@ export default function CMSCard(props) {
       <div >
         
       <h3 className="cms-card-title-each">{props.name} </h3>
+      {props.shop.price}
       </div>
       <div className="locate-container">
         <button onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>

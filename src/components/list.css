@@ -92,5 +92,5 @@ h3.cms-card-title-each {
 
 .locate-container {
   display: flex;
-  align-items: center;
+  padding-bottom: 2em;
 }

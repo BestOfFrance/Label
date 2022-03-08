@@ -142,7 +142,11 @@ export default function BusinessList(props) {
               className='foo' // Will remove the inline style if applied
             />
             </div>
+            <div>
+          {props.shop.price}
             
+            
+            </div>
           
           <div>
           {open ? `Open Now until ${hoursObject[openTime]}` : `Closed, opens ${openDay} at ${hoursObject[openTime]}`}
