@@ -1,4 +1,4 @@
-const data = require('./arrayData3000.js')
+const data = require('./arrayData500.js')
 const fs = require('fs');
 
 
@@ -20,12 +20,12 @@ for (const piece of data) {
 
 
 // console.log(addressArray.length)
-var file = fs.createWriteStream('cleanedData3000.js');
+var file = fs.createWriteStream('cleanedData50.js');
   
   file.write(JSON.stringify(cleanDataArray));
   file.end();
 
-  var file = fs.createWriteStream('undefinedData3000.js');
+  var file = fs.createWriteStream('undefinedData50.js');
   
   file.write(JSON.stringify(undefindedDataArray));
   file.end();
