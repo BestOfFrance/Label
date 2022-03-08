@@ -25,3 +25,8 @@
   display: flex;
   justify-content: center;
 }
+
+.css-1h7anqn {
+  display: flex;
+  flex-flow: row !important;
+}
