@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const ids = require('./arrayData500');
+const ids = require('./cleanedData3000');
 
 
 // console.log(array)
@@ -29,7 +29,7 @@ e.exports=function(e){return null!=e&&(n(e)||r(e)||!!e._isBuffer)}},function(e,t
 
 axios.all(data.map(l => axios.get(`https://api.yelp.com/v3/businesses/${l.id}`, {
   headers: {
-    Authorization: `Bearer AEPl0J5Jo7olqGR9dSm9XqCBjHiaT24vj9fD0TmU-7FG7jJLaKB-hVFFOpLP-b7u7TMFx5zRclg28xfft4rNuGkR1_fM-kM5ev3cqpS3fJNjAVAr3h--hizIcFr4YXYx`
+    Authorization: `Bearer `
 }
 })
 .then((res) => {
@@ -43,7 +43,7 @@ return l
 return l.name;
 })))
   .then(axios.spread(function (...res) {
-  var file = fs.createWriteStream('details500.js');
+  var file = fs.createWriteStream('details3000.js');
   file.on('error', function(err) { /* error handling */ });
   res.forEach(function(v) { file.write(`${JSON.stringify(v)}, `); });
   
