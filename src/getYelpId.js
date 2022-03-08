@@ -17,7 +17,7 @@ const fs = require('fs');
 // }const idArray = 0
 const dataArray = []
 // console.log(data)
-for (let i = 0; i <=500; i++) {
+for (let i = 501; i <=1000; i++) {
   const name = (data[i].title).toString()
   const address = (data[i].address).toString()
   const city = (data[i].City).toString()
@@ -70,7 +70,7 @@ return l
 return l.name;
 })))
   .then(axios.spread(function (...res) {
-    var file = fs.createWriteStream('arrayData500.js');
+    var file = fs.createWriteStream('arrayData1000.js');
   file.on('error', function(err) { /* error handling */ });
   res.forEach(function(v) { file.write(`${JSON.stringify(v)}, `); });
   file.end();
