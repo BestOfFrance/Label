@@ -17,11 +17,20 @@ const fs = require('fs');
 // }const idArray = 0
 const dataArray = []
 // console.log(data)
-for (let i = 0; i <=500; i++) {
-  
+for (let i = 501; i <=1000; i++) {
+  const name = (data[i].title).toString()
+  const address = (data[i].address).toString()
+  const city = (data[i].City).toString()
+  let state = (data[i].Column4).toString()
+
+  if (state === " Qc" || state === "Qc" || state.replace(/^\s+|\s+$/gm,'') == "Qu") {
+    state = "QC"
+  }
+
+  console.log(state.replace(/^\s+|\s+$/gm,''))
   
   const dataObject = data[i]
-  dataObject.terms = {name: data[i].title, address: data[i].address, city: data[i].City, state: data[i].Column4}
+  dataObject.terms = {name: name.replace(/^\s+|\s+$/gm,''), address: address.replace(/^\s+|\s+$/gm,''), city: city.replace(/^\s+|\s+$/gm,''), state: state.replace(/^\s+|\s+$/gm,'')}
   dataArray.push(dataObject)
   
 }
@@ -53,7 +62,7 @@ axios.all(dataArray.map(l => axios.get('https://api.yelp.com/v3/businesses/match
 .then((res) => {
   // console.log(res.data.businesses[0])
 l.id = res.data.businesses[0].id
-console.log(l)
+
 return l
 
 })
@@ -61,7 +70,7 @@ return l
 return l.name;
 })))
   .then(axios.spread(function (...res) {
-    var file = fs.createWriteStream('arrayData500.js');
+    var file = fs.createWriteStream('arrayData1000.js');
   file.on('error', function(err) { /* error handling */ });
   res.forEach(function(v) { file.write(`${JSON.stringify(v)}, `); });
   file.end();

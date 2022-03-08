@@ -157,6 +157,10 @@ export default function Marker(props) {
               className='foo' // Will remove the inline style if applied
             />
             </div>
+            <div >
+            {props.shop.price}
+            </div>
+            
             
           
           <div>
