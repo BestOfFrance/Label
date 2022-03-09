@@ -285,5 +285,7 @@ h2 {
 }
 .css-1h7anqn {
   flex-wrap: wrap;
+  flex-flow: none !important;
+  justify-content: center !important;
 }
 }
