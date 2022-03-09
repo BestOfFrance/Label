@@ -7,6 +7,7 @@ import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
 import ConfirmAccount from './confirmAccount'
 import { Routes, Route, Link, Navigate } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 Amplify.configure(awsconfig);
 
