@@ -4,12 +4,35 @@ import hours from '../helpers/convertHours'
 import './ShopDisplay.css'
 import {Rating} from 'react-simple-star-rating';
 import { Carousel } from 'react-carousel-minimal';
+import { Routes, Route, Link, useParams } from "react-router-dom";
+import { API } from 'aws-amplify';
+
 
 export default function ShopDisplay(props) {
 console.log('display props', props)
   const data = [];
-  if (props.selected.images !== null) {
-    const imageArray = props.selected.images
+  const  id  = useParams();
+
+  console.log(id)
+
+  // API.get('shops', `/shops/${id}`, {}).then((result) => {
+  //   const shop = JSON.parse(result.body);
+  // }).catch(err => {
+  //   console.log(err);
+  // })
+
+  let shopArray = []
+
+  for (const shop of props.shops) {
+    if (shop.name === id.shop) {
+      shopArray.push(shop)
+    }
+  }
+
+  let shop = shopArray[0]
+
+  if (shop.images !== null) {
+    const imageArray = shop.images
     for (const image of imageArray) {
           
           const dataImage = {image: image}
@@ -19,7 +42,7 @@ console.log('display props', props)
   }
 
   
-    const hourArray = hours(props.selected.hours).map((day) => {
+    const hourArray = hours(shop.hours).map((day) => {
       return (
         <div>
           {day}
@@ -32,13 +55,14 @@ console.log('display props', props)
   
   
   return(
+    <div className="main-body-show">
     <div>
       <div className="container">
         <div className="close-display">
           <CloseButton onClick={props.onClick}/>
         </div>
         <div className="title-header">
-         <h2>{props.shops.name}</h2>
+         <h2>{shop.name}</h2>
         </div>
         <div className='display-image'>
         <Carousel
@@ -71,10 +95,10 @@ console.log('display props', props)
         <div >
           <div className='shop-rating-price'>
             <div className='shop-rating'>
-            Rating: {props.rating}
+            Rating: {shop.rating}
             <Rating
               
-              initialValue={props.rating}
+              initialValue={shop.rating}
               size={18}
               label
               fillColor='#ef4236'
@@ -83,7 +107,7 @@ console.log('display props', props)
             />
             </div>
             <div>
-            Price: {props.price}
+            Price: {shop.price}
             </div>
           </div>
         </div>
@@ -93,6 +117,7 @@ console.log('display props', props)
         </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

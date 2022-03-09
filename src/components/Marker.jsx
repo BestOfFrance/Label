@@ -5,6 +5,7 @@ import CloseButton from 'react-bootstrap/CloseButton'
 import openNow from '../helpers/openNow'
 import {Rating} from 'react-simple-star-rating';
 import SeeButton from './SeeButton'
+import { Routes, Route, Link, useParams } from "react-router-dom";
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const Wrapper = styled.div`
 position: absolute;
@@ -34,6 +35,7 @@ export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
   const [style, setStyle] = useState(0)
   
+ 
   const [open, setOpen] = useState(false);
   const [openTime, setOpenTime] = useState("");
   const [openDay, setOpenDay] = useState("")
@@ -119,7 +121,7 @@ export default function Marker(props) {
   //   )
   // })
 
- console.log(props.signedIn)
+//  console.log(props, 'marker')
 
   return (
     <div id="marker-div">
@@ -168,7 +170,7 @@ export default function Marker(props) {
             
             </div>
             <div>
-              {props.signedIn === true ? <SeeButton shop={props.shop} onClickShop={props.onClickShop} text={"see more"}/> : <SeeButton   text={"Sign in to see more information"}/>}
+              {props.signedIn === true ? <Link to={`shops/${props.shop.name}`} ><SeeButton shop={props.shop}   text={"see more"}/></Link> : <SeeButton   text={"Sign in to see more information"}/>}
            
             
             </div>

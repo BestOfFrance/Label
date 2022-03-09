@@ -31,7 +31,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 import LoginOrSignPage from './components/LoginOrSignPage'
 import ConfirmAccount from './components/confirmAccount'
 import HomePage from './HomePage'
@@ -172,6 +172,8 @@ export default function Application(props) {
     sortedShops: [],
     cmsCategories: categoriesArray
   })
+
+  const navigate = useNavigate()
 //   console.log(process.env)
 // console.log(process.env.REACT_APP_STRIPE_SECRET_KEY_DEVELOPMENT)
   const [index, setIndex] = useState(0)
@@ -368,7 +370,7 @@ const closeShopWindow = function() {
 }
 //set show mode to show shop information
 const openShopWindow = function(shop) {
-  setState((prev) => ({ ...prev, mode: "DISPLAY", selected: shop }))
+  navigate(`shops/${shop}`)
 }
 
 
@@ -539,6 +541,7 @@ useEffect(() => {
 // console.log('state location', state.location)
 
 //set the markers ---- will need to change likely with thousands of markers
+
 const pin = state.shops.map((center, index) => {
   if (state.categories.includes(center.category)) {
     return (
@@ -616,6 +619,7 @@ console.log(state.signedIn, "state")
         
         checkUser={checkUser}/>}/>
         <Route path="newsanddeals" element={<NewsDeals/>}/>
+        <Route path="shops/:shop" element={<ShopDisplay shops={state.shops} />}/>
       </Routes>
       
    

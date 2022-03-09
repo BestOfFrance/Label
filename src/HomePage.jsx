@@ -121,12 +121,12 @@ export default function HomePage(props) {
         </div>
       </div>
 }
-      {props.mode === "DISPLAY" &&
+      {/* {props.mode === "DISPLAY" &&
       <div className="main-body-show">
         <ShopDisplay shops={props.shops} onClick={props.onClick} rating={props.rating}
         price={props.price} selected={props.selected}/>
         </div>
-      }
+      } */}
       </div>
 
          

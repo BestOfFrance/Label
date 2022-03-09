@@ -30,7 +30,7 @@
         },
         "labelbbd6c0c9": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
-          "s3Key": "amplify-builds/labelbbd6c0c9-474a5454325056333852-build.zip"
+          "s3Key": "amplify-builds/labelbbd6c0c9-4232307058724e347a42-build.zip"
         },
         "ProcessPayment": {
           "deploymentBucketName": "amplify-label-dev-115048-deployment",
