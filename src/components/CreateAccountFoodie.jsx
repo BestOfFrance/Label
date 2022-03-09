@@ -147,6 +147,19 @@ export default function CreateAccount(props) {
     
   <div className="main-body">
   <div className="register-container">
+  <Helmet
+  title={`Register Foodie | Best of France`}
+  meta={[
+    {
+      name: 'description',
+      property: 'og:description',
+      content: "Register for a foodie account.",
+    },
+    { property: 'og:title', content: `Login | Best of France` },
+    // { property: 'og:url', content: "" },
+    
+  ]}
+/>
   
 
     {show === "hide" &&

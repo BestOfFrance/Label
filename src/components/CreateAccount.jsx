@@ -253,6 +253,19 @@ const onChangeYearly = function() {
 
   return (
     <div className="main-body">
+      <Helmet
+  title={`Register Business | Best of France`}
+  meta={[
+    {
+      name: 'description',
+      property: 'og:description',
+      content: "Register for a business account.",
+    },
+    { property: 'og:title', content: `Register Business | Best of France` },
+    // { property: 'og:url', content: "" },
+    
+  ]}
+/>
     
   <div className="register-container">
   
