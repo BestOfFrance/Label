@@ -32,12 +32,33 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
 import { Routes, Route, Link } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 export default function HomePage(props) {
-
+  const seo = {
+    title: 'Label',
+    description: 'Find authentic French cuisine near you.',
+    url: 'https://www.mydomain.com/',
+    image: 'https://mydomain.com/images/home/logo.png',
+  }
 
   return(
     <div className="main-body-main-page">
+      <Helmet
+  title={`${seo.title} | Best of France`}
+  meta={[
+    {
+      name: 'description',
+      property: 'og:description',
+      content: seo.description,
+    },
+    { property: 'og:title', content: `${seo.title} | Best of France` },
+    { property: 'og:url', content: seo.url },
+    { property: 'og:image', content: seo.image },
+    { property: 'og:image:type', content: 'image/jpeg' }
+    
+  ]}
+/>
       {props.mode === 'MAP' &&
       <div className="main-container">
         <div className="premium-map">

@@ -6,6 +6,7 @@ import {Rating} from 'react-simple-star-rating';
 import { Carousel } from 'react-carousel-minimal';
 import { Routes, Route, Link, useParams } from "react-router-dom";
 import { API } from 'aws-amplify';
+import {Helmet} from "react-helmet";
 
 
 export default function ShopDisplay(props) {
@@ -49,13 +50,35 @@ console.log('display props', props)
         </div>
       )
     })
+    const seo = {
+      title: shop.name,
+      description: 'Find authentic French cuisine near you.',
+      url: `https://www.mydomain.com/shops/${shop.name}`
+    }
   
+    
+      
   
 
   
   
   return(
     <div className="main-body-show">
+       <Helmet
+  title={`${seo.title} | Best of France`}
+  meta={[
+    {
+      name: 'description',
+      property: 'og:description',
+      content: seo.description,
+    },
+    { property: 'og:title', content: `${seo.title} | Best of France` },
+    { property: 'og:url', content: seo.url },
+    { property: 'og:image', content: seo.image },
+    { property: 'og:image:type', content: 'image/jpeg' }
+    
+  ]}
+/>
     <div>
       <div className="container">
         <div className="close-display">
