@@ -16,6 +16,12 @@
   align-items: center;
   justify-content: center;
 }
+.logo-container-mobile {
+  
+  
+  align-items: center;
+  justify-content: center;
+}
 #logo {
   width: 230px;
   height: auto;
@@ -36,7 +42,10 @@
   
 }
 
-
+.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
+  display: flex;
+  flex-direction: column;
+}
 
 .search-icon {
   height: 2em;
@@ -77,6 +86,35 @@ button {
   display: flex;
   width: 7em;
   align-items: center;
+  justify-content: center;
+}
+
+.header-links-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.header-mobile {
+  
+  position: fixed;
+  top: 0;
+  height: 100px;
+  padding: 10px 20px;
+  
+  background-color: white;
+  z-index: 99999999 !important;
+  width: 100%;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  padding-right: 10px;
+  height: 30px;
+  width: auto;
+}
+
+#search-container-mobile {
+  display: flex;
   justify-content: center;
 }
 /* 

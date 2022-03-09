@@ -220,3 +220,49 @@ h2{
     width: 15rem;
   }
 }
+
+@media only screen and (max-width: 767px)  {
+  .main-body-main-page {
+    margin-top: 100px;
+  }
+  .premium-map {
+    flex-direction: column-reverse !important;
+    height: 142vh !important;
+    align-items: flex-start;
+  }
+  .map {
+    position: relative !important;
+    height: 70vh !important;
+    width: 100% !important;
+  }
+  .premium-list {
+    height: 72vh;
+    width: 100%;
+  }
+  #cms-title {
+    text-align: center;
+    width: 100%;
+    padding: 25px, 25px !important;
+}
+h2 {
+  padding: 25px;
+  margin-top: 5px;
+}
+.list-bottom {
+  justify-content: center;
+  margin-top: 10px;
+}
+.css-dmmspl-MuiFormGroup-root {
+  justify-content: center;
+}
+.list-images {
+  width: 350px;
+}
+.MuiSvgIcon-root {
+  width: 2em !important;
+  height: 2em !important;
+}
+.css-1ps6pg7-MuiPaper-root {
+  z-index: 9999999;
+}
+}

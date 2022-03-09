@@ -43,7 +43,7 @@ export default function HomePage(props) {
         <div className="premium-map">
         
         <div className="premium-list">
-        <ReportButton/>
+        {/* <ReportButton/> */}
         
           <div className="cms">
           {/* <DataButton onClick={saveShop}/> */}
@@ -63,7 +63,7 @@ export default function HomePage(props) {
         
         <div className="list-bottom">
          
-        <h2 className="cms-title">French Food Near You</h2>
+        <h2 id="cms-title">French Food Near You</h2>
         <FilterCms
         onFilterCms={props.onFilterCms}
         categories={props.categories}/>
