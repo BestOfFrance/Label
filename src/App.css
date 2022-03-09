@@ -265,4 +265,22 @@ h2 {
 .css-1ps6pg7-MuiPaper-root {
   z-index: 9999999;
 }
+.choose-account-type {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2em;
+}
+.business-panel {
+  width: 100%;
+  text-align: center;
+}
+.foodie-panel {
+  width: 100%;
+  text-align: center;
+}
+.main-body {
+  height: fit-content;
+  margin-bottom: 3%;
+}
 }
