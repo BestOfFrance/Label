@@ -30,3 +30,10 @@
   display: flex;
   flex-flow: row !important;
 }
+
+@media only screen and (min-width: 768px) {
+  .css-1h7anqn {
+    
+    flex-flow: row !important;
+  }
+}
