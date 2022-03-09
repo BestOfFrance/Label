@@ -12,6 +12,7 @@ import {PaymentElement} from '@stripe/react-stripe-js';
 import CheckoutElement from './CheckoutElement'
 import CheckoutButton from './CheckoutButton'
 import { API } from "aws-amplify"
+import {Helmet} from "react-helmet";
 
 import '@stripe/stripe-js'
 
