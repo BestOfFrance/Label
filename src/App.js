@@ -615,6 +615,7 @@ console.log(state.signedIn, "state")
         <Route path="confirmaccount" element={<ConfirmAccount login={login}
         
         checkUser={checkUser}/>}/>
+        <Route path="newsanddeals" element={<NewsDeals/>}/>
       </Routes>
       
    
@@ -648,11 +649,11 @@ console.log(state.signedIn, "state")
         <CreateAccountFoodie setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>
         </div>
       } */}
-     {state.mode === "news" &&
+     {/* {state.mode === "news" &&
       <div className="main-body">
         <NewsDeals/>
         </div>
-      }
+      } */}
       {/* {state.mode === "dashboard" &&
       <div className="main-body">
         <Dashboard
@@ -671,17 +672,4 @@ console.log(state.signedIn, "state")
 }
   
  
-function Home() {
-  return (
-    <>
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
-  );
-}
-  
+

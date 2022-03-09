@@ -49,13 +49,16 @@ export default function Header(props) {
         
         
         
-        
+      <nav>
+          <Link to='/newsanddeals' >
         <div className="news-deals-container">
           <button className="small-button" onClick={props.getNews}>
             News and Deals
           </button>
           
         </div>
+        </Link>
+        </nav>
         <div className="go-premium">
          <button className="small-button">Go Premium</button>
       </div>
