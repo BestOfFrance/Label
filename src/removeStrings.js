@@ -1,4 +1,4 @@
-const data = require('./arrayData500.js')
+const data = require('./arrayData50.js')
 const fs = require('fs');
 
 

@@ -1,3 +1,4 @@
+import {Helmet} from "react-helmet";
 export default function NewsDeals(props) {
   return (
     <div className="main-body">
