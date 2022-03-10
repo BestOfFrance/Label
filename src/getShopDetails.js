@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const ids = require('./cleanedData3000');
+const ids = require('./dataMergeUSFinal')
 
 
 // console.log(array)
@@ -13,6 +13,7 @@ for (const shop of ids) {
   }
 }
 }
+
 
 // console.log(data)
 
@@ -29,7 +30,7 @@ e.exports=function(e){return null!=e&&(n(e)||r(e)||!!e._isBuffer)}},function(e,t
 
 axios.all(data.map(l => axios.get(`https://api.yelp.com/v3/businesses/${l.id}`, {
   headers: {
-    Authorization: `Bearer `
+    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNElKsuUINdEi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
 }
 })
 .then((res) => {
@@ -43,7 +44,7 @@ return l
 return l.name;
 })))
   .then(axios.spread(function (...res) {
-  var file = fs.createWriteStream('details3000.js');
+  var file = fs.createWriteStream('detailsFinal.js');
   file.on('error', function(err) { /* error handling */ });
   res.forEach(function(v) { file.write(`${JSON.stringify(v)}, `); });
   
