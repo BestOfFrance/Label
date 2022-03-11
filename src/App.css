@@ -331,4 +331,20 @@ h2 {
 #premium {
   align-items: flex-start;
 }
+.list-group-item {
+  padding: 0 !important;
+  width: 100%;
+  
+}
+.list-images {
+  width: 100%;
+}
+.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-auto.css-1wrgmsj-MuiGrid-root {
+  width: 100%;
+}
+.cms-button-container {
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
 }
