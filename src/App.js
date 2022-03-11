@@ -41,6 +41,7 @@ import FilterMapMobile from './components/FilterMapMobile'
 import ForgotPassword from './components/ForgotPasswordPage'
 import ForgotPasswordConfirm from './components/ForgotPasswordVerification'
 import ReportBusiness from './components/ReportBusiness'
+import PrivateRoute from './components/PrivateRoute'
 
 
 

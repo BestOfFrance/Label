@@ -35,6 +35,9 @@
   font-size: x-small; 
   width: 90%; 
 }
+.list-item.premium.list-group-item {
+  width: 100%;
+}
 
 .marker-image-div-business {
   /* display: flex;
