@@ -87,7 +87,8 @@ export default function HomePage(props) {
         <h2 id="cms-title">French Food Near You</h2>
         <FilterCms
         onFilterCms={props.onFilterCms}
-        categories={props.categories}/>
+        categories={props.categories}
+        onFilterCMSMobile={props.onFilterCMSMobile}/>
         
         {props.sortedShops !== undefined &&
         <div  className="cms-cards">

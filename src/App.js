@@ -400,6 +400,12 @@ const updateSearch = (e, value) => {
 const goToMap = function (latitude, longitude, selectedCenter) {
   setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
   setSelectedCenter(selectedCenter)
+  window.scrollTo({
+    top: 0, 
+    behavior: 'smooth'
+    /* you can also use 'auto' behaviour
+       in place of 'smooth' */
+  });
 }
 const goToMapCms = function (latitude, longitude, selectedCenter) {
   setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
@@ -482,6 +488,18 @@ const onFilterCMS = function(data) {
   setState((prev) => ({ ...prev, cmsCategories: [...data] }))
   
 }
+
+const onFilterCMSMobile = function (data) {
+  setState((prev) => ({ ...prev, cmsCategories: [...data] }))
+
+  window.scrollTo({
+    top: 0, 
+    behavior: 'smooth'
+    /* you can also use 'auto' behaviour
+       in place of 'smooth' */
+  });
+}
+
 
 useEffect(() => {
   getDistance(state.shops, state.location)
@@ -600,7 +618,7 @@ console.log(state.signedIn, "state")
       getNews={getNews}
       signedIn={state.signedIn}/>}
       <Routes>
-        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray} onFilterCms={onFilterCMS}
+        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray} onFilterCms={onFilterCMS} 
         categories={categoriesArray} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
