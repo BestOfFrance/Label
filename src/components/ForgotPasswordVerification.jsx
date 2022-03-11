@@ -15,12 +15,14 @@ Amplify.configure(awsconfig);
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
-export default function CreateAccount(props) {
+export default function ForgotPasswordConfirm(props) {
   const account = "Foodie";
   const [state, setState] = useState({
     
     placeholderEmail: "Email",
     placeholderPassword: "Password",
+    placeholderConfirm: "Confirm Password",
+    placeholderConfirmCode: "Confirmation code from your email"
     
   })
   const [show, setShow] = useState("hide")
@@ -31,16 +33,26 @@ export default function CreateAccount(props) {
   //   const val=event.target.value
   //   setusername(val)
   // }
-  const [password,setpassword]=useState("")
-  function changepassword(event){
-    const val=event.target.value
-    setpassword(val)
-  }
   
   const [email,setemail]=useState("")
   function changeemail(event){
     const val=event.target.value
     setemail(val)
+  }
+  const [password,setpassword]=useState("")
+  function changepassword(event){
+    const val=event.target.value
+    setpassword(val)
+  }
+  const [confirmPassword, setpasswordconfirm]=useState("")
+  function changepasswordconfirm(event){
+    const val=event.target.value
+    setpasswordconfirm(val)
+  }
+  const [confirmCode, setconfirm]=useState("")
+  function changeconfirm(event){
+    const val=event.target.value
+    setconfirm(val)
   }
   const [redirect, setRedirect] = useState(false)
  
@@ -53,46 +65,29 @@ export default function CreateAccount(props) {
     let signedin = false;
     
 
-    Auth.signIn(email, password)
-    .then((user) => {
-      console.log(user)
-      props.setLoggedIn()
-      props.setMap()
-      fetchUser()
-      setRedirect(true)
-
-    .then((out) => {
-      console.log(out.data.Item.accountType)
-      if (out.data.Item.accountType === "Business") {
-        props.setBusiness()
-      }
-    })
-      
-    })
-    .catch((err) => {
-      
-      setShow("show")
-      if(err.code === 'UserNotFoundException') {
-        setError("Email not found, please register or try another email address")
-      }
-      if(err.code === 'NotAuthorizedException') {
-        setError("Incorrect email or password")
-      }
-      console.log(err)
-    })
+    if (password === confirmPassword) {
+      Auth.forgotPasswordSubmit(email,confirmCode,password)
+      .then((value)=>{
+        console.log(value)
+        setRedirect(true)
+      })
+      .catch((error)=>{console.log(error)})
+    }
+  
     
   }
 
  
 
   return (
+    <div className="main-body">
     
   <div className="register-container">
   
   
   
     <div className="create-account">
-     <p>Sign In</p>
+     <p>Reset Password</p>
     
      {show === "show" && 
     <Alert severity="error">{error}</Alert>
@@ -103,28 +98,33 @@ export default function CreateAccount(props) {
                <FormLabel>Email</FormLabel>
                <Input type="email" placeholder={state.placeholderEmail} value={email} onChange={changeemail} required={true}/>
              </FormControl>
- 
              <FormControl mt={4}>
                <FormLabel>Password</FormLabel>
                <Input type='password' placeholder={state.placeholderPassword} value={password} onChange={changepassword} required={true}/>
              </FormControl>
+             <FormControl mt={4}>
+               <FormLabel>Confirm Password</FormLabel>
+               <Input type='password' placeholder={state.placeholderConfirm} value={confirmPassword} onChange={changepasswordconfirm} required={true}/>
+             </FormControl>
+             <FormControl mt={4}>
+              <FormLabel>Confirmation Code</FormLabel>
+              <Input type='confirm'  placeholder={state.placeholderConfirmCode} value={confirmCode} onChange={changeconfirm} required={true}/>
+            </FormControl>
             
+             
+ 
+             
              
      
        
           
      <div class="text-center">
        
-       <button onClick={onSubmit}>Log In</button>
-       
-     </div>
-     <div class="text-center">
-       
-       <Link to="/resetpassword"><button >Forgot your password? Reset it here.</button></Link>
+       <button onClick={onSubmit}>Submit</button>
        
      </div>
      {redirect === true &&
-     <Navigate to='/'/>
+     <Navigate to='/login'/>
      }
        
  
@@ -133,6 +133,7 @@ export default function CreateAccount(props) {
     
       
     
+</div>
 </div>
   )
 }

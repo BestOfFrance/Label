@@ -15,7 +15,7 @@ Amplify.configure(awsconfig);
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
-export default function CreateAccount(props) {
+export default function ForgotPassword(props) {
   const account = "Foodie";
   const [state, setState] = useState({
     
@@ -31,11 +31,6 @@ export default function CreateAccount(props) {
   //   const val=event.target.value
   //   setusername(val)
   // }
-  const [password,setpassword]=useState("")
-  function changepassword(event){
-    const val=event.target.value
-    setpassword(val)
-  }
   
   const [email,setemail]=useState("")
   function changeemail(event){
@@ -53,21 +48,10 @@ export default function CreateAccount(props) {
     let signedin = false;
     
 
-    Auth.signIn(email, password)
-    .then((user) => {
-      console.log(user)
-      props.setLoggedIn()
-      props.setMap()
-      fetchUser()
+    Auth.forgotPassword(email)
+    .then((value)=>{
+      console.log(value)
       setRedirect(true)
-
-    .then((out) => {
-      console.log(out.data.Item.accountType)
-      if (out.data.Item.accountType === "Business") {
-        props.setBusiness()
-      }
-    })
-      
     })
     .catch((err) => {
       
@@ -86,13 +70,14 @@ export default function CreateAccount(props) {
  
 
   return (
+    <div className="main-body">
     
   <div className="register-container">
   
   
   
     <div className="create-account">
-     <p>Sign In</p>
+     <p>Reset Password</p>
     
      {show === "show" && 
     <Alert severity="error">{error}</Alert>
@@ -104,27 +89,18 @@ export default function CreateAccount(props) {
                <Input type="email" placeholder={state.placeholderEmail} value={email} onChange={changeemail} required={true}/>
              </FormControl>
  
-             <FormControl mt={4}>
-               <FormLabel>Password</FormLabel>
-               <Input type='password' placeholder={state.placeholderPassword} value={password} onChange={changepassword} required={true}/>
-             </FormControl>
-            
+             
              
      
        
           
      <div class="text-center">
        
-       <button onClick={onSubmit}>Log In</button>
-       
-     </div>
-     <div class="text-center">
-       
-       <Link to="/resetpassword"><button >Forgot your password? Reset it here.</button></Link>
+       <button onClick={onSubmit}>Reset</button>
        
      </div>
      {redirect === true &&
-     <Navigate to='/'/>
+     <Navigate to='/resetpasswordverification'/>
      }
        
  
@@ -133,6 +109,7 @@ export default function CreateAccount(props) {
     
       
     
+</div>
 </div>
   )
 }
