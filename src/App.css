@@ -288,4 +288,25 @@ h2 {
   flex-flow: none !important;
   justify-content: center !important;
 }
+
+#marker-info {
+  
+  height: 20em;
+  width: 30em;
+  transform: translate(-50%, -100%);
+  background-color: white;
+  
+  text-align: left;
+  border-radius: 20px !important;
+  color: #818181;
+  z-index: 1;
+  
+  
+}
+.marker-image {
+  height: 89px;
+  width: auto;
+  margin-left: 2em;
+  border-radius: 10% !important;
+}
 }

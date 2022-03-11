@@ -30,7 +30,7 @@ e.exports=function(e){return null!=e&&(n(e)||r(e)||!!e._isBuffer)}},function(e,t
 
 axios.all(data.map(l => axios.get(`https://api.yelp.com/v3/businesses/${l.id}`, {
   headers: {
-    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNElKsuUINdEi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
+    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNEljjvqs3lbzT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
 }
 })
 .then((res) => {
