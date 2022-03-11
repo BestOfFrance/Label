@@ -1,4 +1,4 @@
-const data = require('./newShopDataUSA')
+const data = require('./shopDataPhone')
 const axios = require('axios');
 const fs = require('fs');
 
@@ -17,7 +17,7 @@ const fs = require('fs');
 // }const idArray = 0
 const dataArray = []
 
-for (let i = 5001; i < data.length; i++) {
+for (let i = 0; i < 3000; i++) {
   // console.log(data[i])
   if (data[i].City !== null) {
   const name = (data[i].title).toString()
@@ -51,16 +51,17 @@ e.exports=function(e){return null!=e&&(n(e)||r(e)||!!e._isBuffer)}},function(e,t
 
 
 const newDataAray=[]
-axios.all(dataArray.map(l => axios.get(`https://api.yelp.com/v3/businesses/matches`, {
+axios.all(dataArray.map(l => axios.get(`https://api.yelp.com/v3/businesses/search/phone`, {
   headers: {
-    Authorization: `Bearer nxBY2qRdQtx6tQSi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
+    Authorization: `Bearer H1IcGJB65EqYA4wvHWtDhk-_gnt4mR7vSx9zpO1HyiHxQ4_9zGBnQYtRRrcOFFvn-kOAEoEYWptsfL8Bd3T5MV9uGW0MqHe9LqdIFXO25worzkCIb74jOgVJnIsnYnYx`
 },
   params: {
-    name: l.terms.name,
-    address1: l.terms.address,
-    city: l.terms.city,
-    state: l.terms.state,
-    country: "US"
+    phone: l.phone1
+    // name: l.terms.name,
+    // address1: l.terms.address,
+    // city: l.terms.city,
+    // state: l.terms.state,
+    // country: "US"
 
   }
 })
@@ -75,7 +76,7 @@ return l
 return l.title;
 })))
   .then(axios.spread(function (...res) {
-    var file = fs.createWriteStream('arrayDataUS6000.js');
+    var file = fs.createWriteStream('arrayPhone3000.js');
   file.on('error', function(err) { /* error handling */ });
   res.forEach(function(v) { file.write(`${JSON.stringify(v)}, `); });
   file.end();
