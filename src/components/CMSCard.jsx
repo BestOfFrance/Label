@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './list.css'
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 
 
@@ -76,7 +77,7 @@ export default function CMSCard(props) {
       {props.shop.category} 
       </div>
       <button>
-      <img className="cms-button-image" src="report.svg"/>
+      <Link to={`reportbusiness/${props.name}`} ><img className="cms-button-image" src="report.svg"/></Link>
       </button>
 
       </div>

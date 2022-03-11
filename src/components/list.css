@@ -11,8 +11,6 @@
 }
 
 .list-item.list-group-item {
-  display: flex;
-  justify-content: center;
   background-color: none !important;
   padding: 0rem, 0rem !important;
   border: none !important;
@@ -30,15 +28,12 @@
   border-radius: 10%;
   overflow: hidden;
 }
-.list-item.premium.list-group-item {
-  width: 100%;
-}
 
 .infowrapper-business {
   display: flex;
   justify-content: column;
-  font-size: x-small;
-  width: 90%;
+  font-size: x-small; 
+  width: 90%; 
 }
 
 .marker-image-div-business {

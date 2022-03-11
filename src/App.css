@@ -336,6 +336,14 @@ h2 {
   width: 100%;
   
 }
+.infowrapper-business {
+  font-size: x-small;
+  width: 90%;
+}
+.list-item.list-group-item {
+  display: flex;
+  justify-content: center;
+}
 .list-images {
   width: 100%;
 }
@@ -346,5 +354,8 @@ h2 {
   width: 90%;
   margin-right: 5%;
   margin-left: 5%;
+}
+.list-item.premium.list-group-item {
+  width: 100%;
 }
 }

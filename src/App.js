@@ -40,6 +40,7 @@ import '@stripe/stripe-js'
 import FilterMapMobile from './components/FilterMapMobile'
 import ForgotPassword from './components/ForgotPasswordPage'
 import ForgotPasswordConfirm from './components/ForgotPasswordVerification'
+import ReportBusiness from './components/ReportBusiness'
 
 
 
@@ -643,6 +644,7 @@ console.log(state.signedIn, "state")
         <Route path="shops/:shop" element={<ShopDisplay shops={state.shops} />}/>
         <Route path="resetpassword" element={<ForgotPassword/>}/>
         <Route path="resetpasswordverification" element={<ForgotPasswordConfirm/>}/>
+        <Route path="reportbusiness/:shop" element={<ReportBusiness shops={state.shops}/>}/>
       </Routes>
       
    
