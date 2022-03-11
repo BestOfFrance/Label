@@ -309,4 +309,23 @@ h2 {
   margin-left: 2em;
   border-radius: 10% !important;
 }
+#filter-map-mobile-container {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  color: white;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: small;
+}
+.filter-map-mobile-image {
+  width: 60%;
+  height: auto;
+}
+.filter-mobile-button {
+  width: 20%;
+  text-align: center;
+}
 }

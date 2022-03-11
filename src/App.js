@@ -37,6 +37,7 @@ import ConfirmAccount from './components/confirmAccount'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import '@stripe/stripe-js'
+import FilterMapMobile from './components/FilterMapMobile'
 
 
 
@@ -667,7 +668,9 @@ console.log(state.signedIn, "state")
         </div>
       } */}
      
-     
+     {width < breakpoint &&
+     <FilterMapMobile onClick={onFilter}/>
+     }
       
       <Footer/>
     </div>

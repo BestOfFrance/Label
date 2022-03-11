@@ -27,7 +27,16 @@ export default function Maps(props) {
 //    // integer state
 //   return () => setLocation(props.location); // update the state to force render
 // }
+const [width, setWidth] = useState(window.innerWidth);
+const breakpoint = 768;
 
+useEffect(() => {
+  const handleWindowResize = () => setWidth(window.innerWidth)
+  window.addEventListener("resize", handleWindowResize);
+
+  // Return a function from the effect that removes the event listener
+  return () => window.removeEventListener("resize", handleWindowResize);
+}, []);
 
   
   useEffect(() => {
@@ -43,7 +52,8 @@ export default function Maps(props) {
     
     
     <div className="google-map">
-    <DropDown onClick={props.onFilter} categories={props.categories} />
+      {width > breakpoint && 
+    <DropDown onClick={props.onFilter} categories={props.categories} />}
     {props.location &&
     
       <GoogleMapReact
