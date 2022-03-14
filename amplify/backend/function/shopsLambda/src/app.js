@@ -86,7 +86,9 @@ app.post('/shops', function(req, res) {
       price: req.body.price,
       hours: req.body.hours,
       images: req.body.images,
-      category: req.body.category
+      category: req.body.category,
+      description: req.body.description,
+      hidden: false
       
     }
   }

@@ -46,7 +46,7 @@ import { toBase64, bytesToSize } from './utils';
 
 
 
- const details = require('./detailsFinal')
+ const details = require('./detailsUSFinal')
 
 
 // const dataObj = require('./details4001.js')
@@ -241,6 +241,7 @@ export default function Application(props) {
           mapUrl: detailsArray[i].mapUrl,
           numberReviews: detailsArray[i].numberReviews,
           servicesAvailable: detailsArray[i].servicesAvailable
+          
   
         }
       }
@@ -649,7 +650,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilter}/>
      }
-      <DataButton onClick={saveShop}/>
+      {/* <DataButton onClick={saveShop}/> */}
       <Footer/>
     </div>
     
