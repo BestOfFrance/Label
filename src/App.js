@@ -45,7 +45,7 @@ import ReportBusiness from './components/ReportBusiness'
 
 
 
-// const data = require('./shop-data')
+ const details = require('./detailsFinal')
 
 
 // const dataObj = require('./details4001.js')
@@ -94,64 +94,55 @@ const mode = "MAP"
 
 const categoriesArray = []
 
-// for (const detail of details) {
+for (const detail of details) {
   
-//   if (detail !== undefined) {
-//   categoriesArray.push(detail.category)
-//   }
-// }
+  if (detail !== undefined) {
+  categoriesArray.push(detail.category)
+  }
+}
 
-// for (const detail of details1) {
-//   if (detail !== undefined) {
-//   categoriesArray.push(detail.category)
-//   }
-// }
 
-// for (const detail of details2) {
-//   if (detail !== undefined) {
-//   categoriesArray.push(detail.category)
-//   }
-// }
 
-// const detailsArray = [];
-// for (const detail of details) {
-//   if (detail !== undefined) {
-//   const detailsObject = {};
-//   detailsObject.name = detail.yelpData.name;
-//   detailsObject.latitude = detail.yelpData.coordinates.latitude;
-//   detailsObject.longitude = detail.yelpData.coordinates.longitude;
-//   detailsObject.address = detail.yelpData.location.address1
-//   detailsObject.phone = detail.yelpData.display_phone
-//   detailsObject.callPhone = detail.yelpData.phone
-//   detailsObject.image = detail.yelpData.image_url
-//   detailsObject.rating = detail.yelpData.rating
-//   detailsObject.price = detail.yelpData.price
-//   detailsObject.category = detail.category
-//   detailsObject.description = detail.description
-//   detailsObject.mapUrl = detail.place_url
-//   detailsObject.numberReviews = detail.number_reviews
-//   detailsObject.servicesAvailable = detail.services_available
-//   detailsObject.hours = [];
-//   detailsObject.images = [];
 
-//   for (const image of detail.yelpData.photos) {
-//     detailsObject.images.push(image)
-//   }
+const detailsArray = [];
+for (const detail of details) {
+  if (detail !== undefined) {
+  const detailsObject = {};
+  detailsObject.name = detail.yelpData.name;
+  detailsObject.latitude = detail.yelpData.coordinates.latitude;
+  detailsObject.longitude = detail.yelpData.coordinates.longitude;
+  detailsObject.address = detail.yelpData.location.address1
+  detailsObject.phone = detail.yelpData.display_phone
+  detailsObject.callPhone = detail.yelpData.phone
+  detailsObject.image = detail.yelpData.image_url
+  detailsObject.rating = detail.yelpData.rating
+  detailsObject.price = detail.yelpData.price
+  detailsObject.category = detail.category
+  detailsObject.description = detail.description
+  detailsObject.mapUrl = detail.place_url
+  detailsObject.numberReviews = detail.number_reviews
+  detailsObject.servicesAvailable = detail.services_available
+  detailsObject.hours = [];
+  detailsObject.images = [];
+
+  for (const image of detail.yelpData.photos) {
+    detailsObject.images.push(image)
+  }
   
-//   if (detail.yelpData.hours) {
-//   for (const day of detail.yelpData.hours[0].open) {
+  if (detail.yelpData.hours) {
+  for (const day of detail.yelpData.hours[0].open) {
     
-//     const hours = {open: day.start, close: day.end, day: day.day}
+    const hours = {open: day.start, close: day.end, day: day.day}
     
-//     const stringHours = JSON.stringify(hours)
+    const stringHours = JSON.stringify(hours)
     
-//     detailsObject.hours.push(stringHours)
+    detailsObject.hours.push(stringHours)
     
-//   }
-// }
-//   detailsArray.push(detailsObject)
-// }
-// }
+  }
+}
+  detailsArray.push(detailsObject)
+}
+}
 
 
 
@@ -228,33 +219,33 @@ export default function Application(props) {
   
 
 
-    // const saveShop = async () => {
-    //   for (let i = 0; i <= detailsArray.length; i++) {
-    //   const data = {
-    //     body: {
-    //       name: detailsArray[i].name,
-    //       latitude: detailsArray[i].latitude,
-    //       longitude: detailsArray[i].longitude,
-    //       address: detailsArray[i].address,
-    //       phone: detailsArray[i].phone,
-    //       image: detailsArray[i].image,
-    //       rating: detailsArray[i].rating,
-    //       price: detailsArray[i].price,
-    //       hours: detailsArray[i].hours,
-    //       images: detailsArray[i].images,
-    //       category: detailsArray[i].category,
-    //       callPhone: detailsArray[i].callPhone,
-    //       description: detailsArray[i].description,
-    //       mapUrl: detailsArray[i].mapUrl,
-    //       numberReviews: detailsArray[i].numberReviews,
-    //       servicesAvailable: detailsArray[i].servicesAvailable
+    const saveShop = async () => {
+      for (let i = 0; i <= detailsArray.length; i++) {
+      const data = {
+        body: {
+          name: detailsArray[i].name,
+          latitude: detailsArray[i].latitude,
+          longitude: detailsArray[i].longitude,
+          address: detailsArray[i].address,
+          phone: detailsArray[i].phone,
+          image: detailsArray[i].image,
+          rating: detailsArray[i].rating,
+          price: detailsArray[i].price,
+          hours: detailsArray[i].hours,
+          images: detailsArray[i].images,
+          category: detailsArray[i].category,
+          callPhone: detailsArray[i].callPhone,
+          description: detailsArray[i].description,
+          mapUrl: detailsArray[i].mapUrl,
+          numberReviews: detailsArray[i].numberReviews,
+          servicesAvailable: detailsArray[i].servicesAvailable
   
-    //     }
-    //   }
-    //   const apiData = await Api.post('shopsapi', '/shops', data);
-    //   console.log({apiData})
-    // }
-    // }
+        }
+      }
+      const apiData = await Api.post('shopsApi', '/shops', data);
+      console.log({apiData})
+    }
+    }
 
     const getDistance = function(markers, myLatlng) {
      
@@ -515,7 +506,7 @@ console.log('places', state.placesNearYou)
 //inital call to get database information for amazon database
 useEffect(() => {
   async function fetchShops() {
-    const shopData = await Api.get('shopsapi', '/shops')
+    const shopData = await Api.get('shopsApi', '/shops')
     return shopData
   }
   checkUser();
@@ -602,6 +593,7 @@ console.log(state.signedIn, "state")
 //render all
   return(
     <div className="main-container-all">
+      
       {width > breakpoint ?
       
       <Header
@@ -695,7 +687,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilter}/>
      }
-      
+      <DataButton onClick={saveShop}/>
       <Footer/>
     </div>
     

@@ -94,7 +94,7 @@ export default function CreateAccount(props) {
   const onSubmit = function() {
     
     async function fetchUser() {
-      const userData = await Api.get('userapi', `/users/${email}`)
+      const userData = await Api.get('usersApi', `/users/${email}`)
       return userData
     }
   
@@ -138,7 +138,7 @@ export default function CreateAccount(props) {
         accountType : "Foodie"
       }
     };
-    const apiData = await Api.post('userapi', '/users', data);
+    const apiData = await Api.post('usersApi', '/users', data);
     console.log({ apiData });
     
    

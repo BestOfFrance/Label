@@ -1,18 +1,30 @@
 export type AmplifyDependentResourcesAttributes = {
+    "storage": {
+        "shops": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "users": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        }
+    },
     "function": {
-        "usersTriggerd1617417": {
+        "shopsLambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "labela864b5b6": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "labelbbd6c0c9": {
+        "usersLambda": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -31,36 +43,13 @@ export type AmplifyDependentResourcesAttributes = {
             "LambdaExecutionRole": "string"
         }
     },
-    "storage": {
-        "users": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        },
-        "shops": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "Region": "string"
-        }
-    },
     "api": {
-        "userapi": {
+        "shopsApi": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
         },
-        "shopsapi": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
-        "userpool": {
+        "usersApi": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
@@ -72,7 +61,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "auth": {
-        "labela3f459cc": {
+        "labeltwoa62d4359": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",

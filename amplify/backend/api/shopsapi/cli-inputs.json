@@ -3,7 +3,7 @@
   "paths": {
     "/shops": {
       "name": "/shops",
-      "lambdaFunction": "labelbbd6c0c9",
+      "lambdaFunction": "shopsLambda",
       "permissions": {
         "setting": "open"
       }

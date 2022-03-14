@@ -67,7 +67,7 @@ export default function HomePage(props) {
         {/* <ReportButton/> */}
         
           <div className="cms">
-          {/* <DataButton onClick={saveShop}/> */}
+          
         <ListGroup as="ul" id="premium">
           {props.premium[0]}
           {props.items}

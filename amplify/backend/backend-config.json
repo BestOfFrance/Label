@@ -6,49 +6,28 @@
       "type": "manual"
     }
   },
+  "storage": {
+    "shops": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "users": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
+  },
   "function": {
-    "usersTriggerd1617417": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true,
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "users",
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ]
-        }
-      ]
-    },
-    "labela864b5b6": {
+    "shopsLambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": []
     },
-    "labelbbd6c0c9": {
+    "usersLambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": []
-    },
-    "ProcessPayment": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "CreateOrder": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "sendOrder": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     },
     "stripeCheckout": {
       "build": true,
@@ -61,24 +40,14 @@
       "service": "Lambda"
     }
   },
-  "storage": {
-    "users": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "shops": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    }
-  },
   "api": {
-    "userapi": {
+    "shopsApi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "labela864b5b6",
+          "resourceName": "shopsLambda",
           "attributes": [
             "Name",
             "Arn"
@@ -86,27 +55,13 @@
         }
       ]
     },
-    "shopsapi": {
+    "usersApi": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "labelbbd6c0c9",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "userpool": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "sendOrder",
+          "resourceName": "usersLambda",
           "attributes": [
             "Name",
             "Arn"
@@ -138,7 +93,7 @@
     }
   },
   "auth": {
-    "labela3f459cc": {
+    "labeltwoa62d4359": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

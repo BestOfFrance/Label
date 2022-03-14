@@ -2,11 +2,9 @@
   "resourceName": "users",
   "tableName": "users",
   "partitionKey": {
-    "fieldName": "id",
+    "fieldName": "email",
     "fieldType": "string"
   },
   "gsi": [],
-  "triggerFunctions": [
-    "usersTriggerd1617417"
-  ]
+  "triggerFunctions": []
 }
