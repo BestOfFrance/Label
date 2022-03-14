@@ -41,6 +41,7 @@ import FilterMapMobile from './components/FilterMapMobile'
 import ForgotPassword from './components/ForgotPasswordPage'
 import ForgotPasswordConfirm from './components/ForgotPasswordVerification'
 import ReportBusiness from './components/ReportBusiness'
+import { toBase64, bytesToSize } from './utils';
 
 
 
@@ -221,6 +222,7 @@ export default function Application(props) {
 
     const saveShop = async () => {
       for (let i = 0; i <= detailsArray.length; i++) {
+        if (detailsArray[i] !== undefined) {
       const data = {
         body: {
           name: detailsArray[i].name,
@@ -244,6 +246,7 @@ export default function Application(props) {
       }
       const apiData = await Api.post('shopsApi', '/shops', data);
       console.log({apiData})
+    }
     }
     }
 
@@ -641,48 +644,7 @@ console.log(state.signedIn, "state")
       
    
         
-      {/* {state.mode === "DISPLAY" &&
-      <div className="main-body-show">
-        <ShopDisplay shops={state.selected} onClick={closeShopWindow} rating={state.selected.rating}
-        price={state.selected.price}/>
-        </div>
-      } */}
-      
-      
-      {/* {state.mode === "loginorsign" &&
-      <div className="main-body">
-        <LoginOrSign
-          getRegister={getRegister}
-          getRegisterFoodie={getRegisterFoodie}
-          login={login}
-        />
-        </div>
-      } */}
-      
-      
-      {/* {state.mode === "register" &&
-      <div className="main-body">
-        <CreateAccount  setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>
-        </div>
-      } */}
-      {/* {state.mode === "registerFoodie" &&
-      <div className="main-body">
-        <CreateAccountFoodie setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>
-        </div>
-      } */}
-     {/* {state.mode === "news" &&
-      <div className="main-body">
-        <NewsDeals/>
-        </div>
-      } */}
-      {/* {state.mode === "dashboard" &&
-      <div className="main-body">
-        <Dashboard
-        logout={signOut}
-        business={state.accountType}
-        />
-        </div>
-      } */}
+     
      
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilter}/>

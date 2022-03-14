@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "labeltwo",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/lisacormier/bestOfFrance/LabelTwo/amplify/backend/api/labeltwo/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-03-14T21:20:18.925Z",
+      "keyDescription": "graphqlSES"
+    }
+  }
+}

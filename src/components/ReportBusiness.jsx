@@ -14,6 +14,7 @@ import CheckoutButton from './CheckoutButton'
 import { API } from "aws-amplify"
 import {Helmet} from "react-helmet";
 import { Routes, Route, Link, useParams } from "react-router-dom";
+import ReportButton from './ReportButton'
 
 
 
@@ -142,7 +143,7 @@ console.log(props)
   
 </FormGroup>
 
-<Link to="/"><button>Submit</button></Link>
+<Link to="/"><ReportButton message={why} user={firstname}/></Link>
           </div>   
       
 </div>
