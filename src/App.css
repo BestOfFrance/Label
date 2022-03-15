@@ -284,9 +284,9 @@ h2 {
   margin-bottom: 3%;
 }
 .css-1h7anqn {
-  flex-wrap: wrap;
-  flex-flow: none !important;
-  justify-content: center !important;
+  
+  flex-flow: row wrap!important;
+  justify-content: center!important;
 }
 
 #marker-info {
@@ -341,7 +341,7 @@ h2 {
   width: 90%;
 }
 .list-item.list-group-item {
-  display: flex;
+  
   justify-content: center;
 }
 .list-images {
@@ -357,5 +357,11 @@ h2 {
 }
 .list-item.premium.list-group-item {
   width: 100%;
+  padding-left: 30px !important;
 }
+.css-1h77wgb > .MuiGrid-item {
+  
+  width: 100%;
+}
+
 }

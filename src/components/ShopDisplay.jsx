@@ -9,12 +9,13 @@ import { API } from 'aws-amplify';
 import {Helmet} from "react-helmet";
 
 
+
 export default function ShopDisplay(props) {
 console.log('display props', props)
   const data = [];
   const  id  = useParams();
 
-  console.log(id)
+  
 
   // API.get('shops', `/shops/${id}`, {}).then((result) => {
   //   const shop = JSON.parse(result.body);

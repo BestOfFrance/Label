@@ -30,11 +30,14 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
 
-app.use(function(req, res, next) {
+
+  app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
+  res.header('Access-Control-Allow-Methods', '*');
   res.header("Access-Control-Allow-Headers", "*")
   next()
-});
+})
+
 
 // app.use(cors(corsOptions))
 // app.use(function(req, res, next) {
@@ -60,9 +63,22 @@ app.get('/shops', function(req, res) {
   
 });
 
-app.get('/shops/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get('/shops/:id', function(req, res) {
+  let params = {
+    TableName: "shops-dev",
+    Key: {
+      id: req.params.id
+    }
+  }
+  docClient.get(params, (error, result) => {
+    if (error) {
+      res.json({ statusCode: 500, error: error.message });
+    } else {
+      res.json({ statusCode: 200, headers: {"Access-Control-Allow-Headers" : "*",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "*"}, body: JSON.stringify(result.Item) })
+    }
+  });
 });
 
 /****************************
@@ -70,8 +86,7 @@ app.get('/shops/*', function(req, res) {
 ****************************/
 
 app.post('/shops', function(req, res) {
-  console.log('req', req)
-  console.log('process', process.env)
+  
   var params = {
     TableName: "shops-dev",
     Item: {
@@ -108,14 +123,42 @@ app.post('/shops/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/shops', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+// app.put('/shops', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'put call succeed!', url: req.url, body: req.body})
+// });
 
-app.put('/shops/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+app.put("/shops", function (request, response) {
+  
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: { '#hidden': 'hidden' },
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET ';
+  if (request.body.hidden) {
+    params.ExpressionAttributeValues[':hidden'] = request.body.hidden;
+    params.UpdateExpression += '#hidden = :hidden';
+  }
+  if (request.body.complete) {
+    params.ExpressionAttributeValues[':complete'] = request.body.complete;
+    params.UpdateExpression += 'complete = :complete, ';
+  }
+  if (request.body.text || request.body.complete) {
+    params.ExpressionAttributeValues[':updatedAt'] = timestamp;
+    params.UpdateExpression += 'updatedAt = :updatedAt';
+  }
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
 });
 
 /****************************

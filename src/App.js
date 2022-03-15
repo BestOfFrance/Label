@@ -289,10 +289,10 @@ export default function Application(props) {
     const closestRestaurant = [];
     const closestPastryShop = [];
     for (const marker of markersByDistance) {
-      if (state.categories.includes(marker.category)) {
+      if (state.categories.includes(marker.category) && marker.hidden === false) {
         allShops.push(marker)
       }
-      if (state.cmsCategories.includes(marker.category)) {
+      if (state.cmsCategories.includes(marker.category) && marker.hidden === false) {
         allCMSShops.push(marker)
       }
       //"Pastry Shop", "Cake shop", "Dessert shop"
@@ -454,7 +454,7 @@ const premium = state.premiumShops.map((shop, index) => {
       latitude={shop.latitude} 
       longitude={shop.longitude}/>
     )
-  
+    
     
 
 })
@@ -466,7 +466,7 @@ const cmsBakery = state.sortedShops.map((shop, index) => {
     return(
       <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={["Cafe", "Bakery"]}/>
     )
-   
+    
 
 })
 

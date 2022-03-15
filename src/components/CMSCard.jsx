@@ -7,12 +7,11 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 export default function CMSCard(props) {
   const [active, setActive] = useState(false);
-  const [hidden, setHidden] =useState("visible")
+  const [hidden, setHidden] = useState("visible")
 
   useEffect(() => {
-    if (props.shop.hidden === true) {
-      setHidden("hidden")
-    }
+    
+    
     if (props.selectedCenter !== null) {
     //   console.log('props.id', props.id)
     // console.log('props.selectedCenter', props.selectedCenter.id)
@@ -25,7 +24,12 @@ export default function CMSCard(props) {
    
   }, [props.state])
   
-
+useEffect(() => {
+  console.log(props.shop.hidden)
+  if (props.shop.hidden === true) {
+    setHidden("hidden")
+  }
+}, [])
   useEffect(() => {
     
     if (props.selectedCenter !== null) {

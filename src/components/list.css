@@ -19,7 +19,9 @@
   background-color: #d82f28;
   text-align: center;
 }
-
+.list-item.list-group-item.premium {
+ width: 100%;
+}
 .marker-image-business {
   object-fit: cover;
   flex-shrink: 0;
