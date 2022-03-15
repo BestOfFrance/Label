@@ -34,7 +34,7 @@ cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
   const [style, setStyle] = useState(0)
-  
+  const [hidden, setHidden] = useState("visible")
  
   const [open, setOpen] = useState(false);
   const [openTime, setOpenTime] = useState("");
@@ -58,6 +58,9 @@ export default function Marker(props) {
 
   }, [props.show])
   useEffect(() => {
+    if (props.shop.hidden === true) {
+      setHidden("hidden")
+    }
     const checkOpen = openNow(props.hours)
    if(checkOpen !== undefined) {
       // console.log(checkOpen)
@@ -124,7 +127,7 @@ export default function Marker(props) {
 //  console.log(props, 'marker')
 
   return (
-    <div id="marker-div">
+    <div id="marker-div" style={{visibility: hidden}}>
       {showSelected && 
       (
         <div id="marker-info" >

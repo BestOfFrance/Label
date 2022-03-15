@@ -53,12 +53,16 @@ const hoursObject = {
 export default function BusinessList(props) {
   const [active, setActive] = useState(false);
   // console.log('business props', props)
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState("visible");
   const [openTime, setOpenTime] = useState("");
   const [openDay, setOpenDay] = useState("")
+  const [hidden, setHidden] = useState(false)
 
   const style = props.image;
   useEffect(() => {
+    if (props.shop.hidden === true) {
+      setHidden("hidden")
+    }
    const checkOpen = openNow(props.hours)
    
    if(checkOpen !== undefined) {
@@ -111,7 +115,7 @@ export default function BusinessList(props) {
   
 
   return(
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""} premium`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>
+    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""} premium`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}} style={{visibility: hidden}}>
       
           
           <div className='infowrapper-business'>

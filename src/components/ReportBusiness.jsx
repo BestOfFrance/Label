@@ -143,7 +143,7 @@ console.log(props)
   
 </FormGroup>
 
-<Link to="/"><ReportButton message={why} user={firstname}/></Link>
+<Link to="/"><ReportButton message={why} user={firstname} id={id}/></Link>
           </div>   
       
 </div>
