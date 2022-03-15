@@ -29,6 +29,53 @@ Amplify.configure(awsconfig);
 
 Api.configure(awsconfig);
 
+
+
+const AWS = require('aws-sdk');
+
+const SES_CONFIG = {
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+    region: 'us-east-1',
+};
+
+const AWS_SES = new AWS.SES(SES_CONFIG);
+// console.log(process.env)
+
+
+
+let sendEmail = (businessName, role, email, id, firstname, lastname) => {
+    let params = {
+      Source: 'lisa.cormier@bestoffrance.ca',
+      Destination: {
+        ToAddresses: [
+          'lisa.cormier@bestoffrance.ca'
+        ],
+      },
+      ReplyToAddresses: [],
+      Message: {
+        Body: {
+          Html: {
+            Charset: 'UTF-8',
+            Data: `BusinessName: ${businessName}, Role: ${role}, First Name: ${firstname}, Last Name: ${lastname}, Email: ${email}, User Id: ${id}`
+          },
+        },
+        Subject: {
+          Charset: 'UTF-8',
+          Data: businessName,
+        }
+      },
+    };
+    return AWS_SES.sendEmail(params).promise();
+};
+
+
+  
+  
+
+
+
+
 export default function CreateAccount(props) {
   
   const [state, setState] = useState({
@@ -184,15 +231,22 @@ async function signUpFreemium() {
       }
       fetchUser().then((out)=> {
         
-          
-          saveUser()
+          signUp().then(() => {
+            saveUser()
           .then((data) => {
-            console.log(data.id)
-            redirectToCheckout(data.id)
+            sendEmail(businessName, role, data.email, data.id, firstname, lastname)
+            .then(() => {
+              redirectToCheckout(data.id)
+            })
+            
           })
           .catch((err) => {
             console.log(err)
           })
+
+
+          })
+          
           
         
             
