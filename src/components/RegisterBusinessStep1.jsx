@@ -13,7 +13,7 @@ import CheckoutElement from './CheckoutElement'
 import CheckoutButton from './CheckoutButton'
 import { API } from "aws-amplify"
 import {Helmet} from "react-helmet";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 
 import '@stripe/stripe-js'
 
@@ -47,7 +47,6 @@ export default function CreateAccount(props) {
   const [business, setBusiness] = useState("Business")
   const [show, setShow] = useState("hide")
   const [firstname,setfirstname]=useState("")
-  const [redirect, setRedirect] = useState(false)
   function changefirstname(event){
     const val=event.target.value
     setfirstname(val)
@@ -82,16 +81,6 @@ export default function CreateAccount(props) {
     const val=event.target.value
     setConfirm(val)
   }
-  const [businessName,setBusinessName]=useState("")
-  function changeBusinessName(event){
-    const val=event.target.value
-    setBusinessName(val)
-  }
-  const [role, setRole]=useState("")
-  function changeRole(event){
-    const val=event.target.value
-    setRole(val)
-  }
   // console.log(email)
   async function signUp() {
     try {
@@ -113,27 +102,6 @@ export default function CreateAccount(props) {
       setShowError(true)
         
     }
-}
-async function signUpFreemium() {
-  try {
-      const { user } = await Auth.signUp({
-        username: email,
-        password: password,
-        attributes: {
-          email: email
-        }
-          
-      });
-      console.log(user)
-      saveUser();
-      setRedirect(true)
-  } catch (error) {
-      console.log('error signing up:', error);
-      
-    setError("There was an error signing up. Please try again. (hint: did you use a valid email format?)")
-    setShowError(true)
-      
-  }
 }
 
   const onCart = function() {
@@ -182,17 +150,17 @@ async function signUpFreemium() {
         const userData = await Api.get('usersApi', `/users/${email}`)
         return userData
       }
-      fetchUser().then((out)=> {
+      // fetchUser().then((out)=> {
         
           
-          saveUser()
-          .then((data) => {
-            console.log(data.id)
-            redirectToCheckout(data.id)
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+      //     saveUser()
+      //     .then((data) => {
+      //       console.log(data.id)
+      //       redirectToCheckout(data.id)
+      //     })
+      //     .catch((err) => {
+      //       console.log(err)
+      //     })
           
         
             
@@ -201,11 +169,18 @@ async function signUpFreemium() {
           
         
         
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      
+      // })
+      // .catch((err) => {
+      //   console.log(err)
+      // })
+      // saveUser()
+      //     .then((data) => {
+      //       console.log(data.id)
+      //       redirectToCheckout(data.id)
+      //     })
+      //     .catch((err) => {
+      //       console.log(err)
+      //     })
           
       // saveUser();
     }
@@ -232,19 +207,19 @@ async function signUpFreemium() {
     } else if (password.length < 6) {
       setState((prev) => ({ ...prev, placeholderPassword: "password must be at least 6 characters" }))
     } else {
-      fetchUser().then((out)=> {
-        if (out.data.Item) {
-          setemail("This email has already been used")
-        } else {
+      // fetchUser().then((out)=> {
+      //   if (out.data.Item) {
+      //     setemail("This email has already been used")
+      //   } else {
 
           
-          signUpFreemium()
+      //     signUp()
           
           
         
-        }
-      })
-      // signUp()
+      //   }
+      // })
+      signUp()
       // saveUser();
     }
   }
@@ -316,51 +291,13 @@ const onChangeYearly = function() {
 
     {show === "hide" &&
     <div className="create-account">
-     <p>Create a Business Account</p>
+      <h2>Step 3</h2>
+     <p>Choose Account Type</p>
      
      {showError && 
     <Alert severity="error">{error}</Alert>
   }
-     <FormControl>
-       
-               <FormLabel>First name</FormLabel>
-               <Input placeholder={state.placeholderFN} value={firstname} onChange={changefirstname} required={true}/>
-             </FormControl>
- 
-             <FormControl mt={4}>
-               <FormLabel>Last name</FormLabel>
-               <Input placeholder={state.placeholderLN} value={lastname} onChange={changelastname} required={true}/>
-             </FormControl>
- 
-            
-             <FormControl mt={4}>
-               <FormLabel>Email</FormLabel>
-               <Input type="email" placeholder={state.placeholderEmail} value={email} onChange={changeemail} required={true}/>
-             </FormControl>
- 
-             <FormControl mt={4}>
-               <FormLabel>Password</FormLabel>
-               <Input type='password' placeholder={state.placeholderPassword} value={password} onChange={changepassword} required={true}/>
-             </FormControl>
-             <FormControl mt={4}>
-               <FormLabel>Confirm Password</FormLabel>
-               <Input type='password' placeholder={state.placeholderConfirm} value={confirmPassword} onChange={changepasswordconfirm} required={true}/>
-             </FormControl>
-             
-
-  <FormControl mt={4}>
-               <FormLabel>Business Name</FormLabel>
-               <Input  value={businessName} onChange={changeBusinessName} required={true}/>
-             </FormControl>
-             <FormControl mt={4}>
-               <FormLabel>Your Role at this Business</FormLabel>
-               <Input   value={role} onChange={changeRole} required={true}/>
-             </FormControl>
-
-
-
-
-
+     
              <FormGroup>
   <FormControlLabel control={<Checkbox checked={state.freemium} onChange={onChangeFreemium} />} label="Freemium" />
   
@@ -385,11 +322,9 @@ const onChangeYearly = function() {
        <button onClick={onCart}>Continue to payment</button>
        }
        {state.freemium &&
-       <button onClick={onSubmit}>Register</button>
+       <Link to="/login"><button >Register</button></Link>
        }
-       {redirect === true &&
-      <Navigate to="/confirmaccount"/>
-      }
+       
        
      </div>
        
@@ -398,7 +333,15 @@ const onChangeYearly = function() {
     }
     
       
-    
+    {show === "show" &&
+      <div className="main-body">
+        <ConfirmAccount
+        login={props.login}
+        password={password}
+        checkUser={props.checkUser}
+        />
+        </div>
+      }
       </div>
 </div>
   )

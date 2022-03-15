@@ -64,7 +64,7 @@ app.post("/webhook", async function (req, res) {
   switch (event.type) {
     case 'checkout.session.completed':
       console.log(`Payment checkout session for ${req.body.data.object.client_reference_id} was successful!`)
-
+      
       break
     default:
       // Unexpected event type

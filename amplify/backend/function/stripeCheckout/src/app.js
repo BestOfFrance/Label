@@ -59,8 +59,8 @@ app.post('/checkout', async function(req, res) {
       mode: 'subscription',
       client_reference_id: req.body.client_reference_id,
       success_url:
-        'https://localhost:3000', // The URL the customer will be directed to after the payment or subscription creation is successful.
-      cancel_url: 'https://localhost:3000', // The URL the customer will be directed to if they decide to cancel payment and return to your website.
+        'http://localhost:3000/confirmaccount', // The URL the customer will be directed to after the payment or subscription creation is successful.
+      cancel_url: 'http://localhost:3000/', // The URL the customer will be directed to if they decide to cancel payment and return to your website.
     })
     res.json(session)
   } catch (err) {

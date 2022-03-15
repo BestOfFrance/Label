@@ -42,7 +42,9 @@ import ForgotPassword from './components/ForgotPasswordPage'
 import ForgotPasswordConfirm from './components/ForgotPasswordVerification'
 import ReportBusiness from './components/ReportBusiness'
 import { toBase64, bytesToSize } from './utils';
-
+import ConfirmAccountBusiness from './components/ConfirmAccountBusiness'
+import RegisterBusinessStep1 from './components/RegisterBusinessStep1'
+import VerifyBusiness from './components/VerifyBusiness'
 
 
 
@@ -641,6 +643,9 @@ console.log(state.signedIn, "state")
         <Route path="resetpassword" element={<ForgotPassword/>}/>
         <Route path="resetpasswordverification" element={<ForgotPasswordConfirm/>}/>
         <Route path="reportbusiness/:shop" element={<ReportBusiness shops={state.shops}/>}/>
+        <Route path="confirmaccountbusiness" element={<ConfirmAccountBusiness/>}/>
+        <Route path="choosesubscriptiontype" element={<RegisterBusinessStep1/>}/>
+        <Route path="verifybusiness" element={<VerifyBusiness/>}/>
       </Routes>
       
    

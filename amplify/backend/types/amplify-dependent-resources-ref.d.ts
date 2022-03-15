@@ -58,15 +58,10 @@ export type AmplifyDependentResourcesAttributes = {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
-        },
-        "labeltwo": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
         }
     },
     "auth": {
-        "labeltwoa62d4359": {
+        "labeltwo0695f44a": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",

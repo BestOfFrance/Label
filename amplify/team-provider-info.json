@@ -29,15 +29,15 @@
         },
         "stripeCheckout": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/stripeCheckout-755076666f6365774c37-build.zip"
+          "s3Key": "amplify-builds/stripeCheckout-316d37466738456d5059-build.zip"
         },
         "stripeHook": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/stripeHook-78484339724773537550-build.zip"
+          "s3Key": "amplify-builds/stripeHook-6f7436524f5a57496979-build.zip"
         }
       },
       "auth": {
-        "labeltwoa62d4359": {}
+        "labeltwo0695f44a": {}
       }
     }
   }
