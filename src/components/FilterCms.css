@@ -14,16 +14,28 @@
   background-color: black;
   border-radius: 50%;
   padding: 2px;
+  margin-left: 5px;
+  
+  
 }
 
 .radio-button-container {
   margin-left: 25px;
   margin-right: 25px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #818181;
+  border-radius: 10px;
+  
+  padding-right: 8px; */
 }
 
 .radio-button {
   display: flex;
   justify-content: center;
+ 
 }
 
 .css-1h7anqn {
