@@ -72,11 +72,13 @@ app.get('/shops/:id', function(req, res) {
   }
   docClient.get(params, (error, result) => {
     if (error) {
-      res.json({ statusCode: 500, error: error.message });
+      res.json({ statusCode: 500, error: error.message, headers: {
+        "access-control-allow-origin": "http://localhost:3000"
+      } });
     } else {
-      res.json({ statusCode: 200, headers: {"Access-Control-Allow-Headers" : "*",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "*"}, body: JSON.stringify(result.Item) })
+      res.json({ statusCode: 200, body: JSON.stringify(result.Item), headers: {
+        "access-control-allow-origin": "http://localhost:3000"
+      } })
     }
   });
 });

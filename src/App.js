@@ -626,7 +626,7 @@ console.log(state.signedIn, "state")
         setMap={setMap}
         setLoggedIn={setLoggedIn}
         setBusiness={setBusiness}/>}/>
-        <Route path="dashboard" element = {<Dashboard logout={signOut}
+        <Route path="dashboard" element = {<Dashboard shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn}/>} />
         <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
@@ -635,7 +635,12 @@ console.log(state.signedIn, "state")
         
         checkUser={checkUser}/>}/>
         <Route path="newsanddeals" element={<NewsDeals/>}/>
-        <Route path="shops/:shop" element={<ShopDisplay shops={state.shops} />}/>
+        <Route path="shops/:shop" element={<ShopDisplay shops={state.shops} logout={signOut}
+        business={state.accountType}
+        signedIn={state.signedIn} />}/>
+        <Route path="dashboard/:id" element={<Dashboard shops={state.shops} ogout={signOut}
+        business={state.accountType}
+        signedIn={state.signedIn}/>}/>
         <Route path="resetpassword" element={<ForgotPassword/>}/>
         <Route path="resetpasswordverification" element={<ForgotPasswordConfirm/>}/>
         <Route path="reportbusiness/:shop" element={<ReportBusiness shops={state.shops}/>}/>

@@ -17,11 +17,12 @@ console.log('display props', props)
 
   
 
-  // API.get('shops', `/shops/${id}`, {}).then((result) => {
-  //   const shop = JSON.parse(result.body);
-  // }).catch(err => {
-  //   console.log(err);
-  // })
+  API.get('shopsApi', `/shops/${id}`, {}).then((result) => {
+    const shopApiData = JSON.parse(result.body);
+    console.log(shopApiData, 'shop api data')
+  }).catch(err => {
+    console.log(err, 'api error');
+  })
 
   let shopArray = []
 
