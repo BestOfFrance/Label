@@ -35,6 +35,18 @@ import { Routes, Route, Link } from "react-router-dom";
 import {Helmet} from "react-helmet";
 
 export default function HomePage(props) {
+
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 768;
+
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener("resize", handleWindowResize);
+
+    // Return a function from the effect that removes the event listener
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+
   const seo = {
     title: 'Label',
     description: 'Find authentic French cuisine near you.',
@@ -85,11 +97,12 @@ export default function HomePage(props) {
         <div className="list-bottom">
          
         <h2 id="cms-title">French Food Near You</h2>
+        {width > breakpoint &&
         <FilterCms
         onFilterCms={props.onFilterCms}
         categories={props.categories}
         onFilterCMSMobile={props.onFilterCMSMobile}/>
-        
+        } 
         {props.sortedShops !== undefined &&
         <div  className="cms-cards">
           

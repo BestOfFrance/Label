@@ -491,13 +491,9 @@ const onFilterCMS = function(data) {
 
 const onFilterCMSMobile = function (data) {
   setState((prev) => ({ ...prev, cmsCategories: [...data] }))
+  setState((prev) => ({ ...prev, cmsCategories: [...data] }))
 
-  window.scrollTo({
-    top: 0, 
-    behavior: 'smooth'
-    /* you can also use 'auto' behaviour
-       in place of 'smooth' */
-  });
+  
 }
 
 
@@ -653,7 +649,7 @@ console.log(state.signedIn, "state")
      
      
      {width < breakpoint &&
-     <FilterMapMobile onClick={onFilter}/>
+     <FilterMapMobile onClick={onFilterCMSMobile}/>
      }
       {/* <DataButton onClick={saveShop}/> */}
       <Footer/>
