@@ -127,7 +127,7 @@ export default function HeaderMobile(props) {
       
       <div>
         <img src="menu.svg"
-          
+          ref={anchorRef}
           id="composition-button"
           aria-controls={open ? 'composition-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
