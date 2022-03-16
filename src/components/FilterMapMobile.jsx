@@ -8,11 +8,11 @@ export default function FilterMapMobile(props) {
    
   <div id="filter-map-mobile-container">
     <div className="filter-mobile-button">
-    <img className="filter-map-mobile-image" src="shop.svg" onClick={() => {props.onClick(["Grocery", "Cheese shop", "Chocolate shop", "Convenience Store", "Grocery store"])}}/>
+    <img className="filter-map-mobile-image" src="shopMobile.svg" onClick={() => {props.onClick(["Grocery", "Cheese shop", "Chocolate shop", "Convenience Store", "Grocery store"])}}/>
     Grocery
     </div>
     <div className="filter-mobile-button">
-    <img className="filter-map-mobile-image" src="cutlery.svg" onClick={() => {props.onClick(["Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"])}}/>
+    <img className="filter-map-mobile-image" src="forkMobile.svg" onClick={() => {props.onClick(["Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"])}}/>
     Restaurant
     </div>
     
@@ -21,11 +21,11 @@ export default function FilterMapMobile(props) {
     All Categories
     </div>
     <div className="filter-mobile-button">
-    <img  className="filter-map-mobile-image" src="croissant-2.svg" onClick={() => {props.onClick(["Bakery", "Cafe"])}}/>
+    <img  className="filter-map-mobile-image" src="croissantMobile.svg" onClick={() => {props.onClick(["Bakery", "Cafe"])}}/>
     Bakery
     </div>
     <div className="filter-mobile-button">
-    <img className="filter-map-mobile-image" src="cupcake.svg" onClick={() => {props.onClick(["Pastry Shop", "Cake shop", "Dessert shop"])}}/>
+    <img className="filter-map-mobile-image" src="madeleine.svg" onClick={() => {props.onClick(["Pastry Shop", "Cake shop", "Dessert shop"])}}/>
     Pastry Shop
     </div>
     
