@@ -86,6 +86,10 @@ button {
   align-items: center;
   justify-content: center;
 }
+#composition-button {
+  width: 40px;
+  height: auto;
+}
 .news-deals-container {
   display: flex;
   width: 7em;

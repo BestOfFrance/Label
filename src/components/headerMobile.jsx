@@ -126,16 +126,16 @@ export default function HeaderMobile(props) {
       <Stack direction="row" spacing={2}>
       
       <div>
-        <MenuIcon
-          ref={anchorRef}
+        <img src="menu.svg"
+          
           id="composition-button"
           aria-controls={open ? 'composition-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
-        >
+        />
           
-        </MenuIcon>
+        
         <Popper
           open={open}
           anchorEl={anchorRef.current}
