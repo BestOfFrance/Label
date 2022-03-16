@@ -5,6 +5,7 @@ import InfoWindow from 'google-map-react'
 import axios from 'axios'
 import LocationPin from './LocationPin'
 import DropDown from './DropDown'
+import DropDownTwo from './DropDownTwo'
 
 
 import './map.css'
@@ -53,7 +54,7 @@ useEffect(() => {
     
     <div className="google-map">
       {width > breakpoint && 
-    <DropDown onClick={props.onFilter} categories={props.categories} />}
+    <DropDownTwo onClick={props.onFilter} categories={props.categories} />}
     {props.location &&
     
       <GoogleMapReact
