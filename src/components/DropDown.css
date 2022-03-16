@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10%;
-  background-color: #1d4383;
+  background-color: #cdcccc;
   position: absolute;
   height: 55px;
   width: 45px; 
@@ -31,13 +31,38 @@
  
 
 }
-
+#filter-map-mobile-container {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  color: white;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: small;
+  width: 100%;
+  height: 75px;
+  z-index: 10;
+}
+.filter-map-mobile-image {
+  width: 60%;
+  height: auto;
+}
+.filter-mobile-button {
+  width: 19%;
+  text-align: center;
+}
 #dropdowntwo-menu {
   position: absolute;
   z-index: 999999;
-  background-color: white;
-  
-  
-  width: 100px;
+  background-color: black;
+  display: flex;
+  color: white;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 375px;
+  font-size: small;
   
 }

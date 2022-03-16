@@ -5,6 +5,7 @@ import './DropDown.css'
 
 
 
+
 export default function DropDownTwo(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [background, setBackground] = React.useState("doubleArrow.svg")
@@ -17,7 +18,7 @@ export default function DropDownTwo(props) {
       setTransform(`translate(0px, 0px)`)
       setBackground("doubleArrow.svg")
     } else {
-      setTransform(`translate(100px, 0px)`)
+      setTransform(`translate(375px, 0px)`)
       setOpen(true)
       setBackground("doubleArrowBackwards.svg")
     }
@@ -55,25 +56,25 @@ export default function DropDownTwo(props) {
       </div>
       {open &&
       <div id="dropdowntwo-menu">
-        <div onClick={handleCloseGrocery} disableRipple>
-         
+        <div className="filter-mobile-button" onClick={handleCloseGrocery} >
+        <img className="filter-map-mobile-image" src="shopMobile.svg"/>
           Grocery
         </div>
-        <div onClick={handleCloseBakery} disableRipple>
-          
+        <div className="filter-mobile-button" onClick={handleCloseBakery} >
+        <img  className="filter-map-mobile-image" src="croissantMobile.svg"/>
           Bakery
         </div>
         
-        <div onClick={handleClosePastry} disableRipple>
-         
+        <div className="filter-mobile-button" onClick={handleClosePastry} >
+        <img className="filter-map-mobile-image" src="madeleine.svg"/>
           Pasrty
         </div>
-        <div onClick={handleCloseRestaurant} disableRipple>
-          
+        <div className="filter-mobile-button" onClick={handleCloseRestaurant} >
+        <img className="filter-map-mobile-image" src="forkMobile.svg"/>
           Restaurant
         </div>
-        <div onClick={handleCloseAll} disableRipple>
-          
+        <div className="filter-mobile-button" onClick={handleCloseAll} >
+        <img className="filter-map-mobile-image" src="BOFLogo.svg"/>
           All Categories
         </div>
         </div>
