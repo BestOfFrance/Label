@@ -17,7 +17,7 @@ export default function FilterMapMobile(props) {
     </div>
     
     <div className="filter-mobile-button-all">
-    <img className="filter-map-mobile-image" src="BOFLogo.svg" onClick={() => {props.onClick(props.categories)}}/>
+    <img className="filter-map-mobile-image" src="https://uploads-ssl.webflow.com/5e7ec4cbdc544552e7ea5886/5e9b3e9805bf3a8858130f3c_fts_favicon_256.png" onClick={() => {props.onClick(props.categories)}}/>
     All Categories
     </div>
     <div className="filter-mobile-button">

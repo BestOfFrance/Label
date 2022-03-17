@@ -73,9 +73,9 @@ export default function DropDownTwo(props) {
         <img className="filter-map-mobile-image" src="forkMobile.svg"/>
           Restaurant
         </div>
-        <div className="filter-mobile-button" onClick={handleCloseAll} >
-        <img className="filter-map-mobile-image" src="BOFLogo.svg"/>
-          All Categories
+        <div className="filter-mobile-button-all" onClick={handleCloseAll} >
+        <img className="filter-map-mobile-image-all" src="https://uploads-ssl.webflow.com/5e7ec4cbdc544552e7ea5886/5e9b3e9805bf3a8858130f3c_fts_favicon_256.png"/>
+          All 
         </div>
         </div>
 }

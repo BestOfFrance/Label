@@ -49,9 +49,22 @@
   width: 60%;
   height: auto;
 }
+.filter-map-mobile-image-all {
+  width: 60%;
+  height: auto;
+ 
+}
 .filter-mobile-button {
   width: 19%;
   text-align: center;
+}
+.filter-mobile-button-all {
+  width: 19%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #dropdowntwo-menu {
   position: absolute;
