@@ -45,33 +45,6 @@ const checkUser = function() {
 
 
 
-async function fetchUser(userId) {
-  const userData = await API.get('usersApi', `/users/${userId}`)
-  return userData
-}
-
-useEffect(() => {
-  
-    Auth.currentAuthenticatedUser()
-    .then((user) => {
-      console.log(user, 'user')
-      setUser(user.username)
-      let userInfo = user.username
-      console.log(user)
-      fetchUser(userInfo)
-      .then((userData) => {
-        console.log('userData', userData)
-        setUserApi(userData.data.Item)
-      })
-    
-    })
-    
-  
-  
-}, [])
-
-console.log(props.signedIn, 'signed in')
-console.log(userApi.isVerified, 'verified')
 
   
   return (

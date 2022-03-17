@@ -638,7 +638,7 @@ console.log(state.signedIn, "state")
         <Route path="shops/:shop" element={<ShopDisplay shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn} />}/>
-        <Route path="dashboard/:id" element={<Dashboard shops={state.shops} ogout={signOut}
+        <Route path="dashboard/:id" element={<Dashboard shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn}/>}/>
         <Route path="resetpassword" element={<ForgotPassword/>}/>
