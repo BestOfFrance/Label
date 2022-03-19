@@ -14,10 +14,10 @@ export default function ShopDisplay(props) {
 console.log('display props', props)
   const data = [];
   const  id  = useParams();
-
+  console.log('id', id.shop)
   
 
-  API.get('shopsApi', `/shops/${id}`, {}).then((result) => {
+  API.get('shopsApi', `/shops/${id.shop}`, {}).then((result) => {
     const shopApiData = JSON.parse(result.body);
     console.log(shopApiData, 'shop api data')
   }).catch(err => {

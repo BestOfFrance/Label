@@ -21,11 +21,11 @@
       "function": {
         "usersLambda": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/usersLambda-6a48537673587653756b-build.zip"
+          "s3Key": "amplify-builds/usersLambda-4969396f5847614a7874-build.zip"
         },
         "shopsLambda": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/shopsLambda-737774626c7352305068-build.zip"
+          "s3Key": "amplify-builds/shopsLambda-426d794a4557306c5963-build.zip"
         },
         "stripeCheckout": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",

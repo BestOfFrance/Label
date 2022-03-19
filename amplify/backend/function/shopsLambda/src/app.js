@@ -16,7 +16,7 @@ const docClient = new AWS.DynamoDB.DocumentClient()
 
 
 const id = function() {
-  return Math.random().toString(36).substring(2) + Date.now.toString(36);
+  return Math.random().toString(36).substring(2)
 }
 
 const express = require('express')
@@ -35,6 +35,7 @@ app.use(awsServerlessExpressMiddleware.eventContext())
   res.header("Access-Control-Allow-Origin", "*")
   res.header('Access-Control-Allow-Methods', '*');
   res.header("Access-Control-Allow-Headers", "*")
+  res.header("Access-Control-Allow-Credentials", true)
   next()
 })
 
@@ -64,6 +65,7 @@ app.get('/shops', function(req, res) {
 });
 
 app.get('/shops/:id', function(req, res) {
+  console.log(req.params.id)
   let params = {
     TableName: "shops-dev",
     Key: {

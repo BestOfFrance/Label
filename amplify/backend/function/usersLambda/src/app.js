@@ -19,7 +19,7 @@ const docClient = new AWS.DynamoDB.DocumentClient()
 
 //function to autogenerate a random id for the user
 const id = function() {
-  return Math.random().toString(36).substring(2) + Date.now.toString(36);
+  return Math.random().toString(36).substring(2) ;
 }
 
 const express = require('express')

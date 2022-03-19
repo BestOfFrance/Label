@@ -173,7 +173,7 @@ export default function Marker(props) {
             
             </div>
             <div>
-              {props.signedIn === true ? <Link to={`shops/${props.shop.name}`} ><SeeButton shop={props.shop}   text={"see more"}/></Link> : <SeeButton   text={"Sign in to see more information"}/>}
+              {props.signedIn === true ? <Link to={`shops/${props.shop.id}`} ><SeeButton shop={props.shop}   text={"see more"}/></Link> : <SeeButton   text={"Sign in to see more information"}/>}
            
             
             </div>
