@@ -497,7 +497,8 @@ const onFilterCMS = function(data) {
 
 const onFilterCMSMobile = function (data) {
   setState((prev) => ({ ...prev, cmsCategories: [...data] }))
-  setState((prev) => ({ ...prev, cmsCategories: [...data] }))
+  setState((prev) => ({ ...prev, categories: [...data] }))
+ 
 
   
 }
@@ -660,7 +661,7 @@ console.log(state.signedIn, "state")
      
      
      {width < breakpoint &&
-     <FilterMapMobile onClick={onFilterCMSMobile}/>
+     <FilterMapMobile onClick={onFilterCMSMobile} categories={categoriesArray}/>
      }
       {/* <DataButton onClick={saveShop}/> */}
       <Footer/>
