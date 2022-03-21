@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useState, useEffect, componentDidMount} from 'react'
 import CloseButton from 'react-bootstrap/CloseButton'
 import hours from '../helpers/convertHours'
 import './ShopDisplay.css'
 import {Rating} from 'react-simple-star-rating';
 import { Carousel } from 'react-carousel-minimal';
 import { Routes, Route, Link, useParams } from "react-router-dom";
-import { API } from 'aws-amplify';
+import { API, sectionFooterSecondaryContent } from 'aws-amplify';
 import {Helmet} from "react-helmet";
 
 
@@ -15,49 +15,64 @@ console.log('display props', props)
   const data = [];
   const  id  = useParams();
   console.log('id', id.shop)
+  const [shop, setShop] = useState(null)
+  const [images, setImages] = useState([])
+  const [hourArray, setHourArray] = useState([])
+  const [seo, setSeo] = useState('')
+  
+  
+  async function fetchShops() {
+    const shopData = await API.get('shopsApi', `/shops/${id.shop}`, {})
+    return shopData
+  }
   
 
-  API.get('shopsApi', `/shops/${id.shop}`, {}).then((result) => {
+  
+ useEffect(() => {
+
+  fetchShops()
+  .then((result) => {
+    console.log(result, 'result')
     const shopApiData = JSON.parse(result.body);
+    setShop(shopApiData)
     console.log(shopApiData, 'shop api data')
+    
+      if (shopApiData.images !== null) {
+        const imageArray = shopApiData.images
+        for (const image of imageArray) {
+              
+              const dataImage = {image: image}
+              data.push(dataImage)
+            }
+        setImages(data)
+            console.log('data images', data)
+      }
+    
+      
+        const hoursArray = hours(shopApiData.hours).map((day) => {
+          return (
+            <div>
+              {day}
+            </div>
+          )
+        })
+    
+        setHourArray(hoursArray)
+        const seoText = {
+          title: shopApiData.name,
+          description: 'Find authentic French cuisine near you.',
+          url: `https://www.mydomain.com/shops/${shopApiData.name}`
+        }
+       setSeo(seoText)
+      
   }).catch(err => {
     console.log(err, 'api error');
   })
-
-  let shopArray = []
-
-  for (const shop of props.shops) {
-    if (shop.name === id.shop) {
-      shopArray.push(shop)
-    }
-  }
-
-  let shop = shopArray[0]
-
-  if (shop.images !== null) {
-    const imageArray = shop.images
-    for (const image of imageArray) {
-          
-          const dataImage = {image: image}
-          data.push(dataImage)
-        }
-        console.log('data images', data)
-  }
-
   
-    const hourArray = hours(shop.hours).map((day) => {
-      return (
-        <div>
-          {day}
-        </div>
-      )
-    })
-    const seo = {
-      title: shop.name,
-      description: 'Find authentic French cuisine near you.',
-      url: `https://www.mydomain.com/shops/${shop.name}`
-    }
+
+ }, [])
   
+ 
     
       
   
@@ -66,6 +81,9 @@ console.log('display props', props)
   
   return(
     <div className="main-body-show">
+      {shop  &&
+      
+      <div>
        <Helmet
   title={`${seo.title} | Best of France`}
   meta={[
@@ -90,8 +108,9 @@ console.log('display props', props)
          <h2>{shop.name}</h2>
         </div>
         <div className='display-image'>
+          {images.length > 0 &&
         <Carousel
-            data={data}
+            data={images}
             time={2000}
             width="850px"
             height="400px"
@@ -115,6 +134,7 @@ console.log('display props', props)
               margin: "40px auto",
             }}
           />
+}
         </div>
         <div className="shop-display-information">
         <div >
@@ -143,6 +163,8 @@ console.log('display props', props)
         </div>
       </div>
     </div>
+    </div>
+}
     </div>
   )
 }
