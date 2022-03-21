@@ -17,11 +17,11 @@ export default function FilterMapMobile(props) {
     </div>
     
     <div className="filter-mobile-button-all">
-    <img className="filter-map-mobile-image" src="https://uploads-ssl.webflow.com/5e7ec4cbdc544552e7ea5886/5e9b3e9805bf3a8858130f3c_fts_favicon_256.png" onClick={() => {props.onClick(props.categories)}}/>
-    All Categories
+    <img className="filter-map-mobile-image-all" src="home.svg" onClick={() => {props.onClick(props.categories)}}/>
+    
     </div>
     <div className="filter-mobile-button">
-    <img  className="filter-map-mobile-image" src="croissantMobile.svg" onClick={() => {props.onClick(["Bakery", "Cafe"])}}/>
+    <img  className="filter-map-mobile-image-croissant" src="croissantMobile.svg" onClick={() => {props.onClick(["Bakery", "Cafe"])}}/>
     Bakery
     </div>
     <div className="filter-mobile-button">

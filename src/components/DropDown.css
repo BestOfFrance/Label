@@ -37,9 +37,7 @@
   bottom: 0;
   background-color: black;
   color: white;
-  padding-top: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
+  
   font-size: small;
   width: 100%;
   height: 75px;
@@ -65,6 +63,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 #dropdowntwo-menu {
   position: absolute;
