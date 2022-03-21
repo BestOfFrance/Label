@@ -70,7 +70,7 @@ export default function HeaderMobile(props) {
        <nav>
          <Link to='/'>
          <button className="logo-button" >
-        <img id='logo' src='BOFLogo.svg'></img>
+        <img id='logo-mobile' src='BOFLogo.svg'></img>
         </button>
        
         </Link>

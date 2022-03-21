@@ -48,7 +48,8 @@ import VerifyBusiness from './components/VerifyBusiness'
 
 
 
- const details = require('./CanadaDetails2000')
+ const details = require('./CanadaDetailsNoDuplicatesFinal2000')
+ console.log(details.length, 'details')
 
 
 // const dataObj = require('./details4001.js')
@@ -99,7 +100,7 @@ const categoriesArray = []
 
 for (const detail of details) {
   
-  if (detail !== undefined) {
+  if (detail !== undefined && detail !== null) {
   categoriesArray.push(detail.category)
   }
 }
@@ -109,7 +110,7 @@ for (const detail of details) {
 
 const detailsArray = [];
 for (const detail of details) {
-  if (detail !== undefined) {
+  if (detail !== undefined && detail !== null) {
   const detailsObject = {};
   detailsObject.name = detail.yelpData.name;
   detailsObject.latitude = detail.yelpData.coordinates.latitude;
@@ -145,7 +146,9 @@ for (const detail of details) {
     
   }
 }
+if (!detailsArray.includes(detailsObject)) {
   detailsArray.push(detailsObject)
+}
 }
 }
 
@@ -225,7 +228,7 @@ export default function Application(props) {
 
 
     const saveShop = async () => {
-      for (let i = 0; i <= detailsArray.length; i++) {
+      for (let i = 801; i <= detailsArray.length; i++) {
         if (detailsArray[i] !== undefined) {
       const data = {
         body: {

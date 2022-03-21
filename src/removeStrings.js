@@ -1,8 +1,8 @@
-const data = require('./arrayPhone3000.js')
+const data = require('./CanadaDetails2000')
 const fs = require('fs');
 
 
-const fullShopData = 5673
+
 const cleanDataArray = []
 const undefindedDataArray = []
 for (const piece of data) {
@@ -20,13 +20,13 @@ console.log(undefindedDataArray.length)
 
 
 // console.log(addressArray.length)
-var file = fs.createWriteStream('cleanedPhone3000.js');
+// var file = fs.createWriteStream('cleanedPhone3000.js');
   
-  file.write(JSON.stringify(cleanDataArray));
-  file.end();
+//   file.write(JSON.stringify(cleanDataArray));
+//   file.end();
 
-  var file = fs.createWriteStream('undefinedPhone3000.js');
+//   var file = fs.createWriteStream('undefinedPhone3000.js');
   
-  file.write(JSON.stringify(undefindedDataArray));
-  file.end();
+//   file.write(JSON.stringify(undefindedDataArray));
+//   file.end();
 // console.log(addressArray.length)

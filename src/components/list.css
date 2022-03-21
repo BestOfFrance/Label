@@ -37,6 +37,10 @@
   justify-content: column;
   font-size: x-small; 
   width: 90%; 
+  height: 95%;
+  padding: 3%;
+  background-color: #ABB9D1;
+  border-radius: 5px;
 }
 
 .marker-image-div-business {

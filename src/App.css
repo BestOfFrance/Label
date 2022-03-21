@@ -344,7 +344,7 @@ h2 {
   background-color: black;
 }
 #premium {
-  align-items: flex-start;
+  align-items: center;
 }
 .list-group-item {
   padding: 0 !important;
@@ -353,7 +353,7 @@ h2 {
 }
 .infowrapper-business {
   font-size: x-small;
-  width: 90%;
+  width: 95%;
 }
 .list-item.list-group-item {
   
@@ -372,7 +372,9 @@ h2 {
 }
 .list-item.premium.list-group-item {
   width: 100%;
-  padding-left: 30px !important;
+  
+  display: flex;
+  justify-content: center;
 }
 .css-1h77wgb > .MuiGrid-item {
   
