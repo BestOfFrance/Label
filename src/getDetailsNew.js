@@ -17,7 +17,7 @@ const axiosFunc = async () =>  {
         console.log('before axios')
         axios.get(`https://api.yelp.com/v3/businesses/${l.id}`, {
   headers: {
-    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNElKsi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
+    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
 }
 })
 .then((res) => {

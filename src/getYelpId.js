@@ -57,7 +57,7 @@ axios.all(dataArray.map(l =>
   
   axios.get(`https://api.yelp.com/v3/businesses/matches`, {
   headers: {
-    Authorization: `Bearer H1IcGJB65EqYA4wvHWtDhk-_gnt4mO1HyiHxQ4_9zGBnQYtRRrcOFFvn-kOAEoEYWptsfL8Bd3T5MV9uGW0MqHe9LqdIFXO25worzkCIb74jOgVJnIsnYnYx`
+    Authorization: `Bearer -_gnt4mO1HyiHxQ4_9zGBnQYtRRrcOFFvn-kOAEoEYWptsfL8Bd3T5MV9uGW0MqHe9LqdIFXO25worzkCIb74jOgVJnIsnYnYx`
 },
   params: {
     // phone: l.phone1
