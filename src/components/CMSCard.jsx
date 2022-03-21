@@ -73,7 +73,7 @@ useEffect(() => {
       {props.shop.price}
       </div>
       <div className="locate-container">
-        <button onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
+        <button className="cms-button" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
         
       </div>
       </div>
@@ -82,7 +82,7 @@ useEffect(() => {
         
       {props.shop.category} 
       </div>
-      <button>
+      <button className="cms-button">
       <Link to={`reportbusiness/${props.name}`} ><img className="cms-button-image" src="report.svg"/></Link>
       </button>
 

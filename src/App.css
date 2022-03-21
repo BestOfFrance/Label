@@ -371,8 +371,8 @@ h2 {
   margin-left: 5%;
 }
 .list-item.premium.list-group-item {
-  width: 100%;
-  
+  width: 95%;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
 }

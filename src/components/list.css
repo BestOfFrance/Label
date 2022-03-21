@@ -62,6 +62,14 @@
 
 .list-item.list-group-item {
   height: fit-content;
+  background-color: #ABB9D1;
+}
+.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-3.css-zow5z4-MuiGrid-root {
+  padding-bottom: 2rem;
+}
+.cms-button {
+  
+  background-color: #ABB9D1;
 }
 
 .list-item.list-group-item.premium {
