@@ -15,6 +15,7 @@
   background-color: none !important;
   padding: 0rem, 0rem !important;
   border: none !important;
+  height: 100% !important;
 }
 .list-name{
   background-color: #d82f28;
@@ -22,6 +23,9 @@
 }
 .list-item.list-group-item.premium {
  width: 100%;
+ width: 95%;
+  margin-bottom: 1rem;
+  border-radius: 3px;
 }
 .marker-image-business {
   object-fit: cover;
