@@ -48,7 +48,7 @@ import VerifyBusiness from './components/VerifyBusiness'
 
 
 
- const details = require('./detailsUSFinal')
+ const details = require('./CanadaDetails2000')
 
 
 // const dataObj = require('./details4001.js')
@@ -127,6 +127,8 @@ for (const detail of details) {
   detailsObject.servicesAvailable = detail.services_available
   detailsObject.hours = [];
   detailsObject.images = [];
+  detailsObject.viewHours = detail.opening_hours
+
 
   for (const image of detail.yelpData.photos) {
     detailsObject.images.push(image)
@@ -242,7 +244,8 @@ export default function Application(props) {
           description: detailsArray[i].description,
           mapUrl: detailsArray[i].mapUrl,
           numberReviews: detailsArray[i].numberReviews,
-          servicesAvailable: detailsArray[i].servicesAvailable
+          servicesAvailable: detailsArray[i].servicesAvailable,
+          viewHours: detailsArray[i].viewHours
           
   
         }

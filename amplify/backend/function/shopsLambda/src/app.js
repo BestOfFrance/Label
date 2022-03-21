@@ -107,7 +107,11 @@ app.post('/shops', function(req, res) {
       images: req.body.images,
       category: req.body.category,
       description: req.body.description,
-      hidden: false
+      hidden: false,
+      mapUrl: req.body.mapUrl,
+      numberReviews: req.body.numberReviews,
+      servicesAvailable: req.body.servicesAvailable,
+      viewHours: req.body.viewHours
       
     }
   }
