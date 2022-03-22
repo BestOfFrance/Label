@@ -68,7 +68,7 @@ export default function FilterMapMobile(props) {
     </div>
     <div className="filter-mobile-button" style={state.pastry ? {'color': 'black', 'backgroundColor': '#ABB9D1'} : {'color': 'white', 'backgroundColor': 'black'}}>
     <img className="filter-map-mobile-image" src={state.pastry ? 'madeleineBlack.svg' : `madeleine.svg`} onClick={onClickPastry}/>
-    Pastry Shop
+    Pastries
     </div>
     
     
