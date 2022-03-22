@@ -1,7 +1,14 @@
 .list-item.active {
-  color: #818181 !important;
-  background-color: white !important;
+  background-color: #ABB9D1 !important;
   
+  
+}
+.list-group-item.active.premium {
+  background-color: #E5E5E5 !important;
+
+}
+.title-business {
+  font-size: 1.8em;
 }
 .list-item {
   height: 11em;
@@ -25,26 +32,30 @@
  width: 100%;
  width: 95%;
   margin-bottom: 1rem;
-  border-radius: 3px;
+  border-radius: 10px;
 }
+
 .marker-image-business {
   object-fit: cover;
   flex-shrink: 0;
     /* min-width: 100%;
     min-height: 100%; */
-  border-radius: 10%;
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .infowrapper-business {
   display: flex;
   justify-content: column;
-  font-size: x-small; 
+  font-size: 0.7em; 
   width: 90%; 
   height: 95%;
   padding: 3%;
   background-color: #ABB9D1;
-  border-radius: 5px;
+  border-radius: 10px;
+}
+.infowrapper-business.active {
+  background-color: #E5E5E5 !important;
 }
 
 .marker-image-div-business {
@@ -57,8 +68,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  width: 65px;
-  height: 65px;
+  width: 80px;
+  height: 80px;
 }
 .cms-cards.list-group {
   height: fit-content !important;
@@ -67,9 +78,11 @@
 .list-item.list-group-item {
   height: fit-content;
   background-color: #ABB9D1;
+ 
 }
-.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-3.css-zow5z4-MuiGrid-root {
-  padding-bottom: 2rem;
+
+.css-zow5z4-MuiGrid-root>.MuiGrid-item {
+  margin: 8px;
 }
 .cms-button {
   
