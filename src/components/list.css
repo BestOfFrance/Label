@@ -20,7 +20,9 @@
 .css-zow5z4-MuiGrid-root>.MuiGrid-item {
   width: 30%;
 }
-
+.css-1h77wgb > .MuiGrid-item  {
+  width: 30% !important;
+}
 .list-item.list-group-item {
   background-color: none !important;
   padding: 0rem, 0rem !important;
