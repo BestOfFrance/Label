@@ -115,7 +115,7 @@ export default function BusinessList(props) {
   
 
   return(
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""} premium`} id={props.id}  onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}} style={{visibility: hidden}}>
+    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""} premium`} id={props.id} style={{visibility: hidden}}>
       
           
           <div className={`infowrapper-business ${active ? "active" : ""}`} >
@@ -159,7 +159,11 @@ export default function BusinessList(props) {
             
             
             </div>
+            <div className="locate-business-container">
+            <button className="locate-button-business" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>LOCATE</button>
+            </div>
           </div>
+          
           </div>
           
             

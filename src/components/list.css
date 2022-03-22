@@ -112,7 +112,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
 }
 
 h3.cms-card-title-each {
@@ -134,4 +136,15 @@ h3.cms-card-title-each {
 .locate-container {
   display: flex;
   padding-bottom: 2em;
+}
+
+.locate-business-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.locate-button-business {
+  background-color: #E5E5E5;
+  border-radius: 5px;
 }
