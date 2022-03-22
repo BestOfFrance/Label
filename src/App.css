@@ -171,7 +171,7 @@ h2{
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) and (max-width: 1250px) {
   .list-images {
-    width: 20rem;
+    width: 100%;
     
   }
   .cms-cards.list-group {
@@ -183,7 +183,7 @@ h2{
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .list-images {
-    width: 15rem;
+    width: 100%;
     
   }
   .premium-map {
@@ -191,7 +191,7 @@ h2{
     height: 80vh !important;
   }
   .MuiAutocomplete-root .MuiAutocomplete-hasClearIcon .MuiAutocomplete-hasPopupIcon {
-    width: 350px;
+    width: 30%;
   }
   #premium {
     flex-direction: row !important;

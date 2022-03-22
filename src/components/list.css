@@ -15,7 +15,10 @@
   
   color: #1d1d1d !important;
   font-weight: 400;
-  padding-left: 1rem !important;
+  
+}
+.css-zow5z4-MuiGrid-root>.MuiGrid-item {
+  width: 30%;
 }
 
 .list-item.list-group-item {
@@ -23,6 +26,7 @@
   padding: 0rem, 0rem !important;
   border: none !important;
   height: 100% !important;
+  
 }
 .list-name{
   background-color: #d82f28;
@@ -78,7 +82,11 @@
 .list-item.list-group-item {
   height: fit-content;
   background-color: #ABB9D1;
- 
+  
+}
+.list-group-item {
+  padding: 0px !important;
+  
 }
 
 .css-zow5z4-MuiGrid-root>.MuiGrid-item {
@@ -96,7 +104,7 @@
   border-radius: 10%;
 } */
 .list-images {
- width: 400px;
+ width: 100%;
  height: 20vh;
 }
 
