@@ -522,6 +522,12 @@ useEffect(() => {
   navigator.geolocation.getCurrentPosition(
     function(position) {
       console.log(position);
+      const locationGeo = {
+  
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      } 
+      setState((prev) => ({ ...prev, location: locationGeo}))
     },
     function(error) {
       console.error("Error Code = " + error.code + " - " + error.message);
