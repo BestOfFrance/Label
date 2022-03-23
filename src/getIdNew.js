@@ -40,7 +40,7 @@ const axiosFunc = async () =>  {
         console.log('before axios')
         axios.get(`https://api.yelp.com/v3/businesses/matches`, {
   headers: {
-    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNElKsuUINdEi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
+    Authorization: `Bearer -GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
 },
   params: {
     // phone: l.phone1

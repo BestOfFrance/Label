@@ -679,7 +679,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilterCMSMobile} categories={categoriesArray}/>
      }
-      <DataButton onClick={saveShop}/>
+      {/* <DataButton onClick={saveShop}/> */}
       <Footer/>
     </div>
     
