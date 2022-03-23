@@ -88,7 +88,7 @@ export default function HomePage(props) {
           </div>
           
           
-        <Maps location={props.location} zoomLevel={17} shops={props.shops} marker={props.marker} onChange={props.onChange} onFilter={props.onFilter} signedIn={props.signedIn} categories={props.categoriesArray}>
+        <Maps location={props.location} zoomLevel={14} shops={props.shops} marker={props.marker} onChange={props.onChange} onFilter={props.onFilter} signedIn={props.signedIn} categories={props.categoriesArray}>
         
         </Maps>
         
