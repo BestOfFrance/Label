@@ -45,6 +45,7 @@ import { toBase64, bytesToSize } from './utils';
 import ConfirmAccountBusiness from './components/ConfirmAccountBusiness'
 import RegisterBusinessStep1 from './components/RegisterBusinessStep1'
 import VerifyBusiness from './components/VerifyBusiness'
+import ReportButtonEasy from './components/ReportButtonEasy'
 
 
 
@@ -666,7 +667,8 @@ console.log(state.signedIn, "state")
         signedIn={state.signedIn}/>}/>
         <Route path="resetpassword" element={<ForgotPassword/>}/>
         <Route path="resetpasswordverification" element={<ForgotPasswordConfirm/>}/>
-        <Route path="reportbusiness/:shop" element={<ReportBusiness shops={state.shops}/>}/>
+        {/* <Route path="reportbusiness/:shop" element={<ReportBusiness shops={state.shops}/>}/> */}
+        <Route path="reportbusiness/:shop" element={<ReportButtonEasy shops={state.shops}/>}/>
         <Route path="confirmaccountbusiness" element={<ConfirmAccountBusiness/>}/>
         <Route path="choosesubscriptiontype" element={<RegisterBusinessStep1/>}/>
         <Route path="verifybusiness" element={<VerifyBusiness/>}/>

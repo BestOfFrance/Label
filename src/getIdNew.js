@@ -1,12 +1,12 @@
 const axios = require('axios');
-const data = require('./CleanedExtractCanadaData')
+const data = require('./CleanedUSA')
 const fs = require('fs');
 
 let promises = [];
 
 const dataArray = []
 
-for (let i = 3001; i < data.length; i++) {
+for (let i = 2001; i < data.length; i++) {
   // console.log(data[i])
   if (data[i].City !== null) {
   const name = (data[i].title).toString()
@@ -40,15 +40,15 @@ const axiosFunc = async () =>  {
         console.log('before axios')
         axios.get(`https://api.yelp.com/v3/businesses/matches`, {
   headers: {
-    Authorization: `Bearer -GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
+    Authorization: `Bearer H1IcGJB65EqYA4wvHWtDhk-_gnt4mR7vSx9zpO1HyiHxQ4_9zGBnQYtRRrcOFFvn-kOAEoEYWptsfL8Bd3T5MV9uGW0MqHe9LqdIFXO25worzkCIb74jOgVJnIsnYnYx`
 },
   params: {
     // phone: l.phone1
-    name: l.terms.name,
-    address1: l.terms.address,
-    city: l.terms.city,
-    state: l.terms.state,
-    country: "CA",
+    name: l.title,
+    address1: l.address1,
+    city: l.city,
+    state: l.state,
+    country: "US",
     limit: 1
 
   }
@@ -65,7 +65,7 @@ const axiosFunc = async () =>  {
 };
 axiosFunc()
 .then((res) => {
-  var file = fs.createWriteStream('ExtractID5000.json');
+  var file = fs.createWriteStream('USID5000.json');
   
   file.write(JSON.stringify(res));
   file.end();
