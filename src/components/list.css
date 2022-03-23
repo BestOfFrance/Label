@@ -1,5 +1,5 @@
 .list-item.active {
-  background-color: #ABB9D1 !important;
+  background-color: #E6EEF6 !important;
   
   
 }
@@ -57,7 +57,7 @@
   width: 90%; 
   height: 95%;
   padding: 3%;
-  background-color: #ABB9D1;
+  background-color: #E6EEF6;
   border-radius: 10px;
 }
 .infowrapper-business.active {
@@ -83,7 +83,7 @@
 
 .list-item.list-group-item {
   height: fit-content;
-  background-color: #ABB9D1;
+  background-color: #E6EEF6;
   
 }
 .list-group-item {
@@ -96,7 +96,7 @@
 }
 .cms-button {
   
-  background-color: #ABB9D1;
+  background-color: #E6EEF6;
 }
 
 .list-item.list-group-item.premium {
@@ -149,4 +149,5 @@ h3.cms-card-title-each {
 .locate-button-business {
   background-color: #E5E5E5;
   border-radius: 5px;
+  
 }

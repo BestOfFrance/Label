@@ -518,6 +518,15 @@ useEffect(() => {
     const shopData = await Api.get('shopsApi', '/shops')
     return shopData
   }
+
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      console.log(position);
+    },
+    function(error) {
+      console.error("Error Code = " + error.code + " - " + error.message);
+    }
+  )
   checkUser();
   fetchShops().then((out)=> {
     console.log(out)
@@ -563,6 +572,7 @@ useEffect(() => {
 // console.log('state location', state.location)
 
 //set the markers ---- will need to change likely with thousands of markers
+
 
 const pin = state.shops.map((center, index) => {
   if (state.categories.includes(center.category)) {

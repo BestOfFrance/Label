@@ -1,4 +1,4 @@
-const data = require('./CanadaDetails2000')
+const data = require('./ExtractID5000')
 const fs = require('fs');
 
 
@@ -20,13 +20,13 @@ console.log(undefindedDataArray.length)
 
 
 // console.log(addressArray.length)
-// var file = fs.createWriteStream('cleanedPhone3000.js');
+var file = fs.createWriteStream('ExtractIDCleaned5000.js');
   
-//   file.write(JSON.stringify(cleanDataArray));
-//   file.end();
+  file.write(JSON.stringify(cleanDataArray));
+  file.end();
 
-//   var file = fs.createWriteStream('undefinedPhone3000.js');
+  var file = fs.createWriteStream('undefinedExtract5000.js');
   
-//   file.write(JSON.stringify(undefindedDataArray));
-//   file.end();
+  file.write(JSON.stringify(undefindedDataArray));
+  file.end();
 // console.log(addressArray.length)

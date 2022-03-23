@@ -363,6 +363,9 @@ h2 {
   width: 100%;
   
 }
+.css-1h77wgb>.MuiGrid-item {
+  width: 100% !important;
+}
 .infowrapper-business {
   font-size: x-small;
   width: 95%;
@@ -374,8 +377,13 @@ h2 {
 .list-images {
   width: 100%;
 }
+.marker-image-div-business {
+  height: 100%;
+  width: 130px;
+  transform: translate(0px, 4px);
+}
 .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-auto.css-1wrgmsj-MuiGrid-root {
-  width: 100%;
+  width: 100% !important;
 }
 .cms-button-container {
   width: 90%;
@@ -388,9 +396,6 @@ h2 {
   display: flex;
   justify-content: center;
 }
-.css-1h77wgb > .MuiGrid-item {
-  
-  width: 100%;
-}
+
 
 }
