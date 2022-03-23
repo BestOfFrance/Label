@@ -48,7 +48,7 @@ import VerifyBusiness from './components/VerifyBusiness'
 
 
 
- const details = require('./CanadaDetailsNoDuplicatesFinal2000')
+ const details = require('./ExtCADetails5000')
  console.log(details.length, 'details')
 
 
@@ -228,7 +228,7 @@ export default function Application(props) {
 
 
     const saveShop = async () => {
-      for (let i = 801; i <= detailsArray.length; i++) {
+      for (let i = 0; i <= detailsArray.length; i++) {
         if (detailsArray[i] !== undefined) {
       const data = {
         body: {
@@ -679,7 +679,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilterCMSMobile} categories={categoriesArray}/>
      }
-      {/* <DataButton onClick={saveShop}/> */}
+      <DataButton onClick={saveShop}/>
       <Footer/>
     </div>
     
