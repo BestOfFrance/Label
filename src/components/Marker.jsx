@@ -114,7 +114,7 @@ export default function Marker(props) {
     setTransform('rotate(45deg)')
    } else if (props.category === "Pastry Shop" || props.category === "Cake shop" || props.category === "Dessert shop"){
       
-      setBackground('url("madeliene.svg")');
+      setBackground('url("madeleine.svg")');
     
    } else if (props.category === "Restaurant" || props.category === "Bistro" || props.category === "Breakfast Restaurant" || props.category === "Charcuterie" || props.category === "Diner" || props.category === "Family restaurant" || props.category === "Fine dining restaurant" || props.category === "French restaurant") {
     setBackground('url("forkMobile.svg")');

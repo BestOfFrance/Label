@@ -1,4 +1,4 @@
-import react, {useState} from 'react';
+import react, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -6,6 +6,8 @@ import Radio from '@mui/material/Radio';
 import './FilterCms.css'
 
 export default function FilterCms(props) {
+  const [background, setBackground] = useState('none')
+  const [transform, setTransform] = useState(null)
   const [state, setState] = useState({
     
     categories: props.categories,
@@ -81,32 +83,55 @@ export default function FilterCms(props) {
     props.onFilterCms(props.categories)
     } 
   }
+  useEffect(() => {
+    if (props.category === "Bakery" || props.category === "Cafe" ) {
+      setBackground('url("croissantMobile.svg")');
+      setTransform('rotate(45deg)')
+     } else if (props.category === "Pastry Shop" || props.category === "Cake shop" || props.category === "Dessert shop"){
+        
+        setBackground('url("madeliene.svg")');
+      
+     } else if (props.category === "Restaurant" || props.category === "Bistro" || props.category === "Breakfast Restaurant" || props.category === "Charcuterie" || props.category === "Diner" || props.category === "Family restaurant" || props.category === "Fine dining restaurant" || props.category === "French restaurant") {
+      setBackground('url("forkMobile.svg")');
+      
+     } else if (props.category === "Grocery" || props.category === "Cheese shop" || props.category === "Chocolate shop" || props.category === "Convenience store" || props.category === "Grocery store") {
+      setBackground('url("shopMobile.svg")');
+     }
+   }, [])
 
   return (
     <RadioGroup variant="contained" aria-label="outlined primary button group" className="radio-group-buttons">
       <div className="radio-button-container">
-      <img className="cms-filter-images" src="cupcake.svg"/>
+      <div className="radio-button-image-container" style={{backgroundImage: 'url("madeleine.svg")'}}>
+      
+      </div>
       Pastry Shop
       <div className="radio-button">
       <Radio className="cms-filter-button" onClick={onClickPastry} checked={state.activePastry}></Radio>
       </div>
       </div>
       <div className="radio-button-container">
-      <img className="cms-filter-images" src="cutlery.svg"/>
+      <div className="radio-button-image-container" style={{backgroundImage: 'url("forkMobile.svg")'}}>
+      
+      </div>
       Restaurant
       <div className="radio-button">
       <Radio className="cms-filter-button" onClick={onClickRestaurant} checked={state.activeRestaurant}></Radio>
       </div>
       </div>
       <div className="radio-button-container">
-      <img src="shop.svg" className="cms-filter-images" />
+        <div className="radio-button-image-container" style={{backgroundImage: 'url("shopMobile.svg")'}}>
+      
+      </div>
       Grocery
       <div className="radio-button">
       <Radio className="cms-filter-button"  onClick={onClickGrocery} checked={state.activeGrocery}></Radio>
       </div>
       </div>
       <div className="radio-button-container">
-      <img src="croissant-2.svg" className="cms-filter-images"/>
+      <div className="radio-button-image-container" style={{backgroundImage: 'url("croissantMobile.svg")', transform: 'rotate(45deg)'}}>
+     
+      </div>
       Bakery
       <div className="radio-button">
       <Radio className="cms-filter-button"  onClick={onClickBakery} checked={state.activeBakery}></Radio>

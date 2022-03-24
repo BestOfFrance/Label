@@ -9,16 +9,46 @@
 }
 
 .cms-filter-images{
+  height: 35px;
+  width: 35px;
+  background-color: black;
+  
+  
+  margin-left: 5px;
+  padding: 6px;
+  
+}
+.cms-filter-images-croissant{
   height: 30px;
   width: 30px;
   background-color: black;
-  border-radius: 50%;
+ 
   padding: 2px;
   margin-left: 5px;
+  transform: rotate(45deg)
   
   
 }
-
+.radio-button-image-container-croissant {
+  height: 35px;
+  width: 35px;
+  background-color: black;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+background-size: 30px;
+background-position: center;
+  
+}
+.radio-button-image-container {
+  height: 35px;
+  width: 35px;
+  background-color: black;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+background-size: 25px;
+background-position: center;
+  
+}
 .radio-button-container {
   margin-left: 25px;
   margin-right: 25px;
