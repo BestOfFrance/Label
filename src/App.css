@@ -4,7 +4,11 @@
   flex-direction: column;
   height: 100%;
 }
-
+#french-food-div {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+}
 .cms-cards {
   display: flex;
   overflow:hidden; 
@@ -148,6 +152,11 @@ h2{
     color: black;
     padding-left: 1em;
   padding-right: 10em;
+}
+#cms-title {
+  padding-left: 1em;
+  padding-right: 1em;
+  font-weight: 900;
 }
 .list-group-item {
   padding: none !important;
@@ -363,6 +372,7 @@ h2 {
   width: 100%;
   
 }
+
 .css-1h77wgb>.MuiGrid-item {
   width: 100% !important;
 }

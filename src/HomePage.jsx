@@ -95,8 +95,9 @@ export default function HomePage(props) {
         </div>
         
         <div className="list-bottom">
-         
+         <div id="french-food-div">
         <h2 id="cms-title">French Food Near You</h2>
+        </div>
         {width > breakpoint &&
         <FilterCms
         onFilterCms={props.onFilterCms}
