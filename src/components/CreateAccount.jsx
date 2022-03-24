@@ -14,24 +14,38 @@ import CheckoutButton from './CheckoutButton'
 import { API } from "aws-amplify"
 import {Helmet} from "react-helmet";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
+import UploadImage from './uploadImage'
 
 import '@stripe/stripe-js'
+import AWS from 'aws-sdk'
+
+import '@stripe/stripe-js'
+// const fs = require('fs');
+
+
+const S3_BUCKET ='businessauth';
+const REGION ='us-east-1';
+
+
+AWS.config.update({
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+})
+
+const myBucket = new AWS.S3({
+    params: { Bucket: S3_BUCKET},
+    region: REGION,
+})
 
 const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 
-Amplify.configure(awsconfig);
 
 
 
 
-Api.configure(awsconfig);
-
-
-
-const AWS = require('aws-sdk');
 
 const SES_CONFIG = {
     accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
@@ -77,6 +91,32 @@ let sendEmail = (businessName, role, email, id, firstname, lastname) => {
 
 
 export default function CreateAccount(props) {
+  const [progress , setProgress] = useState(0);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [uploaded, setUploaded] = useState(false)
+
+    const handleFileInput = (e) => {
+        setSelectedFile(e.target.files[0]);
+    }
+
+    const uploadFile = (file) => {
+
+        const params = {
+            ACL: 'public-read',
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: `${file.name}/${email}`
+        };
+
+        myBucket.putObject(params)
+            .on('httpUploadProgress', (evt) => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100))
+                setUploaded(true)
+            })
+            .send((err) => {
+                if (err) console.log(err)
+            })
+    }
   
   const [state, setState] = useState({
     placeholderFN: "First Name",
@@ -224,6 +264,8 @@ async function signUpFreemium() {
       setState((prev) => ({ ...prev, placeholderEmail: "please enter your email" }))
     } else if (password.length < 6) {
       setState((prev) => ({ ...prev, placeholderPassword: "password must be at least 6 characters" }))
+    } else if(!uploaded) {
+       alert("Please choose a file to upload")
     } else {
       async function fetchUser() {
         const userData = await Api.get('usersApi', `/users/${email}`)
@@ -401,18 +443,8 @@ const onChangeYearly = function() {
                <Input type='password' placeholder={state.placeholderConfirm} value={confirmPassword} onChange={changepasswordconfirm} required={true}/>
              </FormControl>
              
-
-  <FormControl mt={4}>
-               <FormLabel>Business Name</FormLabel>
-               <Input  value={businessName} onChange={changeBusinessName} required={true}/>
-             </FormControl>
-             <FormControl mt={4}>
-               <FormLabel>Your Role at this Business</FormLabel>
-               <Input   value={role} onChange={changeRole} required={true}/>
-             </FormControl>
-
-
-
+          
+  
 
 
              <FormGroup>
@@ -427,7 +459,24 @@ const onChangeYearly = function() {
 </FormGroup>
 
 
-             
+       {state.monthly &&
+       <div>
+         <div>Please upload a Incorporation Certificate to verify you are the business owner</div>
+         <div>You will recieve an email once your business has been verified and have full access to edit your business</div>
+       <div>Native SDK File Upload Progress is {progress}%</div>
+       <input type="file" onChange={handleFileInput}/>
+       <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+   </div>
+       }
+       {state.yearly &&
+       <div>
+          <div>Please upload a Incorporation Certificate to verify you are the business owner</div>
+         <div>You will recieve an email once your business has been verified and have full access to edit your business</div>
+       <div>Native SDK File Upload Progress is {progress}%</div>
+       <input type="file" onChange={handleFileInput}/>
+       <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+   </div>
+       }
      
        
           

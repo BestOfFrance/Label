@@ -15,6 +15,7 @@ Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
 export default function ConfirmAccountBusiness(props) {
+  
   const account = "Freemium";
   const [state, setState] = useState({
     
@@ -85,7 +86,7 @@ export default function ConfirmAccountBusiness(props) {
         
       <button onClick={onSubmit} >Confirm</button>
      {redirect === true && 
-       <Navigate to="/choosesubscriptiontype"/>
+       <Navigate to="/login"/>
      }
       
     </div>

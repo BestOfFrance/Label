@@ -94,7 +94,7 @@ export default function Uploadimage(props) {
 
     
     <div className="create-account">
-     <p>Create a Business Account</p>
+     
      
     
 

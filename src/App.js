@@ -654,8 +654,8 @@ console.log(state.signedIn, "state")
         <Route path="dashboard" element = {<Dashboard shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn}/>} />
-        {/* <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} /> */}
-        <Route path="registerbusiness" element = {<UploadImage setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
+        <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
+        {/* <Route path="registerbusiness" element = {<UploadImage setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} /> */}
         <Route path="registerfoodie" element={<CreateAccountFoodie setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>}/>
         <Route path="confirmaccount" element={<ConfirmAccount login={login}
         

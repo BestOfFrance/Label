@@ -201,7 +201,7 @@ h3.cms-card-title-each {
   width: 100%;
 }
 
-@media only screen and (min-width: 767px) and (max-width: 1250px) {
+@media only screen and (min-width: 767px)  {
   .cms-button-locate {
     display: flex;
     width: 100px;
