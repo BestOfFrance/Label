@@ -10,6 +10,16 @@ export default function CMSCard(props) {
   const [active, setActive] = useState(false);
   const [hidden, setHidden] = useState("visible")
   const [price, setPrice] = useState("")
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 768;
+
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener("resize", handleWindowResize);
+
+    // Return a function from the effect that removes the event listener
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
   useEffect(() => {
     if (props.shop.price) {
@@ -118,7 +128,7 @@ useEffect(() => {
       <div className="cms-button-container"> 
       <div className="cms-button-div">
       
-        <button className="cms-button" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
+        <button className="cms-button-locate" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>{width > 767 && <div>Locate</div>}<img className="cms-button-image" src="place.svg"></img></button>
         
       
       

@@ -226,7 +226,10 @@ h2{
     width: 100%;
   }
   .list-item.list-group-item {
-    width: 15rem;
+    width: 100%;
+  }
+  .cms-button-container-upper {
+    flex-direction: column;
   }
 }
 

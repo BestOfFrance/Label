@@ -35,13 +35,23 @@ export default function Marker(props) {
   const [showSelected, setShow] = useState(false)
   const [style, setStyle] = useState(0)
   const [hidden, setHidden] = useState("visible")
- 
+  const [price, setPrice] = useState("")
   const [open, setOpen] = useState(false);
   const [openTime, setOpenTime] = useState("");
   const [openDay, setOpenDay] = useState("")
   const [background, setBackground] = useState('none')
   useEffect(() => {
-    
+    if (props.shop.price) {
+      if (props.shop.price.length === 1) {
+        setPrice(1)
+      }
+      if (props.shop.price.length === 2) {
+        setPrice(2)
+      }
+      if (props.shop.price.length === 3) {
+        setPrice(2)
+      }
+    }
    
     if (props.show !== null) {
       if (props.id === props.show.id) {
@@ -142,14 +152,7 @@ export default function Marker(props) {
           <div className='title'>
             <b>{props.text}</b>
           </div>
-          <div>
-            Phone: <a href="tel:5554280940">{props.phone}</a>
-            
-          </div>
-          <div>
-            Address: <a href={`maps.google.com/?ll=${props.latitude},${props.longitude}`}>{props.address}, Vancouver, BC</a>
-            
-          </div>
+          <div className="price-rating-cards">
           <div className='rating'>
             Rating: {props.rating}
             <Rating
@@ -163,8 +166,26 @@ export default function Marker(props) {
             />
             </div>
             <div >
-            {props.shop.price}
+            {price === 1 &&
+            <div><img className="price-image" src="dollar.svg"></img></div>
+          }     
+          {price === 2 &&
+            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img></div>
+          }      
+          {price === 3 &&
+            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img><img  className="price-image" src="dollar.svg"></img></div>
+          }        
             </div>
+            </div>
+          <div>
+            Phone: <a href="tel:5554280940">{props.phone}</a>
+            
+          </div>
+          <div>
+            Address: <a href={`maps.google.com/?ll=${props.latitude},${props.longitude}`}>{props.address}, Vancouver, BC</a>
+            
+          </div>
+          
             
             
           

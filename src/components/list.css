@@ -108,6 +108,10 @@
   
   background-color: #E6EEF6;
 }
+.cms-button-locate {
+  
+  background-color: #E6EEF6;
+}
 
 .list-item.list-group-item.premium {
   height: 30%;
@@ -150,7 +154,7 @@ h3.cms-card-title-each {
 .price-rating-cards {
   display: flex;
   align-items: center;
-  width: 220px;
+  width: 210px;
   justify-content: space-between;
 }
 .price-image {
@@ -195,4 +199,18 @@ h3.cms-card-title-each {
   flex-direction: row;
   padding: 3%;
   width: 100%;
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1250px) {
+  .cms-button-locate {
+    display: flex;
+    width: 100px;
+    justify-content: space-around;
+    background-color: #abb9d1;
+    border-radius: 10px;
+    padding: 3%;
+  }
+  .cms-button-image{
+    margin-right: 0px;
+  }
 }
