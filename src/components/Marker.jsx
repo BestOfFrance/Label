@@ -40,6 +40,7 @@ export default function Marker(props) {
   const [openTime, setOpenTime] = useState("");
   const [openDay, setOpenDay] = useState("")
   const [background, setBackground] = useState('none')
+  const [transform, setTransform] = useState(null)
   useEffect(() => {
     if (props.shop.price) {
       if (props.shop.price.length === 1) {
@@ -109,16 +110,17 @@ export default function Marker(props) {
 
  useEffect(() => {
   if (props.category === "Bakery" || props.category === "Cafe" ) {
-    setBackground('url("croissant-2.svg")');
+    setBackground('url("croissantMobile.svg")');
+    setTransform('rotate(45deg)')
    } else if (props.category === "Pastry Shop" || props.category === "Cake shop" || props.category === "Dessert shop"){
       
-      setBackground('url("cupcake.svg")');
+      setBackground('url("madeliene.svg")');
     
    } else if (props.category === "Restaurant" || props.category === "Bistro" || props.category === "Breakfast Restaurant" || props.category === "Charcuterie" || props.category === "Diner" || props.category === "Family restaurant" || props.category === "Fine dining restaurant" || props.category === "French restaurant") {
-    setBackground('url("cutlery.svg")');
+    setBackground('url("forkMobile.svg")');
     
    } else if (props.category === "Grocery" || props.category === "Cheese shop" || props.category === "Chocolate shop" || props.category === "Convenience store" || props.category === "Grocery store") {
-    setBackground('url("shop.svg")');
+    setBackground('url("shopMobile.svg")');
    }
  }, [])
   
@@ -211,7 +213,7 @@ export default function Marker(props) {
         <Wrapper
           onClick={props.onClick}
           alt={props.text}
-          style={{backgroundImage: background, zIndex: style}}
+          style={{backgroundImage: background, zIndex: style, transform: transform}}
         />
       </div>
     </div>
