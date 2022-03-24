@@ -368,7 +368,7 @@ h2 {
 }
 .infowrapper-business {
   font-size: x-small;
-  width: 95%;
+  width: 100%;
 }
 .list-item.list-group-item {
   
@@ -380,7 +380,7 @@ h2 {
 .marker-image-div-business {
   height: 100%;
   width: 130px;
-  transform: translate(0px, 4px);
+  
 }
 .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-auto.css-1wrgmsj-MuiGrid-root {
   width: 100% !important;

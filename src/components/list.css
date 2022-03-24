@@ -63,10 +63,11 @@
   justify-content: column;
   font-size: 0.7em; 
   width: 90%; 
-  height: 95%;
-  padding: 3%;
+  height: 100%;
+  
   background-color: #E6EEF6;
   border-radius: 10px;
+  width: 100%;
 }
 .infowrapper-business.active {
   background-color: #E5E5E5 !important;
@@ -78,12 +79,13 @@
     align-items: center;
     overflow: hidden; */
     
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  width: 80px;
-  height: 80px;
+  width: 130px;
+  height: 100%;
 }
 .cms-cards.list-group {
   height: fit-content !important;
@@ -169,8 +171,10 @@ h3.cms-card-title-each {
 
 .locate-business-container {
   width: 100%;
+  
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 .rating-business {
   padding-right: 0.1rem;
@@ -179,7 +183,16 @@ h3.cms-card-title-each {
 }
 .locate-button-business {
   background-color: #0957a5;
-  border-radius: 5px;
+  border-radius: 100%;
   color: white;
   padding: 0.3rem;
+  width: 45px;
+  height: 45px;
+  font-size: 0.5rem;
+}
+.marker-information-cms {
+  display: flex;
+  flex-direction: row;
+  padding: 3%;
+  width: 100%;
 }

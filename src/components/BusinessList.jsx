@@ -128,71 +128,74 @@ export default function BusinessList(props) {
   
 
   return(
-    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""} premium`} id={props.id} style={{visibility: hidden}}>
-      
-          
-          <div className={`infowrapper-business ${active ? "active" : ""}`} >
-            <div className='marker-image-div-business' style={{backgroundImage: `url(${style})`}}>
-              {/* <img className='marker-image-business' src={props.shop.image}></img> */}
-              </div>
-              <div className="marker-information">
+    <ListGroup.Item as="li" className={`list-item ${active ? "active" : ""} premium`} id={props.id} style={{ visibility: hidden }}>
+
+
+      <div className={`infowrapper-business ${active ? "active" : ""}`} >
+        <div className='marker-image-div-business' style={{ backgroundImage: `url(${style})` }}>
+          {/* <img className='marker-image-business' src={props.shop.image}></img> */}
+        </div>
+        
+        <div className="marker-information-cms">
+        <div className="locate-info-container">
           <div className='title-business'>
             {props.shop.name}
           </div>
           <div className="price-rating-cards">
-          <div className='rating-business'>
-            Rating: {props.shop.rating}
-            <Rating
-              
-              initialValue={props.shop.rating}
-              size={20}
-              label
-              fillColor='#ef4236'
-              emptyColor='gray'
-              className='foo' // Will remove the inline style if applied
-            />
+            <div className='rating-business'>
+              Rating: {props.shop.rating}
+              <Rating
+
+                initialValue={props.shop.rating}
+                size={20}
+                label
+                fillColor='#ef4236'
+                emptyColor='gray'
+                className='foo' // Will remove the inline style if applied
+              />
             </div>
             <div>
-          {price === 1 &&
-            <div><img className="price-image" src="dollar.svg"></img></div>
-          }     
-          {price === 2 &&
-            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img></div>
-          }      
-          {price === 3 &&
-            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img><img  className="price-image" src="dollar.svg"></img></div>
-          }        
-            
+              {price === 1 &&
+                <div><img className="price-image" src="dollar.svg"></img></div>
+              }
+              {price === 2 &&
+                <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img></div>
+              }
+              {price === 3 &&
+                <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img></div>
+              }
+
             </div>
-            </div>
+          </div>
           <div>
             Phone: <a href="tel:5554280940">{props.shop.phone}</a>
-            
+
           </div>
           <div>
             Address: <a href={`maps.google.com/?ll=${props.shop.latitude},${props.shop.longitude}`}>{props.shop.address}, Vancouver, BC</a>
-            
+
           </div>
-         
-            
-          
+
+
+
           <div>
-          {open ? `Open Now until ${hoursObject[openTime]}` : `Closed, opens ${openDay} at ${hoursObject[openTime]}`}
-            
-            
-            </div>
-            <div className="locate-business-container">
-            <button className="locate-button-business" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>LOCATE</button>
-            </div>
+            {open ? `Open Now until ${hoursObject[openTime]}` : `Closed, opens ${openDay} at ${hoursObject[openTime]}`}
+
+
           </div>
-          
           </div>
-          
-            
-            
-          
-       
-      
+          <div className="locate-business-container">
+            <button className="locate-button-business" onClick={() => { props.onClick(props.latitude, props.longitude, props.shop) }}>LOCATE</button>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+
     </ListGroup.Item>
 
   )
