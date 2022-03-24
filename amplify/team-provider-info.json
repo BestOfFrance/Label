@@ -38,6 +38,10 @@
         "emailAttachment": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
           "s3Key": "amplify-builds/emailAttachment-7151436a4c3841624b56-build.zip"
+        },
+        "stripeCheckFunction": {
+          "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
+          "s3Key": "amplify-builds/stripeCheckFunction-2b4b464a59796e527236-build.zip"
         }
       },
       "auth": {

@@ -47,6 +47,12 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "stripeCheckFunction": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "api": {
@@ -61,6 +67,11 @@ export type AmplifyDependentResourcesAttributes = {
             "ApiId": "string"
         },
         "stripeAPI": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "stripeCheck": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

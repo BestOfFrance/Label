@@ -47,11 +47,13 @@ import RegisterBusinessStep1 from './components/RegisterBusinessStep1'
 import VerifyBusiness from './components/VerifyBusiness'
 import ReportButtonEasy from './components/ReportButtonEasy'
 import UploadImage from './components/uploadImage'
+import {loadStripe} from '@stripe/stripe-js';
 
 
 
  const details = require('./ExtCADetails5000')
  console.log(details.length, 'details')
+ const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
 
 
 // const dataObj = require('./details4001.js')
@@ -97,7 +99,10 @@ const locationDefault = {
 const mode = "MAP"
 
 //function to manually set the dynamo database, only to be used upon seeding
-
+const fetchSubscription =async function(id) {
+  const shopData = await Api.get('stripeCheck', `/check/${id}`)
+  return shopData
+}
 const categoriesArray = []
 
 for (const detail of details) {
@@ -179,6 +184,10 @@ export default function Application(props) {
   })
 
   const navigate = useNavigate()
+  async function fetchUser(email) {
+    const userData = await Api.get('usersApi', `/users/${email}`)
+    return userData
+  }
 //   console.log(process.env)
 // console.log(process.env.REACT_APP_STRIPE_SECRET_KEY_DEVELOPMENT)
   const [index, setIndex] = useState(0)
@@ -190,7 +199,19 @@ export default function Application(props) {
           
           console.log(user)
             setState((prev) => ({ ...prev, signedIn: true }))
-          
+            console.log(user.attributes.email)
+          fetchUser(user.attributes.email)
+          .then((response) => {
+            console.log(response, 'fetchuser')
+            console.log(response.data.Item.id)
+            fetchSubscription(`sub_${response.data.Item.id}`)
+            .then((response) => {
+              console.log('subb response', response)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+          })
           }
         
       )

@@ -43,6 +43,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "stripeCheckFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -89,6 +94,20 @@
         {
           "category": "function",
           "resourceName": "stripeHook",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "stripeCheck": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "stripeCheckFunction",
           "attributes": [
             "Name",
             "Arn"
