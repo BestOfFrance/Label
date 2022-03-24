@@ -386,9 +386,8 @@ h2 {
   width: 100% !important;
 }
 .cms-button-container {
-  width: 90%;
-  margin-right: 5%;
-  margin-left: 5%;
+  width: 100%;
+  
 }
 .list-item.premium.list-group-item {
   width: 95%;

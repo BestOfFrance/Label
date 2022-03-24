@@ -40,7 +40,12 @@
   margin-bottom: 1rem;
   border-radius: 10px;
 }
-
+.cms-button-div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .marker-image-business {
   object-fit: cover;
   flex-shrink: 0;
@@ -49,7 +54,10 @@
   border-radius: 10px;
   overflow: hidden;
 }
-
+.title-rating-cards {
+  display: flex;
+  flex-direction: column;
+}
 .infowrapper-business {
   display: flex;
   justify-content: column;
@@ -117,8 +125,18 @@
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
 }
-
+.cms-button-container-upper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  height: fit-content;
+}
 h3.cms-card-title-each {
   margin-top: 10px;
   margin-bottom: 20px;
@@ -127,7 +145,16 @@ h3.cms-card-title-each {
   font-weight: 600;
 
 }
-
+.price-rating-cards {
+  display: flex;
+  align-items: center;
+  width: 220px;
+  justify-content: space-between;
+}
+.price-image {
+  height:15px;
+  width: auto;
+}
 .cms-button-image {
   height: 20px;
   width: auto;
@@ -145,7 +172,11 @@ h3.cms-card-title-each {
   display: flex;
   justify-content: flex-end;
 }
-
+.rating-business {
+  padding-right: 0.1rem;
+  display: flex;
+  align-items: center;
+}
 .locate-button-business {
   background-color: #0957a5;
   border-radius: 5px;

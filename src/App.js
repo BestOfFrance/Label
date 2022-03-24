@@ -46,6 +46,7 @@ import ConfirmAccountBusiness from './components/ConfirmAccountBusiness'
 import RegisterBusinessStep1 from './components/RegisterBusinessStep1'
 import VerifyBusiness from './components/VerifyBusiness'
 import ReportButtonEasy from './components/ReportButtonEasy'
+import UploadImage from './components/uploadImage'
 
 
 
@@ -554,7 +555,7 @@ useEffect(() => {
     console.log(out.data.Items)
     getDistance(out.data.Items, state.location)
   })
-}, [state.location])
+}, [])
 
 // // initial call to the api to get shop datas for local data
 // useEffect( () => {
@@ -653,7 +654,8 @@ console.log(state.signedIn, "state")
         <Route path="dashboard" element = {<Dashboard shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn}/>} />
-        <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
+        {/* <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} /> */}
+        <Route path="registerbusiness" element = {<UploadImage setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
         <Route path="registerfoodie" element={<CreateAccountFoodie setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>}/>
         <Route path="confirmaccount" element={<ConfirmAccount login={login}
         

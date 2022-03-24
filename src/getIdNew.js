@@ -6,7 +6,7 @@ let promises = [];
 
 const dataArray = []
 
-for (let i = 2001; i < data.length; i++) {
+for (let i = 2001; i < 0; i++) {
   // console.log(data[i])
   if (data[i].City !== null) {
   const name = (data[i].title).toString()
@@ -65,7 +65,7 @@ const axiosFunc = async () =>  {
 };
 axiosFunc()
 .then((res) => {
-  var file = fs.createWriteStream('USID5000.json');
+  var file = fs.createWriteStream('ExtractID5000.json');
   
   file.write(JSON.stringify(res));
   file.end();

@@ -13,40 +13,40 @@ const eightThirty = parseInt('0830', 8)
 const seven = parseInt('0700', 8)
 const sevenThirty = parseInt('0730', 8)
 const hoursObject = {
-  nine : '9:00AM',
-  1000: '10:00AM',
-  1030: '10:30AM',
-  1100: '11:00AM',
-  1130: '11:30AM',
-  1200: '12:00PM',
-  1230: '12:30PM',
-  1300: '1:00PM',
-  1330: '1:30PM',
-  1400: '2:00PM',
-  1430: '2:30PM',
-  1500: '3:00PM',
-  1530: '3:30PM',
-  1600: '4:00PM',
-  1630: '4:30PM',
-  1700: '5:00PM',
-  1730: '5:30PM',
-  1800: '6:00PM',
-  1830: '6:30PM',
-  eight: '8:00AM',
-  seven: '7:00AM',
-  nineThirty: '9:30AM',
-  sevenThirty: '7:30AM',
-  eightThirty: '8:30AM',
-  1900: '7:00PM',
-  1930: '7:30PM',
-  2000: '8:00PM',
-  2030: '8:30PM',
-  2100: '9:00PM',
-  2130: '9:30PM',
-  2200: '10:00PM',
-  2230: '10:30PM',
-  2300: '11:00PM',
-  2330: '11:30PM'
+  nine : '9:00 AM',
+  1000: '10:00 AM',
+  1030: '10:30 AM',
+  1100: '11:00 AM',
+  1130: '11:30 AM',
+  1200: '12:00 PM',
+  1230: '12:30 PM',
+  1300: '1:00 PM',
+  1330: '1:30 PM',
+  1400: '2:00 PM',
+  1430: '2:30 PM',
+  1500: '3:00 PM',
+  1530: '3:30 PM',
+  1600: '4:00 PM',
+  1630: '4:30 PM',
+  1700: '5:00 PM',
+  1730: '5:30 PM',
+  1800: '6:00 PM',
+  1830: '6:30 PM',
+  eight: '8:00 AM',
+  seven: '7:00 AM',
+  nineThirty: '9:30 AM',
+  sevenThirty: '7:30 AM',
+  eightThirty: '8:30 AM',
+  1900: '7:00 PM',
+  1930: '7:30 PM',
+  2000: '8:00 PM',
+  2030: '8:30 PM',
+  2100: '9:00 PM',
+  2130: '9:30 PM',
+  2200: '10:00 PM',
+  2230: '10:30 PM',
+  2300: '11:00 PM',
+  2330: '11:30 PM'
 
 }
 
@@ -57,9 +57,21 @@ export default function BusinessList(props) {
   const [openTime, setOpenTime] = useState("");
   const [openDay, setOpenDay] = useState("")
   const [hidden, setHidden] = useState(false)
+  const [price, setPrice] = useState("")
 
   const style = props.image;
   useEffect(() => {
+    if (props.shop.price) {
+      if (props.shop.price.length === 1) {
+        setPrice(1)
+      }
+      if (props.shop.price.length === 2) {
+        setPrice(2)
+      }
+      if (props.shop.price.length === 3) {
+        setPrice(2)
+      }
+    }
     if (props.shop.hidden === true) {
       setHidden("hidden")
     }
@@ -98,6 +110,7 @@ export default function BusinessList(props) {
     }
    
   }, [props.state])
+  console.log(price, 'price')
   useEffect(() => {
     
     if (props.selectedCenter !== null) {
@@ -126,6 +139,7 @@ export default function BusinessList(props) {
           <div className='title-business'>
             {props.shop.name}
           </div>
+          <div className="price-rating-cards">
           <div className='rating-business'>
             Rating: {props.shop.rating}
             <Rating
@@ -139,9 +153,17 @@ export default function BusinessList(props) {
             />
             </div>
             <div>
-          {props.shop.price}
+          {price === 1 &&
+            <div><img className="price-image" src="dollar.svg"></img></div>
+          }     
+          {price === 2 &&
+            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img></div>
+          }      
+          {price === 3 &&
+            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img><img  className="price-image" src="dollar.svg"></img></div>
+          }        
             
-            
+            </div>
             </div>
           <div>
             Phone: <a href="tel:5554280940">{props.shop.phone}</a>

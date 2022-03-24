@@ -2,14 +2,27 @@ import {React, useState, useEffect} from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './list.css'
 import { Routes, Route, Link, Navigate } from "react-router-dom";
+import {Rating} from 'react-simple-star-rating';
 
 
 
 export default function CMSCard(props) {
   const [active, setActive] = useState(false);
   const [hidden, setHidden] = useState("visible")
+  const [price, setPrice] = useState("")
 
   useEffect(() => {
+    if (props.shop.price) {
+      if (props.shop.price.length === 1) {
+        setPrice(1)
+      }
+      if (props.shop.price.length === 2) {
+        setPrice(2)
+      }
+      if (props.shop.price.length === 3) {
+        setPrice(2)
+      }
+    }
     
     
     if (props.selectedCenter !== null) {
@@ -66,26 +79,57 @@ useEffect(() => {
 
       </div>
       
-      <div className="cms-button-container">
-      <div >
-        
-      <h3 className="cms-card-title-each">{props.name} </h3>
-      {props.shop.price}
-      </div>
-      <div className="locate-container">
+      <div className="cms-button-container-upper">
+        <div className="title-rating-cards">
+        {props.shop.name}
+      <div className="price-rating-cards">
+          <div className='rating-business'>
+            Rating: {props.shop.rating}
+            <Rating
+              
+              initialValue={props.shop.rating}
+              size={20}
+              label
+              fillColor='#ef4236'
+              emptyColor='gray'
+              className='foo' // Will remove the inline style if applied
+            />
+            </div>
+            <div>
+          {price === 1 &&
+            <div><img className="price-image" src="dollar.svg"></img></div>
+          }     
+          {price === 2 &&
+            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img></div>
+          }      
+          {price === 3 &&
+            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img><img  className="price-image" src="dollar.svg"></img></div>
+          }        
+            </div>
+            </div>
+            </div>
+            {props.shop.category} 
+      {/* <div className="locate-container">
         <button className="cms-button" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
         
-      </div>
+      
+      </div> */}
       </div>
       <div className="cms-button-container"> 
-      <div>
+      <div className="cms-button-div">
+      
+        <button className="cms-button" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
         
-      {props.shop.category} 
+      
+      
+        
+      
       </div>
+      <div className="cms-button-div">
       <button className="cms-button">
       <Link to={`reportbusiness/${props.name}`} ><img className="cms-button-image" src="report.svg"/></Link>
       </button>
-
+</div>
       </div>
       
     </ListGroup.Item>

@@ -1,5 +1,5 @@
 const axios = require('axios');
-const dataArray = require('./ExtractID5000')
+const dataArray = require('./USID5000')
 const fs = require('fs');
 
 
@@ -17,7 +17,7 @@ const axiosFunc = async () =>  {
         console.log('before axios')
         axios.get(`https://api.yelp.com/v3/businesses/${l.id}`, {
   headers: {
-    Authorization: `Bearer H1IcGJB65EqYA4w-_gnt4mR7vSx9zpO1HyiHxQ4_9zGBnQYtRRrcOFFvn-kOAEoEYWptsfL8Bd3T5MV9uGW0MqHe9LqdIFXO25worzkCIb74jOgVJnIsnYnYx`
+    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNElKsuUINdEi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
 }
 })
 .then((res) => {
@@ -36,7 +36,7 @@ return l.name;
 };
 axiosFunc()
 .then((res) => {
-  var file = fs.createWriteStream('ExtCADetails5000.json');
+  var file = fs.createWriteStream('ExtUSDetails5000.json');
   
   file.write(JSON.stringify(res));
   file.end();
