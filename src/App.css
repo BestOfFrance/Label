@@ -187,7 +187,15 @@ h2{
     padding-right: 15rem;
     padding-left: 15rem;
   }
-
+  .title-business {
+    font-size: 1.5em;
+  }
+  .locate-button-business {
+    transform: translateX(-15px)
+  } 
+  .price-rating-cards {
+    width: 190px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -195,21 +203,34 @@ h2{
     width: 100%;
     
   }
+  .price-rating-cards {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .premium-map {
     flex-direction: column !important;
-    height: 80vh !important;
+    height: 100vh !important;
   }
   .MuiAutocomplete-root .MuiAutocomplete-hasClearIcon .MuiAutocomplete-hasPopupIcon {
     width: 30%;
   }
+  .title-business {
+    font-size: 1.5em;
+  }
+  .locate-button-business {
+    transform: translateY(-10px)
+  } 
   #premium {
     flex-direction: row !important;
     width: 100%;
-    padding: none !important;
+    justify-content: space-around;
+    padding: 0px !important;
   }
   .list-item.list-group-item.premium {
-    width: 30%;
-    height: 100%;
+    width: 32%;
+    height: 170px !important;
+    margin-bottom: 0.5rem;
+    
   }
   div.cms {
     height: 80% !important;
@@ -230,6 +251,14 @@ h2{
   }
   .cms-button-container-upper {
     flex-direction: column;
+  }
+  .marker-information-cms {
+    flex-direction: column;
+  }
+  .locate-business-container {
+    display: flex;
+    width: 100%;
+    justify-content:flex-end;
   }
 }
 
@@ -411,5 +440,8 @@ h2 {
 .cms{
   margin-top: 2rem;
 }
+.locate-button-business {
+  transform: translateX(-10px)
+} 
 
 }

@@ -357,7 +357,7 @@ async function signUpFreemium() {
    setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: false }))
   } else {
    setState((prev) => ({ ...prev, freemium: false, monthly: true, yearly: false }))
-   setBusiness("monthly-unverified")
+   setBusiness("monthly")
   }
 }
 const onChangeYearly = function() {
@@ -365,7 +365,7 @@ const onChangeYearly = function() {
    setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: false }))
   } else {
    setState((prev) => ({ ...prev, freemium: false, monthly: false, yearly: true }))
-   setBusiness("yearly-unverified")
+   setBusiness("yearly")
   }
 }
   const saveUser=async ()=>{

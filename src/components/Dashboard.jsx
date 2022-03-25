@@ -62,7 +62,7 @@ export default function Dashboard(props) {
 
       <button onClick={props.logout}>Logout</button>
       <div>
-        {userApi !== null && userApi.isVerified && shop !== null &&
+        {userApi !== null && userApi.isVerified && shop !== null && //(userApi.accountType === "yearly" || userApi.accountTyoe === "monthly") && props.activeSubscription
         <div>
         <button>Add my business</button>
         <ShopDisplayEdit shops={props.shops} shop={shop}/>

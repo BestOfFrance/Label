@@ -7,6 +7,7 @@ import { Carousel } from 'react-carousel-minimal';
 import { Routes, Route, Link, useParams } from "react-router-dom";
 import { API } from 'aws-amplify';
 import {Helmet} from "react-helmet";
+import './shopDisplayEdit.css'
 
 
 
@@ -14,6 +15,7 @@ export default function ShopDisplay(props) {
 console.log('display props', props)
   const data = [];
   const shop = props.shop
+  const [images, setImages] = useState([])
  
 
   
@@ -34,9 +36,11 @@ console.log('display props', props)
             
             const dataImage = {image: image}
             data.push(dataImage)
+            
           }
           console.log('data images', data)
     }
+    setImages(data)
     
   
   }
@@ -56,7 +60,12 @@ console.log('display props', props)
     url: `https://www.mydomain.com/shops/${shop.name}`
   }
 
-
+  const imageArray = images.map((image) => {
+    console.log(image.image)
+    return(
+    <img className="business-edit" src={image.image}></img>
+    )
+  })
    
     
       
@@ -92,7 +101,7 @@ console.log('display props', props)
          <h2>{shop.name}</h2>
         </div>
         <div className='display-image'>
-        
+        {imageArray}
           
         </div>
         <div className="shop-display-information">

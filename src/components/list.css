@@ -53,6 +53,7 @@
     min-height: 100%; */
   border-radius: 10px;
   overflow: hidden;
+  width: 66%;
 }
 .title-rating-cards {
   display: flex;
@@ -84,7 +85,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  width: 130px;
+  width: 33%;
   height: 100%;
 }
 .cms-cards.list-group {
@@ -167,6 +168,12 @@ h3.cms-card-title-each {
   
   margin-right: 10px;
 }
+.business-button-image {
+  height: 20px;
+  width: auto;
+  
+  
+}
 
 .locate-container {
   display: flex;
@@ -174,11 +181,12 @@ h3.cms-card-title-each {
 }
 
 .locate-business-container {
-  width: 100%;
+  width: 50%;
   
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  
 }
 .rating-business {
   padding-right: 0.1rem;
@@ -190,15 +198,16 @@ h3.cms-card-title-each {
   border-radius: 100%;
   color: white;
   padding: 0.3rem;
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   font-size: 0.5rem;
+  margin-left: -25px;
 }
 .marker-information-cms {
   display: flex;
   flex-direction: row;
   padding: 3%;
-  width: 100%;
+  width: 66%;
 }
 
 @media only screen and (min-width: 767px)  {
