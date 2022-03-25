@@ -176,6 +176,10 @@ h3.cms-card-title-each {
   
   margin-right: 10px;
 }
+.rating-star {
+  height: 15px;
+  width: auto;
+}
 .cms-marker-image {
   height: 45px;
   width: 45px;

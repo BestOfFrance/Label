@@ -3,6 +3,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import './list.css'
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import {Rating} from 'react-simple-star-rating';
+import StarRatingComponent from 'react-star-rating-component';
+
+
 
 
 
@@ -113,15 +116,62 @@ console.log(props.shop.category)
       <div className="price-rating-cards-cms">
           <div className='rating-business'>
             Rating: {props.shop.rating}
-            <Rating
-              
-              initialValue={props.shop.rating}
-              size={20}
-              label
-              fillColor='#ef4236'
-              emptyColor='gray'
-              className='foo' // Will remove the inline style if applied
-            />
+            {props.shop.rating === 0 &&
+            <div>
+              <img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 0.5 &&
+            <div>
+              <img src="rating.svg"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 1 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 1.5 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="rating.svg"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 2 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 2.5 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="rating.svg"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+             {props.shop.rating === 3 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 3.5 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="rating.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 4 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 5 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img>
+            </div>
+            }
+            {props.shop.rating === 4.5 &&
+            <div>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="rating.svg"></img>
+            </div>
+            }
+  
             </div>
             <div>
           {price === 1 &&
