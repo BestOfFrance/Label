@@ -109,7 +109,7 @@ console.log(props.shop.category)
       
       <div className="cms-button-container-upper">
         <div className="title-rating-cards">
-        {props.shop.name}
+        <p className="cms-card-shop-title">{props.shop.name}</p>
       <div className="price-rating-cards-cms">
           <div className='rating-business'>
             Rating: {props.shop.rating}

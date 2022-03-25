@@ -187,6 +187,10 @@ background-position: center;
 
   
 }
+.cms-card-shop-title {
+  text-align: left;
+  font-size: 1.2em;
+}
 .business-button-image {
   height: 20px;
   width: auto;
