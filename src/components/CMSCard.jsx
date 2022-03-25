@@ -12,6 +12,8 @@ export default function CMSCard(props) {
   const [price, setPrice] = useState("")
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 768;
+  const [background, setBackground] = useState('none')
+  const [transform, setTransform] = useState('translateY(-25px)')
 
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth)
@@ -67,8 +69,24 @@ useEffect(() => {
    
   }, [props.selectedCenter])
 
-
-  
+console.log(props.shop.category)
+  useEffect(() => {
+    if (props.shop.category === "Bakery" || props.shop.category === "Cafe" ) {
+      setBackground('url("croissantMobile.svg")');
+      setTransform('translateY(-25px) rotate(45deg)')
+     } else if (props.shop.category === "Pastry Shop" || props.shop.category === "Cake shop" || props.shop.category === "Dessert shop" || props.shop.category === "Pastry shop"){
+        console.log('pastry')
+        setBackground('url("madeleine.svg")');
+        setTransform('translateY(-25px)')
+     } else if (props.shop.category === "Restaurant" || props.shop.category === "Bistro" || props.shop.category === "Breakfast Restaurant" || props.shop.category === "Charcuterie" || props.shop.category === "Diner" || props.shop.category === "Family restaurant" || props.shop.category === "Fine dining restaurant" || props.shop.category === "French restaurant" || props.shop.category === "French Restaurant") {
+      setBackground('url("forkMobile.svg")');
+      setTransform('translateY(-25px)')
+      
+     } else if (props.shop.category === "Grocery" || props.shop.category === "Cheese shop" || props.shop.category === "Chocolate shop" || props.shop.category === "Convenience store" || props.shop.category === "Grocery store" ) {
+      setBackground('url("shopMobile.svg")');
+      setTransform('translateY(-25px)')
+     }
+   }, [])
 
   
   const styles = {
@@ -92,7 +110,7 @@ useEffect(() => {
       <div className="cms-button-container-upper">
         <div className="title-rating-cards">
         {props.shop.name}
-      <div className="price-rating-cards">
+      <div className="price-rating-cards-cms">
           <div className='rating-business'>
             Rating: {props.shop.rating}
             <Rating
@@ -118,7 +136,10 @@ useEffect(() => {
             </div>
             </div>
             </div>
-            {props.shop.category} 
+            {/* {props.shop.category}  */}
+            <div className="cms-marker-image" style={{backgroundImage: background, transform: transform}}>
+
+            </div>
       {/* <div className="locate-container">
         <button className="cms-button" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
         

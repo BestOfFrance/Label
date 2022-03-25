@@ -158,15 +158,34 @@ h3.cms-card-title-each {
   width: 210px;
   justify-content: space-between;
 }
+.price-rating-cards-cms {
+  display: flex;
+  align-items: center;
+  
+  width: 220px;
+  justify-content: space-between;
+}
 .price-image {
   height:15px;
   width: auto;
+  margin-right: 0.1em;
 }
 .cms-button-image {
   height: 20px;
   width: auto;
   
   margin-right: 10px;
+}
+.cms-marker-image {
+  height: 45px;
+  width: 45px;
+  background-color: black;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+background-size: 30px;
+background-position: center;
+
+  
 }
 .business-button-image {
   height: 20px;
