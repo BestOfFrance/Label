@@ -138,37 +138,25 @@ app.post('/shops/*', function(req, res) {
 // });
 
 app.put("/shops", function (request, response) {
-  
+  if (request.body.name) {
   const params = {
     TableName: "shops-dev",
     Key: {
       id: request.body.id,
     },
-    ExpressionAttributeNames: { '#hidden': 'hidden', '#name': 'name', '#description': 'description' },
+    ExpressionAttributeNames: {'#name': 'name'},
     ExpressionAttributeValues: {},
     ReturnValues: 'UPDATED_NEW',
   };
-  params.UpdateExpression = 'SET ';
-  if (request.body.hidden) {
-    params.ExpressionAttributeValues[':hidden'] = request.body.hidden;
-    params.UpdateExpression += '#hidden = :hidden';
-  }
-  if (request.body.name) {
+  params.UpdateExpression = 'SET';
+  
+  
     params.ExpressionAttributeValues[':name'] = request.body.name;
     params.UpdateExpression += '#name = :name';
-  }
-  if (request.body.description) {
-    params.ExpressionAttributeValues[':description'] = request.body.description;
-    params.UpdateExpression += '#description = :description';
-  }
-  if (request.body.complete) {
-    params.ExpressionAttributeValues[':complete'] = request.body.complete;
-    params.UpdateExpression += 'complete = :complete, ';
-  }
-  if (request.body.text || request.body.complete) {
-    params.ExpressionAttributeValues[':updatedAt'] = timestamp;
-    params.UpdateExpression += 'updatedAt = :updatedAt';
-  }
+  
+
+  
+  
   docClient.update(params, (error, result) => {
     if (error) {
       response.json({ statusCode: 500, error: error.message, url: request.url });
@@ -176,6 +164,109 @@ app.put("/shops", function (request, response) {
       response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
     }
   });
+} else if (request.body.hidden) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#hidden': 'hidden'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    params.ExpressionAttributeValues[':hidden'] = request.body.hidden;
+    params.UpdateExpression += '#hidden = :hidden';
+  
+
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+} else if (request.body.hours) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#hours': 'hours'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    params.ExpressionAttributeValues[':hours'] = request.body.hours;
+    params.UpdateExpression += '#hours = :hours';
+  
+
+
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+} else if (request.body.description) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#description': 'description'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    params.ExpressionAttributeValues[':description'] = request.body.description;
+    params.UpdateExpression += '#description = :description';
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+} else if (request.body.images) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#images': 'images'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    
+  
+    params.ExpressionAttributeValues[':images'] = request.body.images;
+    params.UpdateExpression += '#images = :images';
+ 
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+}
 });
 
 /****************************

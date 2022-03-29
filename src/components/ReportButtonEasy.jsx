@@ -122,7 +122,7 @@ console.log(props)
   }
      
 
-<Link to="/"><ReportButton message={'via Julian'} user={'Julian'} id={shop.id}/></Link>
+<Link to="/"><ReportButton message={shop.name} user={'Julian'} id={shop.id}/></Link>
           </div>   
       
 </div>

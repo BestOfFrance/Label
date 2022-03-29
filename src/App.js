@@ -497,7 +497,7 @@ const premium = state.premiumShops.map((shop, index) => {
 })
 
 // cms cards
-console.log('sorted shops', state.sortedShops)
+console.log('jk', state.sortedShops)
 const cmsBakery = state.sortedShops.map((shop, index) => {
     
     return(
@@ -573,6 +573,10 @@ useEffect(() => {
     for (const shop of out.data.Items) {
      if (shop.isPremium) {
        premiumShops.push(shop)
+       
+     }
+     if (shop.name === "JK Bakery Cafe") {
+       console.log(shop)
      }
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
       searchList.push(newShop)

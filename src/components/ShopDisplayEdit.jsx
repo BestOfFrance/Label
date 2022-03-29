@@ -8,7 +8,18 @@ import { Routes, Route, Link, useParams } from "react-router-dom";
 import { API } from 'aws-amplify';
 import {Helmet} from "react-helmet";
 import './shopDisplayEdit.css'
+import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
 
+
+const AWS = require('aws-sdk');
+
+const SES_CONFIG = {
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+    region: 'us-east-1',
+};
+
+const AWS_SES = new AWS.SES(SES_CONFIG);
 
 
 export default function ShopDisplay(props) {
@@ -16,7 +27,10 @@ console.log('display props', props)
   const data = [];
   const shop = props.shop
   const [images, setImages] = useState([])
- 
+  const [editDescription, setEditDescription] = useState(false)
+  const [description, setDescription] = useState(props.shop.description)
+  const [hoursArrayNew, setHoursArrayNew] = useState(props.shop.hours)
+  const [name, setName] = useState(props.shop.title)
 
   
 
@@ -62,14 +76,72 @@ console.log('display props', props)
 
   const imageArray = images.map((image) => {
     console.log(image.image)
+
     return(
     <img className="business-edit" src={image.image}></img>
     )
   })
-   
+
+  const onSubmit = function () {
+    API.put('shopsApi', `/shops`, { 
+      body: {
+        id: props.shop.id,
+        
+        name: name
+        
+      }
+    }).then(result => {
+      //const result = JSON.parse(result.body);
+      console.log(result)
+      setEditDescription(false)
+    }).catch(err => {
+      console.log(err);
+    })
+    API.put('shopsApi', `/shops`, { 
+      body: {
+        id: props.shop.id,
+        description: description,
+        
+        
+      }
+    }).then(result => {
+      //const result = JSON.parse(result.body);
+      console.log(result)
+      setEditDescription(false)
+    }).catch(err => {
+      console.log(err);
+    })
+    API.put('shopsApi', `/shops`, { 
+      body: {
+        id: props.shop.id,
+        hours: hoursArrayNew,
+        
+        
+      }
+    }).then(result => {
+      //const result = JSON.parse(result.body);
+      console.log(result)
+      setEditDescription(false)
+    }).catch(err => {
+      console.log(err);
+    })
     
-      
+  }
   
+   
+  const editDescriptionButton = function() {
+    setEditDescription(true)
+  }
+      
+  function changedescription(event){
+    const val=event.target.value
+    setDescription(val)
+  }
+ 
+  function changename(event){
+    const val=event.target.value
+    setName(val)
+  }
 
   
   
@@ -99,11 +171,13 @@ console.log('display props', props)
         </div>
         <div className="title-header">
          <h2>{shop.name}</h2>
+         <button onClick={editDescriptionButton}>Edit your business</button>
         </div>
         <div className='display-image'>
         {imageArray}
           
         </div>
+        {editDescription === false &&
         <div className="shop-display-information">
         <div >
           <div>
@@ -130,11 +204,32 @@ console.log('display props', props)
         </div>
         <div>
         Hours:
-          {hourArray}
+          {props.shop.hours}
         </div>
         </div>
+}
+{editDescription &&
+        <div className="shop-display-information">
+         <FormControl>
+       
+       <FormLabel>Name</FormLabel>
+       <Input placeholder={name} value={name} onChange={changename} required={true}/>
+     </FormControl>
+
+     <FormControl mt={4}>
+       <FormLabel>Description</FormLabel>
+       <Input placeholder={description} value={description} onChange={changedescription} required={true}/>
+     </FormControl>
+
+    
+     
+     <button onClick={onSubmit}>Save</button>
+        </div>
+}
       </div>
+        
     </div>
+        
           
     </div>
           
