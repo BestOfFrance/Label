@@ -185,7 +185,7 @@ export default function BusinessList(props) {
           </div>
           </div>
           <div className="locate-business-container">
-            <button className="locate-button-business" onClick={() => { props.onClick(props.latitude, props.longitude, props.shop) }}><img className="business-button-image" src="place.svg"></img></button>
+            <button className="locate-button-business" onClick={() => { props.onClick(props.latitude, props.longitude, props.shop) }}><img className="business-button-image" src="placeholder.svg"></img></button>
           </div>
         </div>
 

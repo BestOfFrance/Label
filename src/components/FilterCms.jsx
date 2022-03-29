@@ -111,7 +111,7 @@ export default function FilterCms(props) {
       </div>
       </div>
       <div className="radio-button-container">
-      <div className="radio-button-image-container" style={{backgroundImage: 'url("forkMobile.svg")'}}>
+      <div className="radio-button-image-container" style={{backgroundImage: 'url("fork.svg")'}}>
       
       </div>
       Restaurant
@@ -120,7 +120,7 @@ export default function FilterCms(props) {
       </div>
       </div>
       <div className="radio-button-container">
-        <div className="radio-button-image-container" style={{backgroundImage: 'url("shopMobile.svg")'}}>
+        <div className="radio-button-image-container" style={{backgroundImage: 'url("shop.svg")'}}>
       
       </div>
       Grocery
@@ -129,7 +129,7 @@ export default function FilterCms(props) {
       </div>
       </div>
       <div className="radio-button-container">
-      <div className="radio-button-image-container" style={{backgroundImage: 'url("croissantMobile.svg")', transform: 'rotate(45deg)'}}>
+      <div className="radio-button-image-container" style={{backgroundImage: 'url("croissant-2.svg")'}}>
      
       </div>
       Bakery

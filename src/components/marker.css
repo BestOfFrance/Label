@@ -10,7 +10,7 @@
   height: 20em;
   width: 40em;
   text-align: left;
-  border-radius: 20px !important;
+  border-radius:10px !important;
   color: #272424;
   z-index: 1;
   
@@ -23,13 +23,28 @@
 }
 .marker-information {
   margin-left: 2em;
+  width: 66%
 }
-.marker-image {
-  height: 150px;
-  width: auto;
+/* .marker-image {
+  height: 100%;
+  width: 30%;
   margin-left: 2em;
   border-radius: 10% !important;
-}
+} */
+.marker-image-div-marker {
+  /* display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; */
+    transform: translate(0%, -13.3%);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 33%;
+  height: 20em;
+}s
 
 .title {
   font-size: medium;

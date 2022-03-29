@@ -143,7 +143,7 @@ app.put("/shops", function (request, response) {
     Key: {
       id: request.body.id,
     },
-    ExpressionAttributeNames: { '#hidden': 'hidden' },
+    ExpressionAttributeNames: { '#hidden': 'hidden', '#name': 'name', '#description': 'description' },
     ExpressionAttributeValues: {},
     ReturnValues: 'UPDATED_NEW',
   };
@@ -151,6 +151,14 @@ app.put("/shops", function (request, response) {
   if (request.body.hidden) {
     params.ExpressionAttributeValues[':hidden'] = request.body.hidden;
     params.UpdateExpression += '#hidden = :hidden';
+  }
+  if (request.body.name) {
+    params.ExpressionAttributeValues[':name'] = request.body.name;
+    params.UpdateExpression += '#name = :name';
+  }
+  if (request.body.description) {
+    params.ExpressionAttributeValues[':description'] = request.body.description;
+    params.UpdateExpression += '#description = :description';
   }
   if (request.body.complete) {
     params.ExpressionAttributeValues[':complete'] = request.body.complete;

@@ -41,6 +41,8 @@ export default function Marker(props) {
   const [openDay, setOpenDay] = useState("")
   const [background, setBackground] = useState('none')
   const [transform, setTransform] = useState(null)
+  const styleImage = props.image;
+  console.log('makerimage', props.image)
   useEffect(() => {
     if (props.shop.price) {
       if (props.shop.price.length === 1) {
@@ -110,17 +112,17 @@ export default function Marker(props) {
 
  useEffect(() => {
   if (props.category === "Bakery" || props.category === "Cafe" ) {
-    setBackground('url("croissantMobile.svg")');
-    setTransform('rotate(45deg)')
+    setBackground('url("croissant-2.svg")');
+   
    } else if (props.category === "Pastry Shop" || props.category === "Cake shop" || props.category === "Dessert shop"){
       
       setBackground('url("madeleine.svg")');
     
    } else if (props.category === "Restaurant" || props.category === "Bistro" || props.category === "Breakfast Restaurant" || props.category === "Charcuterie" || props.category === "Diner" || props.category === "Family restaurant" || props.category === "Fine dining restaurant" || props.category === "French restaurant") {
-    setBackground('url("forkMobile.svg")');
+    setBackground('url("fork.svg")');
     
    } else if (props.category === "Grocery" || props.category === "Cheese shop" || props.category === "Chocolate shop" || props.category === "Convenience store" || props.category === "Grocery store") {
-    setBackground('url("shopMobile.svg")');
+    setBackground('url("shop.svg")');
    }
  }, [])
   
@@ -147,9 +149,9 @@ export default function Marker(props) {
             <CloseButton onClick={props.onClicking}></CloseButton>
           </div>
           <div className='infowrapper'>
-            <div className='marker-image-div'>
-              <img className='marker-image' src={props.image}></img>
-              </div>
+          <div className='marker-image-div-marker' style={{ backgroundImage: `url(${styleImage})` }}>
+          {/* <img className='marker-image-business' src={props.shop.image}></img> */}
+        </div>
               <div className="marker-information">
           <div className='title'>
             <b>{props.text}</b>

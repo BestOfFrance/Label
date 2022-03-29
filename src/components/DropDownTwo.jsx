@@ -57,11 +57,11 @@ export default function DropDownTwo(props) {
       {open &&
       <div id="dropdowntwo-menu">
         <div className="filter-mobile-button" onClick={handleCloseGrocery} >
-        <img className="filter-map-mobile-image" src="shopMobile.svg"/>
+        <img className="filter-map-mobile-image" src="shop.svg"/>
           Grocery
         </div>
         <div className="filter-mobile-button" onClick={handleCloseBakery} >
-        <img  className="filter-map-mobile-image" src="croissantMobile.svg"/>
+        <img  className="filter-map-mobile-image" src="croissant-2.svg"/>
           Bakery
         </div>
         
@@ -70,11 +70,11 @@ export default function DropDownTwo(props) {
           Pasrty
         </div>
         <div className="filter-mobile-button" onClick={handleCloseRestaurant} >
-        <img className="filter-map-mobile-image" src="forkMobile.svg"/>
+        <img className="filter-map-mobile-image" src="fork.svg"/>
           Restaurant
         </div>
         <div className="filter-mobile-button-all" onClick={handleCloseAll} >
-        <img className="filter-map-mobile-image-all" src="https://uploads-ssl.webflow.com/5e7ec4cbdc544552e7ea5886/5e9b3e9805bf3a8858130f3c_fts_favicon_256.png"/>
+        <img className="filter-map-mobile-image-all" src="home.svg"/>
           All 
         </div>
         </div>

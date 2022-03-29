@@ -106,6 +106,10 @@ console.log('display props', props)
         </div>
         <div className="shop-display-information">
         <div >
+          <div>
+            Description
+            {shop.description}
+          </div>
           <div className='shop-rating-price'>
             <div className='shop-rating'>
             Rating: {shop.rating}

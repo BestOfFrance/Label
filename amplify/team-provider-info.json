@@ -25,7 +25,7 @@
         },
         "shopsLambda": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/shopsLambda-703375793167736c5543-build.zip"
+          "s3Key": "amplify-builds/shopsLambda-31336e4230614a704d70-build.zip"
         },
         "stripeCheckout": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",

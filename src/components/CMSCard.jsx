@@ -75,18 +75,18 @@ useEffect(() => {
 console.log(props.shop.category)
   useEffect(() => {
     if (props.shop.category === "Bakery" || props.shop.category === "Cafe" ) {
-      setBackground('url("croissantMobile.svg")');
-      setTransform('translateY(-25px) rotate(45deg)')
+      setBackground('url("croissant-2.svg")');
+      setTransform('translateY(-25px)')
      } else if (props.shop.category === "Pastry Shop" || props.shop.category === "Cake shop" || props.shop.category === "Dessert shop" || props.shop.category === "Pastry shop"){
         console.log('pastry')
         setBackground('url("madeleine.svg")');
         setTransform('translateY(-25px)')
      } else if (props.shop.category === "Restaurant" || props.shop.category === "Bistro" || props.shop.category === "Breakfast Restaurant" || props.shop.category === "Charcuterie" || props.shop.category === "Diner" || props.shop.category === "Family restaurant" || props.shop.category === "Fine dining restaurant" || props.shop.category === "French restaurant" || props.shop.category === "French Restaurant") {
-      setBackground('url("forkMobile.svg")');
+      setBackground('url("fork.svg")');
       setTransform('translateY(-25px)')
       
      } else if (props.shop.category === "Grocery" || props.shop.category === "Cheese shop" || props.shop.category === "Chocolate shop" || props.shop.category === "Convenience store" || props.shop.category === "Grocery store" ) {
-      setBackground('url("shopMobile.svg")');
+      setBackground('url("shop.svg")');
       setTransform('translateY(-25px)')
      }
    }, [])
