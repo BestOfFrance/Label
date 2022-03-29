@@ -25,11 +25,11 @@ export default function DropDownTwo(props) {
   }
   
   const handleCloseGrocery = () => {
-    props.onClick(["Grocery", "Cheese shop", "Chocolate shop", "Convenience Store", "Grocery store"])
+    props.onClick(["Shop"])
     
   };
   const handleCloseRestaurant = () => {
-    props.onClick(["Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"])
+    props.onClick(["Restaurant"])
     
   };
   const handleCloseAll = () => {
@@ -37,11 +37,11 @@ export default function DropDownTwo(props) {
     
   };
   const handleCloseBakery = () => {
-    props.onClick(["Bakery", "Cafe"])
+    props.onClick(["Bakery"])
     
   };
   const handleClosePastry = () => {
-    props.onClick(["Pastry Shop", "Cake shop", "Dessert shop"])
+    props.onClick(["Café"])
     
   };
   
@@ -58,16 +58,16 @@ export default function DropDownTwo(props) {
       <div id="dropdowntwo-menu">
         <div className="filter-mobile-button" onClick={handleCloseGrocery} >
         <img className="filter-map-mobile-image" src="shop.svg"/>
-          Grocery
+          Shop
         </div>
         <div className="filter-mobile-button" onClick={handleCloseBakery} >
-        <img  className="filter-map-mobile-image" src="croissant-2.svg"/>
+        <img  className="filter-map-mobile-image" src="madeleine.svg"/>
           Bakery
         </div>
         
         <div className="filter-mobile-button" onClick={handleClosePastry} >
-        <img className="filter-map-mobile-image" src="madeleine.svg"/>
-          Pasrty
+        <img className="filter-map-mobile-image" src="coffee-cup-2.svg"/>
+          Café
         </div>
         <div className="filter-mobile-button" onClick={handleCloseRestaurant} >
         <img className="filter-map-mobile-image" src="fork.svg"/>

@@ -51,7 +51,7 @@ import {loadStripe} from '@stripe/stripe-js';
 
 
 
- const details = require('./ExtCADetails5000')
+ const details = require('./ExtCADetailsFinal')
  console.log(details.length, 'details')
  const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
 
@@ -128,7 +128,7 @@ for (const detail of details) {
   detailsObject.image = detail.yelpData.image_url
   detailsObject.rating = detail.yelpData.rating
   detailsObject.price = detail.yelpData.price
-  detailsObject.category = detail.category
+  detailsObject.category = detail.categoryNew
   detailsObject.description = detail.description
   detailsObject.mapUrl = detail.place_url
   detailsObject.numberReviews = detail.number_reviews
@@ -136,6 +136,7 @@ for (const detail of details) {
   detailsObject.hours = [];
   detailsObject.images = [];
   detailsObject.viewHours = detail.opening_hours
+  detailsObject.id = detail.id
 
 
   for (const image of detail.yelpData.photos) {
@@ -251,7 +252,7 @@ export default function Application(props) {
 
 
     const saveShop = async () => {
-      for (let i = 0; i <= detailsArray.length; i++) {
+      for (let i = 0; i <= 1000; i++) {
         if (detailsArray[i] !== undefined) {
       const data = {
         body: {
@@ -271,7 +272,8 @@ export default function Application(props) {
           mapUrl: detailsArray[i].mapUrl,
           numberReviews: detailsArray[i].numberReviews,
           servicesAvailable: detailsArray[i].servicesAvailable,
-          viewHours: detailsArray[i].viewHours
+          viewHours: detailsArray[i].viewHours,
+          id: detailsArray[i].id
           
   
         }
@@ -319,6 +321,7 @@ export default function Application(props) {
     const closestBakery = [];
     const closestRestaurant = [];
     const closestPastryShop = [];
+    const closestGrocery = [];
     for (const marker of markersByDistance) {
       if (state.categories.includes(marker.category) && marker.hidden === false) {
         allShops.push(marker)
@@ -328,20 +331,23 @@ export default function Application(props) {
       }
       //"Pastry Shop", "Cake shop", "Dessert shop"
       
-      if ((marker.category === "Bakery" || marker.category === "Cafe") && allShops[0] !== marker) {
+      if ((marker.category === "Bakery") && allShops[0] !== marker) {
         closestBakery.push(marker)
       }
       //"Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"
       if ((marker.category === "Restaurant" || marker.category === "Bistro" || marker.category === "Charcuterie" || marker.category === "Diner") && allShops[0] !== marker && closestBakery[0] !== marker) {
         closestRestaurant.push(marker)
       }
-      if ((marker.category === "Pastry Shop" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker && closestBakery[0] !== marker && closestRestaurant[0] !== marker) {
+      if ((marker.category === "Café" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker && closestBakery[0] !== marker && closestRestaurant[0] !== marker) {
         closestPastryShop.push(marker)
+      }
+      if ((marker.category === "Shop" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker && closestBakery[0] !== marker && closestRestaurant[0] !== marker) {
+        closestGrocery.push(marker)
       }
     }
     const topThreeShops = allShops.slice(0,3)
 
-    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0]], sortedShops: allCMSShops}))
+    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0], closestGrocery[0]], sortedShops: allCMSShops}))
     }
   
  console.log(state.placesNearYou[0])
@@ -491,11 +497,11 @@ const premium = state.premiumShops.map((shop, index) => {
 })
 
 // cms cards
-
+console.log('sorted shops', state.sortedShops)
 const cmsBakery = state.sortedShops.map((shop, index) => {
     
     return(
-      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={["Cafe", "Bakery"]}/>
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={shop.category} sortedShops={state.sortedShops}/>
     )
     
 

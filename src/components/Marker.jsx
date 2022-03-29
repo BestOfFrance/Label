@@ -42,7 +42,7 @@ export default function Marker(props) {
   const [background, setBackground] = useState('none')
   const [transform, setTransform] = useState(null)
   const styleImage = props.image;
-  console.log('makerimage', props.image)
+ 
   useEffect(() => {
     if (props.shop.price) {
       if (props.shop.price.length === 1) {
@@ -153,7 +153,7 @@ export default function Marker(props) {
           {/* <img className='marker-image-business' src={props.shop.image}></img> */}
         </div>
               <div className="marker-information">
-          <div className='title'>
+              <div className='title-business'>
             <b>{props.text}</b>
           </div>
           <div className="price-rating-cards">

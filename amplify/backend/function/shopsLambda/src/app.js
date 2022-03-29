@@ -94,7 +94,7 @@ app.post('/shops', function(req, res) {
   var params = {
     TableName: "shops-dev",
     Item: {
-      id: id(),
+      id: req.body.id,
       name: req.body.name,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
@@ -111,7 +111,8 @@ app.post('/shops', function(req, res) {
       mapUrl: req.body.mapUrl,
       numberReviews: req.body.numberReviews,
       servicesAvailable: req.body.servicesAvailable,
-      viewHours: req.body.viewHours
+      viewHours: req.body.viewHours,
+      userManaged: false
       
     }
   }

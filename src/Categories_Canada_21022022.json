@@ -1,0 +1,1175 @@
+[
+ {
+  "RowLabels": "Restaurant",
+  "Count of category": 1057,
+  "Category": "Restaurant",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Bakery",
+  "Count of category": 817,
+  "Category": "Bakery",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Supermarket",
+  "Count of category": 686,
+  "Category": "Shop",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Grocery store",
+  "Count of category": 597,
+  "Category": "Shop",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Cafe",
+  "Count of category": 166,
+  "Category": "Café",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Pastry shop",
+  "Count of category": 157,
+  "Category": "Bakery",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "French restaurant",
+  "Count of category": 150,
+  "Category": "Restaurant",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Fast food restaurant",
+  "Count of category": 116,
+  "Category": "Restaurant",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Coffee shop",
+  "Count of category": 113,
+  "Category": "Café",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Breakfast restaurant",
+  "Count of category": 107,
+  "Category": "Restaurant",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Family restaurant",
+  "Count of category": 90,
+  "Category": "Restaurant",
+  "Valid": "true"
+ },
+ {
+  "RowLabels": "Convenience Store",
+  "Count of category": 78,
+  "Category": null,
+  "Valid": "false"
+ },
+ {
+  "RowLabels": "Italian restaurant",
+  "Count of category": 74,
+  "Category": null,
+  "Valid": "false"
+ },
+ {
+  "RowLabels": "Patisserie",
+  "Count of category": 66,
+  "Category": "Bakery"
+ },
+ {
+  "RowLabels": "Bistro",
+  "Count of category": 45,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Gourmet grocery store",
+  "Count of category": 41,
+  "Category": null
+ },
+ {
+  "RowLabels": "Vietnamese restaurant",
+  "Count of category": 40,
+  "Category": null
+ },
+ {
+  "RowLabels": "Hamburger restaurant",
+  "Count of category": 39,
+  "Category": null
+ },
+ {
+  "RowLabels": "Greek restaurant",
+  "Count of category": 37,
+  "Category": null
+ },
+ {
+  "RowLabels": "Cake shop",
+  "Count of category": 36,
+  "Category": null
+ },
+ {
+  "RowLabels": "Pub",
+  "Count of category": 36,
+  "Category": null
+ },
+ {
+  "RowLabels": "Steak house",
+  "Count of category": 32,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Chicken restaurant",
+  "Count of category": 29,
+  "Category": null
+ },
+ {
+  "RowLabels": "Food products supplier",
+  "Count of category": 26,
+  "Category": null
+ },
+ {
+  "RowLabels": "Dessert shop",
+  "Count of category": 24,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fine dining restaurant",
+  "Count of category": 23,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Gourmet Grocery Shop",
+  "Count of category": 23,
+  "Category": "Shop"
+ },
+ {
+  "RowLabels": "Market",
+  "Count of category": 23,
+  "Category": "Shop"
+ },
+ {
+  "RowLabels": "Thai restaurant",
+  "Count of category": 23,
+  "Category": null
+ },
+ {
+  "RowLabels": "Ice cream shop",
+  "Count of category": 21,
+  "Category": null
+ },
+ {
+  "RowLabels": "Seafood restaurant",
+  "Count of category": 21,
+  "Category": null
+ },
+ {
+  "RowLabels": "Deli",
+  "Count of category": 19,
+  "Category": null
+ },
+ {
+  "RowLabels": "Diner",
+  "Count of category": 19,
+  "Category": null
+ },
+ {
+  "RowLabels": "Japanese restaurant",
+  "Count of category": 18,
+  "Category": null
+ },
+ {
+  "RowLabels": "Caterer",
+  "Count of category": 17,
+  "Category": null
+ },
+ {
+  "RowLabels": "Indian restaurant",
+  "Count of category": 17,
+  "Category": null
+ },
+ {
+  "RowLabels": "Modern French restaurant",
+  "Count of category": 16,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Sandwich shop",
+  "Count of category": 16,
+  "Category": null
+ },
+ {
+  "RowLabels": "Wholesale bakery",
+  "Count of category": 16,
+  "Category": null
+ },
+ {
+  "RowLabels": "Chocolate shop",
+  "Count of category": 15,
+  "Category": null
+ },
+ {
+  "RowLabels": "Coffee store",
+  "Count of category": 15,
+  "Category": "Café"
+ },
+ {
+  "RowLabels": "Italian grocery store",
+  "Count of category": 15,
+  "Category": null
+ },
+ {
+  "RowLabels": "Farmers' market",
+  "Count of category": 14,
+  "Category": null
+ },
+ {
+  "RowLabels": "Produce market",
+  "Count of category": 14,
+  "Category": null
+ },
+ {
+  "RowLabels": "Warehouse store",
+  "Count of category": 14,
+  "Category": null
+ },
+ {
+  "RowLabels": "Charcuterie",
+  "Count of category": 13,
+  "Category": "Shop"
+ },
+ {
+  "RowLabels": "Fresh food market",
+  "Count of category": 13,
+  "Category": null
+ },
+ {
+  "RowLabels": "Butcher shop",
+  "Count of category": 12,
+  "Category": "Shop"
+ },
+ {
+  "RowLabels": "Cheese shop",
+  "Count of category": 12,
+  "Category": "Shop"
+ },
+ {
+  "RowLabels": "Fish & chips restaurant",
+  "Count of category": 12,
+  "Category": null
+ },
+ {
+  "RowLabels": "Lebanese restaurant",
+  "Count of category": 12,
+  "Category": null
+ },
+ {
+  "RowLabels": "Vegan restaurant",
+  "Count of category": 12,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Mediterranean restaurant",
+  "Count of category": 11,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Sports bar",
+  "Count of category": 11,
+  "Category": null
+ },
+ {
+  "RowLabels": "Health food store",
+  "Count of category": 10,
+  "Category": null
+ },
+ {
+  "RowLabels": "Natural goods store",
+  "Count of category": 9,
+  "Category": null
+ },
+ {
+  "RowLabels": "Takeaway",
+  "Count of category": 9,
+  "Category": null
+ },
+ {
+  "RowLabels": "Takeout restaurant",
+  "Count of category": 9,
+  "Category": null
+ },
+ {
+  "RowLabels": "Wholesaler",
+  "Count of category": 9,
+  "Category": null
+ },
+ {
+  "RowLabels": "Butcher shop deli",
+  "Count of category": 8,
+  "Category": null
+ },
+ {
+  "RowLabels": "Donut shop",
+  "Count of category": 8,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fruit and vegetable shop",
+  "Count of category": 8,
+  "Category": null
+ },
+ {
+  "RowLabels": "Gastropub",
+  "Count of category": 8,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Indian grocery store",
+  "Count of category": 8,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fish & chips shop",
+  "Count of category": 7,
+  "Category": null
+ },
+ {
+  "RowLabels": "Italian Food Shop",
+  "Count of category": 7,
+  "Category": null
+ },
+ {
+  "RowLabels": "Liquor store",
+  "Count of category": 7,
+  "Category": null
+ },
+ {
+  "RowLabels": "Brasserie",
+  "Count of category": 6,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Brunch restaurant",
+  "Count of category": 6,
+  "Category": null
+ },
+ {
+  "RowLabels": "College",
+  "Count of category": 6,
+  "Category": null
+ },
+ {
+  "RowLabels": "Farm",
+  "Count of category": 6,
+  "Category": null
+ },
+ {
+  "RowLabels": "Off Licence",
+  "Count of category": 6,
+  "Category": null
+ },
+ {
+  "RowLabels": "Seafood market",
+  "Count of category": 6,
+  "Category": null
+ },
+ {
+  "RowLabels": "Asian fusion restaurant",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Buffet restaurant",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Butchers",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Doughnut Shop",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Food manufacturer",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "General store",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "German restaurant",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Grill",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Indian Grocery Shop",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Microbrewery",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Variety store",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Winery",
+  "Count of category": 5,
+  "Category": null
+ },
+ {
+  "RowLabels": "Barbecue restaurant",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Chicken wings restaurant",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "European restaurant",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Furniture store",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Gas station",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Gift shop",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Health food restaurant",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Irish pub",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Social services organization",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Wedding cake shop",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Wholesale grocer",
+  "Count of category": 4,
+  "Category": null
+ },
+ {
+  "RowLabels": "Bar & grill",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Cajun restaurant",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Crêperie",
+  "Count of category": 3,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Cupcake shop",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Federal police",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fish and chips takeaway",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Greengrocer",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Grocery delivery service",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Halal restaurant",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Hardware Shop",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Health food shop",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Home health care service",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Home improvement store",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Korean restaurant",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Meal Delivery",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Meat packer",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Natural Foods Shop",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Pet Care Store",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Pie shop",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Store",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Wedding bakery",
+  "Count of category": 3,
+  "Category": null
+ },
+ {
+  "RowLabels": "Dairy store",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Delivery service",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Dessert restaurant",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Distribution service",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Food bank",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Food court",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "French haute cuisine restaurant",
+  "Count of category": 2,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Frozen food store",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fruit and vegetable store",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Gluten-free restaurant",
+  "Count of category": 2,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Golf club",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Golf course",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Home Furniture Shop",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Homewares Shop",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Importer",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Industrial equipment supplier",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Kashmiri restaurant",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Marina",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Modern European restaurant",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Museum",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Newspaper publisher",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Organic Food Shop",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Organic food store",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Polish restaurant",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Post office",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Real estate agency",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Shop",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Variety Shop",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Warehouse",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Wholesale food store",
+  "Count of category": 2,
+  "Category": null
+ },
+ {
+  "RowLabels": "Bakery equipment",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Barber shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Beer distributor",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Beer hall",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Café",
+  "Count of category": 1,
+  "Category": "Café"
+ },
+ {
+  "RowLabels": "Cafeteria",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Catering food and drink supplier",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Cheese manufacturer",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Chinese bakery",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Chocolate artisan",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Chophouse restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Confectionery",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Cookie shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Cooking class",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Diesel engine repair service",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Dressmaker",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Ethnic restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Family service center",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fashion accessories store",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Festival",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fish and seafood restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Fishmonger",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Food and drink",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Food producer",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Foodbank",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Foreign consulate",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "French steakhouse restaurant",
+  "Count of category": 1,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Fried chicken takeaway",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Frozen yogurt shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Garden center",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "General practice attorney",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Gift basket store",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Hair salon",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Hardware store",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Health and beauty shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Historical landmark",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Holiday home letting agency",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Home builder",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Home improvement shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Honey farm",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Hotel",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Hypermarket",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Ice cream equipment supplier",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Interior designer",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Irish restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Jamaican restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Japanese grocery store",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Juice bar",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Kebab shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Kosher Food Shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Learning center",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Legal services",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Literacy program",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Live music bar",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Lunch restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Manufacturer",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Mattress store",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Meat wholesaler",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Modern Indian restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Movie theater",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Municipal administration office",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Novelty shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Nursing home",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Office supplies shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Optician",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Organic shop",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Pâtisserie",
+  "Count of category": 1,
+  "Category": "Bakery"
+ },
+ {
+  "RowLabels": "Pet groomer",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Poultry farm",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Psychotherapist",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Punjabi restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Restaurant de hamburgers",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Restaurant or cafe",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Rice restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Scottish restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Self service restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Snack bar",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Social services organisation",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Soup restaurant",
+  "Count of category": 1,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Syrian restaurant",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Tourist attraction",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "Traditional restaurant",
+  "Count of category": 1,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Vegetarian restaurant",
+  "Count of category": 1,
+  "Category": "Restaurant"
+ },
+ {
+  "RowLabels": "Wine bar",
+  "Count of category": 1,
+  "Category": null
+ },
+ {
+  "RowLabels": "(blank)",
+  "Count of category": null,
+  "Category": null
+ }
+]

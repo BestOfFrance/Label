@@ -51,7 +51,7 @@ export default function FilterMapMobile(props) {
   <div id="filter-map-mobile-container">
     <div className="filter-mobile-button" style={state.grocery ? {'color': 'black', 'backgroundColor': '#ABB9D1'} : {'color': 'white', 'backgroundColor': 'black'}}>
     <img className="filter-map-mobile-image" src={state.grocery ? 'shopBlack.svg' : `shop.svg`} onClick={onClickGrocery}/>
-    Grocery
+    Shop
     </div>
     <div className="filter-mobile-button" style={state.restaurant ? {'color': 'black', 'backgroundColor': '#ABB9D1'} : {'color': 'white', 'backgroundColor': 'black'}}>
     <img className="filter-map-mobile-image" src={state.restaurant ? 'forkBlack.svg' : `fork.svg`} onClick={onClickRestaurant}/>
@@ -63,12 +63,12 @@ export default function FilterMapMobile(props) {
     
     </div>
     <div className="filter-mobile-button" style={state.bakery ? {'color': 'black', 'backgroundColor': '#ABB9D1'} : {'color': 'white', 'backgroundColor': 'black'}}>
-    <img  className="filter-map-mobile-image-croissant" src={state.bakery ? 'croissantBlack.svg' : `croissant-2.svg`} onClick={onClickBakery}/>
-    Bakery
+    <img  className="filter-map-mobile-image-croissant" src={state.bakery ? 'coffee-cup.svg' : `coffee-cup-2.svg`} onClick={onClickBakery}/>
+    Café
     </div>
     <div className="filter-mobile-button" style={state.pastry ? {'color': 'black', 'backgroundColor': '#ABB9D1'} : {'color': 'white', 'backgroundColor': 'black'}}>
     <img className="filter-map-mobile-image" src={state.pastry ? 'madeleineBlack.svg' : `madeleine.svg`} onClick={onClickPastry}/>
-    Pastries
+    Bakery
     </div>
     
     
