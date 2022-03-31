@@ -28,9 +28,12 @@ console.log('display props', props)
   const shop = props.shop
   const [images, setImages] = useState([])
   const [editDescription, setEditDescription] = useState(false)
-  const [description, setDescription] = useState(props.shop.description)
-  const [hoursArrayNew, setHoursArrayNew] = useState(props.shop.hours)
-  const [name, setName] = useState(props.shop.title)
+  const [description, setDescription] = useState(null)
+  const [hoursArrayNew, setHoursArrayNew] = useState(null)
+  const [name, setName] = useState(null)
+  const [nameHolder, setNameHolder] = useState(props.shop.name)
+  const [hoursHolder, setHoursHolder] = useState(props.shop.hours)
+  const [descriptionHolder, setDescriptionHolder] = useState(props.shop.description)
 
   
 
@@ -83,6 +86,7 @@ console.log('display props', props)
   })
 
   const onSubmit = function () {
+    if (name !== null) {
     API.put('shopsApi', `/shops`, { 
       body: {
         id: props.shop.id,
@@ -97,6 +101,8 @@ console.log('display props', props)
     }).catch(err => {
       console.log(err);
     })
+    }
+    if (description !== null) {
     API.put('shopsApi', `/shops`, { 
       body: {
         id: props.shop.id,
@@ -111,6 +117,10 @@ console.log('display props', props)
     }).catch(err => {
       console.log(err);
     })
+    }
+    if (hours !== null) {
+
+    
     API.put('shopsApi', `/shops`, { 
       body: {
         id: props.shop.id,
@@ -125,6 +135,7 @@ console.log('display props', props)
     }).catch(err => {
       console.log(err);
     })
+    }
     
   }
   
@@ -213,12 +224,16 @@ console.log('display props', props)
          <FormControl>
        
        <FormLabel>Name</FormLabel>
-       <Input placeholder={name} value={name} onChange={changename} required={true}/>
+       <Input placeholder={nameHolder} value={name} onChange={changename} required={true}/>
      </FormControl>
 
      <FormControl mt={4}>
        <FormLabel>Description</FormLabel>
-       <Input placeholder={description} value={description} onChange={changedescription} required={true}/>
+       <Input placeholder={descriptionHolder} value={description} onChange={changedescription} required={true}/>
+     </FormControl>
+     <FormControl mt={4}>
+       <FormLabel>Hours</FormLabel>
+       <Input placeholder={hoursHolder} value={description} onChange={changedescription} required={true}/>
      </FormControl>
 
     

@@ -116,7 +116,7 @@ useEffect(() => {
 
         }
       
-        {(props.signedIn && !userApi.isVerified && userApi.accountType !== 'admin') &&
+        {(props.signedIn && userApi.isVerified && userApi.accountType !== 'admin') &&
         
 
 

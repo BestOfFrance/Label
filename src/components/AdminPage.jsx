@@ -34,30 +34,42 @@ const fetchYelp=async function(id) {
 }
 
 
-const axiosFunc = async () =>  {
+
+
+
+export default function ShopDisplay(props) {
+  const [redirect, setRedirect] = useState(false)
+  const [user, setUser] = useState(null)
+  const [userApi, setUserApi] = useState(null)
+  const [shop, setShop] = useState(null)
+  const [alert, setAlert] = useState(null)
+
+  const axiosFunc = async () =>  {
   const newData = []
-    for (const l of dataArray) {
+    for (let i = 0; i <= 10; i++) {
       await  wait(2000)
         console.log('before axios')
-fetchYelp(l.id)
+fetchYelp(dataArray[i].id)
 .then((res) => {
   console.log(res)
-l.yelpData = res.data
-newData.push(l)
-return l
+dataArray[i].yelpData = res
+newData.push(dataArray[i])
+setAlert(`Recieved ${[i]} ${dataArray[i].place_name}`)
+return dataArray[i]
 
 })
 .catch((err) => {
   console.log(err)
-  newData.push(l.name)
-return l.name;
+  
+
 })
     }
     return newData
 };
+  
 
-const saveShop = async (detailsArray) => {
-      for (let i = 0; i <= 5; i++) {
+  const saveShop = async (detailsArray) => {
+      for (let i = 0; i < detailsArray.length; i++) {
         wait(2000)
         if (detailsArray[i] !== undefined) {
       const data = {
@@ -75,18 +87,39 @@ const saveShop = async (detailsArray) => {
   
         }
       }
-      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data);
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data2);
+      const data3 = {
+        body: {
+          description: detailsArray[i].description,
+          
+  
+        }
+      }
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data3);
+      const data4 = {
+        body: {
+          image: detailsArray[i].image,
+          
+  
+        }
+      }
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data4);
+      const data5 = {
+        body: {
+          serviceAvailable: detailsArray[i].serviceAvailable,
+          
+  
+        }
+      }
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data5);
       
     }
+    
+    
+    setAlert(`Saved ${[i]} ${detailsArray[i].name}`)
     }
     }
 
-export default function ShopDisplay(props) {
-  const [redirect, setRedirect] = useState(false)
-  const [user, setUser] = useState(null)
-  const [userApi, setUserApi] = useState(null)
-  const [shop, setShop] = useState(null)
-  
   
   async function fetchUser(userId) {
     const userData = await API.get('usersApi', `/users/${userId}`)
@@ -141,7 +174,7 @@ for (const detail of details) {
   detailsObject.name = detail.yelpData.name;
   detailsObject.latitude = detail.yelpData.coordinates.latitude;
   detailsObject.longitude = detail.yelpData.coordinates.longitude;
-  detailsObject.address = detail.yelpData.location.address1
+  detailsObject.address = detail.yelpData.location.display_address
   detailsObject.phone = detail.yelpData.display_phone
   detailsObject.callPhone = detail.yelpData.phone
   detailsObject.image = detail.yelpData.image_url
@@ -181,6 +214,7 @@ if (!detailsArray.includes(detailsObject)) {
 saveShop(detailsArray)
 .then((res) => {
   console.log(res)
+  setAlert("Seeding complete")
 })
 .catch((err) => {
   console.log(err)
@@ -274,7 +308,9 @@ saveShop(detailsArray)
           </div>
           <button onClick={onClickCanada}>Reseed Canada</button>
           
-          
+          {alert !== null && 
+          <Alert>{alert}</Alert>
+          }
         </div>
           
       </div>
