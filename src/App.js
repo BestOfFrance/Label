@@ -115,6 +115,7 @@ const detailsArray = [];
 for (const detail of details) {
   if (detail !== undefined && detail !== null) {
   const detailsObject = {};
+  const geoload = geohash.encode(detail.yelpData.coordinates.latitude, detail.yelpData.coordinates.longitude);
   detailsObject.name = detail.yelpData.name;
   detailsObject.latitude = detail.yelpData.coordinates.latitude;
   detailsObject.longitude = detail.yelpData.coordinates.longitude;
@@ -133,6 +134,7 @@ for (const detail of details) {
   detailsObject.images = [];
   detailsObject.viewHours = detail.opening_hours
   detailsObject.id = detail.id
+  detailsObject.gsi1sk = geoload
 
 
   for (const image of detail.yelpData.photos) {
@@ -201,7 +203,7 @@ export default function Application(props) {
           .then((response) => {
             console.log(response, 'fetchuser')
             console.log(response.data.Item.id)
-            
+
             fetchSubscription(`sub_${response.data.Item.id}`)
             .then((response) => {
               console.log('subb response', response)
@@ -270,7 +272,9 @@ export default function Application(props) {
           numberReviews: detailsArray[i].numberReviews,
           servicesAvailable: detailsArray[i].servicesAvailable,
           viewHours: detailsArray[i].viewHours,
-          id: detailsArray[i].id
+          id: detailsArray[i].id,
+          gsi1sk: detailsArray[i].gsi1sk
+          
           
   
         }
@@ -281,14 +285,40 @@ export default function Application(props) {
     }
     }
 
-    const getDistance = function(markers, myLatlng) {
+    const getDistance = function(myLatlng) {
+      async function fetchShops() {
+    const shopData = await Api.get('shopsApi', '/shops')
+    return shopData
+  }
      
       var markersByDistance = [];
       // console.log(markers, 'markers')
       // console.log(myLatlng, 'll')
-    for ( var i = 0; i < markers.length; i++ ) {
+        const latmin = myLatlng.lat - 0.03
+    const latmax = myLatlng.lat + 0.03
+    const lngmin = myLatlng.lng - 0.03
+    const lngmax = myLatlng.lng + 0.03
+    const hashes = geohash.bboxes(latmin, lngmin, latmax, lngmax, 5);
+    fetchShops().then((markers)=> {
+    console.log(markers.data.Items)
+    // console.log(JSON.stringify(data[0]), 'data')
+    // console.log(detailsArray.length)
+   
+    const searchList = []
+    const premiumShops = []
+    for (const shop of markers.data.Items) {
+     if (shop.isPremium) {
+       premiumShops.push(shop)
+     }
+      const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
+      searchList.push(newShop)
+    
+    }
+    setState((prev) => ({ ...prev, shops: markers.data.Items, searchList: searchList, premiumShops: premiumShops}))
+  
+     for ( var i = 0; i < markers.data.Items.length; i++ ) {
       
-        var marker = markers[i];
+        var marker = markers.data.Items[i];
     
         // using pythagoras does not take into account curvature, 
         // but will work fine over small distances.
@@ -303,7 +333,7 @@ export default function Application(props) {
         markersByDistance[ i ].distance = distance;
       
     }
-    
+  
     // function to sort your data...
     function sorter (a,b) { 
         return a.distance > b.distance ? 1 : -1;
@@ -345,7 +375,11 @@ export default function Application(props) {
     const topThreeShops = allShops.slice(0,3)
 
     setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0], closestGrocery[0]], sortedShops: allCMSShops}))
-    }
+    
+    
+  })
+
+   }
   
  console.log(state.placesNearYou[0])
 //set the selected marker
@@ -410,7 +444,7 @@ const openShopWindow = function(shop) {
 // set function to get the disatnce every time the map scrolls
 const onChange = function({center, zoom}) {
   
-  getDistance(state.shops, center)
+  getDistance(center)
 }
 
 
@@ -531,19 +565,16 @@ const onFilterCMSMobile = function (data) {
 
 
 useEffect(() => {
-  getDistance(state.shops, state.location)
+  // getDistance(state.location)
 }, [state.categories])
 useEffect(() => {
-  getDistance(state.shops, state.location)
+  // getDistance(state.location)
 }, [state.cmsCategories])
 console.log('places', state.placesNearYou)
 
 //inital call to get database information for amazon database
 useEffect(() => {
-  async function fetchShops() {
-    const shopData = await Api.get('shopsApi', '/shops')
-    return shopData
-  }
+  
 
   navigator.geolocation.getCurrentPosition(
     function(position) {
@@ -554,31 +585,17 @@ useEffect(() => {
         lng: position.coords.longitude
       } 
       setState((prev) => ({ ...prev, location: locationGeo}))
+       getDistance(locationGeo)
+     
     },
     function(error) {
       console.error("Error Code = " + error.code + " - " + error.message);
     }
   )
   checkUser();
-  fetchShops().then((out)=> {
-    console.log(out)
-    // console.log(JSON.stringify(data[0]), 'data')
-    // console.log(detailsArray.length)
+  
    
-    const searchList = []
-    const premiumShops = []
-    for (const shop of out.data.Items) {
-     if (shop.isPremium) {
-       premiumShops.push(shop)
-     }
-      const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
-      searchList.push(newShop)
-    
-    }
-    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, categories: ["Bakery", "Shop", "Restaurant", "Café"], premiumShops: premiumShops}))
-    console.log(out.data.Items)
-    getDistance(out.data.Items, state.location)
-  })
+  
 }, [])
 
 // // initial call to the api to get shop datas for local data
