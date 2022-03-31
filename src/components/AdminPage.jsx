@@ -10,7 +10,8 @@ import {Helmet} from "react-helmet";
 import './shopDisplayEdit.css'
 import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
 import { Auth } from 'aws-amplify'
-
+const axios = require('axios');
+const dataArray = require('../ExtCAIDFinal')
 
 const AWS = require('aws-sdk');
 
@@ -22,6 +23,55 @@ const SES_CONFIG = {
 
 const AWS_SES = new AWS.SES(SES_CONFIG);
 
+function wait(ms) {
+    return new Promise( (resolve) => {setTimeout(resolve, ms)});
+}
+
+
+const axiosFunc = async () =>  {
+  const newData = []
+    for (const l of dataArray) {
+      await  wait(2000)
+        console.log('before axios')
+        axios.get(`https://api.yelp.com/v3/businesses/${l.id}`, {
+  headers: {
+    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNElKsuUINdEi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
+}
+})
+.then((res) => {
+l.yelpData = res.data
+newData.push(l)
+return l
+
+})
+.catch((err) => {
+  console.log(err)
+  newData.push(l.name)
+return l.name;
+})
+    }
+    return newData
+};
+
+const saveShop = async (detailsArray) => {
+      for (let i = 0; i <= 100; i++) {
+        wait(2000)
+        if (detailsArray[i] !== undefined) {
+      const data = {
+        body: {
+          address: detailsArray[i].address,
+          images: detailsArray[i].images,
+          description: detailsArray[i].description,
+          numberReviews: detailsArray[i].numberReviews
+          
+  
+        }
+      }
+      const apiData = await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data);
+      console.log({apiData})
+    }
+    }
+    }
 
 export default function ShopDisplay(props) {
   const [redirect, setRedirect] = useState(false)
@@ -72,7 +122,56 @@ export default function ShopDisplay(props) {
 }, [])
   
 
+  const onClickCanada = function() {
+    axiosFunc()
+    .then((details) => {
+       const detailsArray = [];
+for (const detail of details) {
+  if (detail !== undefined && detail !== null) {
+  const detailsObject = {};
+  detailsObject.name = detail.yelpData.name;
+  detailsObject.latitude = detail.yelpData.coordinates.latitude;
+  detailsObject.longitude = detail.yelpData.coordinates.longitude;
+  detailsObject.address = detail.yelpData.location.address1
+  detailsObject.phone = detail.yelpData.display_phone
+  detailsObject.callPhone = detail.yelpData.phone
+  detailsObject.image = detail.yelpData.image_url
+  detailsObject.rating = detail.yelpData.rating
+  detailsObject.price = detail.yelpData.price
+  detailsObject.category = detail.categoryNew
+  detailsObject.description = detail.description
+  detailsObject.mapUrl = detail.place_url
+  detailsObject.numberReviews = detail.number_reviews
+  detailsObject.servicesAvailable = detail.services_available
+  detailsObject.hours = [];
+  detailsObject.images = [];
+  detailsObject.viewHours = detail.opening_hours
+  detailsObject.id = detail.id
+
+
+  for (const image of detail.yelpData.photos) {
+    detailsObject.images.push(image)
+  }
   
+  if (detail.yelpData.hours) {
+  for (const day of detail.yelpData.hours[0].open) {
+    
+    const hours = {open: day.start, close: day.end, day: day.day}
+    
+    const stringHours = JSON.stringify(hours)
+    
+    detailsObject.hours.push(stringHours)
+    
+  }
+}
+if (!detailsArray.includes(detailsObject)) {
+  detailsArray.push(detailsObject)
+}
+}
+}
+
+    })
+  }
 
   // API.get('shopsApi', `/shops/${id}`, {}).then((result) => {
   //   const shopApiData = JSON.parse(result.body);
@@ -158,6 +257,7 @@ export default function ShopDisplay(props) {
            ADMIN DASHBOARD
            
           </div>
+          <button onClick={onClickCanada}>Reseed Canada</button>
           
           
         </div>
