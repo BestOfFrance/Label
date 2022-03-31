@@ -33,7 +33,7 @@ export default function DropDownTwo(props) {
     
   };
   const handleCloseAll = () => {
-    props.onClick(props.categories)
+    props.onClick(["Restaurant", "Bakery", "Shop", "Café"])
     
   };
   const handleCloseBakery = () => {

@@ -551,6 +551,7 @@ const cmsBakery = state.sortedShops.map((shop, index) => {
 
 //function for filter button
 const onFilter = function(data) {
+  console.log(data)
   setState((prev) => ({ ...prev, categories: [...data] }))
   
 }
