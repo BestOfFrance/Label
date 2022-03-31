@@ -286,9 +286,15 @@ export default function Application(props) {
     }
 
     const getDistance = function(myLatlng) {
-      async function fetchShops() {
-    const shopData = await Api.get('shopsApi', '/shops')
-    return shopData
+      async function fetchShops(location) {
+        const shopDataArray = []
+        for (const loc of location) {
+    const shopData = await Api.get('shopsApi', `/shops/location/${loc}`)
+        for (const item of shopData.data.Items) {
+          shopDataArray.push(item)
+        }
+        }
+    return shopDataArray
   }
      
       var markersByDistance = [];
@@ -298,15 +304,15 @@ export default function Application(props) {
     const latmax = myLatlng.lat + 0.03
     const lngmin = myLatlng.lng - 0.03
     const lngmax = myLatlng.lng + 0.03
-    const hashes = geohash.bboxes(latmin, lngmin, latmax, lngmax, 5);
-    fetchShops().then((markers)=> {
-    console.log(markers.data.Items)
+    const hashes = geohash.bboxes(latmin, lngmin, latmax, lngmax, 3);
+    fetchShops(hashes).then((markers)=> {
+    console.log(markers)
     // console.log(JSON.stringify(data[0]), 'data')
     // console.log(detailsArray.length)
    
     const searchList = []
     const premiumShops = []
-    for (const shop of markers.data.Items) {
+    for (const shop of markers) {
      if (shop.isPremium) {
        premiumShops.push(shop)
      }
@@ -314,11 +320,11 @@ export default function Application(props) {
       searchList.push(newShop)
     
     }
-    setState((prev) => ({ ...prev, shops: markers.data.Items, searchList: searchList, premiumShops: premiumShops}))
+    setState((prev) => ({ ...prev, shops: markers, searchList: searchList, premiumShops: premiumShops}))
   
-     for ( var i = 0; i < markers.data.Items.length; i++ ) {
+     for ( var i = 0; i < markers.length; i++ ) {
       
-        var marker = markers.data.Items[i];
+        var marker = markers[i];
     
         // using pythagoras does not take into account curvature, 
         // but will work fine over small distances.
