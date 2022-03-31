@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/yelp": {
+      "name": "/yelp",
+      "lambdaFunction": "yelpApiFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

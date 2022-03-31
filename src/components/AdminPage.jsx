@@ -10,6 +10,7 @@ import {Helmet} from "react-helmet";
 import './shopDisplayEdit.css'
 import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
 import { Auth } from 'aws-amplify'
+import Api from '@aws-amplify/api-rest'
 const axios = require('axios');
 const dataArray = require('../ExtCAIDFinal')
 
@@ -27,18 +28,20 @@ function wait(ms) {
     return new Promise( (resolve) => {setTimeout(resolve, ms)});
 }
 
+const fetchYelp=async function(id) {
+  const shopData = await Api.get('yelpApi', `/yelp/${id}`)
+  return shopData
+}
+
 
 const axiosFunc = async () =>  {
   const newData = []
     for (const l of dataArray) {
       await  wait(2000)
         console.log('before axios')
-        axios.get(`https://api.yelp.com/v3/businesses/${l.id}`, {
-  headers: {
-    Authorization: `Bearer nxBY2qRdQtx6tQSmpDNElKsuUINdEi_aI_4RDjjvqs3lbzGmgMem__btNaNnT2ruHn28UmFZ1W6Z9zrmjpw0rmyyaEuwGGMc-GSVXD6Q_ffREboy1bP4Po1S6AdGYXYx`
-}
-})
+fetchYelp(l.id)
 .then((res) => {
+  console.log(res)
 l.yelpData = res.data
 newData.push(l)
 return l
@@ -54,21 +57,26 @@ return l.name;
 };
 
 const saveShop = async (detailsArray) => {
-      for (let i = 0; i <= 100; i++) {
+      for (let i = 0; i <= 5; i++) {
         wait(2000)
         if (detailsArray[i] !== undefined) {
       const data = {
         body: {
           address: detailsArray[i].address,
-          images: detailsArray[i].images,
-          description: detailsArray[i].description,
-          numberReviews: detailsArray[i].numberReviews
           
   
         }
       }
-      const apiData = await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data);
-      console.log({apiData})
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data);
+      const data2 = {
+        body: {
+          hours: detailsArray[i].hours,
+          
+  
+        }
+      }
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data);
+      
     }
     }
     }
@@ -125,6 +133,7 @@ export default function ShopDisplay(props) {
   const onClickCanada = function() {
     axiosFunc()
     .then((details) => {
+      console.log(details)
        const detailsArray = [];
 for (const detail of details) {
   if (detail !== undefined && detail !== null) {
@@ -169,7 +178,13 @@ if (!detailsArray.includes(detailsObject)) {
 }
 }
 }
-
+saveShop(detailsArray)
+.then((res) => {
+  console.log(res)
+})
+.catch((err) => {
+  console.log(err)
+})
     })
   }
 

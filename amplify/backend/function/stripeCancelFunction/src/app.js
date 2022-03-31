@@ -7,8 +7,8 @@ See the License for the specific language governing permissions and limitations 
 */
 
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST);
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST);
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
@@ -30,15 +30,22 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
-app.get('/check', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get('/cancelstripe', function(req, res) {
+ try {
+    const subscription = await stripe.subscriptions.del(
+      req.body.id
+    );
+    res.json(subscription)
+  } catch (err) {
+
+    res.json(err)
+  }
 });
 
-app.get('/check/:id', async function(req, res) {
+app.get('/cancelstripe/:id', function(req, res) {
   try {
-    const subscription = await stripe.subscriptions.retrieve(
-      req.params.id.toString()
+    const subscription = await stripe.subscriptions.del(
+      req.params.id
     );
     res.json(subscription)
   } catch (err) {
@@ -51,12 +58,12 @@ app.get('/check/:id', async function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/check', function(req, res) {
+app.post('/cancelstripe', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
-app.post('/check/*', function(req, res) {
+app.post('/cancelstripe/*', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -65,12 +72,12 @@ app.post('/check/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/check', function(req, res) {
+app.put('/cancelstripe', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/check/*', function(req, res) {
+app.put('/cancelstripe/*', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
@@ -79,12 +86,12 @@ app.put('/check/*', function(req, res) {
 * Example delete method *
 ****************************/
 
-app.delete('/check', function(req, res) {
+app.delete('/cancelstripe', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/check/*', function(req, res) {
+app.delete('/cancelstripe/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });

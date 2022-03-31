@@ -41,7 +41,19 @@
         },
         "stripeCheckFunction": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/stripeCheckFunction-2b4b464a59796e527236-build.zip"
+          "s3Key": "amplify-builds/stripeCheckFunction-574d7247495455703872-build.zip"
+        },
+        "stripeCancelFunction": {
+          "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
+          "s3Key": "amplify-builds/stripeCancelFunction-4e38306a545873694e4b-build.zip"
+        },
+        "stripeUpdateFunction": {
+          "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
+          "s3Key": "amplify-builds/stripeUpdateFunction-68364d684b77422b6676-build.zip"
+        },
+        "yelpApiFunction": {
+          "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
+          "s3Key": "amplify-builds/yelpApiFunction-754b3331676f4e6d2f68-build.zip"
         }
       },
       "auth": {

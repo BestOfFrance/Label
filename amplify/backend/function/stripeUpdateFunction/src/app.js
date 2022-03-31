@@ -30,33 +30,26 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
-app.get('/check', function(req, res) {
+app.get('/updatestripe', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
 
-app.get('/check/:id', async function(req, res) {
-  try {
-    const subscription = await stripe.subscriptions.retrieve(
-      req.params.id.toString()
-    );
-    res.json(subscription)
-  } catch (err) {
-
-    res.json(err)
-  }
+app.get('/updatestripe/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'get call succeed!', url: req.url});
 });
 
 /****************************
 * Example post method *
 ****************************/
 
-app.post('/check', function(req, res) {
+app.post('/updatestripe', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
-app.post('/check/*', function(req, res) {
+app.post('/updatestripe/*', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -65,12 +58,12 @@ app.post('/check/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/check', function(req, res) {
+app.put('/updatestripe', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/check/*', function(req, res) {
+app.put('/updatestripe/*', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
@@ -79,12 +72,12 @@ app.put('/check/*', function(req, res) {
 * Example delete method *
 ****************************/
 
-app.delete('/check', function(req, res) {
+app.delete('/updatestripe', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/check/*', function(req, res) {
+app.delete('/updatestripe/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });

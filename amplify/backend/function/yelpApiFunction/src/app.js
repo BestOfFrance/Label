@@ -7,11 +7,13 @@ See the License for the specific language governing permissions and limitations 
 */
 
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST);
+
 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+const axios = require('axios')
+const router = express.Router();
 
 // declare a new express app
 const app = express()
@@ -30,33 +32,44 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
-app.get('/check', function(req, res) {
+app.get('/yelp', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
 
-app.get('/check/:id', async function(req, res) {
-  try {
-    const subscription = await stripe.subscriptions.retrieve(
-      req.params.id.toString()
-    );
-    res.json(subscription)
-  } catch (err) {
+app.get('/yelp/:id', function(req, res) {
+  try{
+ 
+  axios.get(`https://api.yelp.com/v3/businesses/${req.params.id}`, {
+  headers: {
+    Authorization: `Bearer H1IcGJB65EqYA4wvHWtDhk-_gnt4mR7vSx9zpO1HyiHxQ4_9zGBnQYtRRrcOFFvn-kOAEoEYWptsfL8Bd3T5MV9uGW0MqHe9LqdIFXO25worzkCIb74jOgVJnIsnYnYx`
+}
+})
+.then((response) => {
+res.json(response.data)
 
-    res.json(err)
-  }
+})
+.catch((err) => {
+  res.json(err)
+})  
+}
+ catch(err){
+    console.error("GG", err);
+ }
+    
+    
 });
 
 /****************************
 * Example post method *
 ****************************/
 
-app.post('/check', function(req, res) {
+app.post('/yelp', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
-app.post('/check/*', function(req, res) {
+app.post('/yelp/*', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -65,12 +78,12 @@ app.post('/check/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/check', function(req, res) {
+app.put('/yelp', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/check/*', function(req, res) {
+app.put('/yelp/*', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
@@ -79,12 +92,12 @@ app.put('/check/*', function(req, res) {
 * Example delete method *
 ****************************/
 
-app.delete('/check', function(req, res) {
+app.delete('/yelp', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/check/*', function(req, res) {
+app.delete('/yelp/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });

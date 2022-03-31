@@ -131,20 +131,17 @@ console.log('display props', props)
         },
         "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "230"
+        "ratingValue": ${seo.rating},
+        "reviewCount": ${seo.numberReviews}
         },
-        "name": "Restaurant Pronto",
-        "openingHours": [
-        "Mo-Su 13:00-19:00"
-        ],
-        "priceRange": "$$",
+        "name": ${seo.name},
+        "openingHours": ${seo.viewHours},
+        "priceRange": ${seo.price},
         "servesCuisine": [
-        "Italian",
-        "Pizza"
+        "French"
         ],
-        "telephone": "+12345678900",
-        "url": "http://www.pronto-ny.com"
+        "telephone": ${seo.phone},
+        "url": ${seo.website}
         }
   `}</script>
 </Helmet>
