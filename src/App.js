@@ -52,7 +52,7 @@ import Admin from './components/AdminPage'
 
 const geohash = require('ngeohash');
 
- const details = require('./ExtCADetailsFinal')
+ const details = require('./ExtUSDetails5000')
  console.log(details.length, 'details')
  const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
 
@@ -119,7 +119,7 @@ for (const detail of details) {
   detailsObject.name = detail.yelpData.name;
   detailsObject.latitude = detail.yelpData.coordinates.latitude;
   detailsObject.longitude = detail.yelpData.coordinates.longitude;
-  detailsObject.address = detail.yelpData.location.address1
+  detailsObject.address = detail.yelpData.location.display_address
   detailsObject.phone = detail.yelpData.display_phone
   detailsObject.callPhone = detail.yelpData.phone
   detailsObject.image = detail.yelpData.image_url
@@ -251,7 +251,7 @@ export default function Application(props) {
 
 
     const saveShop = async () => {
-      for (let i = 0; i <= 1000; i++) {
+      for (let i = 0; i < detailsArray.length; i++) {
         if (detailsArray[i] !== undefined) {
       const data = {
         body: {
