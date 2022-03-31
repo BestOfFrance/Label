@@ -37,6 +37,7 @@ console.log('display props', props)
     setShop(shopApiData)
     console.log(shopApiData, 'shop api data')
     
+    
       if (shopApiData.images !== null) {
         const imageArray = shopApiData.images
         for (const image of imageArray) {
@@ -106,22 +107,22 @@ console.log('display props', props)
 <script type="application/ld+json">{`
       {
         "@context": "OURDOMAIN",
-        "@type": "Restaurant",
+        "@type": ${shop.category},
         "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "New York",
-        "addressRegion": "NY",
-        "streetAddress": "740 Park Avenue"
+        "@type": ${shop.address[2]},
+        "addressLocality": ${shop.address[3]},
+        "addressRegion": ${shop.address[2]},
+        "streetAddress": ${shop.address[0]}
         },
-        "description": ${seo.description},
-        "name": ${seo.name},
-        "telephone": ${seo.phone}
+        "description": ${shop.description},
+        "name": ${shop.name},
+        "telephone": ${shop.phone}
         }
   `}</script>
   <script type="application/ld+json">{`
       {
         "@context": "OURDOMAN",
-        "@type": ${seo.category},
+        "@type": ${shop.category},
         "address": {
         "@type": "PostalAddress",
         "addressLocality": "New York",
@@ -131,17 +132,17 @@ console.log('display props', props)
         },
         "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": ${seo.rating},
-        "reviewCount": ${seo.numberReviews}
+        "ratingValue": ${shop.rating},
+        "reviewCount": ${shop.numberReviews}
         },
-        "name": ${seo.name},
-        "openingHours": ${seo.viewHours},
-        "priceRange": ${seo.price},
+        "name": ${shop.name},
+        "openingHours": ${shop.viewHours},
+        "priceRange": ${shop.price},
         "servesCuisine": [
         "French"
         ],
-        "telephone": ${seo.phone},
-        "url": ${seo.website}
+        "telephone": ${shop.phone},
+        "url": ${shop.website}
         }
   `}</script>
 </Helmet>

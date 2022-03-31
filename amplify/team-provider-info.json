@@ -53,7 +53,7 @@
         },
         "yelpApiFunction": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/yelpApiFunction-754b3331676f4e6d2f68-build.zip"
+          "s3Key": "amplify-builds/yelpApiFunction-642b394c4f39447a6a54-build.zip"
         }
       },
       "auth": {
