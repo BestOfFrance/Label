@@ -57,7 +57,28 @@ app.get('/shops', function(req, res) {
   var params = {
     TableName: 'shops-dev'
   }
+   
   docClient.scan(params, function(err, data) {
+    if (err) res.json({err})
+    else res.json({data})
+  })
+  
+});
+app.get('/shops/location/:geohash', function(req, res) {
+  var params = {
+    TableName: 'shops-dev',
+    IndexName: 'gsi1',
+            KeyConditionExpression: '#pk = :pk AND begins_with(#sk, :hash)',
+            ExpressionAttributeNames: {
+                '#pk': 'gsi1pk',
+                '#sk': 'gsi1sk'
+            },
+            ExpressionAttributeValues: {
+                ':pk': 'geohash',
+                ':hash': req.params.geohash
+            }
+  }
+  docClient.query(params, function(err, data) {
     if (err) res.json({err})
     else res.json({data})
   })
@@ -112,7 +133,13 @@ app.post('/shops', function(req, res) {
       numberReviews: req.body.numberReviews,
       servicesAvailable: req.body.servicesAvailable,
       viewHours: req.body.viewHours,
-      userManaged: false
+      userManaged: false,
+      website: req.body.website,
+      isPremium: false,
+      meta: req.body.meta,
+      categories: req.body.categories,
+      gsi1pk: "geohash",
+      gsi1sk: req.body.gsi1sk
       
     }
   }
@@ -256,6 +283,87 @@ app.put("/shops", function (request, response) {
   
     params.ExpressionAttributeValues[':images'] = request.body.images;
     params.UpdateExpression += '#images = :images';
+ 
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+} else if (request.body.isPremium) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#isPremium': 'isPremium'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    
+  
+    params.ExpressionAttributeValues[':isPremium'] = request.body.isPremium;
+    params.UpdateExpression += '#isPremium = :isPremium';
+ 
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+} else if (request.body.servicesAvailable) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#servicesAvailable': 'servicesAvailable'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    
+  
+    params.ExpressionAttributeValues[':servicesAvailable'] = request.body.servicesAvailable;
+    params.UpdateExpression += '#servicesAvailable = :servicesAvailable';
+ 
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+} else if (request.body.categories) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#categories': 'categories'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    
+  
+    params.ExpressionAttributeValues[':categories'] = request.body.categories;
+    params.UpdateExpression += '#categories = :categories';
  
   
   

@@ -97,8 +97,57 @@ console.log('display props', props)
     { property: 'og:image', content: seo.image },
     { property: 'og:image:type', content: 'image/jpeg' }
     
+      
+    
   ]}
-/>
+  
+>
+
+<script type="application/ld+json">{`
+      {
+        "@context": "OURDOMAIN",
+        "@type": "Restaurant",
+        "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "streetAddress": "740 Park Avenue"
+        },
+        "description": ${seo.description},
+        "name": ${seo.name},
+        "telephone": ${seo.phone}
+        }
+  `}</script>
+  <script type="application/ld+json">{`
+      {
+        "@context": "OURDOMAN",
+        "@type": ${seo.category},
+        "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "postalCode": "12345",
+        "streetAddress": "740 Park Avenue"
+        },
+        "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "230"
+        },
+        "name": "Restaurant Pronto",
+        "openingHours": [
+        "Mo-Su 13:00-19:00"
+        ],
+        "priceRange": "$$",
+        "servesCuisine": [
+        "Italian",
+        "Pizza"
+        ],
+        "telephone": "+12345678900",
+        "url": "http://www.pronto-ny.com"
+        }
+  `}</script>
+</Helmet>
     <div>
       <div className="container">
         <div className="close-display">

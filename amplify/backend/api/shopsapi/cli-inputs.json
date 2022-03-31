@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/shops/location": {
+      "name": "/shops/location",
+      "lambdaFunction": "shopsLambda",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

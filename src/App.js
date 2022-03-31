@@ -48,8 +48,9 @@ import VerifyBusiness from './components/VerifyBusiness'
 import ReportButtonEasy from './components/ReportButtonEasy'
 import UploadImage from './components/uploadImage'
 import {loadStripe} from '@stripe/stripe-js';
+import Admin from './components/AdminPage'
 
-
+const geohash = require('ngeohash');
 
  const details = require('./ExtCADetailsFinal')
  console.log(details.length, 'details')
@@ -103,14 +104,9 @@ const fetchSubscription =async function(id) {
   const shopData = await Api.get('stripeCheck', `/check/${id}`)
   return shopData
 }
-const categoriesArray = []
 
-for (const detail of details) {
-  
-  if (detail !== undefined && detail !== null) {
-  categoriesArray.push(detail.category)
-  }
-}
+
+
 
 
 
@@ -171,7 +167,7 @@ export default function Application(props) {
     mode: mode,
     shopID: 0,
     selected: null, 
-    categories: categoriesArray,
+    categories: ["Bakery", "Shop", "Restaurant", "Café"],
     topThree: [],
     searchSelected: "",
     searchList: [],
@@ -181,7 +177,7 @@ export default function Application(props) {
     placesNearYou: [],
     premiumShops: [],
     sortedShops: [],
-    cmsCategories: categoriesArray
+    cmsCategories: ["Bakery", "Shop", "Restaurant", "Café"]
   })
 
   const navigate = useNavigate()
@@ -497,7 +493,7 @@ const premium = state.premiumShops.map((shop, index) => {
 })
 
 // cms cards
-console.log('jk', state.sortedShops)
+console.log('sorted shops', state.sortedShops)
 const cmsBakery = state.sortedShops.map((shop, index) => {
     
     return(
@@ -573,16 +569,12 @@ useEffect(() => {
     for (const shop of out.data.Items) {
      if (shop.isPremium) {
        premiumShops.push(shop)
-       
-     }
-     if (shop.name === "JK Bakery Cafe") {
-       console.log(shop)
      }
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
       searchList.push(newShop)
-      categoriesArray.push(shop.category)
+    
     }
-    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, categories: categoriesArray, premiumShops: premiumShops}))
+    setState((prev) => ({ ...prev, shops: out.data.Items, searchList: searchList, categories: ["Bakery", "Shop", "Restaurant", "Café"], premiumShops: premiumShops}))
     console.log(out.data.Items)
     getDistance(out.data.Items, state.location)
   })
@@ -671,8 +663,8 @@ console.log(state.signedIn, "state")
       getNews={getNews}
       signedIn={state.signedIn}/>}
       <Routes>
-        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={categoriesArray} onFilterCms={onFilterCMS} 
-        categories={categoriesArray} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
+        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={["Bakery", "Shop", "Restaurant", "Café"]} onFilterCms={onFilterCMS} 
+        categories={["Bakery", "Shop", "Restaurant", "Café"]} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
           getRegisterFoodie={getRegisterFoodie}
@@ -683,6 +675,9 @@ console.log(state.signedIn, "state")
         setLoggedIn={setLoggedIn}
         setBusiness={setBusiness}/>}/>
         <Route path="dashboard" element = {<Dashboard shops={state.shops} logout={signOut}
+        business={state.accountType}
+        signedIn={state.signedIn}/>} />
+        <Route path="admin" element = {<Admin shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn}/>} />
         <Route path="registerbusiness" element = {<CreateAccount setConfirm={setConfirm} login={login} mode={state.mode} checkUser={checkUser}/>} />
@@ -712,9 +707,9 @@ console.log(state.signedIn, "state")
      
      
      {width < breakpoint &&
-     <FilterMapMobile onClick={onFilterCMSMobile} categories={categoriesArray}/>
+     <FilterMapMobile onClick={onFilterCMSMobile} categories={["Bakery", "Shop", "Restaurant", "Café"]}/>
      }
-      {/* <DataButton onClick={saveShop}/> */}
+      <DataButton onClick={saveShop}/>
       <Footer/>
     </div>
     

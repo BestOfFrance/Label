@@ -33,6 +33,7 @@ import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
 import { Routes, Route, Link } from "react-router-dom";
 import {Helmet} from "react-helmet";
+const geohash = require('ngeohash');
 
 export default function HomePage(props) {
 

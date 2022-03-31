@@ -104,7 +104,7 @@ const checkUser = function() {
         </nav>
 
         }
-        {(props.signedIn && userApi.isVerified) &&
+        {(props.signedIn && userApi.isVerified && userApi.accountType !== 'admin') &&
         
 
 
@@ -117,7 +117,7 @@ const checkUser = function() {
       </Link>
       </nav>
         }
-        {(props.signedIn && !userApi.isVerified) &&
+        {(props.signedIn && !userApi.isVerified && userApi.accountType !== 'admin') &&
         
 
 
@@ -130,6 +130,19 @@ const checkUser = function() {
         </Link>
         </nav>
           }
+            {(props.signedIn && !userApi.isVerified && userApi.accountType === 'admin') &&
+        
+
+
+        <nav>
+        <Link to='/admin' >
+      <button className="small-button" >
+      <img src="icons8-user-64.png" className="user-icon"></img>
+      
+      </button>
+      </Link>
+      </nav>
+        }
         <div className="myaccount">
           {props.signedIn ? "My Account" : "Sign In"}
         </div>
