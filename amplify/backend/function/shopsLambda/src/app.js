@@ -374,6 +374,33 @@ app.put("/shops", function (request, response) {
       response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
     }
   });
+} else if (request.body.address) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#address': 'address'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    
+  
+    params.ExpressionAttributeValues[':address'] = request.body.address;
+    params.UpdateExpression += '#address = :address';
+ 
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
 }
 });
 

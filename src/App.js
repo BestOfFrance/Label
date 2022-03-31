@@ -201,6 +201,7 @@ export default function Application(props) {
           .then((response) => {
             console.log(response, 'fetchuser')
             console.log(response.data.Item.id)
+            
             fetchSubscription(`sub_${response.data.Item.id}`)
             .then((response) => {
               console.log('subb response', response)

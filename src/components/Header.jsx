@@ -20,28 +20,39 @@ export default function Header(props) {
 //  if (props.isVerified) {
 //    id = props.
 //  }
-
-const checkUser = function() {
-  let authenticated = false;
-  let user = ''
-  Auth.currentAuthenticatedUser()
-    .then(
-      (user) => {
-        user = user
-        return user
+async function fetchUser(email) {
+    const userData = await API.get('usersApi', `/users/${email}`)
+    return userData
+  }
+function checkUser() {
+    let authenticated = false;
+    Auth.currentAuthenticatedUser()
+      .then(
+        (user) => {
           
+          console.log(user)
+            
+            console.log(user.attributes.email)
+          fetchUser(user.attributes.email)
+          .then((response) => {
+            setUserApi(response.data.Item)
+            
+          })
+          }
         
-        }
-      
-    )
-    .catch(err => {
-      console.log(err)
-      authenticated = false;
-      return false;
-    }
       )
-     return user
-}
+      .catch(err => {
+        console.log(err)
+        authenticated = false;
+      }
+        )
+        return authenticated
+  }
+
+useEffect(() => {
+  checkUser()
+}, [])
+
 
 
 
@@ -104,19 +115,7 @@ const checkUser = function() {
         </nav>
 
         }
-        {(props.signedIn && userApi.isVerified && userApi.accountType !== 'admin') &&
-        
-
-
-        <nav>
-        <Link to={`/dashboard/${userApi.shopId}`} >
-      <button className="small-button" >
-      <img src="icons8-user-64.png" className="user-icon"></img>
       
-      </button>
-      </Link>
-      </nav>
-        }
         {(props.signedIn && !userApi.isVerified && userApi.accountType !== 'admin') &&
         
 
@@ -130,7 +129,7 @@ const checkUser = function() {
         </Link>
         </nav>
           }
-            {(props.signedIn && !userApi.isVerified && userApi.accountType === 'admin') &&
+            {(props.signedIn && userApi.isVerified && userApi.accountType === 'admin') &&
         
 
 
