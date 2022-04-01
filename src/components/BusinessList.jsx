@@ -172,7 +172,7 @@ export default function BusinessList(props) {
 
           </div>
           <div>
-            Address: <a href={props.shop.mapUrl}>{props.shop.address}, Vancouver, BC</a>
+            Address: <a href={props.shop.mapUrl}>{`${props.shop.address[0]}, ${props.shop.address[1]}, ${props.shop.address[2]}`}</a>
 
           </div>
 
