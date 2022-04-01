@@ -172,7 +172,7 @@ export default function BusinessList(props) {
 
           </div>
           <div>
-            Address: <a href={`maps.google.com/?ll=${props.shop.latitude},${props.shop.longitude}`}>{props.shop.address}, Vancouver, BC</a>
+            Address: <a href={props.shop.mapUrl}>{props.shop.address}, Vancouver, BC</a>
 
           </div>
 
