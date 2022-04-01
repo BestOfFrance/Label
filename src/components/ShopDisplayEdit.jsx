@@ -45,8 +45,10 @@ console.log('display props', props)
   const [friday, setFriday] = useState({})
   const [saturday, setSaturday] = useState({})
   const [sunday, setSunday] = useState({})
-
-  
+  const [tagsOne, setTagsOne] = useState('')
+  const [tagsTwo, setTagsTwo] = useState('')
+  const [tagsThree, setTagsThree] = useState('')
+  const [tagsFour, setTagsFour] = useState('')
   const [hourArray, setHourArray] = useState([])
   const [seo, setSeo] = useState('')
   
@@ -195,6 +197,29 @@ console.log('display props', props)
       console.log(err);
     })
     }
+    if (tagsOne.length > 0 || tagsTwo.length > 0 || tagsThree.length > 0 || tagsFour.length > 0) {
+
+    const tagsArray = []
+    tagsArray.push(tagsOne)
+    tagsArray.push(tagsTwo)
+    tagsArray.push(tagsThree)
+    tagsArray.push(tagsFour)
+    
+    API.put('shopsApi', `/shops`, { 
+      body: {
+        id: id.id,
+        tags: tagsArray,
+        
+        
+      }
+    }).then(result => {
+      //const result = JSON.parse(result.body);
+      console.log(result)
+      setEditDescription(false)
+    }).catch(err => {
+      console.log(err);
+    })
+    }
     
   }
   
@@ -268,7 +293,22 @@ console.log('display props', props)
     const val=event.target.value
     setSunday((prev) => ({ ...prev, close: val, day: 6 }))
   }
-  
+  function changeTagsOne(event){
+    const val=event.target.value
+    setTagsOne(val)
+  }
+  function changeTagsTwo(event){
+    const val=event.target.value
+    setTagsTwo(val)
+  }
+  function changeTagsThree(event){
+    const val=event.target.value
+    setTagsThree(val)
+  }
+  function changeTagsFour(event){
+    const val=event.target.value
+    setTagsFour(val)
+  }
   return(
     
     <div className="main-body-show">
@@ -438,6 +478,25 @@ console.log('display props', props)
        <Input placeholder={sunday.close} value={sunday.close} onChange={changeSundayClose} required={true}/>
      </FormControl>
      </div>
+     Tags: Choose up to four tags for you business. Suggestions include Keto, Vegan, Local and Traditional
+     <FormControl mt={4}>
+       <FormLabel>Tag #1</FormLabel>
+       <Input placeholder={tagOne} value={tagOne} onChange={changeTagOne} required={true}/>
+     </FormControl>
+     
+      <FormControl mt={4}>
+       <FormLabel>Tag #2</FormLabel>
+       <Input placeholder={tagTwo} value={tagTwo} onChange={setTagTwo} required={true}/>
+     </FormControl>
+     <FormControl mt={4}>
+       <FormLabel>Tag #3</FormLabel>
+       <Input placeholder={tagThree} value={tagThree} onChange={setTagThree} required={true}/>
+     </FormControl>
+     
+      <FormControl mt={4}>
+       <FormLabel>Tag #4</FormLabel>
+       <Input placeholder={tagFour} value={tagFour} onChange={setTagFour} required={true}/>
+     </FormControl>
 
     </div>
      
