@@ -430,6 +430,34 @@ app.put("/shops", function (request, response) {
     }
   });
 }
+else if (request.body.numberReviews) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#numberReviews': 'numberReviews'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    
+  
+    params.ExpressionAttributeValues[':numberReviews'] = request.body.numberReviews;
+    params.UpdateExpression += '#numberReviews = :numberReviews';
+ 
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+}
 });
 
 /****************************

@@ -13,6 +13,8 @@ import { Auth } from 'aws-amplify'
 import Api from '@aws-amplify/api-rest'
 const axios = require('axios');
 const dataArray = require('../ExtCAIDFinal')
+const dataArray2 = require('../USID2000')
+const dataArray3 = require('../USID5000')
 
 const AWS = require('aws-sdk');
 
@@ -46,7 +48,7 @@ export default function ShopDisplay(props) {
 
   const axiosFunc = async () =>  {
   const newData = []
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i < dataArray.length; i++) {
       await  wait(2000)
         console.log('before axios')
 fetchYelp(dataArray[i].id)
@@ -66,6 +68,52 @@ return dataArray[i]
     }
     return newData
 };
+
+ const axiosUS1 = async () =>  {
+  const newData = []
+    for (let i = 0; i < dataArray2.length; i++) {
+      await  wait(2000)
+        console.log('before axios')
+fetchYelp(dataArray2[i].id)
+.then((res) => {
+  console.log(res)
+dataArray2[i].yelpData = res
+newData.push(dataArray2[i])
+setAlert(`Recieved ${[i]} ${dataArray2[i].place_name}`)
+return dataArray2[i]
+
+})
+.catch((err) => {
+  console.log(err)
+  
+
+})
+    }
+    return newData
+};
+const axiosUS2 = async () =>  {
+  const newData = []
+    for (let i = 0; i < dataArray3.length; i++) {
+      await  wait(2000)
+        console.log('before axios')
+fetchYelp(dataArray3[i].id)
+.then((res) => {
+  console.log(res)
+dataArray3[i].yelpData = res
+newData.push(dataArray3[i])
+setAlert(`Recieved ${[i]} ${dataArray3[i].place_name}`)
+return dataArray3[i]
+
+})
+.catch((err) => {
+  console.log(err)
+  
+
+})
+    }
+    return newData
+};
+  
   
 
   const saveShop = async (detailsArray) => {
@@ -112,6 +160,14 @@ return dataArray[i]
         }
       }
       await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data5);
+      const data6 = {
+        body: {
+          numberReviews: detailsArray[i].numberReviews,
+          
+  
+        }
+      }
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data);
       
     }
     
@@ -183,7 +239,7 @@ for (const detail of details) {
   detailsObject.category = detail.categoryNew
   detailsObject.description = detail.description
   detailsObject.mapUrl = detail.place_url
-  detailsObject.numberReviews = detail.number_reviews
+  detailsObject.numberReviews = detail.yelpData.review_count
   detailsObject.servicesAvailable = detail.services_available
   detailsObject.hours = [];
   detailsObject.images = [];
@@ -221,7 +277,122 @@ saveShop(detailsArray)
 })
     })
   }
+const onClickUS1 = function() {
+    axiosUS1()
+    .then((details) => {
+      console.log(details)
+       const detailsArray = [];
+for (const detail of details) {
+  if (detail !== undefined && detail !== null) {
+  const detailsObject = {};
+  detailsObject.name = detail.yelpData.name;
+  detailsObject.latitude = detail.yelpData.coordinates.latitude;
+  detailsObject.longitude = detail.yelpData.coordinates.longitude;
+  detailsObject.address = detail.yelpData.location.display_address
+  detailsObject.phone = detail.yelpData.display_phone
+  detailsObject.callPhone = detail.yelpData.phone
+  detailsObject.image = detail.yelpData.image_url
+  detailsObject.rating = detail.yelpData.rating
+  detailsObject.price = detail.yelpData.price
+  detailsObject.category = detail.categoryNew
+  detailsObject.description = detail.description
+  detailsObject.mapUrl = detail.place_url
+  detailsObject.numberReviews = detail.yelpData.review_count
+  detailsObject.servicesAvailable = detail.services_available
+  detailsObject.hours = [];
+  detailsObject.images = [];
+  detailsObject.viewHours = detail.opening_hours
+  detailsObject.id = detail.id
 
+
+  for (const image of detail.yelpData.photos) {
+    detailsObject.images.push(image)
+  }
+  
+  if (detail.yelpData.hours) {
+  for (const day of detail.yelpData.hours[0].open) {
+    
+    const hours = {open: day.start, close: day.end, day: day.day}
+    
+    const stringHours = JSON.stringify(hours)
+    
+    detailsObject.hours.push(stringHours)
+    
+  }
+}
+if (!detailsArray.includes(detailsObject)) {
+  detailsArray.push(detailsObject)
+}
+}
+}
+saveShop(detailsArray)
+.then((res) => {
+  console.log(res)
+  setAlert("Seeding complete")
+})
+.catch((err) => {
+  console.log(err)
+})
+    })
+  }
+  const onClickUS2 = function() {
+    axiosUS2()
+    .then((details) => {
+      console.log(details)
+       const detailsArray = [];
+for (const detail of details) {
+  if (detail !== undefined && detail !== null) {
+  const detailsObject = {};
+  detailsObject.name = detail.yelpData.name;
+  detailsObject.latitude = detail.yelpData.coordinates.latitude;
+  detailsObject.longitude = detail.yelpData.coordinates.longitude;
+  detailsObject.address = detail.yelpData.location.display_address
+  detailsObject.phone = detail.yelpData.display_phone
+  detailsObject.callPhone = detail.yelpData.phone
+  detailsObject.image = detail.yelpData.image_url
+  detailsObject.rating = detail.yelpData.rating
+  detailsObject.price = detail.yelpData.price
+  detailsObject.category = detail.categoryNew
+  detailsObject.description = detail.description
+  detailsObject.mapUrl = detail.place_url
+  detailsObject.numberReviews = detail.yelpData.review_count
+  detailsObject.servicesAvailable = detail.services_available
+  detailsObject.hours = [];
+  detailsObject.images = [];
+  detailsObject.viewHours = detail.opening_hours
+  detailsObject.id = detail.id
+
+
+  for (const image of detail.yelpData.photos) {
+    detailsObject.images.push(image)
+  }
+  
+  if (detail.yelpData.hours) {
+  for (const day of detail.yelpData.hours[0].open) {
+    
+    const hours = {open: day.start, close: day.end, day: day.day}
+    
+    const stringHours = JSON.stringify(hours)
+    
+    detailsObject.hours.push(stringHours)
+    
+  }
+}
+if (!detailsArray.includes(detailsObject)) {
+  detailsArray.push(detailsObject)
+}
+}
+}
+saveShop(detailsArray)
+.then((res) => {
+  console.log(res)
+  setAlert("Seeding complete")
+})
+.catch((err) => {
+  console.log(err)
+})
+    })
+  }
   // API.get('shopsApi', `/shops/${id}`, {}).then((result) => {
   //   const shopApiData = JSON.parse(result.body);
   //   console.log(shopApiData, 'shop api data')
@@ -307,11 +478,16 @@ saveShop(detailsArray)
            
           </div>
           <button onClick={onClickCanada}>Reseed Canada</button>
+         
+        </div>
+        <button onClick={onClickUS1}>Reseed USA1</button>
+          
+          
+        <button onClick={onClickUS2}>Reseed USA2</button>
           
           {alert !== null && 
           <Alert>{alert}</Alert>
           }
-        </div>
           
       </div>
           
