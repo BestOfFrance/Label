@@ -116,12 +116,25 @@ useEffect(() => {
 
         }
       
-        {(props.signedIn && userApi.isVerified && userApi.accountType !== 'admin') &&
+        {(props.signedIn && userApi.isVerified && userApi.accountType !== 'admin' && userApi.accountType === 'foodie') &&
         
 
 
           <nav>
           <Link to='/dashboard' >
+        <button className="small-button" >
+        <img src="icons8-user-64.png" className="user-icon"></img>
+        
+        </button>
+        </Link>
+        </nav>
+          }
+          {(props.signedIn && userApi.isVerified && (userApi.accountType === 'monthly' || userApi.accountType === 'yearly')) &&
+        
+
+
+          <nav>
+          <Link to={`/dashboard/${userApi.shopId}`} >
         <button className="small-button" >
         <img src="icons8-user-64.png" className="user-icon"></img>
         

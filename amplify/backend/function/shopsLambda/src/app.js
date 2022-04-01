@@ -139,7 +139,8 @@ app.post('/shops', function(req, res) {
       meta: req.body.meta,
       categories: req.body.categories,
       gsi1pk: "geohash",
-      gsi1sk: req.body.gsi1sk
+      gsi1sk: req.body.gsi1sk,
+      tags: req.body.tags
       
     }
   }
@@ -391,6 +392,33 @@ app.put("/shops", function (request, response) {
   
     params.ExpressionAttributeValues[':address'] = request.body.address;
     params.UpdateExpression += '#address = :address';
+ 
+  
+  
+  docClient.update(params, (error, result) => {
+    if (error) {
+      response.json({ statusCode: 500, error: error.message, url: request.url });
+    } else {
+      response.json({ statusCode: 200, url: request.url, body: JSON.stringify(result.Attributes) })
+    }
+  });
+} else if (request.body.tags) {
+  const params = {
+    TableName: "shops-dev",
+    Key: {
+      id: request.body.id,
+    },
+    ExpressionAttributeNames: {'#tags': 'tags'},
+    ExpressionAttributeValues: {},
+    ReturnValues: 'UPDATED_NEW',
+  };
+  params.UpdateExpression = 'SET';
+  
+  
+    
+  
+    params.ExpressionAttributeValues[':tags'] = request.body.tags;
+    params.UpdateExpression += '#tags = :tags';
  
   
   

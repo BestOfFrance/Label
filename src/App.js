@@ -49,6 +49,7 @@ import ReportButtonEasy from './components/ReportButtonEasy'
 import UploadImage from './components/uploadImage'
 import {loadStripe} from '@stripe/stripe-js';
 import Admin from './components/AdminPage'
+import ShopDisplayEdit from './components/ShopDisplayEdit'
 
 const geohash = require('ngeohash');
 
@@ -715,7 +716,7 @@ console.log(state.signedIn, "state")
         <Route path="shops/:shop" element={<ShopDisplay shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn} />}/>
-        <Route path="dashboard/:id" element={<Dashboard shops={state.shops} logout={signOut}
+        <Route path="dashboard/:id" element={<ShopDisplayEdit shops={state.shops} logout={signOut}
         business={state.accountType}
         signedIn={state.signedIn}/>}/>
         <Route path="resetpassword" element={<ForgotPassword/>}/>
@@ -734,7 +735,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilterCMSMobile} categories={["Bakery", "Shop", "Restaurant", "Café"]}/>
      }
-      <DataButton onClick={saveShop}/>
+      {/* <DataButton onClick={saveShop}/> */}
       <Footer/>
     </div>
     

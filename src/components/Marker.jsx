@@ -186,7 +186,7 @@ export default function Marker(props) {
             
           </div>
           <div>
-            Address: <a href={`maps.google.com/?ll=${props.latitude},${props.longitude}`}>{props.address}, Vancouver, BC</a>
+            Address: <a href={props.shop.mapUrl}>{`${props.shop.address[0]}, ${props.shop.address[1]}, ${props.shop.address[2]}`}</a>
             
           </div>
           

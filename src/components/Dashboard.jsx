@@ -21,32 +21,32 @@ export default function Dashboard(props) {
 
   useEffect(() => {
   
-    Auth.currentAuthenticatedUser()
+   Auth.currentAuthenticatedUser()
     .then((user) => {
       console.log(user, 'user')
-      setUser(user.username)
+      
       let userInfo = user.username
       console.log(user)
       fetchUser(userInfo)
       .then((userData) => {
-        console.log('userData', userData)
+        console.log('userData', userData.data.Item.shopId)
         setUserApi(userData.data.Item)
-        if (props.signedIn) {
-          setRedirect(false)
-        } else {
-          setRedirect(true)
+        if (userData.data.Item.shopId !== null) {
+       
+       const fetchShop = async function () {
+          const shopData = await API.get('shopsApi', `/shops/${userData.data.Item.shopId}`)
+          return shopData
         }
-        
-        for (const shop of props.shops) {
-          
-          if (shop.id === userData.data.Item.shopId) {
-            setShop(shop)
-          }
+        fetchShop()
+        .then((out) => {
+          console.log(out)
+          setShop(out.body)
+        })
         }
-        
       })
     
     })
+    
     
   
   
@@ -65,7 +65,7 @@ export default function Dashboard(props) {
         {userApi !== null && userApi.isVerified && shop !== null && //(userApi.accountType === "yearly" || userApi.accountTyoe === "monthly") && props.activeSubscription
         <div>
         <button>Add my business</button>
-        <ShopDisplayEdit shops={props.shops} shop={shop}/>
+        <ShopDisplayEdit/>
         </div>
         }
       </div>
