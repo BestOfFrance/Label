@@ -100,12 +100,12 @@ export default function CreateAccount(props) {
     }
 
     const uploadFile = (file) => {
-
+      console.log('me')
         const params = {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: `${file.name}/${email}`
+            Key: `${email}${file.name}`
         };
 
         myBucket.putObject(params)
@@ -276,7 +276,7 @@ async function signUpFreemium() {
           signUp().then(() => {
             saveUser()
           .then((data) => {
-            sendEmail(businessName, role, data.email, data.id, firstname, lastname)
+            sendEmail(businessName, role, email, data.id, firstname, lastname)
             .then(() => {
               redirectToCheckout(data.id)
             })
@@ -369,7 +369,12 @@ const onChangeYearly = function() {
   }
 }
   const saveUser=async ()=>{
-   
+   if (state.monthly) {
+     setBusiness('monthly')
+  }
+   if (state.yearly) {
+     setBusiness('yearly')
+   }
     const data = {
       body: {
         firstname: firstname,
@@ -481,12 +486,16 @@ const onChangeYearly = function() {
        
           
      <div class="text-center">
+     {uploaded &&
+       <div>
        {state.monthly && 
        <button onClick={onCart}>Continue to payment</button>
        }
        {state.yearly &&
        <button onClick={onCart}>Continue to payment</button>
        }
+       </div>
+}
        {state.freemium &&
        <button onClick={onSubmit}>Register</button>
        }

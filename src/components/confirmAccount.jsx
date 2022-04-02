@@ -65,6 +65,7 @@ export default function ConfirmAccount(props) {
 
     
     <p>Confirm Your Account</p>
+    <p>Please check your email for your verification code</p>
     
    
             <FormControl mt={4}>

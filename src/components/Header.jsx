@@ -20,6 +20,7 @@ export default function Header(props) {
 //  if (props.isVerified) {
 //    id = props.
 //  }
+console.log('header props', props)
 async function fetchUser(email) {
     const userData = await API.get('usersApi', `/users/${email}`)
     return userData
@@ -36,7 +37,7 @@ function checkUser() {
           fetchUser(user.attributes.email)
           .then((response) => {
             setUserApi(response.data.Item)
-            
+            console.log(response.data.Item)
           })
           }
         
@@ -116,7 +117,7 @@ useEffect(() => {
 
         }
       
-        {(props.signedIn && userApi.isVerified && userApi.accountType !== 'admin' && userApi.accountType === 'foodie') &&
+        {(props.signedIn && userApi !== undefined && !userApi.isVerified) &&
         
 
 
@@ -129,7 +130,7 @@ useEffect(() => {
         </Link>
         </nav>
           }
-          {(props.signedIn && userApi.isVerified && (userApi.accountType === 'monthly' || userApi.accountType === 'yearly')) &&
+          {(props.signedIn &&  userApi !== undefined && userApi.isVerified && (userApi.accountType === 'monthly' || userApi.accountType === 'yearly')) &&
         
 
 
@@ -142,7 +143,7 @@ useEffect(() => {
         </Link>
         </nav>
           }
-            {(props.signedIn && userApi.isVerified && userApi.accountType === 'admin') &&
+            {(props.signedIn && userApi !== undefined && userApi.isVerified && userApi.accountType === 'admin') &&
         
 
 

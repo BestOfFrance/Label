@@ -56,7 +56,7 @@ const geohash = require('ngeohash');
  const details = require('./ExtUSDetails5000')
  console.log(details.length, 'details')
  const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
-
+const categoriesArray = ['Restaurant', 'Café', 'Bakery', 'Shop']
 
 // const dataObj = require('./details4001.js')
 // const dataObj1 = require('./details.js')
@@ -170,7 +170,7 @@ export default function Application(props) {
     mode: mode,
     shopID: 0,
     selected: null, 
-    categories: ["Bakery", "Shop", "Restaurant", "Café"],
+    categories: categoriesArray,
     topThree: [],
     searchSelected: "",
     searchList: [],
@@ -203,7 +203,8 @@ export default function Application(props) {
           fetchUser(user.attributes.email)
           .then((response) => {
             console.log(response, 'fetchuser')
-            console.log(response.data.Item.id)
+            // console.log(response.data.Item.id)
+            if (Object.keys(response.data) > 0) {
 
             fetchSubscription(`sub_${response.data.Item.id}`)
             .then((response) => {
@@ -212,6 +213,7 @@ export default function Application(props) {
             .catch((err) => {
               console.log(err)
             })
+            }
           })
           }
         
@@ -539,7 +541,7 @@ console.log('sorted shops', state.sortedShops)
 const cmsBakery = state.sortedShops.map((shop, index) => {
     
     return(
-      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={state.categories} category={shop.category} sortedShops={state.sortedShops}/>
+      <CMSCard className="cms" key={index} name={shop.name} id={shop.id} selectedCenter={selectedCenter} image={shop.image} distance={shop.distance} onClick={goToMap} shop={shop} state={state.shops} latitude={shop.latitude} longitude={shop.longitude} categories={["Bakery", "Restaurant", "Café", "Shop"]} category={shop.category} sortedShops={state.sortedShops}/>
     )
     
 
@@ -689,7 +691,7 @@ console.log(state.signedIn, "state")
       getNews={getNews}
       signedIn={state.signedIn}/>}
       <Routes>
-        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={["Bakery", "Shop", "Restaurant", "Café"]} onFilterCms={onFilterCMS} 
+        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
         categories={["Bakery", "Shop", "Restaurant", "Café"]} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}

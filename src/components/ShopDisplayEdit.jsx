@@ -9,20 +9,25 @@ import { API } from 'aws-amplify';
 import {Helmet} from "react-helmet";
 import './shopDisplayEdit.css'
 import { Auth } from 'aws-amplify'
+import AWS from 'aws-sdk'
 
 import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
 
 
-const AWS = require('aws-sdk');
 
-const SES_CONFIG = {
+const S3_BUCKET ='businessauth';
+const REGION ='us-east-1';
+
+
+AWS.config.update({
     accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
-    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-    region: 'us-east-1',
-};
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+})
 
-const AWS_SES = new AWS.SES(SES_CONFIG);
-
+const myBucket = new AWS.S3({
+    params: { Bucket: S3_BUCKET},
+    region: REGION,
+})
 
 export default function ShopDisplay(props) {
 console.log('display props', props)
@@ -45,14 +50,39 @@ console.log('display props', props)
   const [friday, setFriday] = useState({})
   const [saturday, setSaturday] = useState({})
   const [sunday, setSunday] = useState({})
-  const [tagsOne, setTagsOne] = useState('')
-  const [tagsTwo, setTagsTwo] = useState('')
-  const [tagsThree, setTagsThree] = useState('')
-  const [tagsFour, setTagsFour] = useState('')
+  const [tagOne, setTagOne] = useState('')
+  const [tagTwo, setTagTwo] = useState('')
+  const [tagThree, setTagThree] = useState('')
+  const [tagFour, setTagFour] = useState('')
   const [hourArray, setHourArray] = useState([])
   const [seo, setSeo] = useState('')
   
-  
+  const [progress , setProgress] = useState(0);
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileInput = (e) => {
+        setSelectedFile(e.target.files[0]);
+    }
+
+    const uploadFile = (file) => {
+
+        const params = {
+            ACL: 'public-read',
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: file.name
+        };
+
+        myBucket.putObject(params)
+            .on('httpUploadProgress', (evt) => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100))
+            })
+            .send((err) => {
+                if (err) console.log(err)
+            })
+    }
+
+
   async function fetchShops() {
     const shopData = await API.get('shopsApi', `/shops/${id.id}`, {})
     return shopData
@@ -197,13 +227,13 @@ console.log('display props', props)
       console.log(err);
     })
     }
-    if (tagsOne.length > 0 || tagsTwo.length > 0 || tagsThree.length > 0 || tagsFour.length > 0) {
+    if (tagOne.length > 0 || tagTwo.length > 0 || tagThree.length > 0 || tagFour.length > 0) {
 
     const tagsArray = []
-    tagsArray.push(tagsOne)
-    tagsArray.push(tagsTwo)
-    tagsArray.push(tagsThree)
-    tagsArray.push(tagsFour)
+    tagsArray.push(tagOne)
+    tagsArray.push(tagTwo)
+    tagsArray.push(tagThree)
+    tagsArray.push(tagFour)
     
     API.put('shopsApi', `/shops`, { 
       body: {
@@ -293,21 +323,21 @@ console.log('display props', props)
     const val=event.target.value
     setSunday((prev) => ({ ...prev, close: val, day: 6 }))
   }
-  function changeTagsOne(event){
+  function changeTagOne(event){
     const val=event.target.value
-    setTagsOne(val)
+    setTagOne(val)
   }
-  function changeTagsTwo(event){
+  function changeTagTwo(event){
     const val=event.target.value
-    setTagsTwo(val)
+    setTagTwo(val)
   }
-  function changeTagsThree(event){
+  function changeTagThree(event){
     const val=event.target.value
-    setTagsThree(val)
+    setTagThree(val)
   }
-  function changeTagsFour(event){
+  function changeTagFour(event){
     const val=event.target.value
-    setTagsFour(val)
+    setTagFour(val)
   }
   return(
     
@@ -365,6 +395,12 @@ console.log('display props', props)
           
         </div>
         <div className="edit-shop-bottom-info">
+         <div>
+         Upload Images
+        <div>Native SDK File Upload Progress is {progress}%</div>
+        <input type="file" onChange={handleFileInput}/>
+        <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
+    </div>
         <div className='shop-rating-price'>
             <div className='shop-rating'>
             Rating: {shop.rating}
