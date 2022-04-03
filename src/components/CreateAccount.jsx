@@ -225,10 +225,11 @@ async function signUpFreemium() {
 }
 
   const onCart = function() {
+    let priceId = ''
     if (state.monthly) {
-      const priceId = 'price_1KYx2lHYehZq7RpTMCyoyOpk' ;
+      priceId = 'price_1KYx2lHYehZq7RpTMCyoyOpk' ;
     } else if (state.yearly) {
-      const priceId = 'price_1KYx2lHYehZq7RpTFEXxebG2'
+      priceId = 'price_1KYx2lHYehZq7RpTFEXxebG2'
     }
     const redirectToCheckout = async (userId) => {
       const fetchSession = async () => {
@@ -238,7 +239,7 @@ async function signUpFreemium() {
           body: {
           quantity: 1,
           client_reference_id: userId,
-          priceId: "price_1KZLQSHYehZq7RpTPbt6aMad"
+          priceId: priceId
           }
         }
         const session = await API.post(apiName, apiEndpoint, data)
