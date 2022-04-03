@@ -54,6 +54,11 @@
 .filter-mobile-button {
   width: 19%;
   text-align: center;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 .filter-mobile-button-all {
   width: 19%;

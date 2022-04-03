@@ -170,7 +170,7 @@ export default function Application(props) {
     mode: mode,
     shopID: 0,
     selected: null, 
-    categories: categoriesArray,
+    categories: ["Bakery", "Shop", "Restaurant", "Café"],
     topThree: [],
     searchSelected: "",
     searchList: [],
@@ -180,9 +180,14 @@ export default function Application(props) {
     placesNearYou: [],
     premiumShops: [],
     sortedShops: [],
-    cmsCategories: ["Bakery", "Shop", "Restaurant", "Café"]
+    cmsCategories: ["Bakery", "Shop", "Restaurant", "Café"],
+    topThreeRestaurant: [],
+    topThreeBakery: [],
+    topThreeCafe: [],
+    topThreeShop: []
+    
   })
-
+ 
   const navigate = useNavigate()
   async function fetchUser(email) {
     const userData = await Api.get('usersApi', `/users/${email}`)
@@ -354,10 +359,10 @@ export default function Application(props) {
     const placeClosestToYou = markersByDistance[0]
     const allShops = [];
     const allCMSShops = [];
-    const closestBakery = [];
-    const closestRestaurant = [];
-    const closestPastryShop = [];
-    const closestGrocery = [];
+    const topThreeBakery = [];
+    const topThreeRestaurant = [];
+    const topThreeCafe = [];
+    const topThreeShop = [];
     for (const marker of markersByDistance) {
       if (state.categories.includes(marker.category) && marker.hidden === false) {
         allShops.push(marker)
@@ -368,29 +373,290 @@ export default function Application(props) {
       //"Pastry Shop", "Cake shop", "Dessert shop"
       
       if ((marker.category === "Bakery") && allShops[0] !== marker) {
-        closestBakery.push(marker)
+        topThreeBakery.push(marker)
       }
       //"Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"
-      if ((marker.category === "Restaurant" || marker.category === "Bistro" || marker.category === "Charcuterie" || marker.category === "Diner") && allShops[0] !== marker && closestBakery[0] !== marker) {
-        closestRestaurant.push(marker)
+      if ((marker.category === "Restaurant" || marker.category === "Bistro" || marker.category === "Charcuterie" || marker.category === "Diner") && allShops[0] !== marker ) {
+        topThreeRestaurant.push(marker)
       }
-      if ((marker.category === "Café" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker && closestBakery[0] !== marker && closestRestaurant[0] !== marker) {
-        closestPastryShop.push(marker)
+      if ((marker.category === "Café" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker ) {
+        topThreeCafe.push(marker)
       }
-      if ((marker.category === "Shop" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker && closestBakery[0] !== marker && closestRestaurant[0] !== marker) {
-        closestGrocery.push(marker)
+      if ((marker.category === "Shop" || marker.category === "Cake shop" || marker.category === "Dessert shop" )  && allShops[0] !== marker ) {
+        topThreeShop.push(marker)
       }
     }
     const topThreeShops = allShops.slice(0,3)
+    console.log(state.categories, 'categoreis state')
+    if (state.categories.includes("Bakery") && state.categories.includes("Shop") && state.categories.includes("Café") && state.categories.includes("Restaurant")) {
+      console.log('state alllll')
+    const itemsNew = state.sortedShops.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
 
-    setState((prev) => ({ ...prev, topThree: topThreeShops, placesNearYou: [closestPastryShop[0], closestBakery[0], closestRestaurant[0], closestGrocery[0]], sortedShops: allCMSShops}))
+})
+setItems(itemsNew.slice(0,3))
+  } else if (state.categories === ["Bakery"]) {
+    const itemsNew = state.topThreeBakery.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew)
+  } else if (state.categories === ["Restaurant"]) {
+    const itemsNew = state.topThreeRestaurant.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew)
+  } else if (state.categories === ["Café"]) {
+    const itemsNew = state.topThreeCafe.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew)
+  } else if (state.categories === ["Shop"]) {
+    const itemsNew = state.topThreeShop.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew)
+  }
+    
+
+    setState((prev) => ({ ...prev, topThreeShop: topThreeShop, topThreeBakery: topThreeBakery, topThreeRestaurant: topThreeRestaurant, topThreeCafe: topThreeCafe, sortedShops: allCMSShops}))
     
     
   })
 
    }
   
- console.log(state.placesNearYou[0])
+
+  useEffect(() => {
+    if (state.categories.includes("Bakery") && state.categories.includes("Shop") && state.categories.includes("Café") && state.categories.includes("Restaurant")) {
+      console.log('state alllll')
+    const itemsNew = state.sortedShops.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (state.categories.includes("Bakery")) {
+    const itemsNew = state.topThreeBakery.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (state.categories.includes("Restaurant")) {
+    const itemsNew = state.topThreeRestaurant.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (state.categories.includes("Café")) {
+    const itemsNew = state.topThreeCafe.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (state.categories.includes("Shop")) {
+    const itemsNew = state.topThreeShop.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  }
+    
+  }, [state.sortedShops])
+ console.log(state, 'app state')
+ 
 //set the selected marker
 const [selectedCenter, setSelectedCenter] = useState(null);
 
@@ -486,55 +752,8 @@ const goToMapCms = function (latitude, longitude, selectedCenter) {
   setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
   
 }
-
-// set up the list of shops on the side
-const items = state.topThree.map((shop, index) => {
-  if (state.categories.includes(shop.category)) {
-    return(
-      <BusinessList 
-      key={index} 
-      name={shop.name} 
-      id={shop.id} 
-      selectedCenter={selectedCenter} 
-      image={shop.image} 
-      distance={shop.distance} 
-      onClick={goToMap} 
-      shop={shop} 
-      hours={shop.hours}
-      state={state.shops}
-      rating={shop.rating}
-      price={shop.price}
-      latitude={shop.latitude} 
-      longitude={shop.longitude}/>
-    )
-  }
-    
-
-})
-
-const premium = state.premiumShops.map((shop, index) => {
-  
-    return(
-      <BusinessList 
-      key={index} 
-      name={shop.name} 
-      id={shop.id} 
-      selectedCenter={selectedCenter} 
-      image={shop.image} 
-      distance={shop.distance} 
-      onClick={goToMap} 
-      shop={shop} 
-      hours={shop.hours}
-      state={state.shops}
-      rating={shop.rating}
-      price={shop.price}
-      latitude={shop.latitude} 
-      longitude={shop.longitude}/>
-    )
-    
-    
-
-})
+const [items, setItems] = useState([])
+console.log(items, 'items state')
 
 // cms cards
 console.log('sorted shops', state.sortedShops)
@@ -555,7 +774,139 @@ const cmsBakery = state.sortedShops.map((shop, index) => {
 //function for filter button
 const onFilter = function(data) {
   console.log(data)
+  console.log(data.includes("Bakery"), 'hello')
   setState((prev) => ({ ...prev, categories: [...data] }))
+  if (data.includes("Bakery") && data.includes("Shop") && data.includes("Café") && data.includes("Restaurant")) {
+    const itemsNew = state.sortedShops.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (data.includes("Bakery")) {
+    console.log('bakery')
+    const itemsNew = state.topThreeBakery.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (data.includes("Restaurant")) {
+    console.log(
+     'i am hapenninggg'
+    )
+    const itemsNew = state.topThreeRestaurant.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (data.includes("Café")) {
+    const itemsNew = state.topThreeCafe.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  } else if (data.includes("Shop")) {
+    const itemsNew = state.topThreeShop.map((shop, index) => {
+  
+    return(
+      <BusinessList 
+      key={index} 
+      name={shop.name} 
+      id={shop.id} 
+      selectedCenter={selectedCenter} 
+      image={shop.image} 
+      distance={shop.distance} 
+      onClick={goToMap} 
+      shop={shop} 
+      hours={shop.hours}
+      state={state.shops}
+      rating={shop.rating}
+      price={shop.price}
+      latitude={shop.latitude} 
+      longitude={shop.longitude}/>
+    )
+  
+   
+
+})
+setItems(itemsNew.slice(0,3))
+  }
+
   
 }
 // const [pastry, setPastry] = useState(true)
@@ -691,7 +1042,7 @@ console.log(state.signedIn, "state")
       getNews={getNews}
       signedIn={state.signedIn}/>}
       <Routes>
-        <Route path='/' element={<HomePage  items={items} premium={premium} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
+        <Route path='/' element={<HomePage  items={items} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
         categories={["Bakery", "Shop", "Restaurant", "Café"]} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}

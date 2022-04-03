@@ -143,7 +143,7 @@ console.log(props.shop.category, props.shop.name)
             }
             {props.shop.rating === 2.5 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="rating.svg"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="rating.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
              {props.shop.rating === 3 &&

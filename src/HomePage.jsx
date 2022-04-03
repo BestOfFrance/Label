@@ -36,6 +36,15 @@ import {Helmet} from "react-helmet";
 const geohash = require('ngeohash');
 
 export default function HomePage(props) {
+  const [items, setItems] = useState(props.items)
+  console.log(props.items)
+  useEffect(() => {
+    
+    setItems(props.items)
+
+
+  }, [props.items])
+
 
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 768;
@@ -82,8 +91,7 @@ export default function HomePage(props) {
           <div className="cms">
           
         <ListGroup as="ul" id="premium">
-          {props.premium[0]}
-          {props.items}
+          {items}
        </ListGroup>
        </div>
           </div>
