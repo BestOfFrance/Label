@@ -18,7 +18,7 @@ export default function FilterMapMobile(props) {
   }
 
   const onClickGrocery = function (){
-    props.onClick(["Grocery", "Cheese shop", "Chocolate shop", "Convenience Store", "Grocery store"])
+    props.onClick(["Shop"])
     if (!state.grocery) {
       setState((prev) => ({pastry: false, grocery: true, restaurant: false, bakery: false}))
     } 
@@ -26,7 +26,7 @@ export default function FilterMapMobile(props) {
   }
 
   const onClickRestaurant = function (){
-    props.onClick(["Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant", "French restaurant"])
+    props.onClick(["Restaurant"])
   
     if (!state.restaurant) {
       setState((prev) => ({pastry: false, grocery: false, restaurant: true, bakery: false}))
@@ -34,14 +34,14 @@ export default function FilterMapMobile(props) {
   }
 
   const onClickBakery = function (){
-    props.onClick(["Bakery", "Cafe"])
+    props.onClick(["Café"])
     if (!state.bakery) {
       setState((prev) => ({pastry: false, grocery: false, restaurant: false, bakery: true}))
     } 
   }
 
   const onClickPastry = function (){
-    props.onClick(["Pastry Shop", "Cake shop", "Dessert shop"])
+    props.onClick(["Bakery"])
     if (!state.pastry) {
       setState((prev) => ({pastry: true, grocery: false, restaurant: false, bakery: false}))
     } 

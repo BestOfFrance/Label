@@ -184,7 +184,8 @@ export default function Application(props) {
     topThreeRestaurant: [],
     topThreeBakery: [],
     topThreeCafe: [],
-    topThreeShop: []
+    topThreeShop: [],
+    allCategories: []
     
   })
  
@@ -356,6 +357,7 @@ export default function Application(props) {
     // sort the array... now the first 5 elements should be your closest points.
     markersByDistance.sort( sorter );
     console.log(markersByDistance[0])
+    const allCategories = []
     const placeClosestToYou = markersByDistance[0]
     const allShops = [];
     const allCMSShops = [];
@@ -364,6 +366,7 @@ export default function Application(props) {
     const topThreeCafe = [];
     const topThreeShop = [];
     for (const marker of markersByDistance) {
+      allCategories.push(marker)
       if (state.categories.includes(marker.category) && marker.hidden === false) {
         allShops.push(marker)
       }
@@ -414,110 +417,10 @@ export default function Application(props) {
 
 })
 setItems(itemsNew.slice(0,3))
-  } else if (state.categories === ["Bakery"]) {
-    const itemsNew = state.topThreeBakery.map((shop, index) => {
-  
-    return(
-      <BusinessList 
-      key={index} 
-      name={shop.name} 
-      id={shop.id} 
-      selectedCenter={selectedCenter} 
-      image={shop.image} 
-      distance={shop.distance} 
-      onClick={goToMap} 
-      shop={shop} 
-      hours={shop.hours}
-      state={state.shops}
-      rating={shop.rating}
-      price={shop.price}
-      latitude={shop.latitude} 
-      longitude={shop.longitude}/>
-    )
-  
-   
-
-})
-setItems(itemsNew)
-  } else if (state.categories === ["Restaurant"]) {
-    const itemsNew = state.topThreeRestaurant.map((shop, index) => {
-  
-    return(
-      <BusinessList 
-      key={index} 
-      name={shop.name} 
-      id={shop.id} 
-      selectedCenter={selectedCenter} 
-      image={shop.image} 
-      distance={shop.distance} 
-      onClick={goToMap} 
-      shop={shop} 
-      hours={shop.hours}
-      state={state.shops}
-      rating={shop.rating}
-      price={shop.price}
-      latitude={shop.latitude} 
-      longitude={shop.longitude}/>
-    )
-  
-   
-
-})
-setItems(itemsNew)
-  } else if (state.categories === ["Café"]) {
-    const itemsNew = state.topThreeCafe.map((shop, index) => {
-  
-    return(
-      <BusinessList 
-      key={index} 
-      name={shop.name} 
-      id={shop.id} 
-      selectedCenter={selectedCenter} 
-      image={shop.image} 
-      distance={shop.distance} 
-      onClick={goToMap} 
-      shop={shop} 
-      hours={shop.hours}
-      state={state.shops}
-      rating={shop.rating}
-      price={shop.price}
-      latitude={shop.latitude} 
-      longitude={shop.longitude}/>
-    )
-  
-   
-
-})
-setItems(itemsNew)
-  } else if (state.categories === ["Shop"]) {
-    const itemsNew = state.topThreeShop.map((shop, index) => {
-  
-    return(
-      <BusinessList 
-      key={index} 
-      name={shop.name} 
-      id={shop.id} 
-      selectedCenter={selectedCenter} 
-      image={shop.image} 
-      distance={shop.distance} 
-      onClick={goToMap} 
-      shop={shop} 
-      hours={shop.hours}
-      state={state.shops}
-      rating={shop.rating}
-      price={shop.price}
-      latitude={shop.latitude} 
-      longitude={shop.longitude}/>
-    )
-  
-   
-
-})
-setItems(itemsNew)
-  }
+  } 
     
 
-    setState((prev) => ({ ...prev, topThreeShop: topThreeShop, topThreeBakery: topThreeBakery, topThreeRestaurant: topThreeRestaurant, topThreeCafe: topThreeCafe, sortedShops: allCMSShops}))
+    setState((prev) => ({ ...prev, topThreeShop: topThreeShop, topThreeBakery: topThreeBakery, topThreeRestaurant: topThreeRestaurant, topThreeCafe: topThreeCafe, sortedShops: allCMSShops, allCategories: allCategories}))
     
     
   })
@@ -528,7 +431,7 @@ setItems(itemsNew)
   useEffect(() => {
     if (state.categories.includes("Bakery") && state.categories.includes("Shop") && state.categories.includes("Café") && state.categories.includes("Restaurant")) {
       console.log('state alllll')
-    const itemsNew = state.sortedShops.map((shop, index) => {
+    const itemsNew = state.allCategories.map((shop, index) => {
   
     return(
       <BusinessList 
@@ -929,7 +832,7 @@ useEffect(() => {
   // getDistance(state.location)
 }, [state.categories])
 useEffect(() => {
-  // getDistance(state.location)
+  getDistance(state.location)
 }, [state.cmsCategories])
 console.log('places', state.placesNearYou)
 
