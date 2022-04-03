@@ -94,6 +94,7 @@ export default function CreateAccount(props) {
   const [progress , setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploaded, setUploaded] = useState(false)
+    
 
     const handleFileInput = (e) => {
         setSelectedFile(e.target.files[0]);
@@ -271,36 +272,36 @@ async function signUpFreemium() {
         const userData = await Api.get('usersApi', `/users/${email}`)
         return userData
       }
-      fetchUser().then((out)=> {
-        
-          signUp().then(() => {
+      fetchUser()
+      .then((out)=> {
+         if (out.data.Item) {
+          setemail("This email has already been used")
+        } else {
+           signUp()
+          .then(() => {
             saveUser()
           .then((data) => {
             sendEmail(businessName, role, email, data.id, firstname, lastname)
             .then(() => {
               redirectToCheckout(data.id)
             })
-            
+             .catch((err) => {
+               setError(err.body)
+               console.log(err)
+             })
           })
-          .catch((err) => {
-            console.log(err)
-          })
-
-
           })
           
-          
+           .catch((err) => {
+            setError(err.body)
+           })
         
-            
-          
-          
-          
-        
+         
+        }
+       
         
       })
-      .catch((err) => {
-        console.log(err)
-      })
+     
       
           
       // saveUser();

@@ -111,17 +111,17 @@ export default function Marker(props) {
   //"Restaurant", "Bistro", "Breakfast Restaurant", "Charcuterie", "Diner", "Family restaurant", "Fine dining restaurant"
 
  useEffect(() => {
-  if (props.category === "Bakery" || props.category === "Cafe" ) {
-    setBackground('url("croissant-2.svg")');
+  if (props.category === "Bakery") {
+    setBackground('url("madeleine.svg")');
    
-   } else if (props.category === "Pastry Shop" || props.category === "Cake shop" || props.category === "Dessert shop"){
+   } else if (props.category === "Café"){
       
-      setBackground('url("madeleine.svg")');
+      setBackground('url("coffee-cup-2.svg")');
     
-   } else if (props.category === "Restaurant" || props.category === "Bistro" || props.category === "Breakfast Restaurant" || props.category === "Charcuterie" || props.category === "Diner" || props.category === "Family restaurant" || props.category === "Fine dining restaurant" || props.category === "French restaurant") {
+   } else if (props.category === "Restaurant") {
     setBackground('url("fork.svg")');
     
-   } else if (props.category === "Grocery" || props.category === "Cheese shop" || props.category === "Chocolate shop" || props.category === "Convenience store" || props.category === "Grocery store") {
+   } else if (props.category === "Shop") {
     setBackground('url("shop.svg")');
    }
  }, [])
