@@ -28,7 +28,7 @@
   justify-content: center;
 }
 .cms {
-  height: 72vh !important;
+  height: 76vh !important;
 }
 h3 {
   color: #1d1d1d ;
@@ -191,7 +191,7 @@ h2{
     font-size: 1.5em;
   }
   .locate-button-business {
-    transform: translateX(-15px)
+    transform: translate(-15px, 5px)
   } 
   .price-rating-cards {
     width: 190px;
@@ -215,7 +215,7 @@ h2{
     width: 30%;
   }
   .title-business {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   .locate-button-business {
     transform: translateY(-10px)
@@ -233,7 +233,7 @@ h2{
     
   }
   div.cms {
-    height: 80% !important;
+    height: 100% !important;
   }
   div.map {
     width: 100%;
@@ -250,7 +250,7 @@ h2{
     width: 100%;
   }
   .cms-button-container-upper {
-    flex-direction: column;
+    flex-direction: row;
   }
   .marker-information-cms {
     flex-direction: column;
