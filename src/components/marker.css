@@ -44,12 +44,17 @@
   background-position: 50% 50%;
   width: 33%;
   height: 20em;
-}s
+}
+.rating-start-map {
+  height: 12px;
+  width: auto;
+}
 
 .title {
   font-size: medium;
 }
 .rating {
+  display: flex;
   align-items: center;
 }
 .close {

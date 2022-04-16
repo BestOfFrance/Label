@@ -180,6 +180,10 @@ h3.cms-card-title-each {
   height: 15px;
   width: auto;
 }
+.rating-star-map {
+  height: 12px;
+  width: auto;
+}
 .cms-marker-image {
   height: 45px;
   width: 45px;

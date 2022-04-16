@@ -1,4 +1,5 @@
-const data = require('./ExtCADetailsFull')
+const data = require('./ExtUSDetails5000')
+const data2 = require('./ExtUSDetails2000')
 const categories = require('./Categories_Canada_21022022.json')
 
 const fs = require('fs');
@@ -9,6 +10,15 @@ console.log(data.length)
 const addressArray = []
 
 for (const shop of data) {
+  for (const category of categories) {
+    if(shop !== null && (shop.category === category.RowLabels) && category.Category !== null) {
+      shop.categoryNew = category.Category
+      addressArray.push(shop)
+    }
+  }
+}
+
+for (const shop of data2) {
   for (const category of categories) {
     if(shop !== null && (shop.category === category.RowLabels) && category.Category !== null) {
       shop.categoryNew = category.Category
@@ -80,7 +90,7 @@ console.log(addressArray.length)
 // }
 // console.log(addressArray)
 // console.log(addressArray.length)
-var file = fs.createWriteStream('ExtCADetailsFinal.json');
+var file = fs.createWriteStream('ExtUSDetailsFinal.json');
   
   file.write(JSON.stringify(addressArray));
   file.end();

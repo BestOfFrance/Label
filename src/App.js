@@ -53,9 +53,9 @@ import ShopDisplayEdit from './components/ShopDisplayEdit'
 
 const geohash = require('ngeohash');
 
- const details = require('./ExtUSDetails5000')
+ const details = require('./ExtUSDetailsFinal')
  console.log(details.length, 'details')
- const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
+ const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
 const categoriesArray = ['Restaurant', 'Café', 'Bakery', 'Shop']
 
 // const dataObj = require('./details4001.js')
@@ -991,7 +991,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilterCMSMobile} categories={["Bakery", "Shop", "Restaurant", "Café"]}/>
      }
-      {/* <DataButton onClick={saveShop}/> */}
+      <DataButton onClick={saveShop}/>
       <Footer/>
     </div>
     
