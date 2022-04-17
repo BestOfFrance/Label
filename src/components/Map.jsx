@@ -62,7 +62,7 @@ useEffect(() => {
         yesIWantToUseGoogleMapApiInternals
         
        
-        onChange={({center, zoom}) => {props.onChange({center, zoom})}}
+        onChange={({center, zoom, bounds}) => {props.onChange({center, zoom, bounds})}}
         center={{lat: Number(location.lat), lng: Number(location.lng)}}
         defaultCenter={{lat: locationDefault.lat, lng: locationDefault.lng}}
         defaultZoom={props.zoomLevel}

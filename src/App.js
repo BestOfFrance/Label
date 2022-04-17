@@ -187,8 +187,8 @@ export default function Application(props) {
     topThreeBakery: [],
     topThreeCafe: [],
     topThreeShop: [],
-    allCategories: []
-    
+    allCategories: [],
+    bounds: {}
   })
  
   const navigate = useNavigate()
@@ -309,13 +309,31 @@ export default function Application(props) {
   }
      
       var markersByDistance = [];
+      let latmin = 0
+      let latmax = 0
+      let lngmin = 0
+      let lngmax = 0
+      let hashes = 0
+      if(Object.keys(state.bounds).length === 0) {
+             latmin = myLatlng.lat - 0.03
+    latmax = myLatlng.lat + 0.03
+     lngmin = myLatlng.lng - 0.03
+     lngmax = myLatlng.lng + 0.03
+     hashes = geohash.bboxes(latmin, lngmin, latmax, lngmax, 3);
+      } else {
+        console.log('bound specific', state.bounds.ne.lat)
+        latmin = state.bounds.se.lat
+        latmax = state.bounds.ne.lat
+        lngmin = state.bounds.sw.lng
+        lngmax = state.bounds.ne.lng
+        hashes = geohash.bboxes(latmin, lngmin, latmax, lngmax, 3);
+        console.log('heashes', hashes)
+      }
       // console.log(markers, 'markers')
       // console.log(myLatlng, 'll')
-        const latmin = myLatlng.lat - 0.03
-    const latmax = myLatlng.lat + 0.03
-    const lngmin = myLatlng.lng - 0.03
-    const lngmax = myLatlng.lng + 0.03
-    const hashes = geohash.bboxes(latmin, lngmin, latmax, lngmax, 3);
+    
+    
+    
     fetchShops(hashes).then((markers)=> {
     console.log(markers)
     // console.log(JSON.stringify(data[0]), 'data')
@@ -634,8 +652,9 @@ const openShopWindow = function(shop) {
 
 
 // set function to get the disatnce every time the map scrolls
-const onChange = function({center, zoom}) {
-  
+const onChange = function({center, zoom, bounds}) {
+  console.log('BOUNDS', bounds)
+  setState((prev) => ({ ...prev, bounds: bounds}));
   getDistance(center)
 }
 

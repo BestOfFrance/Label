@@ -80,6 +80,7 @@ export default function HomePage(props) {
     { property: 'og:image:type', content: 'image/jpeg' }
     
   ]}
+  
 />
       {props.mode === 'MAP' &&
       <div className="main-container">
