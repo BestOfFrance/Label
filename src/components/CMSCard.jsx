@@ -115,7 +115,8 @@ console.log(props.shop.category, props.shop.name)
         <p className="cms-card-shop-title">{props.shop.name}</p>
       <div className="price-rating-cards-cms">
           <div className='rating-business'>
-            Rating: {props.shop.rating}
+            {/* Rating: {props.shop.rating} */}
+            {/* Rating: <p className="rating-buffer"></p> */}
             {props.shop.rating === 0 &&
             <div>
               <img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>

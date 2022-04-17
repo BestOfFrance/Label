@@ -128,8 +128,16 @@ button {
 
 #search-container-mobile {
   display: flex;
-  justify-content: center;
+  justify-content: center; 
+  
 }
+#search-container {
+  display: flex;
+  justify-content: center; 
+  width: 300px;
+  
+}
+
 /* 
 /* Dropdown Button */
 /* .dropbtn {

@@ -143,7 +143,8 @@ export default function BusinessList(props) {
           </div>
           <div className="price-rating-cards">
             <div className='rating-business'>
-              Rating: {props.shop.rating}
+              {/* Rating: {props.shop.rating} */}
+              {/* Rating: <p className="rating-buffer"></p> */}
               {props.shop.rating === 0 &&
             <div>
               <img src="emptyStar.svg" className="rating-star-map"></img><img src="emptyStar.svg" className="rating-star-map"></img><img src="emptyStar.svg" className="rating-star-map"></img><img src="emptyStar.svg" className="rating-star-map"></img><img src="emptyStar.svg" className="rating-star-map"></img>

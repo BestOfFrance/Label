@@ -67,3 +67,7 @@
   height: 10em;
   width: 10em;
 }
+
+.rating-buffer {
+  width: 3px;
+}
