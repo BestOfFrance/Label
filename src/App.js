@@ -52,6 +52,8 @@ import Admin from './components/AdminPage'
 import ShopDisplayEdit from './components/ShopDisplayEdit'
 
 const geohash = require('ngeohash');
+const canadaCities = require('./canadacities')
+const usCities = require('./uscities')
 
  const details = require('./ExtUSDetailsFinal')
  console.log(details.length, 'details')
@@ -326,6 +328,18 @@ export default function Application(props) {
        premiumShops.push(shop)
      }
       const newShop = {name: shop.name, id: shop.id, latitude: shop.latitude, longitude: shop.longitude}
+      searchList.push(newShop)
+    
+    }
+    for (const city of canadaCities) {
+      
+       const newShop = {name: city.city, latitude: city.lat, longitude: city.lng}
+       searchList.push(newShop)
+     
+     }
+     for (const city of usCities) {
+      
+      const newShop = {name: city.city, latitude: city.lat, longitude: city.lng}
       searchList.push(newShop)
     
     }
