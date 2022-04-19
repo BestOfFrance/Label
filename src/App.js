@@ -60,7 +60,7 @@ const usCities = require('./uscities')
  const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
 const categoriesArray = ['Restaurant', 'Café', 'Bakery', 'Shop']
 
-const permanentMapMarkers = [{city: Calgary, lat: 51.0447, lng: -114.0719 }]
+const permanentMapMarkers = [{city: "Calgary", lat: 51.0447, lng: -114.0719 }, {city: "Vancouver", lat: 49.246292, lng: -123.116226 }, {city: "Regina", lat: 50.445210, lng: -104.618896 }, {city: "Toronto", lat: 43.651070, lng: -79.347015 }, {city: "Montreal", lat: 45.508888, lng: -73.561668 }, {city: "Charlottetown", lat: 46.238888, lng: -63.129166 }, {city: "Fredericton", lat: 45.964993, lng: -66.646332 }, {city: "Portland", lat: 45.523064, lng: -122.676483 }, {city: "Dallas", lat: 32.7767, lng: -96.7970 }, {city: "Seattle", lat: 47.6062, lng: -122.3321 }, {city: "Los Angeles", lat: 34.0522, lng: -118.2437 }, {city: "New York", lat: 43.000000, lng: -75.000000 }, {city: "Miami", lat: 25.7617, lng: -80.1918 }]
 
 // const dataObj = require('./details4001.js')
 // const dataObj1 = require('./details.js')
@@ -937,6 +937,27 @@ const pin = state.shops.map((center, index) => {
   
 })
 
+const permanent = permanentMapMarkers.map((center, index) => {
+  return (
+    <Marker
+    key={index}
+    id={center.id}
+    text={center.city}
+    lat={center.lat}
+    lng={center.lng}
+    category={"city"}
+    onClick={() => {
+      setState((prev) => ({ ...prev, location: {lat: center.lat, lng: center.lng} }))
+   }}
+    show={selectedCenter}
+    onClicking={() => {
+      setSelectedCenter(false)
+    }}
+    
+    />
+  )
+})
+
 console.log(state.signedIn, "state")
 //render all
   return(
@@ -961,7 +982,7 @@ console.log(state.signedIn, "state")
       getNews={getNews}
       signedIn={state.signedIn}/>}
       <Routes>
-        <Route path='/' element={<HomePage  items={items} location={state.location} shops={state.shops} marker={pin} onChange={onChange} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
+        <Route path='/' element={<HomePage  items={items} location={state.location} shops={state.shops} marker={pin} onChange={onChange} permanent={permanent} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
         categories={["Bakery", "Shop", "Restaurant", "Café"]} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
@@ -1007,7 +1028,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilterCMSMobile} categories={["Bakery", "Shop", "Restaurant", "Café"]}/>
      }
-      <DataButton onClick={saveShop}/>
+      {/* <DataButton onClick={saveShop}/> */}
       <Footer/>
     </div>
     

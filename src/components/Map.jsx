@@ -69,6 +69,7 @@ useEffect(() => {
         defaultZoom={props.zoomLevel}
       >
         {props.marker}
+        {props.permanent}
         
         
         

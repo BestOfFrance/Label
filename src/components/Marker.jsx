@@ -44,6 +44,7 @@ export default function Marker(props) {
   const styleImage = props.image;
  
   useEffect(() => {
+    if (props.category !== "city") {
     if (props.shop.price) {
       if (props.shop.price.length === 1) {
         setPrice(1)
@@ -68,9 +69,10 @@ export default function Marker(props) {
       setShow(false)
     }
     
-
+  }
   }, [props.show])
   useEffect(() => {
+    if (props.category !== 'city') {
     if (props.shop.hidden === true) {
       setHidden("hidden")
     }
@@ -102,7 +104,7 @@ export default function Marker(props) {
     } else {
       setShow(false)
     }
-    
+  }
 
   }, [props.show])
 
@@ -123,6 +125,8 @@ export default function Marker(props) {
     
    } else if (props.category === "Shop") {
     setBackground('url("shop.svg")');
+   } else if (props.category === 'city') {
+     
    }
  }, [])
   
