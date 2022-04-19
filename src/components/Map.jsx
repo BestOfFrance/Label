@@ -6,6 +6,7 @@ import axios from 'axios'
 import LocationPin from './LocationPin'
 import DropDown from './DropDown'
 import DropDownTwo from './DropDownTwo'
+import Marker from './Marker'
 
 
 import './map.css'
@@ -18,7 +19,7 @@ const locationDefault = {
 } 
 
 
-
+const permanentMarkers = []
 
 export default function Maps(props) {
   const [location, setLocation] = useState(props.location);

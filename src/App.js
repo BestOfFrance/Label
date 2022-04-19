@@ -60,6 +60,8 @@ const usCities = require('./uscities')
  const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
 const categoriesArray = ['Restaurant', 'Café', 'Bakery', 'Shop']
 
+const permanentMapMarkers = [{city: Calgary, lat: 51.0447, lng: -114.0719 }]
+
 // const dataObj = require('./details4001.js')
 // const dataObj1 = require('./details.js')
 // const dataObj2 = require('./details3001.js')
