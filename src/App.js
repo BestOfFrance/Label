@@ -1024,7 +1024,7 @@ console.log(state.signedIn, "state")
      {width < breakpoint &&
      <FilterMapMobile onClick={onFilterCMSMobile} categories={["Bakery", "Shop", "Restaurant", "Café"]}/>
      }
-      <DataButton onClick={saveShop}/>
+      {/* <DataButton onClick={saveShop}/> */}
       <Footer/>
     </div>
     
