@@ -23,7 +23,9 @@ const permanentMarkers = []
 
 export default function Maps(props) {
   const [location, setLocation] = useState(props.location);
-
+  const [zoom, setZoom] = useState(props.currentZoom)
+  console.log(props.zoom, 'zoom problem')
+  console.log(props.location, 'zoom problem locale')
 //   //create your forceUpdate hook
 // function useForceUpdate(){
 //    // integer state
@@ -40,10 +42,11 @@ useEffect(() => {
   return () => window.removeEventListener("resize", handleWindowResize);
 }, []);
 
-  
+  const permanentMarkers = props.permanent
   useEffect(() => {
     setLocation(props.location)
-    
+    setZoom(14)
+    console.log(14)
    
   }, [props.location])
   
@@ -66,11 +69,14 @@ useEffect(() => {
         onChange={({center, zoom}) => {props.onChange({center, zoom})}}
         center={{lat: Number(location.lat), lng: Number(location.lng)}}
         defaultCenter={{lat: locationDefault.lat, lng: locationDefault.lng}}
-        defaultZoom={props.zoomLevel}
-        zoom={props.zoom}
+        defaultZoom={14}
+        zoom={zoom}
       >
         {props.marker}
-        {props.permanent}
+        {props.currentZoom < 11 &&
+          props.permanent
+        }
+        
         
         
         
