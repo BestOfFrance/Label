@@ -126,7 +126,7 @@ export default function Marker(props) {
    } else if (props.category === "Shop") {
     setBackground('url("shop.svg")');
    } else if (props.category === 'city') {
-     
+     setBackground('url("plus.png")')
    }
  }, [])
   

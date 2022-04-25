@@ -26,6 +26,8 @@ export default function Maps(props) {
   const [zoom, setZoom] = useState(props.currentZoom)
   console.log(props.zoom, 'zoom problem')
   console.log(props.location, 'zoom problem locale')
+  console.log(props, 'map props')
+  console.log(zoom, 'map level zoom')
 //   //create your forceUpdate hook
 // function useForceUpdate(){
 //    // integer state
@@ -46,9 +48,15 @@ useEffect(() => {
   useEffect(() => {
     setLocation(props.location)
     setZoom(14)
-    console.log(14)
+    console.log('use effect working')
    
   }, [props.location])
+  useEffect(() => {
+    
+    setZoom(14)
+    console.log('use effect working')
+   
+  }, [props.currentZoom])
   
   // console.log('maps location', location)
  
@@ -69,7 +77,7 @@ useEffect(() => {
         onChange={({center, zoom}) => {props.onChange({center, zoom})}}
         center={{lat: Number(location.lat), lng: Number(location.lng)}}
         defaultCenter={{lat: locationDefault.lat, lng: locationDefault.lng}}
-        defaultZoom={14}
+        // defaultZoom={14}
         zoom={zoom}
       >
         {props.marker}

@@ -191,7 +191,7 @@ export default function Application(props) {
     topThreeShop: [],
     allCategories: [],
     zoom: 14,
-    currentZoom: 14
+    currentZoom: 13
   })
  
   const navigate = useNavigate()
@@ -949,7 +949,7 @@ const permanent = permanentMapMarkers.map((center, index) => {
     lng={center.lng}
     category={"city"}
     onClick={() => {
-      setState((prev) => ({ ...prev, location: {lat: center.lat, lng: center.lng}, zoom: 14 }))
+      setState((prev) => ({ ...prev, location: {lat: center.lat, lng: center.lng}, currentZoom: 14 }))
    }}
     show={selectedCenter}
     onClicking={() => {
@@ -984,7 +984,7 @@ console.log(state.signedIn, "state")
       getNews={getNews}
       signedIn={state.signedIn}/>}
       <Routes>
-        <Route path='/' element={<HomePage  items={items} zoom={state.zoom} currentZoom={state.currentZoom} location={state.location} shops={state.shops} marker={pin} onChange={onChange} permanent={permanent} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
+        <Route path='/' element={<HomePage  items={items} zoom={state.currentZoom} currentZoom={state.currentZoom} location={state.location} shops={state.shops} marker={pin} onChange={onChange} permanent={permanent} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
         categories={["Bakery", "Shop", "Restaurant", "Café"]} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
