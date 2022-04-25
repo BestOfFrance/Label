@@ -67,6 +67,7 @@ useEffect(() => {
         center={{lat: Number(location.lat), lng: Number(location.lng)}}
         defaultCenter={{lat: locationDefault.lat, lng: locationDefault.lng}}
         defaultZoom={props.zoomLevel}
+        zoom={props.zoom}
       >
         {props.marker}
         {props.permanent}

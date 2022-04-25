@@ -232,8 +232,11 @@ h2{
     margin-bottom: 0.5rem;
     
   }
-  div.cms {
+  /* div.cms {
     height: 100% !important;
+  } */
+  #premium {
+    height: fit-content;
   }
   div.map {
     width: 100%;
@@ -259,6 +262,12 @@ h2{
     display: flex;
     width: 100%;
     justify-content:flex-end;
+  }
+  .infowrapper-business{
+    height: fit-content;
+  }
+  .marker-image-div-business {
+    height: auto;
   }
 }
 

@@ -189,8 +189,8 @@ export default function Application(props) {
     topThreeBakery: [],
     topThreeCafe: [],
     topThreeShop: [],
-    allCategories: []
-    
+    allCategories: [],
+    zoom: 14
   })
  
   const navigate = useNavigate()
@@ -658,7 +658,7 @@ const updateSearch = (e, value) => {
 
 //function for setting center of map
 const goToMap = function (latitude, longitude, selectedCenter) {
-  setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
+  setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude}, zoom: 14 }))
   setSelectedCenter(selectedCenter)
   window.scrollTo({
     top: 0, 
@@ -668,7 +668,7 @@ const goToMap = function (latitude, longitude, selectedCenter) {
   });
 }
 const goToMapCms = function (latitude, longitude, selectedCenter) {
-  setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude} }))
+  setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude}, zoom: 14 }))
   
 }
 const [items, setItems] = useState([])
@@ -982,7 +982,7 @@ console.log(state.signedIn, "state")
       getNews={getNews}
       signedIn={state.signedIn}/>}
       <Routes>
-        <Route path='/' element={<HomePage  items={items} location={state.location} shops={state.shops} marker={pin} onChange={onChange} permanent={permanent} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
+        <Route path='/' element={<HomePage  items={items} zoom={state.zoom} location={state.location} shops={state.shops} marker={pin} onChange={onChange} permanent={permanent} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
         categories={["Bakery", "Shop", "Restaurant", "Café"]} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
