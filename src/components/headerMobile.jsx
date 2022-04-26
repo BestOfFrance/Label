@@ -59,7 +59,7 @@ export default function HeaderMobile(props) {
   }, [open]);
  
 
-  console.log(props.signedIn, 'signed in header')
+  // console.log(props.signedIn, 'signed in header')
   return (
     
     <div className="header-mobile">

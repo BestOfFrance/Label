@@ -55,14 +55,14 @@ export default function CreateAccount(props) {
 
     Auth.signIn(email, password)
     .then((user) => {
-      console.log(user)
+      // console.log(user)
       props.setLoggedIn()
       props.setMap()
       fetchUser()
       setRedirect(true)
 
     .then((out) => {
-      console.log(out.data.Item.accountType)
+      // console.log(out.data.Item.accountType)
       if (out.data.Item.accountType === "Business") {
         props.setBusiness()
       }

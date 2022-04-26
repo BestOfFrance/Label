@@ -11,10 +11,10 @@ import {Helmet} from "react-helmet";
 
 
 export default function ShopDisplay(props) {
-console.log('display props', props)
+// console.log('display props', props)
   const data = [];
   const  id  = useParams();
-  console.log('id', id.shop)
+  // console.log('id', id.shop)
   const [shop, setShop] = useState(null)
   const [images, setImages] = useState([])
   const [hourArray, setHourArray] = useState([])
@@ -32,10 +32,10 @@ console.log('display props', props)
 
   fetchShops()
   .then((result) => {
-    console.log(result, 'result')
+    // console.log(result, 'result')
     const shopApiData = JSON.parse(result.body);
     setShop(shopApiData)
-    console.log(shopApiData, 'shop api data')
+    // console.log(shopApiData, 'shop api data')
     
     
       if (shopApiData.images !== null) {
@@ -46,7 +46,7 @@ console.log('display props', props)
               data.push(dataImage)
             }
         setImages(data)
-            console.log('data images', data)
+            // console.log('data images', data)
       }
     
       

@@ -29,11 +29,11 @@ Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
 export default function ReportBusiness(props) {
-console.log(props)
+// console.log(props)
   const data = [];
   const  id  = useParams();
 
-  console.log(id)
+  // console.log(id)
 
   // API.get('shops', `/shops/${id}`, {}).then((result) => {
   //   const shop = JSON.parse(result.body);

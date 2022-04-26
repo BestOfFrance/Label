@@ -30,7 +30,7 @@ const myBucket = new AWS.S3({
 })
 
 export default function ShopDisplay(props) {
-console.log('display props', props)
+// console.log('display props', props)
   const data = [];
   const  id  = useParams();
   const [shop, setShop] = useState({})
@@ -94,10 +94,10 @@ console.log('display props', props)
 
   fetchShops()
   .then((result) => {
-    console.log(result, 'result')
+    // console.log(result, 'result')
     const shopApiData = JSON.parse(result.body);
     setShop(shopApiData)
-    console.log(shopApiData, 'shop api data')
+    // console.log(shopApiData, 'shop api data')
     setNameHolder(shopApiData.name)
     setHoursHolder(shopApiData.hours)
     setDescriptionHolder(shopApiData.description)
@@ -110,7 +110,7 @@ console.log('display props', props)
               data.push(dataImage.image)
             }
         
-            console.log('data images', data)
+            // console.log('data images', data)
             const imagesTwo = data.map((image) => {
               return (<img className="shop-display-edit-images" src={image}></img>)
             })
@@ -180,7 +180,7 @@ console.log('display props', props)
       }
     }).then(result => {
       //const result = JSON.parse(result.body);
-      console.log(result)
+      // console.log(result)
       setEditDescription(false)
     }).catch(err => {
       console.log(err);
@@ -196,7 +196,7 @@ console.log('display props', props)
       }
     }).then(result => {
       //const result = JSON.parse(result.body);
-      console.log(result)
+      // console.log(result)
       setEditDescription(false)
     }).catch(err => {
       console.log(err);
@@ -221,7 +221,7 @@ console.log('display props', props)
       }
     }).then(result => {
       //const result = JSON.parse(result.body);
-      console.log(result)
+      // console.log(result)
       setEditDescription(false)
     }).catch(err => {
       console.log(err);
@@ -244,7 +244,7 @@ console.log('display props', props)
       }
     }).then(result => {
       //const result = JSON.parse(result.body);
-      console.log(result)
+      // console.log(result)
       setEditDescription(false)
     }).catch(err => {
       console.log(err);

@@ -20,7 +20,7 @@ export default function Header(props) {
 //  if (props.isVerified) {
 //    id = props.
 //  }
-console.log('header props', props)
+// console.log('header props', props)
 async function fetchUser(email) {
     const userData = await API.get('usersApi', `/users/${email}`)
     return userData
@@ -31,13 +31,13 @@ function checkUser() {
       .then(
         (user) => {
           
-          console.log(user)
+          // console.log(user)
             
-            console.log(user.attributes.email)
+            // console.log(user.attributes.email)
           fetchUser(user.attributes.email)
           .then((response) => {
             setUserApi(response.data.Item)
-            console.log(response.data.Item)
+            // console.log(response.data.Item)
           })
           }
         

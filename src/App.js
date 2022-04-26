@@ -208,18 +208,18 @@ export default function Application(props) {
       .then(
         (user) => {
           
-          console.log(user)
+          // console.log(user)
             setState((prev) => ({ ...prev, signedIn: true }))
-            console.log(user.attributes.email)
+            // console.log(user.attributes.email)
           fetchUser(user.attributes.email)
           .then((response) => {
-            console.log(response, 'fetchuser')
+            // console.log(response, 'fetchuser')
             // console.log(response.data.Item.id)
             if (Object.keys(response.data) > 0) {
 
             fetchSubscription(`sub_${response.data.Item.id}`)
             .then((response) => {
-              console.log('subb response', response)
+              // console.log('subb response', response)
             })
             .catch((err) => {
               console.log(err)
@@ -240,7 +240,7 @@ export default function Application(props) {
   function signOut() {
     Auth.signOut()
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         setState((prev) => ({ ...prev, mode: "MAP" }))
         setState((prev) => ({ ...prev, signedIn: false }))
       }
@@ -294,7 +294,7 @@ export default function Application(props) {
         }
       }
       const apiData = await Api.post('shopsApi', '/shops', data);
-      console.log({apiData})
+      // console.log({apiData})
     }
     }
     }
@@ -320,7 +320,7 @@ export default function Application(props) {
     const lngmax = myLatlng.lng + 0.03
     const hashes = geohash.bboxes(latmin, lngmin, latmax, lngmax, 3);
     fetchShops(hashes).then((markers)=> {
-    console.log(markers)
+    // console.log(markers)
     // console.log(JSON.stringify(data[0]), 'data')
     // console.log(detailsArray.length)
    
@@ -373,7 +373,7 @@ export default function Application(props) {
     
     // sort the array... now the first 5 elements should be your closest points.
     markersByDistance.sort( sorter );
-    console.log(markersByDistance[0])
+    // console.log(markersByDistance[0])
     const allCategories = []
     const placeClosestToYou = markersByDistance[0]
     const allShops = [];
@@ -407,9 +407,9 @@ export default function Application(props) {
       }
     }
     const topThreeShops = allShops.slice(0,3)
-    console.log(state.categories, 'categoreis state')
+    // console.log(state.categories, 'categoreis state')
     if (state.categories.includes("Bakery") && state.categories.includes("Shop") && state.categories.includes("Café") && state.categories.includes("Restaurant")) {
-      console.log('state alllll')
+      // console.log('state alllll')
     const itemsNew = state.sortedShops.map((shop, index) => {
   
     return(
@@ -447,7 +447,7 @@ setItems(itemsNew.slice(0,3))
 
   useEffect(() => {
     if (state.categories.includes("Bakery") && state.categories.includes("Shop") && state.categories.includes("Café") && state.categories.includes("Restaurant")) {
-      console.log('state alllll')
+      // console.log('state alllll')
     const itemsNew = state.allCategories.map((shop, index) => {
   
     return(
@@ -575,7 +575,7 @@ setItems(itemsNew.slice(0,3))
   }
     
   }, [state.sortedShops])
- console.log(state, 'app state')
+//  console.log(state, 'app state')
  
 //set the selected marker
 const [selectedCenter, setSelectedCenter] = useState(null);
@@ -652,7 +652,7 @@ const updateSearch = (e, value) => {
     e.preventDefault();
     return;
   }
-  console.log(value, 'value')
+  // console.log(value, 'value')
   setState((prev) => ({ ...prev, searchSelected: value, location: {lat: value.latitude, lng: value.longitude} }));
   setSelectedCenter(value)
 };
@@ -674,10 +674,10 @@ const goToMapCms = function (latitude, longitude, selectedCenter) {
   
 }
 const [items, setItems] = useState([])
-console.log(items, 'items state')
+// console.log(items, 'items state')
 
 // cms cards
-console.log('sorted shops', state.sortedShops)
+// console.log('sorted shops', state.sortedShops)
 const cmsBakery = state.sortedShops.map((shop, index) => {
     
     return(
@@ -694,8 +694,8 @@ const cmsBakery = state.sortedShops.map((shop, index) => {
 
 //function for filter button
 const onFilter = function(data) {
-  console.log(data)
-  console.log(data.includes("Bakery"), 'hello')
+  // console.log(data)
+  // console.log(data.includes("Bakery"), 'hello')
   setState((prev) => ({ ...prev, categories: [...data] }))
   if (data.includes("Bakery") && data.includes("Shop") && data.includes("Café") && data.includes("Restaurant")) {
     const itemsNew = state.sortedShops.map((shop, index) => {
@@ -723,7 +723,7 @@ const onFilter = function(data) {
 })
 setItems(itemsNew.slice(0,3))
   } else if (data.includes("Bakery")) {
-    console.log('bakery')
+    // console.log('bakery')
     const itemsNew = state.topThreeBakery.map((shop, index) => {
   
     return(
@@ -749,9 +749,9 @@ setItems(itemsNew.slice(0,3))
 })
 setItems(itemsNew.slice(0,3))
   } else if (data.includes("Restaurant")) {
-    console.log(
-     'i am hapenninggg'
-    )
+    // console.log(
+    //  'i am hapenninggg'
+    // )
     const itemsNew = state.topThreeRestaurant.map((shop, index) => {
   
     return(
@@ -852,7 +852,7 @@ useEffect(() => {
 useEffect(() => {
   getDistance(state.location)
 }, [state.cmsCategories])
-console.log('places', state.placesNearYou)
+// console.log('places', state.placesNearYou)
 
 //inital call to get database information for amazon database
 useEffect(() => {
@@ -860,7 +860,7 @@ useEffect(() => {
 
   navigator.geolocation.getCurrentPosition(
     function(position) {
-      console.log(position);
+      // console.log(position);
       const locationGeo = {
   
         lat: position.coords.latitude,
@@ -960,7 +960,7 @@ const permanent = permanentMapMarkers.map((center, index) => {
   )
 })
 
-console.log(state.signedIn, "state")
+// console.log(state.signedIn, "state")
 //render all
   return(
     <div className="main-container-all">

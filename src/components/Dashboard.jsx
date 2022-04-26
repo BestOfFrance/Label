@@ -23,13 +23,13 @@ export default function Dashboard(props) {
   
    Auth.currentAuthenticatedUser()
     .then((user) => {
-      console.log(user, 'user')
+      // console.log(user, 'user')
       
       let userInfo = user.username
-      console.log(user)
+      // console.log(user)
       fetchUser(userInfo)
       .then((userData) => {
-        console.log('userData', userData.data.Item.shopId)
+        // console.log('userData', userData.data.Item.shopId)
         setUserApi(userData.data.Item)
         if (userData.data.Item.shopId !== null) {
        
@@ -39,7 +39,7 @@ export default function Dashboard(props) {
         }
         fetchShop()
         .then((out) => {
-          console.log(out)
+          // console.log(out)
           setShop(out.body)
         })
         }

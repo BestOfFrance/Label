@@ -95,7 +95,7 @@ const axiosUS2 = async () =>  {
   const newData = []
     for (let i = 0; i < dataArray3.length; i++) {
       await  wait(2000)
-        console.log('before axios')
+        // console.log('before axios')
 fetchYelp(dataArray3[i].id)
 .then((res) => {
   console.log(res)
@@ -186,13 +186,13 @@ return dataArray3[i]
   
     Auth.currentAuthenticatedUser()
     .then((user) => {
-      console.log(user, 'user')
+      // console.log(user, 'user')
       setUser(user.username)
       let userInfo = user.username
-      console.log(user)
+      // console.log(user)
       fetchUser(userInfo)
       .then((userData) => {
-        console.log('userData', userData)
+        // console.log('userData', userData)
         setUserApi(userData.data.Item)
         if (props.signedIn) {
           setRedirect(false)
@@ -222,7 +222,7 @@ return dataArray3[i]
   const onClickCanada = function() {
     axiosFunc()
     .then((details) => {
-      console.log(details)
+      // console.log(details)
        const detailsArray = [];
 for (const detail of details) {
   if (detail !== undefined && detail !== null) {
@@ -269,7 +269,7 @@ if (!detailsArray.includes(detailsObject)) {
 }
 saveShop(detailsArray)
 .then((res) => {
-  console.log(res)
+  // console.log(res)
   setAlert("Seeding complete")
 })
 .catch((err) => {
@@ -280,7 +280,7 @@ saveShop(detailsArray)
 const onClickUS1 = function() {
     axiosUS1()
     .then((details) => {
-      console.log(details)
+      // console.log(details)
        const detailsArray = [];
 for (const detail of details) {
   if (detail !== undefined && detail !== null) {
@@ -327,7 +327,7 @@ if (!detailsArray.includes(detailsObject)) {
 }
 saveShop(detailsArray)
 .then((res) => {
-  console.log(res)
+  // console.log(res)
   setAlert("Seeding complete")
 })
 .catch((err) => {
@@ -338,7 +338,7 @@ saveShop(detailsArray)
   const onClickUS2 = function() {
     axiosUS2()
     .then((details) => {
-      console.log(details)
+      // console.log(details)
        const detailsArray = [];
 for (const detail of details) {
   if (detail !== undefined && detail !== null) {
@@ -385,7 +385,7 @@ if (!detailsArray.includes(detailsObject)) {
 }
 saveShop(detailsArray)
 .then((res) => {
-  console.log(res)
+  // console.log(res)
   setAlert("Seeding complete")
 })
 .catch((err) => {

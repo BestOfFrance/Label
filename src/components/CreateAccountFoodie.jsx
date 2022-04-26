@@ -64,7 +64,7 @@ export default function CreateAccount(props) {
     const val=event.target.value
     setConfirm(val)
   }
-  console.log(email)
+  // console.log(email)
   async function signUp() {
     try {
         const { user } = await Auth.signUp({
@@ -139,7 +139,7 @@ export default function CreateAccount(props) {
       }
     };
     const apiData = await Api.post('usersApi', '/users', data);
-    console.log({ apiData });
+    // console.log({ apiData });
     
    
   }

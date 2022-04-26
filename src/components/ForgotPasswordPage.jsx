@@ -50,7 +50,7 @@ export default function ForgotPassword(props) {
 
     Auth.forgotPassword(email)
     .then((value)=>{
-      console.log(value)
+      // console.log(value)
       setRedirect(true)
     })
     .catch((err) => {

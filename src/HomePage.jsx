@@ -37,7 +37,7 @@ const geohash = require('ngeohash');
 
 export default function HomePage(props) {
   const [items, setItems] = useState(props.items)
-  console.log(props.items)
+  // console.log(props.items)
   useEffect(() => {
     
     setItems(props.items)

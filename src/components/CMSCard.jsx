@@ -53,7 +53,7 @@ export default function CMSCard(props) {
   }, [props.state])
   
 useEffect(() => {
-  console.log(props.shop.hidden)
+  // console.log(props.shop.hidden)
   if (props.shop.hidden === true) {
     setHidden("hidden")
   }
@@ -72,7 +72,7 @@ useEffect(() => {
    
   }, [props.selectedCenter])
 
-console.log(props.shop.category, props.shop.name)
+// console.log(props.shop.category, props.shop.name)
   useEffect(() => {
     if (props.shop.category === "Café" ) {
       setBackground('url("coffee-cup-2.svg")');

@@ -60,7 +60,7 @@ export default function AddBusiness(props) {
     const val=event.target.value
     setConfirm(val)
   }
-  console.log(email)
+  // console.log(email)
   async function signUp() {
     try {
         const { user } = await Auth.signUp({
@@ -71,9 +71,9 @@ export default function AddBusiness(props) {
           }
             
         });
-        console.log(user);
+        // console.log(user);
     } catch (error) {
-        console.log('error signing up:', error);
+        // console.log('error signing up:', error);
     }
 }
   const onSubmit = function() {
@@ -126,7 +126,7 @@ export default function AddBusiness(props) {
       }
     };
     const apiData = await Api.post('userapi', '/users', data);
-    console.log({ apiData });
+    // console.log({ apiData });
     setfirstname("")
     setlastname("")
     

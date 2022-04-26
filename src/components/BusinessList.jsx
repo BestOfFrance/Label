@@ -79,7 +79,7 @@ export default function BusinessList(props) {
    
    if(checkOpen !== undefined) {
     
-    console.log(checkOpen)
+    // console.log(checkOpen)
   if(checkOpen.isOpen === true) {
     
     
@@ -110,7 +110,7 @@ export default function BusinessList(props) {
     }
    
   }, [props.state])
-  console.log(price, 'price')
+  // console.log(price, 'price')
   useEffect(() => {
     
     if (props.selectedCenter !== null) {

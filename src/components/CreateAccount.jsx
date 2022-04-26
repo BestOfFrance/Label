@@ -101,7 +101,7 @@ export default function CreateAccount(props) {
     }
 
     const uploadFile = (file) => {
-      console.log('me')
+      // console.log('me')
         const params = {
             ACL: 'public-read',
             Body: file,
@@ -191,7 +191,7 @@ export default function CreateAccount(props) {
           }
             
         });
-        console.log(user)
+        // console.log(user)
         saveUser();
         setShow("show")
     } catch (error) {
@@ -212,7 +212,7 @@ async function signUpFreemium() {
         }
           
       });
-      console.log(user)
+      // console.log(user)
       saveUser();
       setRedirect(true)
   } catch (error) {
@@ -246,7 +246,7 @@ async function signUpFreemium() {
         .catch((err) => {
           console.log(err)
         })
-        console.log(session)
+        // console.log(session)
         return session
       }
       const session = await fetchSession()
@@ -388,7 +388,7 @@ const onChangeYearly = function() {
       }
     };
     const apiData = await Api.post('usersApi', '/users', data);
-    console.log(apiData);
+    // console.log(apiData);
     setfirstname("")
     setlastname("")
     

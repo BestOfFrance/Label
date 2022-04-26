@@ -68,7 +68,7 @@ export default function ForgotPasswordConfirm(props) {
     if (password === confirmPassword) {
       Auth.forgotPasswordSubmit(email,confirmCode,password)
       .then((value)=>{
-        console.log(value)
+        // console.log(value)
         setRedirect(true)
       })
       .catch((error)=>{console.log(error)})

@@ -19,20 +19,37 @@ const locationDefault = {
 } 
 
 
-const permanentMarkers = []
+const permanentMapMarkers = [{city: "Calgary", lat: 51.0447, lng: -114.0719 }, {city: "Vancouver", lat: 49.246292, lng: -123.116226 }, {city: "Regina", lat: 50.445210, lng: -104.618896 }, {city: "Toronto", lat: 43.651070, lng: -79.347015 }, {city: "Montreal", lat: 45.508888, lng: -73.561668 }, {city: "Charlottetown", lat: 46.238888, lng: -63.129166 }, {city: "Fredericton", lat: 45.964993, lng: -66.646332 }, {city: "Portland", lat: 45.523064, lng: -122.676483 }, {city: "Dallas", lat: 32.7767, lng: -96.7970 }, {city: "Seattle", lat: 47.6062, lng: -122.3321 }, {city: "Los Angeles", lat: 34.0522, lng: -118.2437 }, {city: "New York", lat: 43.000000, lng: -75.000000 }, {city: "Miami", lat: 25.7617, lng: -80.1918 }]
 
 export default function Maps(props) {
   const [location, setLocation] = useState(props.location);
   const [zoom, setZoom] = useState(props.currentZoom)
-  console.log(props.zoom, 'zoom problem')
-  console.log(props.location, 'zoom problem locale')
-  console.log(props, 'map props')
-  console.log(zoom, 'map level zoom')
+  
 //   //create your forceUpdate hook
 // function useForceUpdate(){
 //    // integer state
 //   return () => setLocation(props.location); // update the state to force render
 // }
+
+const permanent = permanentMapMarkers.map((center, index) => {
+  return (
+    <Marker
+    key={index}
+    id={center.id}
+    text={center.city}
+    lat={center.lat}
+    lng={center.lng}
+    category={"city"}
+    onClick={() => {
+      setZoom(14)
+      setLocation({lat: center.lat, lng: center.lng})
+      console.log('zoom', zoom)
+   }}
+    
+    
+    />
+  )
+})
 const [width, setWidth] = useState(window.innerWidth);
 const breakpoint = 768;
 
@@ -47,16 +64,11 @@ useEffect(() => {
   const permanentMarkers = props.permanent
   useEffect(() => {
     setLocation(props.location)
-    setZoom(14)
-    console.log('use effect working')
+    
+   
    
   }, [props.location])
-  useEffect(() => {
-    
-    setZoom(14)
-    console.log('use effect working')
-   
-  }, [props.currentZoom])
+  
   
   // console.log('maps location', location)
  
@@ -77,12 +89,12 @@ useEffect(() => {
         onChange={({center, zoom}) => {props.onChange({center, zoom})}}
         center={{lat: Number(location.lat), lng: Number(location.lng)}}
         defaultCenter={{lat: locationDefault.lat, lng: locationDefault.lng}}
-        // defaultZoom={14}
         zoom={zoom}
+        defaultZoom={14}
       >
         {props.marker}
         {props.currentZoom < 11 &&
-          props.permanent
+          permanent
         }
         
         
