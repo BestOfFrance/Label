@@ -30,7 +30,9 @@ export default function Maps(props) {
 //    // integer state
 //   return () => setLocation(props.location); // update the state to force render
 // }
-
+useEffect(() => {
+  setZoom(props.currentZoom)
+}, [props.currentZoom])
 const permanent = permanentMapMarkers.map((center, index) => {
   return (
     <Marker
@@ -41,9 +43,9 @@ const permanent = permanentMapMarkers.map((center, index) => {
     lng={center.lng}
     category={"city"}
     onClick={() => {
-      setZoom(14)
+      setZoom(12)
       setLocation({lat: center.lat, lng: center.lng})
-      console.log('zoom', zoom)
+      
    }}
     
     

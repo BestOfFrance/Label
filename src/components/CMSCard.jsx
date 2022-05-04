@@ -1,13 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './list.css'
-import { Routes, Route, Link, Navigate } from "react-router-dom";
-import {Rating} from 'react-simple-star-rating';
-import StarRatingComponent from 'react-star-rating-component';
-
-
-
-
+import { Link} from "react-router-dom";
 
 export default function CMSCard(props) {
   const [active, setActive] = useState(false);

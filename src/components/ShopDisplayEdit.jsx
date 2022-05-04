@@ -1,17 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import CloseButton from 'react-bootstrap/CloseButton'
 import hours from '../helpers/convertHours'
 import './ShopDisplay.css'
 import {Rating} from 'react-simple-star-rating';
-import { Carousel } from 'react-carousel-minimal';
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { API } from 'aws-amplify';
 import {Helmet} from "react-helmet";
 import './shopDisplayEdit.css'
-import { Auth } from 'aws-amplify'
 import AWS from 'aws-sdk'
-
-import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
+import { FormControl, Input, FormLabel} from '@mui/material';
 
 
 
@@ -37,7 +33,6 @@ export default function ShopDisplay(props) {
   const [images, setImages] = useState([])
   const [editDescription, setEditDescription] = useState(false)
   const [description, setDescription] = useState(null)
-  const [hoursArrayNew, setHoursArrayNew] = useState(null)
   const [name, setName] = useState(null)
   const [nameHolder, setNameHolder] = useState(null)
   const [hoursHolder, setHoursHolder] = useState(null)
@@ -112,32 +107,32 @@ export default function ShopDisplay(props) {
         
             // console.log('data images', data)
             const imagesTwo = data.map((image) => {
-              return (<img className="shop-display-edit-images" src={image}></img>)
+              return (<img className="shop-display-edit-images" alt={''} src={image}></img>)
             })
             setImages(imagesTwo)
       }
     
         for (const dayUnparsed of shopApiData.hours) {
           const day = JSON.parse(dayUnparsed)
-          if (day.day == 0) {
+          if (day.day === 0) {
              setMonday((prev) => ({day: 0, open: day.open, close: day.close}))
             }
-   if (day.day == 1) {
+   if (day.day === 1) {
     setTuesday((prev) => ({day: 1, open: day.open, close: day.close}))
    }
-   if (day.day == 2) {
+   if (day.day === 2) {
     setWednesday((prev) => ({day: 2, open: day.open, close: day.close}))
    }
-   if (day.day == 3) {
+   if (day.day === 3) {
     setThursday((prev) => ({day: 3, open: day.open, close: day.close}))
    }
-   if (day.day == 4) {
+   if (day.day === 4) {
     setFriday((prev) => ({day: 4, open: day.open, close: day.close}))
    }
-   if (day.day == 5) {
+   if (day.day === 5) {
    setSaturday((prev) => ({day: 5, open: day.open, close: day.close}))
    }
-   if (day.day == 6) {
+   if (day.day === 6) {
     setSunday((prev) => ({day: 6, open: day.open, close: day.close}))
    }
         }
@@ -327,18 +322,7 @@ export default function ShopDisplay(props) {
     const val=event.target.value
     setTagOne(val)
   }
-  function changeTagTwo(event){
-    const val=event.target.value
-    setTagTwo(val)
-  }
-  function changeTagThree(event){
-    const val=event.target.value
-    setTagThree(val)
-  }
-  function changeTagFour(event){
-    const val=event.target.value
-    setTagFour(val)
-  }
+
   return(
     
     <div className="main-body-show">

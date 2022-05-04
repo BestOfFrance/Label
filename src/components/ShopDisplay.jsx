@@ -1,4 +1,4 @@
-import React, {useState, useEffect, componentDidMount} from 'react'
+import React, {useState, useEffect} from 'react'
 import CloseButton from 'react-bootstrap/CloseButton'
 import hours from '../helpers/convertHours'
 import './ShopDisplay.css'

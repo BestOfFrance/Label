@@ -1,19 +1,15 @@
 import './CreateAccount.css'
 import {useState} from 'react';
-import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
+import {  Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
 import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
 import ConfirmAccount from './confirmAccount'
-import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-import {PaymentElement} from '@stripe/react-stripe-js';
-import CheckoutElement from './CheckoutElement'
-import CheckoutButton from './CheckoutButton'
 import { API } from "aws-amplify"
 import {Helmet} from "react-helmet";
-import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import '@stripe/stripe-js'
 
@@ -47,40 +43,22 @@ export default function CreateAccount(props) {
   const [business, setBusiness] = useState("Business")
   const [show, setShow] = useState("hide")
   const [firstname,setfirstname]=useState("")
-  function changefirstname(event){
-    const val=event.target.value
-    setfirstname(val)
-  }
+  
   const [lastname,setlastname]=useState("")
-  function changelastname(event){
-    const val=event.target.value
-    setlastname(val)
-  }
+  
   // const [username,setusername]=useState("")
   // function changeusername(event){
   //   const val=event.target.value
   //   setusername(val)
   // }
   const [password,setpassword]=useState("")
-  function changepassword(event){
-    const val=event.target.value
-    setpassword(val)
-  }
+  
   const [confirmPassword, setpasswordconfirm]=useState("")
-  function changepasswordconfirm(event){
-    const val=event.target.value
-    setpasswordconfirm(val)
-  }
+ 
   const [email,setemail]=useState("")
-  function changeemail(event){
-    const val=event.target.value
-    setemail(val)
-  }
-  const [confirm,setConfirm]=useState("")
-  function changeconfirm(event){
-    const val=event.target.value
-    setConfirm(val)
-  }
+  
+  
+  
   // console.log(email)
   async function signUp() {
     try {

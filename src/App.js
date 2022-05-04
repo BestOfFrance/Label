@@ -1,37 +1,25 @@
-import React, { Component, useEffect, useState } from 'react';
-import Maps from './components/Map'
+import React, { useEffect, useState } from 'react';
 import BusinessList from "./components/BusinessList"
 import ShopDisplay from "./components/ShopDisplay";
 import Marker from './components/Marker';
 import Header from './components/Header';
 import CMSCard from './components/CMSCard'
 import Footer from './components/footer'
-import axios from 'axios'
-import LoginOrSign from './components/LoginOrSign'
 import HeaderMobile from './components/headerMobile'
 import CreateAccount from './components/CreateAccount'
 import CreateAccountFoodie from './components/CreateAccountFoodie'
 import NewsDeals from './components/NewsDeals'
-import ReportButton from './components/ReportButton'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ListGroup from 'react-bootstrap/ListGroup';
 import './components/list.css'
-import DropDown from './components/DropDown'
-import Amplify, { urlSafeDecode } from '@aws-amplify/core'
+import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from './aws-exports';
 // import details from './details.js';
 // import getDistance from '../src/helpers/getDistance'
 import { Auth } from 'aws-amplify'
 import Dashboard from './components/Dashboard'
-import DataButton from './components/DataButton'
-import Login from './components/Login'
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import FilterCms from './components/FilterCms'
-import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import LoginOrSignPage from './components/LoginOrSignPage'
 import ConfirmAccount from './components/confirmAccount'
 import HomePage from './HomePage'
@@ -40,13 +28,10 @@ import '@stripe/stripe-js'
 import FilterMapMobile from './components/FilterMapMobile'
 import ForgotPassword from './components/ForgotPasswordPage'
 import ForgotPasswordConfirm from './components/ForgotPasswordVerification'
-import ReportBusiness from './components/ReportBusiness'
-import { toBase64, bytesToSize } from './utils';
 import ConfirmAccountBusiness from './components/ConfirmAccountBusiness'
 import RegisterBusinessStep1 from './components/RegisterBusinessStep1'
 import VerifyBusiness from './components/VerifyBusiness'
 import ReportButtonEasy from './components/ReportButtonEasy'
-import UploadImage from './components/uploadImage'
 import {loadStripe} from '@stripe/stripe-js';
 import Admin from './components/AdminPage'
 import ShopDisplayEdit from './components/ShopDisplayEdit'
@@ -58,7 +43,7 @@ const usCities = require('./uscities')
  const details = require('./ExtUSDetailsFinal')
  console.log(details.length, 'details')
  const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
-const categoriesArray = ['Restaurant', 'Café', 'Bakery', 'Shop']
+
 
 const permanentMapMarkers = [{city: "Calgary", lat: 51.0447, lng: -114.0719 }, {city: "Vancouver", lat: 49.246292, lng: -123.116226 }, {city: "Regina", lat: 50.445210, lng: -104.618896 }, {city: "Toronto", lat: 43.651070, lng: -79.347015 }, {city: "Montreal", lat: 45.508888, lng: -73.561668 }, {city: "Charlottetown", lat: 46.238888, lng: -63.129166 }, {city: "Fredericton", lat: 45.964993, lng: -66.646332 }, {city: "Portland", lat: 45.523064, lng: -122.676483 }, {city: "Dallas", lat: 32.7767, lng: -96.7970 }, {city: "Seattle", lat: 47.6062, lng: -122.3321 }, {city: "Los Angeles", lat: 34.0522, lng: -118.2437 }, {city: "New York", lat: 43.000000, lng: -75.000000 }, {city: "Miami", lat: 25.7617, lng: -80.1918 }]
 
@@ -90,9 +75,7 @@ const permanentMapMarkers = [{city: "Calgary", lat: 51.0447, lng: -114.0719 }, {
 // }
 
 //an aws issue, do not need these variables
-const createBook = ''
-const bookDetails = ''
-const listBooks = ''
+
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 const AWS = require('aws-sdk');
@@ -201,7 +184,7 @@ export default function Application(props) {
   }
 //   console.log(process.env)
 // console.log(process.env.REACT_APP_STRIPE_SECRET_KEY_DEVELOPMENT)
-  const [index, setIndex] = useState(0)
+  
   function checkUser() {
     let authenticated = false;
     Auth.currentAuthenticatedUser()
@@ -669,10 +652,7 @@ const goToMap = function (latitude, longitude, selectedCenter) {
        in place of 'smooth' */
   });
 }
-const goToMapCms = function (latitude, longitude, selectedCenter) {
-  setState((prev) => ({ ...prev, location: {lat: latitude, lng: longitude}, zoom: 14 }))
-  
-}
+
 const [items, setItems] = useState([])
 // console.log(items, 'items state')
 
@@ -929,7 +909,6 @@ const pin = state.shops.map((center, index) => {
       hours={center.hours}
       rating={center.rating}
       category={center.category}
-      image={center.image}
       onClickShop={openShopWindow}
       shop={center}
       />
@@ -985,7 +964,7 @@ const permanent = permanentMapMarkers.map((center, index) => {
       signedIn={state.signedIn}/>}
       <Routes>
         <Route path='/' element={<HomePage  items={items} zoom={state.currentZoom} currentZoom={state.currentZoom} location={state.location} shops={state.shops} marker={pin} onChange={onChange} permanent={permanent} onFilter={onFilter} signedIn={state.signedIn} categories={state.cmsCategories} onFilterCms={onFilterCMS} 
-        categories={["Bakery", "Shop", "Restaurant", "Café"]} sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
+         sortedShops={state.sortedShops} cmsBakery={cmsBakery} onClick={closeShopWindow} 
          selected={state.selected} mode={state.mode}/>} />
         <Route path="loginorsign" element={<LoginOrSignPage  getRegister={getRegister}
           getRegisterFoodie={getRegisterFoodie}
