@@ -8,7 +8,7 @@ export default function CMSCard(props) {
   const [hidden, setHidden] = useState("visible")
   const [price, setPrice] = useState("")
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 768;
+  
   const [background, setBackground] = useState('none')
   const [transform, setTransform] = useState('translateY(-25px)')
 
@@ -113,70 +113,70 @@ useEffect(() => {
             {/* Rating: <p className="rating-buffer"></p> */}
             {props.shop.rating === 0 &&
             <div>
-              <img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 0.5 &&
             <div>
-              <img src="rating.svg"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="rating.svg"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 1 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 1.5 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="rating.svg"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="rating.svg"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 2 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 2.5 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="rating.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="rating.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
              {props.shop.rating === 3 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 3.5 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="rating.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="rating.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 4 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="emptyStar.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="emptyStar.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 5 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img>
             </div>
             }
             {props.shop.rating === 4.5 &&
             <div>
-              <img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img src="star.svg" className="rating-star"></img><img className="rating-star" src="rating.svg"></img>
+              <img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} src="star.svg" className="rating-star"></img><img alt={''} className="rating-star" src="rating.svg"></img>
             </div>
             }
   
             </div>
             <div>
           {price === 1 &&
-            <div><img className="price-image" src="dollar.svg"></img></div>
+            <div><img alt={''} className="price-image" src="dollar.svg"></img></div>
           }     
           {price === 2 &&
-            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img></div>
+            <div><img alt={''} className="price-image" src="dollar.svg"></img><img alt={''} className="price-image" src="dollar.svg"></img></div>
           }      
           {price === 3 &&
-            <div><img className="price-image" src="dollar.svg"></img><img className="price-image" src="dollar.svg"></img><img  className="price-image" src="dollar.svg"></img></div>
+            <div><img alt={''} className="price-image" src="dollar.svg"></img><img alt={''} className="price-image" src="dollar.svg"></img><img alt={''}  className="price-image" src="dollar.svg"></img></div>
           }        
             </div>
             </div>
@@ -186,7 +186,7 @@ useEffect(() => {
 
             </div>
       {/* <div className="locate-container">
-        <button className="cms-button" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img className="cms-button-image" src="place.svg"></img></button>
+        <button className="cms-button" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}><img alt={''} className="cms-button-image" src="place.svg"></img></button>
         
       
       </div> */}
@@ -194,7 +194,7 @@ useEffect(() => {
       <div className="cms-button-container"> 
       <div className="cms-button-div">
       
-        <button className="cms-button-locate" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>{width > 767 && <div>Locate</div>}<img className="cms-button-image" src="place.svg"></img></button>
+        <button className="cms-button-locate" onClick={() => {props.onClick(props.latitude, props.longitude, props.shop)}}>{width > 767 && <div>Locate</div>}<img alt={''} className="cms-button-image" src="place.svg"></img></button>
         
       
       
@@ -203,7 +203,7 @@ useEffect(() => {
       </div>
       <div className="cms-button-div">
       <button className="cms-button">
-      <Link to={`reportbusiness/${props.name}`} ><img className="cms-button-image" src="report.svg"/></Link>
+      <Link to={`reportbusiness/${props.name}`} ><img alt={''} className="cms-button-image" src="report.svg"/></Link>
       </button>
 </div>
       </div>

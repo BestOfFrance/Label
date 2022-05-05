@@ -1,17 +1,12 @@
 import './CreateAccount.css'
 import {useState} from 'react';
-import { FormControl, Input, FormLabel, Checkbox, Alert } from '@mui/material';
+import { FormControl, Input, FormLabel, Alert } from '@mui/material';
 import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
-import ConfirmAccount from './confirmAccount'
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import {Helmet} from "react-helmet";
-
-Amplify.configure(awsconfig);
-
-
 
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);

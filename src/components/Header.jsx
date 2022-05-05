@@ -1,14 +1,13 @@
 import {useState, useEffect} from 'react'
 import './Header.css'
 import SearchBar from './SearchBar'
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { API } from 'aws-amplify';
 import { Auth } from 'aws-amplify'
 
 
 export default function Header(props) {
-  const [hidden, setHidden] = useState('hidden')
-  const [user, setUser] = useState(null)
+  
   const [userApi, setUserApi] = useState('')
   // const showSearch = function() {
   //   if (hidden === 'hidden') {
@@ -68,7 +67,7 @@ useEffect(() => {
        <nav>
          <Link to='/'>
          <button className="logo-button" >
-        <img id='logo' src='BOFLogo.svg'></img>
+        <img alt='' id='logo' src='BOFLogo.svg'></img>
         </button>
        
         </Link>
@@ -109,7 +108,7 @@ useEffect(() => {
         <nav>
           <Link to='/loginorsign' >
         <button className="small-button" >
-        <img src="icons8-user-64.png" className="user-icon"></img>
+        <img alt='' src="icons8-user-64.png" className="user-icon"></img>
         
         </button>
         </Link>
@@ -124,7 +123,7 @@ useEffect(() => {
           <nav>
           <Link to='/dashboard' >
         <button className="small-button" >
-        <img src="icons8-user-64.png" className="user-icon"></img>
+        <img alt='' src="icons8-user-64.png" className="user-icon"></img>
         
         </button>
         </Link>
@@ -137,7 +136,7 @@ useEffect(() => {
           <nav>
           <Link to={`/dashboard/${userApi.shopId}`} >
         <button className="small-button" >
-        <img src="icons8-user-64.png" className="user-icon"></img>
+        <img alt='' src="icons8-user-64.png" className="user-icon"></img>
         
         </button>
         </Link>
@@ -150,7 +149,7 @@ useEffect(() => {
         <nav>
         <Link to='/admin' >
       <button className="small-button" >
-      <img src="icons8-user-64.png" className="user-icon"></img>
+      <img alt='' src="icons8-user-64.png" className="user-icon"></img>
       
       </button>
       </Link>

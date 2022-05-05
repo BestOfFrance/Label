@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Dashboard.css'
-import { Routes, Route, Link, Navigate, useParams } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 import { Auth } from 'aws-amplify'
 import { API } from 'aws-amplify';
 import ShopDisplayEdit from './ShopDisplayEdit'
@@ -8,7 +8,7 @@ import ShopDisplayEdit from './ShopDisplayEdit'
 
 export default function Dashboard(props) {
   const [redirect, setRedirect] = useState(false)
-  const [user, setUser] = useState(null)
+  
   const [userApi, setUserApi] = useState(null)
   const [shop, setShop] = useState(null)
   

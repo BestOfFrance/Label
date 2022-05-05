@@ -7,12 +7,10 @@ import './components/list.css'
 // import details from './details.js';
 // import getDistance from '../src/helpers/getDistance'
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
-import { Routes, Route, Link } from "react-router-dom";
 import {Helmet} from "react-helmet";
-const geohash = require('ngeohash');
+
 
 export default function HomePage(props) {
   const [items, setItems] = useState(props.items)

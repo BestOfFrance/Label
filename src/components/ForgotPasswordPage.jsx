@@ -5,18 +5,13 @@ import Amplify from '@aws-amplify/core'
 import Api from '@aws-amplify/api-rest'
 import awsconfig from '../aws-exports';
 import { Auth } from 'aws-amplify'
-import ConfirmAccount from './confirmAccount'
-import { Routes, Route, Link, Navigate } from "react-router-dom";
-
-Amplify.configure(awsconfig);
-
-
+import { Navigate } from "react-router-dom";
 
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
 
 export default function ForgotPassword(props) {
-  const account = "Foodie";
+  
   const [state, setState] = useState({
     
     placeholderEmail: "Email",
@@ -39,11 +34,7 @@ export default function ForgotPassword(props) {
   }
   const [redirect, setRedirect] = useState(false)
  
-  
-  async function fetchUser() {
-    const userData = await Api.get('userapi', `/users/${email}`)
-    return userData
-  }
+ 
   const onSubmit = function() {
     let signedin = false;
     

@@ -1,30 +1,14 @@
 import React, {useEffect, useState} from 'react'
-import CloseButton from 'react-bootstrap/CloseButton'
-import hours from '../helpers/convertHours'
 import './ShopDisplay.css'
-import {Rating} from 'react-simple-star-rating';
-import { Carousel } from 'react-carousel-minimal';
-import { Routes, Route, Link, useParams, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { API } from 'aws-amplify';
-import {Helmet} from "react-helmet";
 import './shopDisplayEdit.css'
-import { FormControl, Input, FormLabel, Checkbox, FormControlLabel, FormGroup, Alert } from '@mui/material';
+import { Alert } from '@mui/material';
 import { Auth } from 'aws-amplify'
 import Api from '@aws-amplify/api-rest'
-const axios = require('axios');
 const dataArray = require('../ExtCAIDFinal')
 const dataArray2 = require('../USID2000')
 const dataArray3 = require('../USID5000')
-
-const AWS = require('aws-sdk');
-
-const SES_CONFIG = {
-    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
-    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-    region: 'us-east-1',
-};
-
-const AWS_SES = new AWS.SES(SES_CONFIG);
 
 function wait(ms) {
     return new Promise( (resolve) => {setTimeout(resolve, ms)});
@@ -167,7 +151,7 @@ return dataArray3[i]
   
         }
       }
-      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data);
+      await Api.post('shopsApi', `/shops/${detailsArray[i].id}`, data6);
       
     }
     

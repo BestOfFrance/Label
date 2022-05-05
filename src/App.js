@@ -78,7 +78,7 @@ const permanentMapMarkers = [{city: "Calgary", lat: 51.0447, lng: -114.0719 }, {
 
 Amplify.configure(awsconfig);
 Api.configure(awsconfig);
-const AWS = require('aws-sdk');
+
 //initial location set to Vancouver, will be set to geographic location of user
 const locationDefault = {
   
@@ -247,40 +247,40 @@ export default function Application(props) {
   
 
 
-    const saveShop = async () => {
-      for (let i = 0; i < detailsArray.length; i++) {
-        if (detailsArray[i] !== undefined) {
-      const data = {
-        body: {
-          name: detailsArray[i].name,
-          latitude: detailsArray[i].latitude,
-          longitude: detailsArray[i].longitude,
-          address: detailsArray[i].address,
-          phone: detailsArray[i].phone,
-          image: detailsArray[i].image,
-          rating: detailsArray[i].rating,
-          price: detailsArray[i].price,
-          hours: detailsArray[i].hours,
-          images: detailsArray[i].images,
-          category: detailsArray[i].category,
-          callPhone: detailsArray[i].callPhone,
-          description: detailsArray[i].description,
-          mapUrl: detailsArray[i].mapUrl,
-          numberReviews: detailsArray[i].numberReviews,
-          servicesAvailable: detailsArray[i].servicesAvailable,
-          viewHours: detailsArray[i].viewHours,
-          id: detailsArray[i].id,
-          gsi1sk: detailsArray[i].gsi1sk
+    // const saveShop = async () => {
+    //   for (let i = 0; i < detailsArray.length; i++) {
+    //     if (detailsArray[i] !== undefined) {
+    //   const data = {
+    //     body: {
+    //       name: detailsArray[i].name,
+    //       latitude: detailsArray[i].latitude,
+    //       longitude: detailsArray[i].longitude,
+    //       address: detailsArray[i].address,
+    //       phone: detailsArray[i].phone,
+    //       image: detailsArray[i].image,
+    //       rating: detailsArray[i].rating,
+    //       price: detailsArray[i].price,
+    //       hours: detailsArray[i].hours,
+    //       images: detailsArray[i].images,
+    //       category: detailsArray[i].category,
+    //       callPhone: detailsArray[i].callPhone,
+    //       description: detailsArray[i].description,
+    //       mapUrl: detailsArray[i].mapUrl,
+    //       numberReviews: detailsArray[i].numberReviews,
+    //       servicesAvailable: detailsArray[i].servicesAvailable,
+    //       viewHours: detailsArray[i].viewHours,
+    //       id: detailsArray[i].id,
+    //       gsi1sk: detailsArray[i].gsi1sk
           
           
   
-        }
-      }
-      const apiData = await Api.post('shopsApi', '/shops', data);
-      // console.log({apiData})
-    }
-    }
-    }
+    //     }
+    //   }
+    //   const apiData = await Api.post('shopsApi', '/shops', data);
+    //   // console.log({apiData})
+    // }
+    // }
+    // }
 
     const getDistance = function(myLatlng) {
       async function fetchShops(location) {
@@ -358,7 +358,7 @@ export default function Application(props) {
     markersByDistance.sort( sorter );
     // console.log(markersByDistance[0])
     const allCategories = []
-    const placeClosestToYou = markersByDistance[0]
+    
     const allShops = [];
     const allCMSShops = [];
     const topThreeBakery = [];
@@ -389,7 +389,7 @@ export default function Application(props) {
         topThreeShop.push(marker)
       }
     }
-    const topThreeShops = allShops.slice(0,3)
+    // const topThreeShops = allShops.slice(0,3)
     // console.log(state.categories, 'categoreis state')
     if (state.categories.includes("Bakery") && state.categories.includes("Shop") && state.categories.includes("Café") && state.categories.includes("Restaurant")) {
       // console.log('state alllll')
