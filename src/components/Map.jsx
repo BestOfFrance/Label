@@ -1,10 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import GoogleMapReact from 'google-map-react'
-import SearchBar from './SearchBar'
-import InfoWindow from 'google-map-react'
-import axios from 'axios'
-import LocationPin from './LocationPin'
-import DropDown from './DropDown'
 import DropDownTwo from './DropDownTwo'
 import Marker from './Marker'
 
@@ -63,7 +58,7 @@ useEffect(() => {
   return () => window.removeEventListener("resize", handleWindowResize);
 }, []);
 
-  const permanentMarkers = props.permanent
+ 
   useEffect(() => {
     setLocation(props.location)
     
