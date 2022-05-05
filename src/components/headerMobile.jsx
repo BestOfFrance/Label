@@ -1,8 +1,6 @@
 import {useState, useEffect, useRef} from 'react'
 import './Header.css'
-import SearchBar from './SearchBar'
-import { Routes, Route, Link } from "react-router-dom";
-import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
@@ -10,11 +8,9 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function HeaderMobile(props) {
-  const [hidden, setHidden] = useState('hidden')
   
   // const showSearch = function() {
   //   if (hidden === 'hidden') {
@@ -70,7 +66,7 @@ export default function HeaderMobile(props) {
        <nav>
          <Link to='/'>
          <button className="logo-button" >
-        <img id='logo-mobile' src='BOFLogo.svg'></img>
+        <img alt="" id='logo-mobile' src='BOFLogo.svg'></img>
         </button>
        
         </Link>
@@ -99,7 +95,7 @@ export default function HeaderMobile(props) {
         <nav>
           <Link to='/loginorsign' >
         <button className="small-button" >
-        <img src="icons8-user-64.png" className="user-icon"></img>
+        <img alt="" src="icons8-user-64.png" className="user-icon"></img>
         
         </button>
         </Link>
@@ -110,7 +106,7 @@ export default function HeaderMobile(props) {
           <nav>
           <Link to='/dashboard' >
         <button className="small-button" >
-        <img src="icons8-user-64.png" className="user-icon"></img>
+        <img alt="" src="icons8-user-64.png" className="user-icon"></img>
         
         </button>
         </Link>
@@ -126,7 +122,7 @@ export default function HeaderMobile(props) {
       <Stack direction="row" spacing={2}>
       
       <div>
-        <img src="menu.svg"
+        <img alt="" src="menu.svg"
           ref={anchorRef}
           id="composition-button"
           aria-controls={open ? 'composition-menu' : undefined}

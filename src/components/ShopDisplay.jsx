@@ -4,8 +4,8 @@ import hours from '../helpers/convertHours'
 import './ShopDisplay.css'
 import {Rating} from 'react-simple-star-rating';
 import { Carousel } from 'react-carousel-minimal';
-import { Routes, Route, Link, useParams } from "react-router-dom";
-import { API, sectionFooterSecondaryContent } from 'aws-amplify';
+import { useParams } from "react-router-dom";
+import { API } from 'aws-amplify';
 import {Helmet} from "react-helmet";
 
 
