@@ -8,7 +8,7 @@ import './DropDown.css'
 
 export default function DropDownTwo(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [background, setBackground] = React.useState("doubleArrow.svg")
+  const [background, setBackground] = React.useState("right-arrow.png")
   const [transform, setTransform] = React.useState(`translate(0px, 0px)`)
   const [open, setOpen] = React.useState(false)
 
@@ -16,11 +16,11 @@ export default function DropDownTwo(props) {
     if (open) {
       setOpen(false)
       setTransform(`translate(0px, 0px)`)
-      setBackground("doubleArrow.svg")
+      setBackground("right-arrow.png")
     } else {
       setTransform(`translate(375px, 0px)`)
       setOpen(true)
-      setBackground("doubleArrowBackwards.svg")
+      setBackground("lefit-arrrow.png")
     }
   }
   

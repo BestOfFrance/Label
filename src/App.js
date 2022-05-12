@@ -153,7 +153,7 @@ if (!detailsArray.includes(detailsObject)) {
 export default function Application(props) {
   const [state, setState] = useState({
     shops: [],
-    location: locationDefault,
+    location: null,
     mode: mode,
     shopID: 0,
     selected: null, 
@@ -830,7 +830,7 @@ useEffect(() => {
   // getDistance(state.location)
 }, [state.categories])
 useEffect(() => {
-  getDistance(state.location)
+  // getDistance(state.location)
 }, [state.cmsCategories])
 // console.log('places', state.placesNearYou)
 
@@ -851,6 +851,7 @@ useEffect(() => {
      
     },
     function(error) {
+      setState((prev) => ({ ...prev, location: locationDefault}))
       console.error("Error Code = " + error.code + " - " + error.message);
     }
   )

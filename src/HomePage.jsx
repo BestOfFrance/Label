@@ -10,6 +10,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import FilterCms from './components/FilterCms'
 import {Helmet} from "react-helmet";
+import { Waveform } from '@uiball/loaders'
+import { Ring } from '@uiball/loaders'
 
 
 export default function HomePage(props) {
@@ -72,11 +74,22 @@ export default function HomePage(props) {
        </ListGroup>
        </div>
           </div>
-          
-          
+          {props.location === null &&
+          <div className="loader">
+     <Ring 
+     size={40}
+     lineWeight={5}
+     speed={2} 
+     color="black" 
+    />
+    </div>
+    }
+        {props.location !== null && 
         <Maps location={props.location} currentZoom={props.currentZoom} zoomLevel={14} zoom={props.zoom} shops={props.shops} marker={props.marker} permanent={props.permanent} onChange={props.onChange} onFilter={props.onFilter} signedIn={props.signedIn} categories={props.categoriesArray}>
         
         </Maps>
+        }
+        
         
         </div>
         
@@ -129,6 +142,32 @@ export default function HomePage(props) {
         </Grid>
         <Grid item xs="auto">
         {props.cmsBakery[8]}
+        </Grid>
+      </Grid>
+    </Box>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={3}>
+        <Grid item xs="auto">
+          {props.cmsBakery[9]}
+        </Grid>
+        <Grid item xs="auto">
+          {props.cmsBakery[10]}
+        </Grid>
+        <Grid item xs="auto">
+        {props.cmsBakery[11]}
+        </Grid>
+      </Grid>
+    </Box>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={3}>
+        <Grid item xs="auto">
+          {props.cmsBakery[12]}
+        </Grid>
+        <Grid item xs="auto">
+          {props.cmsBakery[13]}
+        </Grid>
+        <Grid item xs="auto">
+        {props.cmsBakery[14]}
         </Grid>
       </Grid>
     </Box>

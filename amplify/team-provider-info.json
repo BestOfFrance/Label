@@ -29,7 +29,7 @@
         },
         "stripeCheckout": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/stripeCheckout-316d37466738456d5059-build.zip"
+          "s3Key": "amplify-builds/stripeCheckout-304e3259504f46774470-build.zip"
         },
         "stripeHook": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",

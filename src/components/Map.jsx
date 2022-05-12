@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import GoogleMapReact from 'google-map-react'
 import DropDownTwo from './DropDownTwo'
 import Marker from './Marker'
+import { Waveform } from '@uiball/loaders'
 
 
 import './map.css'
@@ -60,10 +61,9 @@ useEffect(() => {
 
  
   useEffect(() => {
-    setLocation(props.location)
     
-   
-   
+      setLocation(props.location)
+ 
   }, [props.location])
   
   
@@ -76,6 +76,7 @@ useEffect(() => {
     <div className="google-map">
       {width > breakpoint && 
     <DropDownTwo onClick={props.onFilter} categories={props.categories} />}
+    
     {props.location &&
     
       <GoogleMapReact
@@ -85,7 +86,7 @@ useEffect(() => {
        
         onChange={({center, zoom}) => {props.onChange({center, zoom})}}
         center={{lat: Number(location.lat), lng: Number(location.lng)}}
-        defaultCenter={{lat: locationDefault.lat, lng: locationDefault.lng}}
+        defaultCenter={{lat: Number(location.lat), lng: Number(location.lng)}}
         zoom={zoom}
         defaultZoom={14}
       >

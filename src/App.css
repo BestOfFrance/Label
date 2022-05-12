@@ -4,6 +4,13 @@
   flex-direction: column;
   height: 100%;
 }
+.loader {
+  height: 76vh;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
 #french-food-div {
   width: 100% !important;
   display: flex;
