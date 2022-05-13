@@ -28,7 +28,7 @@ const myBucket = new AWS.S3({
     region: REGION,
 })
 
-const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
+const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZ')
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -51,10 +51,10 @@ const AWS_SES = new AWS.SES(SES_CONFIG);
 
 let sendEmail = (businessName, role, email, id, firstname, lastname) => {
     let params = {
-      Source: 'partners@bestoffrance.ca',
+      Source: 'lisa.cormier@bestoffrance.ca',
       Destination: {
         ToAddresses: [
-          'partners@bestoffrance.ca'
+          'lisa.cormier@bestoffrance.ca'
         ],
       },
       ReplyToAddresses: [],
@@ -214,9 +214,9 @@ async function signUpFreemium() {
   const onCart = function() {
     let priceId = ''
     if (state.monthly) {
-      priceId = 'price_1KYx2lHYehZq7RpTMCyoyOpk' ;
+      priceId = 'price_1KZLQSHYehZq7RpTPbt6aMad' ;
     } else if (state.yearly) {
-      priceId = 'price_1KYx2lHYehZq7RpTFEXxebG2'
+      priceId = 'price_1KZLQSHYehZq7RpTPbt6aMad'
     }
     const redirectToCheckout = async (userId) => {
       const fetchSession = async () => {

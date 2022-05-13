@@ -17,7 +17,7 @@ export default function CreateAccount(props) {
     placeholderFN: "First Name",
     placeholderLN: "Last Name",
     placeholderEmail: "Email",
-    placeholderPassword: "Password",
+    placeholderPassword: "Password (Minumum 8 Characters)",
     placeholderConfirm: "Confirm Password",
     placeholderUser: "Username"
   })
