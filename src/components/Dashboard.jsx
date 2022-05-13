@@ -4,6 +4,7 @@ import { Navigate} from "react-router-dom";
 import { Auth } from 'aws-amplify'
 import { API } from 'aws-amplify';
 import ShopDisplayEdit from './ShopDisplayEdit'
+import { setDefaultResultOrder } from 'dns/promises';
 
 
 export default function Dashboard(props) {
@@ -53,14 +54,17 @@ export default function Dashboard(props) {
 }, [])
 
 
-
+const logout = function() {
+  props.logout
+  setRedirect(true)
+}
 
   return(
     <div className="main-body">
     <div className="dashboard-container">
      <h4>My Account</h4> 
 
-      <button onClick={props.logout}>Logout</button>
+      <button onClick={logout()}>Logout</button>
       <div>
         {userApi !== null && userApi.isVerified && shop !== null && //(userApi.accountType === "yearly" || userApi.accountTyoe === "monthly") && props.activeSubscription
         <div>
