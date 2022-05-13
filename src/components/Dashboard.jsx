@@ -52,7 +52,10 @@ export default function Dashboard(props) {
   
 }, [])
 
-
+const logout = function() {
+  props.logout()
+  setRedirect(true)
+}
 
 
   return(
@@ -60,7 +63,7 @@ export default function Dashboard(props) {
     <div className="dashboard-container">
      <h4>My Account</h4> 
 
-      <button onClick={props.logout}>Logout</button>
+      <button onClick={logout}>Logout</button>
       <div>
         {userApi !== null && userApi.isVerified && shop !== null && //(userApi.accountType === "yearly" || userApi.accountTyoe === "monthly") && props.activeSubscription
         <div>
