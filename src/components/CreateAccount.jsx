@@ -179,14 +179,15 @@ export default function CreateAccount(props) {
             
         });
         // console.log(user)
-        saveUser();
+        // saveUser();
         setShow("show")
+        return true
     } catch (error) {
         console.log('error signing up:', error);
         
       setError("There was an error signing up. Please try again. (hint: did you use a valid email format?)")
       setShowError(true)
-        
+        return false
     }
 }
 async function signUpFreemium() {
@@ -200,7 +201,7 @@ async function signUpFreemium() {
           
       });
       // console.log(user)
-      saveUser();
+       saveUser();
       setRedirect(true)
   } catch (error) {
       console.log('error signing up:', error);
@@ -266,18 +267,32 @@ async function signUpFreemium() {
           setemail("This email has already been used")
         } else {
            signUp()
-          .then(() => {
-            saveUser()
-          .then((data) => {
-            sendEmail(businessName, role, email, data.id, firstname, lastname)
-            .then(() => {
-              redirectToCheckout(data.id)
+          .then((out) => {
+            console.log('sign uo out', out)
+            if (out) {
+              saveUser()
+              .then((data) => {
+               console.log('data', data)
+              sendEmail(businessName, role, email, data.id, firstname, lastname)
+           .then((out) => {
+             console.log('email out', out)
+             redirectToCheckout(data.id)
+           })
+            .catch((err) => {
+              setError(err.body)
+              console.log(err)
             })
-             .catch((err) => {
-               setError(err.body)
-               console.log(err)
-             })
-          })
+            })
+            .catch((err) => {
+              setError(err.body)
+              console.log(err)
+            })
+            }
+
+             
+
+            
+            
           })
           
            .catch((err) => {
