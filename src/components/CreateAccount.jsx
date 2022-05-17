@@ -28,7 +28,7 @@ const myBucket = new AWS.S3({
     region: REGION,
 })
 
-const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZ')
+const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -97,7 +97,7 @@ export default function CreateAccount(props) {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: `${email}${file.name}`
+            Key: `${email}/${file.name}`
         };
 
         myBucket.putObject(params)
@@ -210,13 +210,13 @@ async function signUpFreemium() {
       
   }
 }
-
+ const [priceID, setPriceID] = useState('price_1KYx2lHYehZq7RpTMCyoyOpk')
   const onCart = function() {
-    let priceId = ''
+    
     if (state.monthly) {
-      priceId = 'price_1KZLQSHYehZq7RpTPbt6aMad' ;
+      setPriceID('price_1KYx2lHYehZq7RpTMCyoyOpk') ;
     } else if (state.yearly) {
-      priceId = 'price_1KZLQSHYehZq7RpTPbt6aMad'
+      setPriceID('price_1KYx2lHYehZq7RpTFEXxebG2') 
     }
     const redirectToCheckout = async (userId) => {
       const fetchSession = async () => {
@@ -226,7 +226,7 @@ async function signUpFreemium() {
           body: {
           quantity: 1,
           client_reference_id: userId,
-          priceId: priceId
+          priceId: priceID
           }
         }
         const session = await API.post(apiName, apiEndpoint, data)
@@ -237,7 +237,7 @@ async function signUpFreemium() {
         return session
       }
       const session = await fetchSession()
-            // console.log(fetchSession())
+            console.log(fetchSession(), 'fetchSession')
             const sessionId = session.id
             const stripe = await stripePromise
             stripe.redirectToCheckout({ sessionId })

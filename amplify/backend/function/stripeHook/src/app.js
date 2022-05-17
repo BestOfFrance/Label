@@ -7,7 +7,7 @@ See the License for the specific language governing permissions and limitations 
 */
 
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY_TEST)
+const stripe = require("stripe")(`${process.env.STRIPE_SECRETKEY_TEST}`)
 const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET
 const express = require('express')
 const bodyParser = require('body-parser')

@@ -29,11 +29,11 @@
         },
         "stripeCheckout": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/stripeCheckout-304e3259504f46774470-build.zip"
+          "s3Key": "amplify-builds/stripeCheckout-344e4e554a7168547546-build.zip"
         },
         "stripeHook": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/stripeHook-6f7436524f5a57496979-build.zip"
+          "s3Key": "amplify-builds/stripeHook-50356a6463676e556f47-build.zip"
         },
         "emailAttachment": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",

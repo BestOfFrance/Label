@@ -6,7 +6,7 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_TEST);
+const stripe = require('stripe')(`${process.env.STRIPE_SECRET_TEST}`);
 // require ("dotenv").config();
 // const Stripe = require('stripe');
 // const stripe = Stripe(process.env.STRIPE_SECRET_KEY_DEVELOPMENT);
