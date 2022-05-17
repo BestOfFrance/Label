@@ -28,7 +28,7 @@ const myBucket = new AWS.S3({
     region: REGION,
 })
 
-const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
+const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -227,7 +227,7 @@ async function signUpFreemium() {
           body: {
           quantity: 1,
           client_reference_id: userId,
-          priceId: priceID
+          priceId: 'price_1KZLQSHYehZq7RpTPbt6aMad'
           }
         }
         const session = await API.post(apiName, apiEndpoint, data)

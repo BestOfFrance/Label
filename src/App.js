@@ -987,6 +987,9 @@ const permanent = permanentMapMarkers.map((center, index) => {
         <Route path="confirmaccount" element={<ConfirmAccount login={login}
         
         checkUser={checkUser}/>}/>
+        <Route path="confirmaccount/" element={<ConfirmAccount login={login}
+        
+        checkUser={checkUser}/>}/>
         <Route path="newsanddeals" element={<NewsDeals/>}/>
         <Route path="shops/:shop" element={<ShopDisplay shops={state.shops} logout={signOut}
         business={state.accountType}
