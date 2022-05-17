@@ -274,8 +274,8 @@ async function signUpFreemium() {
               .then((data) => {
                console.log('data', data)
               sendEmail(businessName, role, email, data.id, firstname, lastname)
-           .then((out) => {
-             console.log('email out', out)
+           .then(() => {
+             
              redirectToCheckout(data.id)
            })
             .catch((err) => {
