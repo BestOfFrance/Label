@@ -43,7 +43,7 @@ const usCities = require('./uscities')
  const details = require('./ExtUSDetailsFinal')
  console.log(details.length, 'details')
  
- const stripePromise = loadStripe('pk_live_51HBN9DHYehZq7RpT5G2AQtCNeTrPehX91poDIfiXG9nWpAwC9MoiFOhEwSbvJc2sFitsSX6lyPVzykDYMxrBuJgA00Kgeay5re')
+ const stripePromise = loadStripe('pk_test_51HBN9DHYehZq7RpT4E5XQTTg1ZjqS28tFvIlSGq8FYAHmU8g9EncHv2YjDmnJEmJzwPke81SWL65hCi87OxVQ0in00eS54FcZx')
 
 const permanentMapMarkers = [{city: "Calgary", lat: 51.0447, lng: -114.0719 }, {city: "Vancouver", lat: 49.246292, lng: -123.116226 }, {city: "Regina", lat: 50.445210, lng: -104.618896 }, {city: "Toronto", lat: 43.651070, lng: -79.347015 }, {city: "Montreal", lat: 45.508888, lng: -73.561668 }, {city: "Charlottetown", lat: 46.238888, lng: -63.129166 }, {city: "Fredericton", lat: 45.964993, lng: -66.646332 }, {city: "Portland", lat: 45.523064, lng: -122.676483 }, {city: "Dallas", lat: 32.7767, lng: -96.7970 }, {city: "Seattle", lat: 47.6062, lng: -122.3321 }, {city: "Los Angeles", lat: 34.0522, lng: -118.2437 }, {city: "New York", lat: 43.000000, lng: -75.000000 }, {city: "Miami", lat: 25.7617, lng: -80.1918 }]
 
@@ -191,18 +191,19 @@ export default function Application(props) {
       .then(
         (user) => {
           
-          // console.log(user)
+          console.log(user)
             setState((prev) => ({ ...prev, signedIn: true }))
             // console.log(user.attributes.email)
           fetchUser(user.attributes.email)
           .then((response) => {
             // console.log(response, 'fetchuser')
             // console.log(response.data.Item.id)
-            if (Object.keys(response.data) > 0) {
+            // console.log(Object.keys(response.data.Item))
+            if (Object.keys(response.data.Item).length > 0) {
 
-            fetchSubscription(`sub_${response.data.Item.id}`)
+            fetchSubscription(`${response.data.Item.id}`)
             .then((response) => {
-              // console.log('subb response', response)
+              console.log('subb response', response)
             })
             .catch((err) => {
               console.log(err)
