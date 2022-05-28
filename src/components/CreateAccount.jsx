@@ -42,6 +42,7 @@ const SES_CONFIG = {
     accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY,
     secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
     region: 'us-east-1',
+    apiVersion: '2010-12-01'
 };
 
 const AWS_SES = new AWS.SES(SES_CONFIG);
@@ -63,7 +64,7 @@ let sendEmail = (businessName, role, email, id, firstname, lastname) => {
           Html: {
             Charset: 'UTF-8',
             Data: `BusinessName: ${businessName}, Role: ${role}, First Name: ${firstname}, Last Name: ${lastname}, Email: ${email}, User Id: ${id}`
-          },
+          }
         },
         Subject: {
           Charset: 'UTF-8',
@@ -71,8 +72,38 @@ let sendEmail = (businessName, role, email, id, firstname, lastname) => {
         }
       },
     };
+    console.log(AWS_SES.sendEmail(params).promise())
     return AWS_SES.sendEmail(params).promise();
 };
+
+
+let sendEmailTest = () => {
+  let params = {
+    Source: 'lisa.cormier@bestoffrance.ca',
+    Destination: {
+      ToAddresses: [
+        'lisa.cormier@bestoffrance.ca'
+      ],
+    },
+    ReplyToAddresses: [],
+    Message: {
+      Body: {
+        Html: {
+          Charset: 'UTF-8',
+          Data: `BusinessName:`
+        }
+      },
+      Subject: {
+        Charset: 'UTF-8',
+        Data: 'hi',
+      }
+    },
+  };
+  console.log(AWS_SES.sendEmail(params).promise())
+  return AWS_SES.sendEmail(params).promise();
+};
+
+
 
 
   
@@ -234,12 +265,16 @@ async function signUpFreemium() {
         .catch((err) => {
           console.log(err)
         })
+        console.log(session, 'session')
+        
         // console.log(session)
         return session
       }
       const session = await fetchSession()
             console.log(fetchSession(), 'fetchSession')
             const sessionId = session.id
+            console.log(sessionId, 'session id')
+            console.log(session)
             const stripe = await stripePromise
             stripe.redirectToCheckout({ sessionId })
     }
@@ -274,8 +309,9 @@ async function signUpFreemium() {
               .then((data) => {
                console.log('data', data)
               sendEmail(businessName, role, email, data.id, firstname, lastname)
-           .then(() => {
-             
+           .then((out) => {
+             console.log(out, 'email out')
+             console.log(out.ResponseMetadata, 'email out')
              redirectToCheckout(data.id)
            })
             .catch((err) => {
@@ -467,7 +503,7 @@ const onChangeYearly = function() {
   
 </FormGroup>
 
-
+{/* <button onClick={sendEmailTest}>Test</button> */}
        {state.monthly &&
        <div>
          <div>Please upload a Incorporation Certificate to verify you are the business owner</div>
@@ -487,7 +523,7 @@ const onChangeYearly = function() {
    </div>
        }
      
-       
+       <button>email testing</button>
           
      <div class="text-center">
      {uploaded &&

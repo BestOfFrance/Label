@@ -42,7 +42,7 @@ export default function CreateAccount(props) {
  
   
   async function fetchUser() {
-    const userData = await Api.get('userapi', `/users/${email}`)
+    const userData = await Api.get('usersApi', `/users/${email}`)
     return userData
   }
   const onSubmit = function() {
@@ -53,16 +53,18 @@ export default function CreateAccount(props) {
       props.setLoggedIn()
       props.setMap()
       fetchUser()
+      .then((out) => {
+        console.log(out)
+        if (out.data.Item.accountType === "Business") {
+          props.setBusiness()
+        }
+      })
       setRedirect(true)
 
-    .then((out) => {
-      // console.log(out.data.Item.accountType)
-      if (out.data.Item.accountType === "Business") {
-        props.setBusiness()
-      }
-    })
+   
       
     })
+    
     .catch((err) => {
       
       setShow("show")

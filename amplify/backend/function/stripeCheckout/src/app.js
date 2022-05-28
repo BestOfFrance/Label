@@ -59,7 +59,7 @@ app.post('/checkout', async function(req, res) {
       mode: 'subscription',
       client_reference_id: req.body.client_reference_id,
       success_url:
-        'https://www.tastefrenchfood.com/confirmaccount', // The URL the customer will be directed to after the payment or subscription creation is successful.
+        'https://tastefrenchfood.com/confirmaccount', // The URL the customer will be directed to after the payment or subscription creation is successful.
       cancel_url: 'https://www.tastefrenchfood.com/', // The URL the customer will be directed to if they decide to cancel payment and return to your website.
     })
     res.json(session)
