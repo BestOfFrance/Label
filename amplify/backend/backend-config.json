@@ -63,6 +63,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "getsub": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -109,6 +114,14 @@
         {
           "category": "function",
           "resourceName": "stripeHook",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "getsub",
           "attributes": [
             "Name",
             "Arn"

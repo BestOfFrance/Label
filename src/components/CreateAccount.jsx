@@ -242,6 +242,20 @@ async function signUpFreemium() {
       
   }
 }
+
+const fetchSub = async () => {
+  const apiName = "stripeAPI"
+  const apiEndpoint = "/webhook"
+ 
+  const session = await API.post(apiName, apiEndpoint)
+  .catch((err) => {
+    console.log(err)
+  })
+  console.log(session, 'session')
+  
+  // console.log(session)
+  return session
+}
  const [priceID, setPriceID] = useState('price_1KYx2lHYehZq7RpTMCyoyOpk')
   const onCart = function() {
     
@@ -503,7 +517,7 @@ const onChangeYearly = function() {
   
 </FormGroup>
 
-{/* <button onClick={sendEmailTest}>Test</button> */}
+
        {state.monthly &&
        <div>
          <div>Please upload a Incorporation Certificate to verify you are the business owner</div>
@@ -523,7 +537,7 @@ const onChangeYearly = function() {
    </div>
        }
      
-       <button>email testing</button>
+       <button onClick={fetchSub}>email testing</button>
           
      <div class="text-center">
      {uploaded &&

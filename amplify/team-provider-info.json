@@ -29,7 +29,7 @@
         },
         "stripeCheckout": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
-          "s3Key": "amplify-builds/stripeCheckout-65677553535978554234-build.zip"
+          "s3Key": "amplify-builds/stripeCheckout-4c424d346b7459624452-build.zip"
         },
         "stripeHook": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
@@ -54,6 +54,10 @@
         "yelpApiFunction": {
           "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
           "s3Key": "amplify-builds/yelpApiFunction-642b394c4f39447a6a54-build.zip"
+        },
+        "getsub": {
+          "deploymentBucketName": "amplify-labeltwo-dev-95351-deployment",
+          "s3Key": "amplify-builds/getsub-662f6d48566344464c67-build.zip"
         }
       },
       "auth": {
