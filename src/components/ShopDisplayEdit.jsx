@@ -7,7 +7,7 @@ import { API } from 'aws-amplify';
 import {Helmet} from "react-helmet";
 import './shopDisplayEdit.css'
 import AWS from 'aws-sdk'
-import { FormControl, Input, FormLabel} from '@mui/material';
+import { FormControl, Input, FormLabel, Alert} from '@mui/material';
 
 
 
@@ -51,15 +51,40 @@ export default function ShopDisplay(props) {
   const [tagFour, setTagFour] = useState('')
   const [hourArray, setHourArray] = useState([])
   const [seo, setSeo] = useState('')
-  
+  const [uploaded, setUploaded] = useState(false)
   const [progress , setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileInput = (e) => {
         setSelectedFile(e.target.files[0]);
     }
-
-    const uploadFile = (file) => {
+    
+    const uploadEdit = function(file) {
+      uploadFile(file)
+      .then((out) => {
+        
+        const currentImages = shop.images
+        currentImages.push(`https://businessauth.s3.amazonaws.com/${file.name}`)
+        console.log(currentImages)
+        API.put('shopsApi', `/shops`, { 
+          body: {
+            id: id.id,
+            images: currentImages,
+            
+            
+          }
+        }).then(result => {
+          //const result = JSON.parse(result.body);
+          // console.log(result)
+          setUploaded(true)
+          console.log('result', result)
+        }).catch(err => {
+          console.log(err);
+        })
+      })
+    }
+    const [fileStatus, setFileStatus] = useState(false)
+    const uploadFile = async(file) => {
 
         const params = {
             ACL: 'public-read',
@@ -68,13 +93,17 @@ export default function ShopDisplay(props) {
             Key: file.name
         };
 
-        myBucket.putObject(params)
+        const bucket = await myBucket.putObject(params)
             .on('httpUploadProgress', (evt) => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100))
+                setFileStatus(true)
+                
             })
             .send((err) => {
                 if (err) console.log(err)
+                if (err) setFileStatus(false)
             })
+            return bucket
     }
 
 
@@ -378,13 +407,23 @@ export default function ShopDisplay(props) {
           </div>
           
         </div>
+
         <div className="edit-shop-bottom-info">
-         <div>
-         Upload Images
-        <div>Native SDK File Upload Progress is {progress}%</div>
-        <input type="file" onChange={handleFileInput}/>
-        <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
-    </div>
+          {uploaded === false && 
+          <div>
+          Upload Images
+         <div>File Upload Progress is {progress}%</div>
+         <input type="file" onChange={handleFileInput}/>
+         <button onClick={() => uploadEdit(selectedFile)}> Upload to your business page</button>
+     </div>
+          } 
+          {uploaded && 
+          <div>
+          <Alert>Photo Successfully Uploaded!</Alert>
+          <button onClick={() => setUploaded(false)}>Have more photos to upload?</button>
+          </div>
+          }
+         
         <div className='shop-rating-price'>
             <div className='shop-rating'>
             Rating: {shop.rating}
