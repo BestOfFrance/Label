@@ -52,10 +52,10 @@ const AWS_SES = new AWS.SES(SES_CONFIG);
 
 let sendEmail = (businessName, role, email, id, firstname, lastname) => {
     let params = {
-      Source: 'lisa.cormier@bestoffrance.ca',
+      Source: 'lcormier5@hotmail.com',
       Destination: {
         ToAddresses: [
-          'lisa.cormier@bestoffrance.ca'
+          'partners@bestoffrance.ca'
         ],
       },
       ReplyToAddresses: [],
