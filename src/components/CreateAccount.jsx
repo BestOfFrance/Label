@@ -77,41 +77,6 @@ let sendEmail = (businessName, role, email, id, firstname, lastname) => {
 };
 
 
-let sendEmailTest = () => {
-  let params = {
-    Source: 'lisa.cormier@bestoffrance.ca',
-    Destination: {
-      ToAddresses: [
-        'lisa.cormier@bestoffrance.ca'
-      ],
-    },
-    ReplyToAddresses: [],
-    Message: {
-      Body: {
-        Html: {
-          Charset: 'UTF-8',
-          Data: `BusinessName:`
-        }
-      },
-      Subject: {
-        Charset: 'UTF-8',
-        Data: 'hi',
-      }
-    },
-  };
-  console.log(AWS_SES.sendEmail(params).promise())
-  return AWS_SES.sendEmail(params).promise();
-};
-
-
-
-
-  
-  
-
-
-
-
 export default function CreateAccount(props) {
   const [progress , setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
