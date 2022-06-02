@@ -35,6 +35,7 @@ import ReportButtonEasy from './components/ReportButtonEasy'
 import {loadStripe} from '@stripe/stripe-js';
 import Admin from './components/AdminPage'
 import ShopDisplayEdit from './components/ShopDisplayEdit'
+import ReportButtonTest from './components/emailTest'
 
 const geohash = require('ngeohash');
 const canadaCities = require('./canadacities')
